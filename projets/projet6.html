@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alimentation Stabilisée USB-C - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    
+    /* Texte Justifié */
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify;
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+    .badge-custom.usb { background: #e0f7fa; color: #006064; }
+
+    /* Composants */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section PCB */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      /* Suppression de la hauteur fixe pour s'adapter à l'image */
+      overflow: hidden;
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* --- NOUVEAU STYLE COMPETENCES AMÉLIORÉ --- */
+    .competences-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .competence-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .competence-title i {
+      font-size: 2rem;
+    }
+
+    .competence-desc {
+      font-size: 1.9rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      background: #149ddd;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .skill-badge.trans {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .skill-badge.trans:hover {
+      background: #4caf50;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Alimentation Stabilisée USB-C (PD/PPS)</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Conversion de Puissance Intelligente & Architecture Bi-Carte</p>
+      <div class="project-tags">
+        <span>USB Power Delivery</span>
+        <span>STM32</span>
+        <span>Conception KiCad</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/alim.png" alt="Projet Alimentation">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary">
+          Conception d'une alimentation de laboratoire moderne et compacte, exploitant la puissance des chargeurs USB-C actuels. Le système utilise le protocole <strong>Power Delivery (PD)</strong> et le mode <strong>PPS</strong> (Programmable Power Supply) pour négocier une tension variable (3.3V - 21V) avec précision, pilotée par une architecture matérielle scindée en deux cartes distinctes.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+          <h3>Protocole USB-C PD/PPS</h3>
+          <p>
+            Intégration d'un contrôleur dédié (AP33772S) pour dialoguer avec le chargeur source. Le système négocie dynamiquement la tension et le courant souhaités par pas de 20mV, transformant un simple chargeur de téléphone en une source de tension programmable fiable.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-layers"></i></div>
+          <h3>Architecture Bi-Carte</h3>
+          <p>
+            Conception modulaire séparant physiquement la <strong>Carte Puissance</strong> (gestion USB-C, filtrage, STM32 esclave) de la <strong>Carte IHM</strong> (écran OLED, encodeur, STM32 maître). Cette approche isole les signaux de commande des courants de puissance.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-display"></i></div>
+          <h3>Interface Utilisateur</h3>
+          <p>
+            Développement d'une interface homme-machine fluide sur écran OLED. L'utilisateur règle la tension et le courant de consigne via un encodeur rotatif, tandis que l'écran affiche les mesures en temps réel transmises par la carte de puissance via une liaison UART.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <div class="competences-section">
+          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          </h2
+          >
+          
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 1)
+                </h3>
+                
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 3)">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 3)
+                  </div>
+                  <p class="competence-desc">Dimensionnement alimentation stabilisée</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('implanter', 3)">
+                  <div class="competence-title">
+                    <i class="bi bi-diagram-3"></i>
+                    Implanter (Niv 3)
+                  </div>
+                  <p class="competence-desc">Assemblage et soudure composants puissance</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 3)">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Verifier (Niv 3)
+                  </div>
+                  <p class="competence-desc">Validation électrique et thermique</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+                
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">KiCad (Schématique)</span>
+                    <span class="skill-badge">Calculs électriques</span>
+                    <span class="skill-badge">Soudure puissance</span>
+                    <span class="skill-badge">Impression 3D</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <div>
+                    <span class="skill-badge trans">Sécurité électrique</span>
+                    <span class="skill-badge trans">Conception mécanique</span>
+                    <span class="skill-badge trans">Fabrication DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cartes PCB Showcase -->
+    <div class="container-fluid my-5" style="background-color: #f8f9fa; padding: 4rem 2rem; border-radius: 20px;">
+      <div class="container">
+        <h2 style="font-size: 3.5rem; color: #2c3e50; text-align: center; margin-bottom: 3rem;">
+          <i class="bi bi-cpu-fill me-2" style="color: #149ddd;"></i>Cartes PCB du Projet
+        </h2>
+        
+        <div class="row g-4">
+          <!-- Carte de Puissance PCB -->
+          <div class="col-lg-6">
+            <div class="feature-card" style="background: white; padding: 3rem; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; border-left: 5px solid #149ddd;">
+              <img src="../assets/img/portfolio/carte_pui.png" alt="Carte de Puissance PCB" style="width: 100%; height: 350px; object-fit: contain; border-radius: 20px; margin-bottom: 2rem; background-color: #f8f9fa; padding: 1rem; box-sizing: border-box;">
+              <h3 style="font-size: 2.6rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem;">Carte de Puissance</h3>
+              <p style="font-size: 2rem; color: #555; line-height: 1.8; margin-bottom: 1rem;">
+                Gère la conversion USB Power Delivery en tensions régulées (5V, 9V, 15V). Intègre les régulateurs linéaires, circuits de protection contre les surcharges et systèmes de dissipation thermique pour une alimentation stable et sécurisée.
+              </p>
+              <p style="font-size: 1.8rem; color: #149ddd; font-weight: 600;">
+                <i class="bi bi-check-circle me-2"></i>Régulation 48W max | Protection thermique intégrée
+              </p>
+            </div>
+          </div>
+          
+          <!-- Carte IHM PCB -->
+          <div class="col-lg-6">
+            <div class="feature-card" style="background: white; padding: 3rem; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; border-left: 5px solid #27ae60;">
+              <img src="../assets/img/portfolio/carte_IHM.png" alt="Carte IHM PCB" style="width: 100%; height: 350px; object-fit: contain; border-radius: 20px; margin-bottom: 2rem; background-color: #f8f9fa; padding: 1rem; box-sizing: border-box;">
+              <h3 style="font-size: 2.6rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem;">Carte IHM (Interface)</h3>
+              <p style="font-size: 2rem; color: #555; line-height: 1.8; margin-bottom: 1rem;">
+                Contrôle par STM32 microcontrolleur avec écran OLED pour l'affichage des paramètres (tension, courant). Dispose de boutons de sélection et mode de fonctionnement pour une ergonomie optimale et une prise en main intuitive.
+              </p>
+              <p style="font-size: 1.8rem; color: #27ae60; font-weight: 600;">
+                <i class="bi bi-check-circle me-2"></i>STM32 programmable | Écran OLED 128x64
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>Construire un outil que j'utilise quotidiennement sur mon établi</li>
+            <li>Le défi du dimensionnement thermique et de la gestion de puissance</li>
+            <li>Créer un boîtier personnalisé grâce à l'impression 3D</li>
+            <li>L'autonomie de concevoir entièrement un équipement de A à Z</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Les régulateurs linéaires et leur dimensionnement (LM317, LM7805)</li>
+            <li>Les techniques de refroidissement passif (dissipateurs, aération)</li>
+            <li>L'importance de la sécurité en électronique de puissance</li>
+            <li>La conception mécanique avec Fusion 360 pour l'impression 3D</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma compréhension de l'électronique de puissance et des conversions</li>
+            <li>Mes compétences en CAO mécanique et fabrication additive</li>
+            <li>Ma rigueur dans le respect des normes de sécurité électrique</li>
+            <li>Mon sens de l'ergonomie et du design produit</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Il y a quelque chose de particulièrement satisfaisant à fabriquer ses propres outils. Cette alimentation de laboratoire me rappelle chaque jour qu'avec de la rigueur et de la créativité, on peut créer des équipements de qualité professionnelle ! ⚡</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 1.8rem; }
+    .ressenti-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.1rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 2rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 3rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 1.3rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

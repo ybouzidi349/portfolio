@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Compétences - Portfolio GEII</title>
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --radius: 26px;
+      --shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+
+    body {
+      background: url("assets/img/hero-bg.jpg") top center no-repeat fixed;
+      background-size: cover;
+      color: #fff;
+      background-color: #0f172a;
+      font-size: 1.4rem; /* AUGMENTÉ : de 1.2rem à 1.4rem */
+    }
+    
+    body::before {
+      content: "";
+      background: rgba(15, 23, 42, 0.85);
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .brand{
+      display:flex; align-items:center; gap:14px;
+      color: #fff;
+      font-size: 1.5rem; /* AUGMENTÉ : de 1.3rem à 1.5rem */
+    }
+    .topbar .brand .logo{
+      width:50px; height:50px; /* AUGMENTÉ */
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.9), rgba(99,102,241,.9));
+      box-shadow: 0 14px 30px rgba(56,189,248,.18);
+    }
+    .topbar .subtitle{ 
+      color: rgba(255,255,255,.85);
+      font-size: 1.3rem; /* AUGMENTÉ : de 1.1rem à 1.3rem */
+    }
+
+    .page-hero{ 
+        padding: 50px 0; /* AUGMENTÉ : de 40px à 50px */
+        background: rgba(15, 23, 42, 0.5);
+    }
+    
+    .hero-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(15px);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-card .inner{
+      padding: 40px; /* AUGMENTÉ : de 30px à 40px */
+      display:flex;
+      flex-direction: column; 
+      align-items: center;    
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .year-selector-wrapper {
+      background: rgba(255,255,255, 0.95);
+      padding: 18px 40px; /* AUGMENTÉ */
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 4px solid rgba(20, 157, 221, 0.3);
+    }
+    
+    .year-selector-wrapper label {
+      color: #0f172a;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.4rem; /* AUGMENTÉ : de 1.2rem à 1.4rem */
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    
+    #yearSelect {
+      border: none;
+      background: transparent;
+      font-weight: 800;
+      color: #149ddd;
+      font-size: 1.6rem; /* AUGMENTÉ : de 1.4rem à 1.6rem */
+      cursor: pointer;
+      outline: none;
+      box-shadow: none;
+      min-width: 240px;
+      color: #0f172a;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 14px 24px; /* AUGMENTÉ */
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.95);
+      font-size: 1.3rem; /* AUGMENTÉ : de 1.1rem à 1.3rem */
+      font-weight: 500;
+    }
+
+    .cards-wrap{ 
+      padding: 50px 0 100px; /* AUGMENTÉ */
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    .competence-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+      transition: transform .3s ease;
+      min-height: 400px; /* AUGMENTÉ : de 350px à 400px */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .competence-card:hover{
+      transform: translateY(-10px);
+      border-color: rgba(255,255,255,.4);
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      background: rgba(30, 41, 59, 0.95);
+    }
+
+    .card-accent{ height: 12px; width: 100%; } /* AUGMENTÉ : de 10px à 12px */
+
+    .card-body-xl{
+      padding: 40px; /* AUGMENTÉ : de 35px à 40px */
+      color:#fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 70%;
+      font-size: 1.3rem; /* AUGMENTÉ : de 1.15rem à 1.3rem */
+    }
+
+    .icon-badge{
+      width: 100px; height: 100px; /* AUGMENTÉ : de 80px à 100px */
+      border-radius: 22px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 15px 35px rgba(0,0,0,.25);
+      flex: 0 0 auto;
+    }
+    .icon-badge i{ font-size: 3.5rem; } /* AUGMENTÉ : de 2.8rem à 3.5rem */
+
+    .title{
+      font-size: 2.8rem; /* AUGMENTÉ : de 2.4rem à 2.8rem */
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .subtitle-text {
+      font-size: 1.7rem; /* AUGMENTÉ : de 1.5rem à 1.7rem */
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      margin-bottom: 15px;
+    }
+    .hint{
+      color: rgba(255,255,255,.85);
+      font-size: 1.5rem; /* AUGMENTÉ : de 1.3rem à 1.5rem */
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    .progress{
+      height: 28px; /* AUGMENTÉ : de 24px à 28px */
+      border-radius: 999px;
+      background: rgba(0,0,0,.3);
+      margin-top: 15px;
+    }
+    .progress-bar{ border-radius: 999px; }
+
+    .btn-glow{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.12);
+      color:#fff;
+      padding: 24px 35px; /* AUGMENTÉ : de 20px 30px à 24px 35px */
+      font-size: 1.5rem; /* AUGMENTÉ : de 1.3rem à 1.5rem */
+      font-weight: 600;
+      transition: all .2s ease;
+    }
+    .btn-glow:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.25);
+      color:#fff;
+    }
+
+    /* Centrage de la dernière carte si nombre impair */
+    #grid {
+        justify-content: center;
+    }
+
+    /* Boutons de sélection d'année */
+    .year-btn {
+      background: transparent;
+      border: 2px solid rgba(20, 157, 221, 0.4);
+      color: #fff;
+      padding: 1.2rem 2.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 4px 15px rgba(20, 157, 221, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+    }
+
+    .year-btn:hover {
+      background: rgba(20, 157, 221, 0.15);
+      border-color: #149ddd;
+      box-shadow: 0 8px 25px rgba(20, 157, 221, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .year-btn.active {
+      background: linear-gradient(135deg, #149ddd 0%, #17d4f2 100%);
+      border-color: #149ddd;
+      box-shadow: 0 12px 35px rgba(20, 157, 221, 0.5);
+      color: #fff;
+    }
+
+    .year-btn.active:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(20, 157, 221, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .year-btn {
+        padding: 1rem 1.8rem;
+        font-size: 1.1rem;
+        min-width: 140px;
+      }
+
+      .year-selector {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .year-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+        min-width: 120px;
+      }
+
+      .year-selector {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container py-3 d-flex align-items-center justify-content-between">
+      <div class="brand">
+        <div class="logo"><i class="bi bi-ui-checks-grid fs-4 text-dark"></i></div>
+        <div>
+          <div class="fw-bold fs-5">Compétences BUT (GEII)</div>
+          <div class="subtitle small">Validation des acquis par année.</div>
+        </div>
+      </div>
+      <a href="index.html" class="btn btn-glow btn-sm py-2 px-3 fs-6"><i class="bi bi-arrow-left"></i> Retour</a>
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <div class="container" data-aos="fade-up">
+      <div class="hero-card">
+        <div class="inner">
+          
+          <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+            <span class="pill"><i class="bi bi-check-circle-fill text-success"></i> Compétences validées</span>
+            <span class="pill"><i class="bi bi-mortarboard"></i> Référentiel ESE</span>
+          </div>
+
+          <!-- REMPLACER LE SELECT PAR DES BOUTONS -->
+          <div class="text-center mb-5">
+            <div class="year-selector d-flex justify-content-center gap-3 flex-wrap">
+              <button class="year-btn active" data-year="1" aria-pressed="true">
+                <i class="bi bi-mortarboard me-2"></i>BUT 1
+              </button>
+              <button class="year-btn" data-year="2" aria-pressed="false">
+                <i class="bi bi-mortarboard me-2"></i>BUT 2
+              </button>
+              <button class="year-btn" data-year="3" aria-pressed="false">
+                <i class="bi bi-mortarboard me-2"></i>BUT 3
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="cards-wrap">
+    <div class="container" data-aos="fade-up" data-aos-delay="80">
+      <div id="grid" class="row g-5"></div>
+    </div>
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script>
+    // --- TES SCORES ---
+    const MES_SCORES = {
+      "1": { 
+        concevoir: 60, 
+        verifier: 55, 
+        maintenir: 50 
+        // Pas d'implanter ici car n'existe pas en BUT1
+      },
+      "2": { 
+        concevoir: 85, 
+        verifier: 80, 
+        maintenir: 75, 
+        implanter: 75 
+      },
+      "3": { 
+        concevoir: 95, 
+        verifier: 90, 
+        maintenir: 85, 
+        implanter: 85 
+      }
+    };
+
+    // LISTE DES COMPÉTENCES (Avec filtrage par niveaux existants)
+    const COMPETENCES = [
+      {
+        key: "concevoir",
+        icon: "bi-pencil-square",
+        title: "Concevoir",
+        subtitle: "la partie GEII d’un système",
+        // Existe en 1, 2 et 3
+        levels: {1:1, 2:2, 3:3},
+        hint: "Analyse du besoin, choix techniques, schémas, prototype et dossier de conception.",
+        accent: "linear-gradient(90deg, #6366f1, #ec4899)",
+        barClass: "bg-info"
+      },
+      {
+        key: "verifier",
+        icon: "bi-check2-square",
+        title: "Vérifier",
+        subtitle: "la partie GEII d’un système",
+        // Existe en 1, 2 et 3
+        levels: {1:1, 2:2, 3:3},
+        hint: "Protocoles de tests, mesures, validation fonctionnelle, conformité et qualité.",
+        accent: "linear-gradient(90deg, #22d3ee, #10b981)",
+        barClass: "bg-success"
+      },
+      {
+        key: "maintenir",
+        icon: "bi-wrench-adjustable",
+        title: "Maintenir",
+        subtitle: "en condition opérationnelle",
+        // Existe en 1, 2 et 3 (Compétence commune)
+        levels: {1:1, 2:2, 3:3},
+        hint: "Diagnostic de panne, réparation, amélioration continue et sûreté de fonctionnement.",
+        accent: "linear-gradient(90deg, #f59e0b, #ea580c)",
+        barClass: "bg-warning"
+      },
+      {
+        key: "implanter", 
+        icon: "bi-cpu",   
+        title: "Implanter", 
+        subtitle: "un système matériel et/ou logiciel",
+        // N'EXISTE PAS EN BUT 1 (Commence en BUT 2 parcours ESE)
+        levels: {2:2, 3:3}, 
+        hint: "Intégration Hardware/Software, microcontrôleurs, développement croisé et systèmes embarqués.",
+        accent: "linear-gradient(90deg, #a855f7, #3b82f6)",
+        barClass: "bg-primary"
+      }
+    ];
+
+    const yearSelect = document.getElementById("yearSelect");
+    const grid = document.getElementById("grid");
+
+    function render() {
+      const year = Number(yearSelect.value); // Conversion en nombre pour correspondre aux clés
+      const currentScores = MES_SCORES[String(year)];
+      grid.innerHTML = "";
+
+      // Compter combien de compétences sont affichées pour ajuster la largeur (col-xl)
+      const validCompetences = COMPETENCES.filter(c => c.levels[year] !== undefined);
+      const colClass = validCompetences.length === 3 ? "col-xl-4" : "col-xl-6";
+
+      validCompetences.forEach(c => {
+        const expectedLevel = c.levels[year];
+        const value = currentScores[c.key] || 0;
+
+        const col = document.createElement("div");
+        col.className = `col-12 ${colClass}`;
+
+        col.innerHTML = `
+          <div class="competence-card h-100">
+            <div class="card-accent" style="background:${c.accent}"></div>
+
+            <div class="card-body-xl">
+              <div class="d-flex align-items-start gap-4">
+                  <div class="icon-badge">
+                    <i class="bi ${c.icon}"></i>
+                  </div>
+                  <div style="flex:1;">
+                    <div class="title text-white">${c.title}</div>
+                    <div class="subtitle-text">${c.subtitle}</div>
+                    
+                    <span class="pill mb-2"><i class="bi bi-mortarboard"></i> Niveau visé : <strong>${expectedLevel}</strong></span>
+                  </div>
+              </div>
+              
+              <div class="hint mt-3">${c.hint}</div>
+
+              <div class="mt-5 pt-4 border-top border-secondary border-opacity-25">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <div class="fw-bold fs-5">Score validé</div>
+                  <div class="display-6 fw-bold">${value}%</div>
+                </div>
+
+                <div class="progress">
+                  <div class="progress-bar ${c.barClass}" role="progressbar"
+                       style="width:${value}%"
+                       aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                        
+                <div class="mt-5 text-end">
+                   <a class="btn btn-glow w-100"
+                   href="competence-detail.html?year=${encodeURIComponent(year)}&comp=${encodeURIComponent(c.key)}">
+                  Voir les détails & preuves <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(col);
+      });
+    }
+
+    yearSelect.addEventListener("change", render);
+    render();
+
+    // Gestion des boutons d'année
+    const yearButtons = document.querySelectorAll(".year-btn");
+
+    yearButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const year = btn.getAttribute("data-year");
+
+        // Mettre à jour l'état actif des boutons
+        yearButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Mettre à jour la valeur du sélecteur caché
+        yearSelect.value = year;
+
+        // Rendre les compétences pour l'année sélectionnée
+        render();
+      });
+    });
+  </script>
+
+</body>
+</html>

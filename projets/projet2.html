@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robot Mobile Autonome - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    
+    /* MODIFICATION : Texte justifié */
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify; /* Justification du texte */
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+
+    /* Section Screenshot VS */
+    .vs-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .vs-container {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    
+    /* Capteurs */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* --- NOUVEAU STYLE COMPETENCES AMÉLIORÉ (IDENTIQUE PROJET 1) --- */
+    .competences-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .competence-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .competence-title i {
+      font-size: 2rem;
+    }
+
+    .competence-desc {
+      font-size: 1.9rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.8rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      background: #149ddd;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .skill-badge.trans {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .skill-badge.trans:hover {
+      background: #4caf50;
+      color: #fff;
+    }
+
+    /* --- SECTION RESSENTI --- */
+    .ressenti-section {
+      margin: 4rem 0;
+      padding: 4rem;
+      background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%);
+      border-radius: 20px;
+      border: 2px solid rgba(20, 157, 221, 0.15);
+    }
+
+    .ressenti-section h2 {
+      font-size: 3.5rem;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .ressenti-section h2 i {
+      color: #e74c3c;
+    }
+
+    .ressenti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .ressenti-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ressenti-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .ressenti-card.liked {
+      border-top: 4px solid #e74c3c;
+    }
+
+    .ressenti-card.learned {
+      border-top: 4px solid #f39c12;
+    }
+
+    .ressenti-card.improved {
+      border-top: 4px solid #27ae60;
+    }
+
+    .ressenti-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .ressenti-card.liked .ressenti-icon {
+      background: rgba(231, 76, 60, 0.1);
+      color: #e74c3c;
+    }
+
+    .ressenti-card.learned .ressenti-icon {
+      background: rgba(243, 156, 18, 0.1);
+      color: #f39c12;
+    }
+
+    .ressenti-card.improved .ressenti-icon {
+      background: rgba(39, 174, 96, 0.1);
+      color: #27ae60;
+    }
+
+    .ressenti-icon i {
+      font-size: 2.8rem;
+    }
+
+    .ressenti-card h4 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .ressenti-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ressenti-card li {
+      padding: 0.6rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 1.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .ressenti-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #149ddd;
+      font-weight: bold;
+    }
+
+    .ressenti-conclusion {
+      background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%);
+      color: white;
+      padding: 3rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .ressenti-conclusion i {
+      font-size: 4rem;
+      opacity: 0.3;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+    }
+
+    .ressenti-conclusion p {
+      font-size: 2.2rem;
+      line-height: 1.8;
+      margin: 0;
+      padding-left: 3rem;
+      font-style: italic;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Robot Mobile Autonome</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Vision Intelligente, Télémétrie & Navigation</p>
+      <div class="project-tags">
+        <span>Robotique Mobile</span>
+        <span>Vision par Caméra</span>
+        <span>Supervision PC</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/robot.png" alt="Photo du Robot Autonome">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary">
+          Conception d'un robot mobile polyvalent capable de naviguer de manière autonome dans un environnement complexe grâce à une caméra intelligente pour la détection d'obstacles et d'objets. Le système offre une flexibilité totale : il peut opérer seul, être télécommandé manuellement, ou recevoir des consignes de position précises envoyées depuis un ordinateur pour exécuter des trajets planifiés.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-eye"></i></div>
+          <h3>Vision Intelligente</h3>
+          <p>
+            Intégration d'une caméra embarquée dotée d'algorithmes de traitement d'image. Celle-ci analyse l'environnement en temps réel pour détecter des formes, des couleurs spécifiques et identifier des objets. Cette vision artificielle permet au robot de se guider, de suivre des lignes ou d'éviter des obstacles de façon dynamique sans intervention extérieure.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-joystick"></i></div>
+          <h3>Pilotage Multi-Modes</h3>
+          <p>
+            Développement d'une architecture de contrôle hybride offrant trois modes de fonctionnement distincts : navigation 100% autonome basée sur les capteurs, pilotage manuel via une télécommande Bluetooth pour les manœuvres délicates, et guidage par ordinateur où le robot reçoit et exécute des consignes de coordonnées envoyées à distance.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-pc-display"></i></div>
+          <h3>Supervision & Télémétrie</h3>
+          <p>
+            Mise en place d'une liaison série (UART) bidirectionnelle avec un poste de contrôle (Visual Studio). Ce système permet non seulement d'envoyer des ordres de déplacement, mais aussi de recevoir en direct toutes les données de télémétrie du robot : vitesse, position, état des capteurs et diagnostics de l'asservissement.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Capteurs & Actionneurs</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-camera-video"></i></div>
+              <div class="sensor-info">
+                <h4>Caméra Intelligente (Pixy/Cam)</h4>
+                <p>Analyse visuelle de l'environnement pour la reconnaissance d'objets, de couleurs et le suivi de trajectoire.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-broadcast"></i></div>
+              <div class="sensor-info">
+                <h4>Capteurs de Distance (LIDAR/IR)</h4>
+                <p>Balayage de l'espace pour la détection d'obstacles fixes ou mobiles et la prévention des collisions.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-gear-wide-connected"></i></div>
+              <div class="sensor-info">
+                <h4>Moteurs & Encodeurs</h4>
+                <p>Propulsion du châssis et mesure précise de la rotation des roues pour l'odométrie et l'asservissement.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-cpu"></i></div>
+              <div class="sensor-info">
+                <h4>Cerveau (ESP32)</h4>
+                <p>Unité centrale de traitement assurant la fusion des données capteurs et le calcul de la cinématique.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUPPRIMER cette section complète (après "Capteurs & Actionneurs") -->
+    <!-- La section .competences-section moderne est déjà présente plus bas -->
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <section class="ressenti-section">
+        <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+        
+        <div class="ressenti-grid">
+          <div class="ressenti-card liked">
+            <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+            <h4>Ce que j'ai aimé</h4>
+            <ul>
+              <li>La liberté de concevoir un robot "fait maison" sans contraintes de compétition</li>
+              <li>L'intégration de la vision par caméra pour l'autonomie du robot</li>
+              <li>La satisfaction de voir un petit robot se déplacer intelligemment</li>
+              <li>La polyvalence : mécanique, électronique et logiciel sur un seul projet</li>
+            </ul>
+          </div>
+          
+          <div class="ressenti-card learned">
+            <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+            <h4>Ce que j'ai découvert</h4>
+            <ul>
+              <li>Les défis du traitement d'image en temps réel sur microcontrôleur</li>
+              <li>L'asservissement PID appliqué à la navigation autonome</li>
+              <li>La fusion de données multi-capteurs pour la localisation</li>
+              <li>L'importance du tuning et du débogage itératif en robotique mobile</li>
+            </ul>
+          </div>
+          
+          <div class="ressenti-card improved">
+            <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h4>Ce que j'ai amélioré</h4>
+            <ul>
+              <li>Ma compréhension des boucles de contrôle et de l'asservissement</li>
+              <li>Mon expertise en intégration de capteurs hétérogènes</li>
+              <li>Ma capacité à déboguer via une interface de supervision temps réel</li>
+              <li>Mes compétences en conception mécanique pour l'accessibilité électronique</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="ressenti-conclusion">
+          <i class="bi bi-quote"></i>
+          <p>Ce projet m'a montré que la robotique mobile, c'est l'art de faire dialoguer les capteurs, les moteurs et l'intelligence. Chaque ajustement compte, chaque ligne de code a un impact. Un petit robot, c'est un grand professeur ! 🤖</p>
+        </div>
+      </section>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <div class="competences-section">
+          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          </h2>
+          
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 2)
+                </h3>
+                
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('implanter', 2)">
+                  <div class="competence-title">
+                    <i class="bi bi-diagram-3"></i>
+                    Implanter (Niv 2)
+                  </div>
+                  <p class="competence-desc">Fusion multi-capteurs pour navigation autonome</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 2)">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 2)
+                  </div>
+                  <p class="competence-desc">Architecture de contrôle avec PID</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 3)">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 3)
+                  </div>
+                  <p class="competence-desc">Architecture de contrôle avancée</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+                
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">Fusion 360 (Châssis 3D)</span>
+                    <span class="skill-badge">PlatformIO (C++)</span>
+                    <span class="skill-badge">Visual Studio</span>
+                    <span class="skill-badge">UART / Bluetooth</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <div>
+                    <span class="skill-badge trans">Analyse temps réel</span>
+                    <span class="skill-badge trans">Débogage système</span>
+                    <span class="skill-badge trans">Optimisation trajectoire</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Supervision des Données (Visual Studio)</h3>
+      <p class="text-secondary mb-4" style="text-align: center;">
+        Aperçu de l'interface de réception en temps réel des valeurs d'asservissement et de position via la liaison série.
+      </p>
+      
+      <div class="vs-container">
+        <img src="../assets/img/portfolio/vsstudio.png" class="img-fluid rounded" alt="Logs Visual Studio" style="width: 85%; opacity: 0.9; display: block; margin: 0 auto; height: auto;">
+      </div>
+    </div>
+
+    <div class="vs-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Vidéo de la Navigation par Waypoints</h3>
+      <p class="text-secondary mb-4" style="text-align: center;">
+        Le robot se déplace automatiquement vers des waypoints (points cibles) définis à l’avance :
+        chaque point est demandé par l’utilisateur et le robot ajuste sa trajectoire pour l’atteindre.
+      </p>
+
+      <div class="vs-container">
+        <div class="video-wrapper" style="position: relative; width: 100%; max-width: 1100px; margin: 0 auto;">
+          <video class="img-fluid rounded" style="width: 100%; background: #000;" preload="auto">
+            <source src="../assets/img/portfolio/video_robot.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+          <button type="button" class="video-play-btn" aria-label="Lancer la vidéo" style="position: absolute; inset: 0; margin: auto; width: 120px; height: 120px; border-radius: 50%; border: none; background: rgba(0,0,0,0.65); color: #fff; font-size: 3.2rem; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.35); z-index: 2;">
+            <span style="display: inline-block; transform: translateX(3px);">▶</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.video-wrapper').forEach((wrapper) => {
+      const video = wrapper.querySelector('video');
+      const btn = wrapper.querySelector('.video-play-btn');
+      if (!video || !btn) return;
+
+      btn.addEventListener('click', () => {
+        video.controls = true;
+        video.style.pointerEvents = 'auto';
+        video.play();
+        btn.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

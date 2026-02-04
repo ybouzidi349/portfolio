@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carte Smartlight - Yanis Bouzidi</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête Moderne */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Images */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes sans mouvement */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    .feature-card p { color: #555; font-size: 2rem; }
+
+    /* --- STYLE COMPETENCES PROJET 1 --- */
+    .competences-section {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 30px;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+    .competence-card {
+      background: #fff;
+      border-radius: 30px;
+      padding: 2rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    .competence-item:last-child { margin-bottom: 0; }
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .competence-desc { font-size: 1.9rem; color: #555; margin: 0; line-height: 1.6; }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.8rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+    .skill-badge:hover { background: #149ddd; color: #fff; transform: scale(1.05); }
+    .skill-badge.trans { background: #e8f5e9; color: #1b5e20; }
+    .skill-badge.trans:hover { background: #4caf50; color: #fff; }
+
+    /* Modes de Fonctionnement (Similaire Capteurs) */
+    .mode-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+      height: 100%;
+    }
+    .mode-icon {
+      font-size: 3.5rem;
+      color: #ffc107;
+      background: #fff9db;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .mode-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+    .mode-info p { margin: 0; font-size: 1.9rem; color: #666; }
+
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* --- NOUVEAU CODE --- */
+    /* Cartes de Compétences */
+    .competence-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      transition: transform 0.3s;
+    }
+    .competence-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    /* --- FIN NOUVEAU CODE --- */
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Carte Smartlight</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Contrôle Intelligent & Manuel d'Éclairage LED</p>
+      <div class="project-tags">
+        <span>Électronique Analogique</span>
+        <span>Automatisme</span>
+        <span>Conception PCB</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/smartlight.png" alt="Carte Smartlight LED RGB" class="project-image">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10 text-center">
+        <h2 class="fw-bold mb-4" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary" style="font-size: 1.4rem; font-weight: 400;">
+          Développer une carte électronique polyvalente capable de piloter un luminaire (lampe de bureau 7V ou bandeau LED RGB) de manière <strong>autonome</strong> selon l'ambiance lumineuse, ou <strong>manuelle</strong> selon les préférences de l'utilisateur.
+        </p>
+      </div>
+    </div>
+
+    <!-- Ajouter cette section avant la section "Compétences BUT" -->
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>Mon premier vrai projet de conception PCB sous KiCad</li>
+            <li>L'aspect "produit fini" : une carte fonctionnelle et esthétique</li>
+            <li>Intégrer contrôle automatique (capteur luminosité) et manuel (IR)</li>
+            <li>Voir les LED s'allumer et répondre à mes commandes</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Le workflow complet KiCad : schéma → symboles → empreintes → routage</li>
+            <li>Les contraintes de fabrication PCB (DRC, tailles de pistes, vias)</li>
+            <li>La commande PWM pour le contrôle d'intensité lumineuse</li>
+            <li>Le décodage de signaux IR avec des récepteurs TSOP</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma maîtrise de KiCad et de la conception de schémas électroniques</li>
+            <li>Ma compréhension des circuits analogiques (ampli-op, comparateurs)</li>
+            <li>Mes compétences en soudure CMS et traversant</li>
+            <li>Ma capacité à suivre une démarche de conception structurée</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>SmartLight a été mon baptême du feu en conception PCB. De l'idée sur papier à la carte soudée et fonctionnelle, j'ai vécu toutes les étapes d'un vrai projet électronique. Cette expérience m'a donné envie de concevoir plein d'autres cartes ! 💡</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 1.8rem; }
+    .ressenti-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.1rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 2rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 3rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 1.3rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+
+    <!-- REPLACE Compétences section -->
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+
+        <div class="competences-section">
+          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          </h2>
+
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 1)
+                </h3>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 1)">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 1)
+                  </div>
+                  <p class="competence-desc">Schéma électronique LED RGB avec télécommande IR</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 1)">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Verifier (Niv 1)
+                  </div>
+                  <p class="competence-desc">Tests fonctionnels de la carte</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">KiCad</span>
+                    <span class="skill-badge">Analogique</span>
+                    <span class="skill-badge">IR (RC5/NEC)</span>
+                    <span class="skill-badge">PWM / MOSFET</span>
+                    <span class="skill-badge">LED RGB</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <div>
+                    <span class="skill-badge trans">Analyse besoin</span>
+                    <span class="skill-badge trans">Prototypage</span>
+                    <span class="skill-badge trans">Tests simples</span>
+                    <span class="skill-badge trans">Documentation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Fonctionnalités Clés</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="mode-item">
+              <div class="mode-icon"><i class="bi bi-sun"></i></div>
+              <div class="mode-info">
+                <h4>Mode Automatique</h4>
+                <p>Ajustement dynamique de la luminosité via une photorésistance (LDR) et un comparateur, assurant un éclairement constant sur la zone de travail.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mode-item">
+              <div class="mode-icon"><i class="bi bi-hand-index-thumb"></i></div>
+              <div class="mode-info">
+                <h4>Contrôle Manuel</h4>
+                <p>Deux boutons poussoirs pour augmenter/diminuer l'intensité ou changer la couleur (mode RGB), offrant une interaction simple et directe.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mode-item">
+              <div class="mode-icon"><i class="bi bi-remote"></i></div>
+              <div class="mode-info">
+                <h4>Télécommande IR</h4>
+                <p>Réception et décodage des signaux infrarouges (protocole RC5/NEC) pour un pilotage à distance confortable.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mode-item">
+              <div class="mode-icon"><i class="bi bi-lightbulb"></i></div>
+              <div class="mode-info">
+                <h4>Pilotage de Puissance</h4>
+                <p>Utilisation de transistors MOSFET pour hacher le courant (PWM) et piloter efficacement les LEDs sans perte d'énergie excessive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

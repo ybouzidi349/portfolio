@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Détail Compétence - Portfolio</title>
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* --- STYLE GLOBAL (Dark & Glass) --- */
+    body {
+      background: url("assets/img/hero-bg.jpg") top center no-repeat fixed;
+      background-size: cover;
+      background-color: #0f172a;
+      color: #fff;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.4rem; /* AUGMENTÉ : de 1.2rem à 1.4rem */
+    }
+    body::before {
+      content: "";
+      background: rgba(15, 23, 42, 0.92);
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* --- LAYOUT --- */
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 35px; /* AUGMENTÉ : de 30px à 35px */
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      margin-bottom: 24px;
+    }
+
+    /* --- HEADER --- */
+    .page-header { 
+      padding: 50px 0 25px; /* AUGMENTÉ */
+      background: rgba(15, 23, 42, 0.5);
+    }
+    .back-btn {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.5rem; /* AUGMENTÉ : de 1.3rem à 1.5rem */
+    }
+    .back-btn:hover { color: #149ddd; transform: translateX(-5px); }
+
+    /* --- SIDEBAR (GAUCHE - JAUGE) --- */
+    .score-circle-container {
+      position: relative;
+      width: 180px; /* AUGMENTÉ : de 160px à 180px */
+      height: 180px; /* AUGMENTÉ : de 160px à 180px */
+      margin: 0 auto 20px;
+    }
+    svg.progress-ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+    circle.progress-ring__circle {
+      transition: stroke-dashoffset 1s ease-in-out;
+      transform-origin: 50% 50%;
+      stroke-linecap: round;
+    }
+    .score-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .score-val { font-size: 3.2rem; /* AUGMENTÉ : de 2.8rem à 3.2rem */ font-weight: 800; line-height: 1; }
+    .score-label { font-size: 1.1rem; /* AUGMENTÉ : de 1rem à 1.1rem */ color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+
+    .level-badge {
+      background: rgba(255,255,255,0.05);
+      padding: 18px; /* AUGMENTÉ : de 15px à 18px */
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 25px;
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.4rem; /* AUGMENTÉ : de 1.2rem à 1.4rem */
+    }
+
+    /* --- CONTENU (DROITE) --- */
+    .section-title {
+      font-size: 2rem; /* AUGMENTÉ : de 1.8rem à 2rem */
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+    
+    /* Bloc "Comment ?" */
+    .comment-box {
+      background: rgba(20, 157, 221, 0.1);
+      border-left: 4px solid #149ddd;
+      padding: 22px; /* AUGMENTÉ : de 20px à 22px */
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 30px;
+      font-size: 1.35rem; /* AUGMENTÉ : de 1.2rem à 1.35rem */
+      line-height: 1.6;
+      color: #e2e8f0;
+      text-align: justify;
+    }
+
+    /* Liste des Solutions */
+    .solutions-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .solutions-list li {
+      background: rgba(255,255,255,0.03);
+      padding: 18px 22px; /* AUGMENTÉ */
+      border-radius: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      transition: transform 0.2s, background 0.2s;
+      font-size: 1.3rem; /* AUGMENTÉ : de 1.15rem à 1.3rem */
+    }
+    .solutions-list li:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateX(5px);
+    }
+    .solutions-list li i {
+      color: #10b981;
+      font-size: 1.5rem; /* AUGMENTÉ : de 1.3rem à 1.5rem */
+      flex-shrink: 0;
+    }
+    .solution-text { font-size: 1.3rem; /* AUGMENTÉ : de 1.15rem à 1.3rem */ }
+
+    /* --- GRILLE DE PREUVES (PROJETS) --- */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* AUGMENTÉ : minmax de 300px à 320px */
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .evidence-card {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .evidence-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      border-color: #149ddd;
+    }
+
+    .evidence-img-container {
+      height: 200px; /* AUGMENTÉ : de 180px à 200px */
+      overflow: hidden;
+      position: relative;
+    }
+    .evidence-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .evidence-card:hover .evidence-img { transform: scale(1.05); }
+
+    .evidence-content { 
+      padding: 24px; /* AUGMENTÉ : de 20px à 24px */
+      display: flex; 
+      flex-direction: column; 
+      flex-grow: 1;
+      font-size: 1.3rem; /* AUGMENTÉ : de 1.1rem à 1.3rem */
+    }
+    
+    .evidence-tag {
+      font-size: 1rem; /* AUGMENTÉ : de 0.9rem à 1rem */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #149ddd;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .evidence-title {
+      font-size: 1.6rem; /* AUGMENTÉ : de 1.4rem à 1.6rem */
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    
+    .evidence-justification {
+      font-size: 1.25rem; /* AUGMENTÉ : de 1.1rem à 1.25rem */
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+      text-align: justify;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      padding-left: 10px;
+      border-left: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .evidence-link-text {
+      font-size: 1.2rem; /* AUGMENTÉ : de 1.05rem à 1.2rem */
+      font-weight: 600;
+      color: #149ddd;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: auto;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container page-header" data-aos="fade-down">
+    <a href="competences.html" class="back-btn"><i class="bi bi-arrow-left"></i> Retour au tableau des compétences</a>
+  </div>
+
+  <main class="container pb-5">
+    <div class="row g-4">
+
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="glass-card text-center h-100 sticky-top" style="top: 20px; z-index: 1;">
+          
+          <div class="mb-4">
+            <i id="compIcon" class="bi bi-cpu text-primary display-3"></i>
+          </div>
+          
+          <h1 id="compTitle" class="h3 fw-bold mb-2">Chargement...</h1>
+          <p id="compSubtitle" class="text-white-50 small mb-4 text-uppercase fw-bold" style="letter-spacing:1px;">...</p>
+
+          <div class="score-circle-container">
+            <svg class="progress-ring" height="160" width="160">
+              <circle class="progress-ring__bg" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+              <circle class="progress-ring__circle" stroke="#149ddd" stroke-width="12" fill="transparent" r="70" cx="80" cy="80" id="circleProgress"/>
+            </svg>
+            <div class="score-text">
+              <div class="score-val"><span id="scoreValue">0</span>%</div>
+              <div class="score-label">Validé</div>
+            </div>
+          </div>
+
+          <div class="level-badge">
+            <div class="small text-white-50 text-uppercase mb-1">Niveau Cible</div>
+            <div class="fw-bold fs-4 text-white" id="targetLevelDisplay">BUT ?</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-8" data-aos="fade-left">
+        
+        <div class="glass-card">
+          <h2 class="section-title text-info"><i class="bi bi-journal-text"></i> Définition & Attentes</h2>
+          <div class="comment-box" id="commentText">
+            Chargement de la définition...
+          </div>
+
+          <h2 class="section-title text-success mt-5"><i class="bi bi-check2-square"></i> Critères de Réussite</h2>
+          <ul class="solutions-list" id="solutionsList">
+            </ul>
+        </div>
+
+        <div class="glass-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title mb-0 border-0 p-0 text-warning"><i class="bi bi-folder-symlink-fill"></i> Traces & Preuves</h2>
+            <span class="badge bg-warning text-dark">Projets Associés</span>
+          </div>
+          
+          <p class="text-white-50 small mb-4">
+            Les projets ci-dessous démontrent la mise en œuvre concrète de cette compétence. Cliquez pour voir le détail technique.
+          </p>
+
+          <div class="evidence-grid" id="evidenceContainer">
+            </div>
+
+          <div id="noEvidenceMsg" class="alert alert-secondary mt-3 d-none">
+            <i class="bi bi-info-circle me-2"></i> Aucune trace spécifique liée à ce niveau pour le moment.
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script>
+    const LS_KEY = "yakad_portfolio_competences_scores_v1";
+
+    // --- 1. DONNÉES DE COMPÉTENCES (ACADÉMIQUE) ---
+    const COMPETENCES = {
+      concevoir: {
+        title: "Concevoir",
+        icon: "bi-pencil-square",
+        levels: {
+          1: {
+            label: "Niveau 1 — Conception élémentaire",
+            comment: "Intégrer les technologies de base pour répondre à un besoin simple. Produire des schémas et choisir des composants standards.",
+            solutions: ["Analyse fonctionnelle d'un système simple", "Schéma électronique sous KiCad (niveau 1)", "Choix de composants sur catalogue"]
+          },
+          2: {
+            label: "Niveau 2 — Conception système",
+            comment: "Dimensionner et concevoir la partie GEII d'un système complexe. Justifier les choix techniques (matériel/logiciel).",
+            solutions: ["Conception PCB multi-couches", "Architecture logicielle structurée", "Simulation avant réalisation"]
+          },
+          3: {
+            label: "Niveau 3 — Innovation & Architecture",
+            comment: "Définir l'architecture globale d'un système distribué ou contraint. Anticiper l'industrialisation.",
+            solutions: ["Architecture distribuée (Bus CAN, Réseaux)", "Conception temps réel", "Optimisation coût/énergie"]
+          }
+        }
+      },
+      verifier: {
+        title: "Vérifier",
+        icon: "bi-clipboard-check",
+        levels: {
+          1: {
+            label: "Niveau 1 — Mesures de base",
+            comment: "Réaliser des mesures unitaires pour valider une fonction. Utiliser les appareils standards (multimètre, oscillo).",
+            solutions: ["Relevés de tensions/courants", "Validation d'un étage d'amplification", "Tests de continuité"]
+          },
+          2: {
+            label: "Niveau 2 — Protocoles de test",
+            comment: "Mettre en œuvre des protocoles de validation complets. Diagnostiquer les écarts entre simulation et réel.",
+            solutions: ["Tests d'intégration matériel/logiciel", "Analyse de trames (Logic Analyzer)", "Validation fonctionnelle complète"]
+          },
+          3: {
+            label: "Niveau 3 — Qualification & Normes",
+            comment: "Valider un système dans son environnement final. Assurer la conformité aux exigences et normes.",
+            solutions: ["Tests de robustesse / endurance", "Validation CEM (Compatibilité)", "Recette finale système"]
+          }
+        }
+      },
+      maintenir: {
+        title: "Maintenir",
+        icon: "bi-tools",
+        levels: {
+          1: { label: "Niveau 1 — Intervention curative", comment: "Intervention curative simple", solutions: ["Tâche 1", "Tâche 2"] },
+          2: { label: "Niveau 2 — Diagnostic", comment: "Diagnostic et maintenance préventive", solutions: ["Tâche 1", "Tâche 2"] },
+          3: { label: "Niveau 3 — Gestion Cycle de Vie", comment: "Gestion du cycle de vie et amélioration", solutions: ["Tâche 1", "Tâche 2"] }
+        }
+      },
+      integrer: {
+        title: "Intégrer",
+        icon: "bi-diagram-3",
+        levels: {
+          1: { label: "Niveau 1 — Assemblage", comment: "Câblage et assemblage simple", solutions: ["Tâche 1", "Tâche 2"] },
+          2: { label: "Niveau 2 — Intégration Sous-systèmes", comment: "Intégration sous-systèmes hétérogènes", solutions: ["Tâche 1", "Tâche 2"] },
+          3: { label: "Niveau 3 — Intégration Système", comment: "Intégration système complexe distribué", solutions: ["Tâche 1", "Tâche 2"] }
+        }
+      }
+    };
+
+    // --- 2. DONNÉES DES PROJETS (PREUVES) ---
+    const PROJECTS_EVIDENCE = [
+      {
+        id: "projet3",
+        title: "Eurobot 2025",
+        img: "assets/img/portfolio/Eurobot.png",
+        link: "projets/projet3.html",
+        matches: [
+          { comp: "concevoir", level: 3, justif: "Conception d'une architecture distribuée sur bus CAN séparant l'intelligence des actionneurs." },
+          { comp: "integrer", level: 3, justif: "Intégration mécanique et électronique de multiples cartes STM32 et actionneurs dans un volume contraint." },
+          { comp: "verifier", level: 2, justif: "Tests unitaires des cartes électroniques avant intégration dans le robot." }
+        ]
+      },
+      {
+        id: "projet1",
+        title: "Moniteur Biomédical",
+        img: "assets/img/portfolio/moniteur.png",
+        link: "projets/projet1.html",
+        matches: [
+          { comp: "verifier", level: 2, justif: "Validation des signaux ECG par comparaison avec un simulateur médical et analyse du rapport signal/bruit." },
+          { comp: "concevoir", level: 2, justif: "Conception de la chaîne d'acquisition analogique et du traitement numérique (filtres FIR)." }
+        ]
+      },
+      {
+        id: "projet5",
+        title: "Hacking RF USB",
+        img: "assets/img/portfolio/hacking.png",
+        link: "projets/projet5.html",
+        matches: [
+          { comp: "verifier", level: 3, justif: "Analyse protocolaire USB (Sniffing Wireshark) pour décoder les commandes propriétaires." },
+          { comp: "maintenir", level: 3, justif: "Développement d'un driver Python open-source pour maintenir l'utilisabilité d'un matériel obsolète." }
+        ]
+      },
+      {
+        id: "projet6",
+        title: "Alim Stabilisée",
+        img: "assets/img/portfolio/Kicad_puissnace.png",
+        link: "projets/projet6.html",
+        matches: [
+          { comp: "concevoir", level: 1, justif: "Dimensionnement des composants de puissance et du dissipateur thermique." },
+          { comp: "integrer", level: 1, justif: "Assemblage du PCB et des éléments de sécurité dans un boîtier imprimé en 3D." }
+        ]
+      },
+      {
+        id: "projet8",
+        title: "Automatisme Indus.",
+        img: "assets/img/portfolio/mise_en_service_armoire.png",
+        link: "projets/projet8.html",
+        matches: [
+          { comp: "verifier", level: 2, justif: "Contrôle de conformité du câblage de l'armoire par rapport au schéma et tests de continuité sous tension." },
+          { comp: "maintenir", level: 2, justif: "Diagnostic de panne sur variateur et remise en service." }
+        ]
+      },
+      {
+        id: "projet9",
+        title: "Synthèse Audio",
+        img: "assets/img/portfolio/synthese_audio_main.png",
+        link: "projets/projet9.html",
+        matches: [
+          { comp: "concevoir", level: 2, justif: "Modélisation mathématique des filtres et implémentation en C temps réel." }
+        ]
+      },
+      {
+        id: "projet7",
+        title: "Télécommande DSP",
+        img: "assets/img/portfolio/telecommande.png",
+        link: "projets/projet7.html",
+        matches: [
+          { comp: "integrer", level: 2, justif: "Interfaçage du module IR, de l'écran OLED et de l'encodeur sur bus I2C." }
+        ]
+      }
+    ];
+
+
+    // --- 3. LOGIQUE D'AFFICHAGE ---
+    function initPage() {
+      const u = new URL(window.location.href);
+      let year = parseInt(u.searchParams.get("year")) || 1;
+      if (year < 1) year = 1; if (year > 3) year = 3;
+      
+      const compKey = (u.searchParams.get("comp") || "").toLowerCase().trim();
+      const compData = COMPETENCES[compKey];
+
+      const titleEl = document.getElementById("compTitle");
+      const subEl = document.getElementById("compSubtitle");
+      const targetEl = document.getElementById("targetLevelDisplay");
+      const scoreValEl = document.getElementById("scoreValue");
+      const commentEl = document.getElementById("commentText");
+      const solutionsList = document.getElementById("solutionsList");
+      const circle = document.getElementById("circleProgress");
+      const iconEl = document.getElementById("compIcon");
+      const evidenceContainer = document.getElementById("evidenceContainer");
+      const noEvidenceMsg = document.getElementById("noEvidenceMsg");
+
+      if (!compData) {
+        titleEl.textContent = "Compétence introuvable";
+        return;
+      }
+
+      titleEl.textContent = compData.title;
+      targetEl.textContent = `BUT ${year}`;
+      iconEl.className = `bi ${compData.icon || 'bi-cpu'} text-primary display-3`;
+
+      const levelData = compData.levels[year];
+      subEl.textContent = levelData.label;
+      commentEl.textContent = levelData.comment;
+
+      solutionsList.innerHTML = "";
+      if (levelData.solutions && levelData.solutions.length > 0) {
+        levelData.solutions.forEach(txt => {
+          const li = document.createElement("li");
+          li.innerHTML = `<i class="bi bi-check-circle-fill"></i> <span class="solution-text">${txt}</span>`;
+          solutionsList.appendChild(li);
+        });
+      } else {
+        solutionsList.innerHTML = "<li><i class='bi bi-dash'></i> <span>Détails à venir...</span></li>";
+      }
+
+      let scores = {};
+      try { scores = JSON.parse(localStorage.getItem(LS_KEY) || "{}"); } catch(e){}
+      const rawScore = scores?.[String(year)]?.[compKey] || 0;
+      
+      scoreValEl.textContent = rawScore;
+      const radius = circle.r.baseVal.value;
+      const circumference = radius * 2 * Math.PI;
+      circle.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle.style.strokeDashoffset = circumference;
+      
+      const offset = circumference - (rawScore / 100) * circumference;
+      setTimeout(() => { circle.style.strokeDashoffset = offset; }, 200);
+
+      if(rawScore < 50) circle.style.stroke = "#ef4444";
+      else if(rawScore < 80) circle.style.stroke = "#f59e0b";
+      else circle.style.stroke = "#10b981";
+
+      let hasEvidence = false;
+      
+      PROJECTS_EVIDENCE.forEach(proj => {
+        const match = proj.matches.find(m => m.comp === compKey && m.level === year);
+        
+        if (match) {
+          hasEvidence = true;
+          const cardHtml = `
+            <a href="${proj.link}" class="evidence-card">
+              <div class="evidence-img-container">
+                <img src="${proj.img}" alt="${proj.title}" class="evidence-img">
+              </div>
+              <div class="evidence-content">
+                <div class="evidence-tag">${compData.title} Niv.${year}</div>
+                <div class="evidence-title">${proj.title}</div>
+                
+                <div class="d-flex mb-2">
+                  <i class="bi bi-quote text-primary me-2 fs-4"></i>
+                  <div class="evidence-justification">
+                    ${match.justif}
+                  </div>
+                </div>
+
+                <div class="evidence-link-text">
+                  Voir le projet <i class="bi bi-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+          `;
+          evidenceContainer.innerHTML += cardHtml;
+        }
+      });
+
+      if (!hasEvidence) {
+        noEvidenceMsg.classList.remove("d-none");
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initPage);
+
+  </script>
+
+</body>
+</html>

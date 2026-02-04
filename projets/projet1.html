@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moniteur Intelligent & IA - Yanis Bouzidi</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px; /* AUGMENTÉ : de 19px → 26px */
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%; /* AUGMENTÉ : de 1300px → 98% */
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête Moderne */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem; /* AUGMENTÉ : de 4rem → 5.5rem */
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px; /* AUGMENTÉ */
+      border-radius: 50px;
+      font-size: 2rem; /* AUGMENTÉ : de 1.2rem → 2rem */
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Images */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes sans mouvement */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    
+    .icon-box {
+      width: 100px; height: 100px; /* AUGMENTÉ */
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem; /* AUGMENTÉ : de 2.5rem → 3.5rem */
+      margin-bottom: 2rem;
+    }
+    
+    .feature-card h3 { 
+      font-size: 2.6rem; /* AUGMENTÉ : de 1.8rem → 2.6rem */
+      font-weight: 700; 
+      margin-bottom: 1.5rem; 
+      color: #111; 
+    }
+    .feature-card p { 
+      color: #555; 
+      font-size: 2rem; /* AUGMENTÉ : de 1.15rem → 2rem */
+    }
+
+    /* --- NOUVEAU STYLE COMPETENCES AMÉLIORÉ --- */
+    .competences-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .competence-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .competence-title {
+      font-size: 2.4rem; /* AUGMENTÉ : de 1.5rem → 2.4rem */
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .competence-title i {
+      font-size: 2rem; /* AUGMENTÉ : de 1.3rem → 2rem */
+    }
+
+    .competence-desc {
+      font-size: 1.9rem; /* AUGMENTÉ : de 1.15rem → 1.9rem */
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 14px 28px; /* AUGMENTÉ */
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.8rem; /* AUGMENTÉ : de 1.05rem → 1.8rem */
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      background: #149ddd;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .skill-badge.trans {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .skill-badge.trans:hover {
+      background: #4caf50;
+      color: #fff;
+    }
+
+    /* Capteurs */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem; /* AUGMENTÉ : de 2.5rem → 3.5rem */
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px; /* AUGMENTÉ */
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; } /* AUGMENTÉ : de 1.4rem → 2.2rem */
+    .sensor-info p { margin: 0; font-size: 1.9rem; color: #666; } /* AUGMENTÉ : de 1.1rem → 1.9rem */
+
+    /* Schéma */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+    
+    .btn-back {
+      font-size: 2rem; /* AUGMENTÉ : de 1.2rem → 2rem */
+      padding: 20px 50px; /* AUGMENTÉ */
+      border-width: 2px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Moniteur de Santé Intelligent & IA</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Un système complet : Électronique, Code & Intelligence Artificielle</p>
+      <div class="project-tags">
+        <span>Santé Connectée</span>
+        <span>IA Embarquée</span>
+        <span>PCB KiCad</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/moniteur.png" alt="Photo du moniteur biomédical">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10 text-center">
+        <h2 class="fw-bold mb-4" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary" style="font-size: 1.4rem; font-weight: 400;">
+          Concevoir un <strong>dispositif médical autonome</strong> capable non seulement de mesurer les constantes vitales, mais surtout d'<strong>analyser intelligemment</strong> l'état du patient pour prévenir le personnel soignant avant qu'un problème ne survienne.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-robot"></i></div>
+          <h3>Intelligence Artificielle</h3>
+          <p>
+            J'ai intégré une IA dans le système pour analyser les données en temps réel. Elle détecte des <strong>combinaisons critiques</strong> (par exemple : si le taux d'oxygène (SpO₂) chute alors que le rythme cardiaque augmente) et envoie une alerte immédiate aux infirmières pour une prise en charge rapide.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-cpu"></i></div>
+          <h3>Conception Carte (PCB)</h3>
+          <p>
+            J'ai conçu entièrement la carte électronique du dispositif sur le logiciel <strong>KiCad</strong>. Cela inclut le choix des composants, le dessin du schéma électrique et le routage des pistes pour créer un circuit imprimé professionnel et compact.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+          <h3>Programmation & Microcontrôleur</h3>
+          <p>
+            J'ai programmé le cerveau du système (un microcontrôleur performant) pour piloter tous les capteurs, traiter les signaux, gérer l'écran tactile et assurer la communication sans fil avec le serveur de l'hôpital.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+        
+        <div class="competences-section">
+          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          </h2>
+          
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 2)
+                </h3>
+                
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 2)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir
+                  </div>
+                  <p class="competence-desc">Conception complète Hardware (PCB) & Software embarqué</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 2)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Vérifier
+                  </div>
+                  <p class="competence-desc">Validation des mesures et conformité médicale</p>
+                </div>
+              </div>
+            </div>
+
+
+
+            
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+                
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">Programmation C++ / ESP32</span>
+                    <span class="skill-badge">Conception PCB (KiCad)</span>
+                    <span class="skill-badge">Traitement du Signal</span>
+                    <span class="skill-badge">Protocoles I2C / SPI</span>
+                    <span class="skill-badge">IoT & Cloud</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <div>
+                    <span class="skill-badge trans">Communication médicale</span>
+                    <span class="skill-badge trans">Analyse des besoins</span>
+                    <span class="skill-badge trans">Gestion de projet</span>
+                    <span class="skill-badge trans">Vulgarisation technique</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>La satisfaction d'avoir créé un système qui améliore réellement la vie des patients</li>
+            <li>Le défi de combiner IA embarquée, électronique et contraintes médicales</li>
+            <li>L'importance critique du projet : chaque détail compte pour la sécurité</li>
+            <li>La polyvalence : du PCB au code, en passant par l'intelligence artificielle</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Les normes médicales et les enjeux de certification des dispositifs</li>
+            <li>Le traitement du signal en temps réel et la filtration d'artefacts</li>
+            <li>L'intégration de l'IA dans des environnements à ressources limitées</li>
+            <li>L'importance du design pour l'accessibilité et l'ergonomie médicale</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma capacité à penser aux cas critiques et aux scénarios d'erreur</li>
+            <li>Mon expertise en conception de PCB professionnelle avec KiCad</li>
+            <li>Ma compréhension des pipelines d'IA embarquée et de l'optimisation</li>
+            <li>Ma responsabilité envers les utilisateurs finaux de mes systèmes</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Ce projet m'a rappelé que l'ingénierie n'est pas juste une affaire de technique. C'est avant tout créer quelque chose d'utile qui change les choses pour les gens. Chaque ligne de code, chaque trace sur le PCB, compte vraiment. 💙</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 2.8rem; }
+    .ressenti-card h4 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.9rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 3rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 4rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 2.2rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Les Capteurs Utilisés</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-activity"></i></div>
+              <div class="sensor-info">
+                <h4>Capteur Cardiaque (ECG)</h4>
+                <p>Il capte l'activité électrique du cœur pour surveiller le rythme cardiaque et détecter d'éventuelles arythmies.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-lungs"></i></div>
+              <div class="sensor-info">
+                <h4>Oxygénation (SpO₂)</h4>
+                <p>Il mesure le taux d'oxygène dans le sang grâce à la lumière infrarouge, essentiel pour vérifier la bonne respiration du patient.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-thermometer-half"></i></div>
+              <div class="sensor-info">
+                <h4>Température Corporelle</h4>
+                <p>Un capteur de précision médicale pour surveiller la fièvre et prévenir les risques d'infection ou d'hypothermie.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-arrows-move"></i></div>
+              <div class="sensor-info">
+                <h4>Mouvements & Chutes</h4>
+                <p>Un accéléromètre permet de savoir si le patient bouge normalement ou de détecter une chute brutale pour donner l'alerte.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="schematic-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Conception KiCad (Schématique)</h3>
+      <div class="schematic-container">
+        <img src="../assets/img/portfolio/schema_kicad.png" class="img-fluid rounded" alt="Schéma électronique KiCad" style="width: 100%;">
+      </div>
+      <p class="text-muted mt-3" style="font-size: 1.2rem;">Aperçu du schéma électronique complexe réalisé pour lier tous les composants.</p>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

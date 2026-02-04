@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Télécommande Sonore Analogique - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    
+    /* Texte Justifié */
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify;
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+    .badge-custom.ana { background: #fff3e0; color: #ef6c00; } /* Orange pour l'analogique */
+
+    /* Composants */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section Schéma */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* Styles pour les items de compétences */
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .competence-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .competence-title i {
+      font-size: 1.3rem;
+    }
+    
+    .competence-desc {
+      font-size: 1.15rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Télécommande Sonore Analogique</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Traitement du Signal, Filtrage Actif & Amplification</p>
+      <div class="project-tags">
+        <span>Électronique Analogique</span>
+        <span>Filtrage Actif</span>
+        <span>Transmission Audio</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/telecommande.png" alt="Circuit Télécommande">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">Le Défi</h2>
+        <p class="text-secondary">
+          Conception et réalisation d'une chaîne de transmission sans fil basée sur le son (3 kHz) pour piloter le démarrage et l'arrêt d'un robot en compétition. L'enjeu principal réside dans la fiabilité de la détection : le système doit discriminer précisément le signal de commande parmi le bruit ambiant et les autres fréquences, le tout réalisé en <strong>électronique purement analogique</strong> (sans microcontrôleur).
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-broadcast"></i></div>
+          <h3>Émission (Génération)</h3>
+          <p>
+            Création d'un signal de commande stable à 3 kHz. Un montage <strong>Astable</strong> génère un signal carré, qui est ensuite purifié par un filtre passe-bas actif du 2ème ordre (Sallen-Key) pour obtenir une sinusoïde propre, limitant ainsi la pollution harmonique (THD).
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-soundwave"></i></div>
+          <h3>Réception & Filtrage</h3>
+          <p>
+            Traitement du signal faible capté par le microphone. Une chaîne d'amplification à fort gain (>60dB) couplée à des filtres passe-bande sélectifs (structure de Rauch) permet d'isoler la fréquence utile et d'atténuer les parasites de plus de 45 dB.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-check-circle"></i></div>
+          <h3>Détection & Commande</h3>
+          <p>
+            Conversion du signal audio en commande logique. Un détecteur de crête (redresseur) extrait l'enveloppe du signal, qui est ensuite comparée à un seuil de référence via un <strong>comparateur à hystérésis</strong> pour garantir une commutation franche et insensible au bruit.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+        
+        <div class="row g-5">
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-mortarboard-fill text-primary me-2"></i> Compétences BUT (Niv. 1)</h3>
+              
+              <div class="competence-item" onclick="parent.goToCompetenceDetail('implanter', 2)">
+                <div class="competence-title">
+                  <i class="bi bi-diagram-3"></i>
+                  Implanter (Niv 2)
+                </div>
+                <p class="competence-desc">Mise en œuvre de la chaîne analogique</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-tools text-primary me-2"></i> Stack Technique</h3>
+              
+              <div class="mb-4">
+                <h4 class="h5 fw-bold text-dark mb-3">🛠️ Électronique Analogique</h4>
+                <div>
+                  <span class="badge-custom ana">KiCad (Simulation SPICE)</span>
+                  <span class="badge-custom ana">AOP (TL081 / MCP601)</span>
+                  <span class="badge-custom ana">Oscilloscope (FFT & Bode)</span>
+                  <span class="badge-custom ana">Breadboard Prototyping</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="h5 fw-bold text-dark mb-3">🤝 Transversales</h4>
+                <div>
+                  <span class="badge-custom trans">Rigueur mathématique (F.d.t)</span>
+                  <span class="badge-custom trans">Mise au point méthodique</span>
+                  <span class="badge-custom trans">Analyse fréquentielle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>Décoder des protocoles IR variés (NEC, RC5, Sony) et comprendre leurs différences</li>
+            <li>Créer une interface utilisateur intuitive sur écran OLED</li>
+            <li>Le côté "gadget utile" : une télécommande universelle personnalisée</li>
+            <li>L'aspect traitement du signal avec les filtres et la détection d'enveloppe</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Les protocoles de télécommande infrarouge et leur modulation</li>
+            <li>Le traitement du signal analogique (préamplificateur, filtre passe-bande)</li>
+            <li>La gestion d'écrans OLED via I2C avec des librairies graphiques</li>
+            <li>L'ergonomie des menus et la navigation utilisateur</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma compréhension du traitement du signal analogique</li>
+            <li>Mes compétences en conception d'interfaces homme-machine</li>
+            <li>Ma capacité à intégrer plusieurs protocoles dans un même système</li>
+            <li>Mon approche de la documentation technique et du partage de connaissances</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Ce projet illustre parfaitement le plaisir de comprendre comment fonctionnent les objets du quotidien. Chaque télécommande que je vois maintenant, je me demande quel protocole elle utilise ! 📡</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 1.8rem; }
+    .ressenti-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.1rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 2rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 3rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 1.3rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

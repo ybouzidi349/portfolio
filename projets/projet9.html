@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synthèse Audio Numérique - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e8ecf1 100%);
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 40px;
+      object-position: center;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    
+    /* Texte Justifié */
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify;
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+    .badge-custom.dsp { background: #f3e5f5; color: #7b1fa2; } /* Violet pour le DSP/Signal */
+
+    /* Composants / Méthodologie */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section Graphiques */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* Styles pour les items de compétences */
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .competence-title i {
+      font-size: 2rem;
+    }
+    
+    .competence-desc {
+      font-size: 1.9rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Synthèse Numérique Audio</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Traitement du Signal, Filtrage & Temps Réel</p>
+      <div class="project-tags">
+        <span>DSP (Signal Processing)</span>
+        <span>Linux Temps Réel</span>
+        <span>Programmation C</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/piano.png" alt="Synthétiseur Audio Numérique" class="project-image">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary">
+          Conception et implémentation d'un système de synthèse sonore numérique en temps réel, similaire aux synthétiseurs musicaux (type Yamaha DX7). Le projet vise à générer des signaux audio complexes (somme de sinusoïdes, bruit) et à leur appliquer des traitements avancés tels que le filtrage numérique (FIR), la modulation de fréquence (FM) et d'amplitude (AM). L'ensemble est exécuté sur une cible embarquée (Raspberry Pi 4B) avec des contraintes temporelles strictes (période d'échantillonnage de 100 µs).
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-soundwave"></i></div>
+          <h3>Traitement du Signal (DSP)</h3>
+          <p>
+            Mise en œuvre d'algorithmes mathématiques pour la génération de sons (synthèse additive) et le filtrage. Conception de filtres passe-bande à Réponse Impulsionnelle Finie (FIR) avec calcul des coefficients et application de fenêtres de pondération (Blackman-Harris) pour optimiser la sélectivité spectrale.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-cpu"></i></div>
+          <h3>Temps Réel & Embarqué</h3>
+          <p>
+            Développement en langage C sur une architecture Linux étendue avec le co-noyau <strong>Xenomai</strong> pour garantir le déterminisme. Le système doit calculer chaque échantillon en moins de 100 µs pour assurer une fréquence d'échantillonnage stable de 10 kHz, indispensable pour la fidélité audio.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-music-note-beamed"></i></div>
+          <h3>Modulation FM / AM</h3>
+          <p>
+            Implémentation de techniques de modulation pour enrichir le spectre sonore. La modulation de fréquence (FM) crée des harmoniques complexes, tandis que la modulation d'amplitude (AM) permet de sculpter l'enveloppe du son. Ces effets sont validés par analyse spectrale.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+        
+        <div class="row g-5">
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-mortarboard-fill text-primary me-2"></i> Compétences BUT (Niv. 2)</h3>
+              
+              <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 2)">
+                <div class="competence-title">
+                  <i class="bi bi-pencil-square"></i>
+                  Concevoir
+                </div>
+                <p class="competence-desc">Modélisation mathématique et synthèse de filtres</p>
+              </div>
+
+              <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 2)">
+                <div class="competence-title">
+                  <i class="bi bi-check2-square"></i>
+                  Vérifier
+                </div>
+                <p class="competence-desc">Analyse spectrale (FFT) et validation des signaux</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-tools text-primary me-2"></i> Stack Technique</h3>
+              
+              <div class="mb-4">
+                <h4 class="h5 fw-bold text-dark mb-3">🛠️ Signal & Informatique</h4>
+                <div>
+                  <span class="badge-custom dsp">Langage C (Pointeurs, Structures)</span>
+                  <span class="badge-custom dsp">Raspberry Pi 4B (Linux/Xenomai)</span>
+                  <span class="badge-custom dsp">Analyse Spectrale (Audacity, Mathcad)</span>
+                  <span class="badge-custom dsp">Bus SPI (DAC 16 bits)</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="h5 fw-bold text-dark mb-3">🤝 Transversales</h4>
+                <div>
+                  <span class="badge-custom trans">Rigueur mathématique</span>
+                  <span class="badge-custom trans">Optimisation de code</span>
+                  <span class="badge-custom trans">Analyse de données complexes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Architecture du Système</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-motherboard"></i></div>
+              <div class="sensor-info">
+                <h4>Raspberry Pi 4B</h4>
+                <p>Cœur numérique du système exécutant l'OS Linux et le programme de synthèse audio en temps réel.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-plugin"></i></div>
+              <div class="sensor-info">
+                <h4>Carte HAT (DAC SPI)</h4>
+                <p>Carte d'extension spécifique intégrant un convertisseur Numérique/Analogique 16 bits piloté par SPI pour la sortie audio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-code-square"></i></div>
+              <div class="sensor-info">
+                <h4>Algorithme C</h4>
+                <p>Implémentation logicielle des générateurs (Bruit, Sinus), des modulateurs et des filtres numériques (Convolution FIR).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-graph-up"></i></div>
+              <div class="sensor-info">
+                <h4>Validation (FFT)</h4>
+                <p>Utilisation d'outils d'analyse (Mathcad, Audacity) pour vérifier la conformité spectrale des signaux générés.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>La poésie du traitement du signal : transformer des nombres en sons</li>
+            <li>Le défi mathématique : implémenter des algorithmes DSP en temps réel</li>
+            <li>L'aspect interdisciplinaire : électronique, DSP et théorie du signal</li>
+            <li>Le moment magique où les premiers sons purs ont émergé du chaos</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Le traitement du signal numérique en profondeur (FFT, convolution, filtres)</li>
+            <li>Les contraintes du temps réel sur un Raspberry Pi avec Linux</li>
+            <li>L'analyse spectrale et les outils de diagnostic audio (Audacity, Mathcad)</li>
+            <li>La théorie des oscillateurs numériques et des modulateurs</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma compréhension des algorithmes DSP et de leur implémentation</li>
+            <li>Ma capacité à déboguer du code temps réel et en bas niveau</li>
+            <li>Mon intuition mathématique sur les phénomènes ondulatoires</li>
+            <li>Ma patience face à des résultats subtils et des ajustements mineurs</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Ce projet m'a appris que derrière chaque son qu'on entend se cache une danse mathématique complexe. Le DSP, c'est la magie de transformer l'abstrait numérique en émotion sonore. Une belle leçon sur la puissance de la programmation bas niveau ! 🎵</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 1.8rem; }
+    .ressenti-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.1rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 2rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 3rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 1.3rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+
+    <div class="schematic-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Résultats : Analyse Spectrale</h3>
+      <p class="text-muted mb-4" style="font-size: 1.2rem;">
+        Exemple de spectre d'un signal modulé en fréquence (FM), montrant la richesse harmonique générée par le système.
+      </p>
+      
+      <div class="schematic-container">
+        <img src="../assets/img/portfolio/piano_1.png" class="img-fluid rounded" alt="Spectre du signal audio" style="width: 100%; opacity: 0.9;">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

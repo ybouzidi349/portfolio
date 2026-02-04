@@ -1,0 +1,4162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portfolio - Yanis Bouzidi</title>
+  <meta content="Portfolio de Yanis Bouzidi - BUT GEII (électronique, embarqué, robotique)" name="description">
+  <meta content="GEII, embarqué, ESP32, STM32, C++, robotique, CAN, LIN" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* --- STYLE MODIFIÉ --- */
+    html {
+      scroll-behavior: smooth; /* Active le défilement fluide */
+    }
+    /* Style pour rendre la stat cliquable */
+    .stats-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .stats-link:hover {
+      transform: translateY(-5px);
+      background: rgba(20, 157, 221, 0.05); /* Légère teinte bleue au survol */
+    }
+
+    /* --- AJOUTER DANS <style> --- */
+    .text-link-hover {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: block; /* Prend toute la largeur de la ligne */
+      cursor: pointer;
+    }
+
+    .text-link-hover:hover {
+      color: #149ddd; /* Devient bleu au survol */
+      padding-left: 5px; /* Petit décalage vers la droite pour l'effet */
+      background: rgba(20, 157, 221, 0.05);
+      border-radius: 4px;
+    }
+    /* --- STYLE POUR LES LIENS DE COMPÉTENCES --- */
+    .skill-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block; /* Rend toute la ligne cliquable */
+    }
+
+    .skill-link:hover {
+      color: #149ddd;       /* Devient bleu */
+      padding-left: 5px;    /* Petit mouvement vers la droite */
+      background: rgba(20, 157, 221, 0.05); /* Fond très léger */
+      border-radius: 5px;
+    }
+    /* Boutons de langue */
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: #149ddd;
+      border-color: #149ddd;
+      font-weight: bold;
+    }
+    /* --- NOUVEAU STYLE COMPÉTENCES (Plus grand & Moderne) --- */
+    .skill-card-item {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Effet de survol : légère montée + ombre bleue */
+    .skill-card-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(20, 157, 221, 0.15);
+        border-color: rgba(20, 157, 221, 0.3);
+    }
+
+    /* La barre décorative à gauche qui apparait au survol */
+    .skill-card-item::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: #149ddd;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .skill-card-item:hover::before { opacity: 1; }
+
+    /* Texte plus grand */
+    .skill-card-item h5 {
+        font-weight: 700;
+        font-size: 1.25rem; /* ~20px */
+        margin: 0;
+        color: #2c3e50;
+    }
+    
+    .skill-card-item p {
+        font-size: 1.05rem; /* ~17px */
+        color: #6c757d;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .skill-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        background: rgba(20, 157, 221, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .skill-icon-wrapper i {
+        font-size: 1.8rem;
+        color: #149ddd;
+    }
+    /* Bouton Skills */
+    .skills-cta {
+      display: block;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .skills-cta:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08); 
+      border-color: var(--accent-color);
+    }
+    
+    .portfolio-item {
+      margin-bottom: 30px;
+    }
+
+    .portfolio-content {
+      position: relative;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease-in-out;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #f0f0f0;
+      padding: 28px 26px;
+      cursor: pointer;
+    }
+
+    .portfolio-content:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .portfolio-content::after {
+      content: "↗";
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20, 157, 221, 0.12);
+      color: #149ddd;
+      border-radius: 50%;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(4px) scale(0.95);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .portfolio-content:hover::after {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* --- IMAGE ENTIÈREMENT VISIBLE --- */
+    .portfolio-content img {
+      width: 100%;
+      height: 450px; /* Hauteur fixe raisonnable */
+      object-fit: contain; /* Affiche toute l'image sans couper */
+      background-color: #f8f9fa; /* Fond gris clair pour les espaces vides */
+      border-bottom: 1px solid #eee;
+    }
+
+    .portfolio-info {
+      padding: 25px;
+      background: #fff;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-info h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    
+    /* Lien sur le titre du projet */
+    .portfolio-info h4 a {
+      color: #2c3e50;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .portfolio-info h4 a:hover {
+      color: #149ddd;
+    }
+
+    .portfolio-description {
+      font-size: 2.8rem;
+      color: #555;
+      line-height: 2.2;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .portfolio-tags {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge-tech {
+      font-size: 1.05rem;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
+    
+    .bg-soft-primary { background-color: #ebf5ff; color: #007bff; }
+    .bg-soft-success { background-color: #e6fffa; color: #00c9a7; }
+    .bg-soft-danger  { background-color: #fff5f5; color: #ff6b6b; }
+    .bg-soft-warning { background-color: #fff9e6; color: #ffc107; border: 1px solid #ffeeba; }
+    .bg-soft-dark    { background-color: #f8f9fa; color: #343a40; border: 1px solid #e9ecef;}
+
+    .portfolio-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      margin-top: auto;
+    }
+    
+    .portfolio-links a {
+      color: #6c757d;
+      font-size: 1.4rem;
+      transition: 0.3s;
+    }
+    .portfolio-links a:hover {
+      color: #007bff;
+    }
+
+    /* Hero Fix */
+    #hero {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    }
+    #hero::before {
+      content: ""; background: rgba(0, 0, 0, 0.5); position: absolute; inset: 0; z-index: 1;
+    }
+    #hero .container {
+      /* Modification pour que le texte passe au dessus du HUD */
+      position: relative; z-index: 3; height: 100%; display: flex; flex-direction: column; justify-content: center;
+    }
+    #hero h2 { font-size: 64px; font-weight: 700; margin-bottom: 20px; color: #fff; }
+    #hero p { color: #fff; margin-bottom: 50px; font-size: 26px; font-family: "Poppins", sans-serif; }
+    #hero p span { color: #fff; padding-bottom: 4px; letter-spacing: 1px; border-bottom: 3px solid #149ddd; }
+
+    /* Liens Domaines */
+    .service-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+    .service-link:hover {
+        transform: translateY(-5px);
+    }
+    .service-item {
+        height: 100%;
+    }
+
+    /* =========================================
+       HUD SPATIAL (Head-Up Display)
+       ========================================= */
+    
+    /* Le conteneur qui se superpose à la vidéo */
+    .hud-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; /* IMPORTANT : Permet de cliquer sur les boutons en dessous */
+      z-index: 1; /* Au-dessus de la vidéo (0) */
+      overflow: hidden;
+    }
+
+    /* Effet de grille scanline (lignes fines) */
+    .hud-grid {
+      position: absolute; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(20, 157, 221, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 157, 221, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.4;
+    }
+
+    /* Les coins du viseur */
+    .hud-corner {
+      position: absolute;
+      width: 60px; height: 60px;
+      border: 2px solid rgba(20, 157, 221, 0.8); /* Ta couleur bleu */
+      box-shadow: 0 0 8px rgba(20, 157, 221, 0.5); /* Effet néon */
+    }
+    .hud-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+    .hud-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+    .hud-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+    .hud-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+    /* Texte technique (Données de vol) */
+    .hud-data {
+      position: absolute;
+      font-family: 'Courier New', Courier, monospace; /* Police style terminal */
+      font-size: 0.75rem;
+      color: rgba(20, 157, 221, 0.9);
+      letter-spacing: 1px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    /* Positionnement des textes */
+    .data-top { top: 25px; left: 50%; transform: translateX(-50%); text-align: center; }
+    .data-bot-left { bottom: 25px; left: 90px; }
+    .data-bot-right { bottom: 25px; right: 90px; text-align: right; }
+
+    /* Petite animation de clignotement pour le "LIVE" */
+    .blink { animation: blinking 2s infinite; }
+    @keyframes blinking { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+    /* Ligne de balayage (Scanner) qui descend */
+    .hud-scanline {
+      width: 100%;
+      height: 2px;
+      background: rgba(20, 157, 221, 0.3);
+      position: absolute;
+      z-index: 2;
+      animation: scan 6s linear infinite;
+      box-shadow: 0 0 4px rgba(20, 157, 221, 0.5);
+    }
+    @keyframes scan { 0% { top: 0%; opacity: 0;} 10% { opacity: 1;} 90% { opacity: 1;} 100% { top: 100%; opacity: 0;} }
+
+    /* HUD OPTIMIZATION: Réduire la complexité pour les petits écrans */
+    @media (max-width: 768px) {
+      .hud-data { font-size: 0.65rem; }
+      .hud-corner { width: 40px; height: 40px; }
+      .data-top, .data-bot-left, .data-bot-right { display: none; }
+    }
+
+    /* Image fallback styling */
+    img { background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); }
+
+    /* =========================================
+       MODALE COMPÉTENCES - DESIGN PREMIUM
+       ========================================= */
+    
+    #competencesWidgetContent {
+      background: linear-gradient(135deg, #0f172a 0%, #1a2a3a 50%, #0f2c4a 100%);
+      color: white;
+    }
+
+    #competencesWidgetContent .page-hero {
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
+      padding: 3rem 2rem;
+      border-bottom: 2px solid rgba(20, 157, 221, 0.3);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #competencesWidgetContent .page-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #149ddd 0%, #9333ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
+    }
+
+    #competencesWidgetContent .page-hero p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    #competencesWidgetContent #yearSelect {
+      background: #000000;
+      border: 2px solid rgba(20, 157, 221, 0.4);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 4px 15px rgba(20, 157, 221, 0.15);
+    }
+
+    #competencesWidgetContent #yearSelect:hover,
+    #competencesWidgetContent #yearSelect:focus {
+      background: #1a1a1a;
+      border-color: #149ddd;
+      box-shadow: 0 8px 25px rgba(20, 157, 221, 0.4);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    #competencesWidgetContent #yearSelect option {
+      background: #000000;
+      color: white;
+    }
+
+    #competencesWidgetContent .competence-card {
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.12) 0%, rgba(147, 51, 234, 0.08) 100%);
+      border: 2px solid rgba(20, 157, 221, 0.25);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    #competencesWidgetContent .competence-card::after {
+      content: "Cliquer";
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(20, 157, 221, 0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    #competencesWidgetContent .competence-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      border-color: rgba(20, 157, 221, 0.7);
+    }
+
+    #competencesWidgetContent .competence-card:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #competencesWidgetContent .competence-card.comp-concevoir {
+      background: linear-gradient(135deg, rgba(20,157,221,0.18), rgba(147,51,234,0.14));
+      border-color: rgba(20,157,221,0.4);
+    }
+    #competencesWidgetContent .competence-card.comp-verifier {
+      background: linear-gradient(135deg, rgba(0,201,167,0.18), rgba(20,157,221,0.12));
+      border-color: rgba(0,201,167,0.35);
+    }
+    #competencesWidgetContent .competence-card.comp-maintenir {
+      background: linear-gradient(135deg, rgba(255,193,7,0.18), rgba(147,51,234,0.12));
+      border-color: rgba(255,193,7,0.35);
+    }
+    #competencesWidgetContent .competence-card.comp-implanter {
+      background: linear-gradient(135deg, rgba(255,107,107,0.18), rgba(20,157,221,0.12));
+      border-color: rgba(255,107,107,0.35);
+    }
+    #competencesWidgetContent .competence-card:hover.comp-verifier { border-color: #00c9a7; }
+    #competencesWidgetContent .competence-card:hover.comp-maintenir { border-color: #ffc107; }
+    #competencesWidgetContent .competence-card:hover.comp-implanter { border-color: #ff6b6b; }
+
+    /* Cartes de traces avec image */
+    #competencesWidgetContent .evidence-card-mini {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    #competencesWidgetContent .evidence-card-mini::after {
+      content: "Voir";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(20, 157, 221, 0.25);
+      padding: 5px 9px;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    #competencesWidgetContent .evidence-card-mini:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      border-color: rgba(20, 157, 221, 0.6);
+    }
+
+    #competencesWidgetContent .evidence-card-mini:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #competencesWidgetContent .evidence-card-mini img {
+      width: 110px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    #competencesWidgetContent .evidence-card-mini .evidence-body {
+      flex: 1;
+      min-width: 0;
+    }
+    #competencesWidgetContent .evidence-card-mini .small {
+      margin-top: 0.4rem;
+    }
+
+    #competencesWidgetContent .progress {
+      background: linear-gradient(90deg, rgba(20, 157, 221, 0.1) 0%, rgba(147, 51, 234, 0.08) 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 10px;
+      margin: 1.2rem 0;
+      border: 1px solid rgba(20, 157, 221, 0.2);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #competencesWidgetContent .progress-bar {
+      background: linear-gradient(90deg, #149ddd 0%, #17d4f2 50%, #9333ea 100%);
+      height: 100%;
+      transition: width 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+      box-shadow: 0 0 15px rgba(20, 157, 221, 0.6), 
+                  0 0 25px rgba(147, 51, 234, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    #competencesWidgetContent .progress-bar::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shine 2s infinite;
+      border-radius: 12px;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    #competencesWidgetContent .view-detail-btn {
+      color: #149ddd;
+      border-color: rgba(20, 157, 221, 0.5);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+      background: rgba(20, 157, 221, 0.05);
+      border-radius: 10px;
+    }
+
+    #competencesWidgetContent .view-detail-btn:hover {
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
+      border-color: #149ddd;
+      color: #17d4f2;
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.3);
+      transform: translateY(-3px);
+    }
+
+    #competencesWidgetContent .detail-view {
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.1) 0%, rgba(147, 51, 234, 0.08) 100%);
+      border: 2px solid rgba(20, 157, 221, 0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      animation: slideInUp 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(20, 157, 221, 0.15);
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #competencesWidgetContent .detail-view h2 {
+      font-size: 3.5rem !important;
+      color: #ffffff !important;
+    }
+
+    #competencesWidgetContent .detail-view .badge {
+      font-size: 1.6rem !important;
+      padding: 1.2rem 2.5rem !important;
+    }
+
+    #competencesWidgetContent .detail-view h5 {
+      font-size: 2rem !important;
+      margin-top: 3rem;
+      margin-bottom: 1.8rem;
+    }
+
+    #competencesWidgetContent .detail-view p {
+      font-size: 1.5rem !important;
+      line-height: 1.9;
+    }
+
+    #competencesWidgetContent .detail-view .fs-6 {
+      font-size: 1.5rem !important;
+    }
+
+    #competencesWidgetContent .detail-view ul li {
+      font-size: 1.4rem !important;
+      padding: 1.5rem !important;
+    }
+
+    #competencesWidgetContent .detail-view ul li span {
+      font-size: 1.4rem !important;
+    }
+
+    /* Responsive: ajustements progressifs */
+    @media (max-width: 768px) {
+      #competencesWidgetContent .competence-card {
+        min-height: 450px !important;
+        padding: 3.5rem !important;
+      }
+      #competencesWidgetContent .competence-card h4 { font-size: 2.8rem !important; }
+      #competencesWidgetContent .competence-card small { font-size: 1.6rem !important; }
+      #competencesWidgetContent .competence-card .fw-bold.fs-4 { font-size: 3.2rem !important; }
+      #competencesWidgetContent .evidence-card-mini img {
+        width: 220px !important;
+        height: 160px !important;
+      }
+      #competencesWidgetContent .evidence-card-mini .fw-bold { font-size: 1.9rem !important; }
+      #competencesWidgetContent .evidence-card-mini .small { font-size: 1.4rem !important; }
+    }
+
+    @media (max-width: 576px) {
+      #competencesWidgetContent .competence-card {
+        min-height: 400px !important;
+        padding: 3rem !important;
+      }
+      #competencesWidgetContent .competence-card h4 { font-size: 2.4rem !important; }
+      #competencesWidgetContent .competence-card small { font-size: 1.4rem !important; }
+      #competencesWidgetContent .competence-card .fw-bold.fs-4 { font-size: 2.8rem !important; }
+      #competencesWidgetContent .evidence-card-mini img {
+        width: 180px !important;
+        height: 130px !important;
+      }
+      #competencesWidgetContent .evidence-card-mini .fw-bold { font-size: 1.6rem !important; }
+      #competencesWidgetContent .evidence-card-mini .small { font-size: 1.3rem !important; }
+    }
+
+    /* --- NOUVEAUX STYLES GÉNÉRAUX --- */
+    body { font-size: 28px; }
+    .section-title h2 { font-size: 4.2rem; }
+    .section-title p { font-size: 2.8rem; }
+    .section-title p.fs-5 { font-size: 2.8rem !important; }
+    .fs-5 { font-size: 2.6rem !important; }
+    .fs-4 { font-size: 2.8rem !important; }
+    .text-muted.fs-4, .text-muted.fs-5 { font-size: 2.8rem !important; }
+    #about p { font-size: 2.6rem; }
+
+    /* Compétences techniques (skills) */
+    #skills .skill-card-item h5 { font-size: 2.4rem; }
+    #skills .skill-card-item p { font-size: 2rem; }
+    #skills .skills-cta h3 { font-size: 2.6rem; }
+    #skills .skills-cta p { font-size: 2.2rem; }
+
+    /* Cartes projets */
+    .portfolio-info h4 { font-size: 4.2rem; }
+    .portfolio-description { font-size: 2.6rem; line-height: 2; }
+    .badge-tech { font-size: 2rem; padding: 16px 32px; }
+
+    /* Modale projets - ÉNORME */
+    #projectWidgetContent { font-size: 32px !important; }
+    #projectWidgetContent h1 { font-size: 5.2rem !important; }
+    #projectWidgetContent h2 { font-size: 4.6rem !important; }
+    #projectWidgetContent h3 { font-size: 4rem !important; }
+    #projectWidgetContent h4 { font-size: 3.4rem !important; }
+    #projectWidgetContent h5 { font-size: 2.8rem !important; }
+    #projectWidgetContent p { font-size: 2.6rem !important; line-height: 2 !important; }
+    #projectWidgetContent li { font-size: 2.4rem !important; margin-bottom: 20px !important; }
+    #projectWidgetContent .badge { font-size: 2.4rem !important; padding: 2rem 3.5rem !important; }
+    #projectWidgetContent strong { font-size: 2.8rem !important; }
+
+    /* Compétences : titres en blanc et taille MASSIVE */
+    #competencesWidgetContent .competence-card h4 { color: #ffffff !important; font-size: 5.2rem !important; }
+    #competencesWidgetContent .competence-card small { font-size: 3rem !important; }
+    #competencesWidgetContent .competence-card .fw-bold.fs-4 { font-size: 6.5rem !important; }
+    #competencesWidgetContent .detail-view h2 { color: #ffffff !important; font-size: 6rem !important; }
+    #competencesWidgetContent .detail-view h5 { font-size: 3.6rem !important; }
+    #competencesWidgetContent .detail-view p,
+    #competencesWidgetContent .detail-view .fs-6 { font-size: 2.8rem !important; line-height: 2.2 !important; }
+    #competencesWidgetContent .detail-view ul li { font-size: 2.6rem !important; }
+    #competencesWidgetContent .detail-view .badge { font-size: 2.8rem !important; padding: 2rem 4rem !important; }
+    #competencesWidgetContent .evidence-card-mini .fw-bold { font-size: 3rem !important; }
+    #competencesWidgetContent .evidence-card-mini .small { font-size: 2.6rem !important; }
+    #competencesWidgetContent .view-detail-btn { font-size: 2.6rem !important; padding: 2rem 3.5rem !important; }
+
+    /* Year buttons for competences widget */
+    .year-selector { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .year-btn {
+      background: transparent;
+      border: 2px solid rgba(20, 157, 221, 0.4);
+      color: #fff;
+      padding: 1.5rem 2.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 2rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(20, 157, 221, 0.12);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 180px;
+    }
+    .year-btn:hover { background: rgba(20, 157, 221, 0.12); border-color: #149ddd; transform: translateY(-2px); }
+    .year-btn.active { background: linear-gradient(135deg, #149ddd 0%, #17d4f2 100%); border-color: #149ddd; color: #fff; }
+    @media (max-width: 576px) { .year-btn { min-width: 150px; padding: 1.2rem 2rem; font-size: 1.6rem; } }
+
+    /* Téléchargements relevés (BUT/Lycée) */
+    .resume-download-btn {
+      font-size: 2rem;
+      padding: 1.2rem 2.4rem;
+      border-width: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .resume-download-btn i {
+      font-size: 2.2rem;
+    }
+    .resume-download-btn span {
+      font-size: 2rem;
+    }
+
+    /* NEW: Skills Swiper styles */
+    .skills-swiper { padding: 8px 4px; overflow: visible; }
+    .skills-swiper .swiper-slide { width: auto; }
+    .skills-swiper.centered .swiper-wrapper { justify-content: center; }
+        #skills .skill-card-item { 
+      min-width: 440px;
+      max-width: 490px;
+      min-height: 420px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border: 2px solid rgba(20, 157, 221, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }/* keep cards wide enough in slider */
+    .skills-swiper .swiper-button-prev,
+    .skills-swiper .swiper-button-next { color: #149ddd; }
+    .skills-swiper .swiper-pagination-bullet-active { background: #149ddd; }
+
+    /* NEW: group headings for rotating skill blocks */
+    #skills .skills-block-title {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 6px;
+    }
+    #skills .skills-block-title i { color: #149ddd; }
+    #skills .skills-caption { margin-bottom: 12px; color: #6c757d; font-size: 2.2rem;font-weight: 500; }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="assets/img/portfolio/photo_yanis.jpeg" alt="Photo de profil" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Yanis Bouzidi</h1>
+    </a>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLanguage('fr')">FR</button>
+      <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+
+    <div class="social-links text-center">
+      <a href="https://twitter.com" class="twitter" aria-label="X" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://instagram.com" class="instagram" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://linkedin.com" class="linkedin" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com" class="github" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span data-i18n="nav_home">Accueil</span></a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i><span data-i18n="nav_about">À propos</span></a></li>
+        <li><a href="#skills"><i class="bi bi-ui-checks-grid navicon"></i><span data-i18n="nav_skills">Compétences</span></a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span data-i18n="nav_resume">Parcours</span></a></li>
+        <li><a href="#portfolio"><i class="bi bi-kanban navicon"></i><span data-i18n="nav_projects">Projets</span></a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span data-i18n="nav_contact">Contact</span></a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <section id="hero" class="hero section dark-background">
+      
+        <video autoplay muted loop playsinline class="hero-video">
+          <source src="assets/img/portfolio/satellite.mp4" type="video/mp4">
+        </video>
+  
+        <div class="hud-overlay">
+           <div class="hud-grid"></div>
+           <div class="hud-scanline"></div>
+           
+           <div class="hud-corner hud-tl"></div>
+           <div class="hud-corner hud-tr"></div>
+           <div class="hud-corner hud-bl"></div>
+           <div class="hud-corner hud-br"></div>
+  
+           <div class="hud-data data-top">
+              SYSTEM STATUS: NOMINAL<br>
+              <span class="blink" style="color: #00ff00;">● LIVE FEED</span> // ORBIT: LEO
+           </div>
+           
+           <div class="hud-data data-bot-left d-none d-md-block">
+              ALT: 408 KM<br>
+              SPD: 7.66 KM/S
+           </div>
+  
+           <div class="hud-data data-bot-right d-none d-md-block">
+              MSN: GEII-2025<br>
+              PWR: 100%
+           </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100" style="position: relative; z-index: 3;">
+          <h2>Yanis Bouzidi</h2>
+          <p><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Orienté Robotique & Systèmes" role="text" aria-live="polite"></span></p>
+          <div class="mt-5">
+            <a href="assets/CV_Yanis_Bouzidi.pdf" target="_blank" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fs-3 fw-bold">
+              <i class="bi bi-download me-3"></i> <span data-i18n="download_cv">Télécharger mon CV</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="about section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="about_title">À propos</h2>
+        <p data-i18n="about_desc">Étudiant en <strong>Génie Électrique et Informatique Industrielle (GEII)</strong> à l’IUT de Toulon, je suis passionné par l’électronique, les systèmes embarqués et la robotique.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <img src="assets/img/portfolio/photo_yanis.jpeg" class="img-fluid rounded shadow" alt="Portrait">
+          </div>
+          <div class="col-lg-8 content">
+            <h2 data-i18n="about_job">Électronique • Embarqué • Robotique</h2>
+            <p class="fst-italic py-3 fs-5" data-i18n="about_goal">
+              Mon objectif : concevoir des systèmes fiables, testables et maintenables (du schéma jusqu’au firmware), avec une approche propre.
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="label_degree">Formation :</strong> <span>BUT GEII</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="label_city">Ville :</strong> <span>Toulon, France</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email :</strong> <span>bouzidi.yanispro@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="label_avail">Disponible :</strong> <span data-i18n="text_avail">Stage / projets</span></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-light rounded shadow-sm border">
+               <h3 class="h4 fw-bold text-dark mb-3"><i class="bi bi-heart-pulse text-primary me-2"></i> <span data-i18n="interests_title">Centres d'Intérêt</span></h3>
+               <p style="text-align: justify;" class="mb-3" data-i18n="interests_1">
+                 J’ai toujours pratiqué une activité sportive assez intense d’une part autour du tennis, du volley-ball, du basket-ball, de la pétanque mais surtout en tant que footballeur. 
+                 Durant 8 ans j’ai été membre actif du club Solliès-La Farlède dans le cadre de compétitions régionales et j’ai également animé en tant que coach sportif l’équipe de foot du lycée du Coudon dans un cadre bénévole.
+               </p>
+               <p style="text-align: justify;" class="mb-0" data-i18n="interests_2">
+                 Je suis passionné de nouvelles cultures et j’ai voyagé en Angleterre, Espagne, Italie, Tunisie, Turquie et Allemagne. 
+                 J’apprécie également les bivouacs et les randonnées en milieu sauvage.
+               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="stats section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          
+          <div class="col-lg-3 col-md-6">
+            <a href="#portfolio" class="stats-item stats-link">
+              <i class="bi bi-kanban text-primary d-block mb-3"></i>
+              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Projets Réalisés</strong></p>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <a href="#skills" class="stats-item stats-link">
+              <i class="bi bi-code-slash text-success d-block mb-3"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Langages (C/C++/Py)</strong></p>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <a href="#skills" class="stats-item stats-link">
+              <i class="bi bi-cpu text-danger d-block mb-3"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Architectures (µC)</strong></p>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <a href="#skills" class="stats-item stats-link">
+              <i class="bi bi-hourglass-split text-warning d-block mb-3"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Années de Pratique</strong></p>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<section id="skills" class="skills section light-background">
+  <div class="container section-title" data-aos="fade-up">
+    <h2 data-i18n="skills_title">Outils Techniques</h2>
+    <p data-i18n="skills_subtitle" class="fs-5">Un aperçu concret des technologies que je maîtrise.</p>
+  </div>
+
+  <!-- Ajustements demandés : icônes + descriptions plus grandes -->
+  <style>
+    .skill-icon-wrapper img {
+      width: 52px;   /* + grand */
+      height: 52px;  /* + grand */
+      object-fit: contain;
+      display: block;
+    }
+    /* Liens cliquables visibles (bleu) */
+.text-link-hover {
+  color: #149ddd !important;         /* bleu par défaut */
+  text-decoration: underline;         /* montre clairement que c'est cliquable */
+  font-weight: 700;                   /* plus visible */
+  display: inline-flex;               /* garde l'icône bien alignée */
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.text-link-hover:hover {
+  color: #0f7fb3 !important;          /* bleu plus foncé au hover */
+  text-decoration: underline;
+  transform: translateX(3px);         /* petit mouvement */
+  background: rgba(20, 157, 221, 0.08);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+    .skill-card-content p {
+      font-size: 1.15rem;   /* descriptions + grandes */
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .skill-mini {
+      font-size: 1.3rem;   /* mini descriptions + grandes */
+      color: #6c757d;
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+    .skill-card-content h5 { margin-bottom: 6px; }
+  </style>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4">
+
+      <!-- ======================= -->
+      <!-- BLOCK 1: Langages -->
+      <!-- ======================= -->
+      <div class="col-12">
+        <div class="skills-block-title">
+          <i class="bi bi-code-slash fs-3"></i>
+          <h3 class="fw-bold mb-0">Langages de programmation</h3>
+        </div>
+        <div class="skills-caption">Python • C • C++ • HTML/CSS/JS</div>
+
+        <div class="skills-swiper swiper centered" aria-label="Langages de programmation">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="C embarqué">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="Logo C">
+                </div>
+                <div class="skill-card-content">
+                  <h5>C (Embarqué)</h5>
+                  <p>Firmware embarqué : drivers, interruptions, timing</p>
+                  <div class="skill-mini">Optimisation mémoire/perf • Debug sur cible • Structuration firmware</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="C++">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Logo C++">
+                </div>
+                <div class="skill-card-content">
+                  <h5>C++</h5>
+                  <p>Architecture propre, modules et programmation orientée objet</p>
+                  <div class="skill-mini">Systèmes distribués • Maintenabilité • Organisation projet</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Python">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Logo Python">
+                </div>
+                <div class="skill-card-content">
+                  <h5>Python</h5>
+                  <p>Scripting, automatisation, analyse et outils techniques</p>
+                  <div class="skill-mini">USB/Protocoles • Reverse engineering • Scripts rapides</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="HTML CSS JavaScript">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Logo JavaScript">
+                </div>
+                <div class="skill-card-content">
+                  <h5>HTML • CSS • JavaScript</h5>
+                  <p>Interfaces web, dashboards, expérience utilisateur</p>
+                  <div class="skill-mini">Affichage temps réel • UI responsive • Intégration IoT</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev" aria-label="Précédent"></div>
+          <div class="swiper-button-next" aria-label="Suivant"></div>
+        </div>
+      </div>
+
+      <!-- ======================= -->
+      <!-- BLOCK 2: Bus, Protocoles & Systèmes -->
+      <!-- (LIENS REMIS + LOGOS AJOUTÉS) -->
+      <!-- ======================= -->
+      <div class="col-12">
+        <div class="skills-block-title">
+          <i class="bi bi-diagram-3 fs-3"></i>
+          <h3 class="fw-bold mb-0">Bus, Protocoles & Systèmes</h3>
+        </div>
+        <div class="skills-caption">CAN • LIN • I2C • SPI • UART • STM32 • ESP32 • Linux TR</div>
+
+        <div class="skills-swiper swiper" aria-label="Bus et systèmes">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="CAN LIN">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg" alt="Logo Bus CAN/LIN" onerror="this.style.display='none'">
+                </div>
+                <div class="skill-card-content">
+                  <h5>CAN / LIN</h5>
+                  <p>Trames, IDs, validation et debug bus</p>
+                  <div class="skill-mini">Analyse erreurs • Diagnostic communication • Intégration multi-cartes</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet4');" role="button" aria-label="I2C SPI UART">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Logo Interfaces">
+                </div>
+                <div class="skill-card-content">
+                  <h5>I2C • SPI • UART</h5>
+                  <p>Drivers, capteurs, tests, gestion de timing</p>
+                  <div class="skill-mini">Init périphériques • Debug • Robustesse (timeouts/erreurs)</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
+                </div>
+                <div class="skill-card-content">
+                  <h5>STM32 (HAL/LL)</h5>
+                  <p>Timers, PWM, ADC, DMA, interruptions</p>
+                  <div class="skill-mini">Mise au point • Debug • Architecture multi-cartes</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="ESP32">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/espressif.svg" alt="Logo ESP32 (Espressif)">
+                </div>
+                <div class="skill-card-content">
+                  <h5>ESP32 & IoT</h5>
+                  <p>WiFi/BLE, capteurs, web, monitoring</p>
+                  <div class="skill-mini">Acquisition • Télémetrie • Intégration systèmes</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Linux temps réel">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Logo Linux">
+                </div>
+                <div class="skill-card-content">
+                  <h5>Linux Temps Réel</h5>
+                  <p>Xenomai, performances, latence, debug</p>
+                  <div class="skill-mini">Outils système • Logs • Mesure latence • Optimisation</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev" aria-label="Précédent"></div>
+          <div class="swiper-button-next" aria-label="Suivant"></div>
+        </div>
+      </div>
+
+      <!-- ======================= -->
+      <!-- BLOCK 3: Logiciels / IDE & Simulation -->
+      <!-- (LIENS + IMAGES + KICAD AJOUTÉ) -->
+      <!-- ======================= -->
+      <div class="col-12">
+        <div class="skills-block-title">
+          <i class="bi bi-window fs-3"></i>
+          <h3 class="fw-bold mb-0">Logiciels / IDE & Simulation</h3>
+        </div>
+        <div class="skills-caption">KiCad • MATLAB • MPLAB X • Quartus • STM32CubeIDE • Git • VS Code</div>
+
+        <div class="skills-swiper swiper" aria-label="Logiciels et IDE">
+           <div class="swiper-wrapper" style="display: flex; flex-wrap: nowrap;">
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet10');" role="button" aria-label="KiCad">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kicad.svg" alt="Logo KiCad">
+                </div>
+                <div class="skill-card-content">
+                  <h5>KiCad</h5>
+                  <p>Schémas, routage PCB, BOM</p>
+                  <div class="skill-mini">DRC • Export Gerber • Projet multi-pages</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="MATLAB">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="Logo MATLAB">
+                </div>
+                <div class="skill-card-content">
+                  <h5>MATLAB</h5>
+                  <p>Calcul, scripts, analyse de signaux</p>
+                  <div class="skill-mini">Traitement signal • Prototypage algo • Visualisation</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="MPLAB X">
+                <div class="skill-icon-wrapper">
+                  <img src="assets/img/skills/mplab.svg" alt="Logo MPLAB X">
+                </div>
+                <div class="skill-card-content">
+                  <h5>MPLAB X</h5>
+                  <p>IDE Microchip : compilation & debug</p>
+                  <div class="skill-mini">Configuration projet • Programmation • Mise au point</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Quartus">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/intel.svg" alt="Logo Intel (Quartus)">
+                </div>
+                <div class="skill-card-content">
+                  <h5>Quartus</h5>
+                  <p>FPGA : synthèse, compilation, pinout</p>
+                  <div class="skill-mini">Constraints • Build • Vérification logique</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32CubeIDE">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
+                </div>
+                <div class="skill-card-content">
+                  <h5>STM32CubeIDE</h5>
+                  <p>Configuration périphériques & build</p>
+                  <div class="skill-mini">CubeMX • HAL • Debug ST-Link</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Git">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Logo Git">
+                </div>
+                <div class="skill-card-content">
+                  <h5>Git</h5>
+                  <p>Versioning, branches, collaboration</p>
+                  <div class="skill-mini">Historique propre • Merge • Travail en équipe</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="VS Code">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Logo VS Code">
+                </div>
+                <div class="skill-card-content">
+                  <h5>VS Code</h5>
+                  <p>Développement embarqué & web</p>
+                  <div class="skill-mini">Extensions • Debug • Organisation projet</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev" aria-label="Précédent"></div>
+          <div class="swiper-button-next" aria-label="Suivant"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA “Voir mes compétences académiques” -->
+    <div class="col-12 mt-3">
+      <a class="skills-cta d-flex align-items-center gap-4 p-4" href="#" onclick="openCompetencesWidget(event)">
+        <div class="icon-box text-primary">
+          <i class="bi bi-mortarboard-fill" style="font-size: 3.5rem;"></i>
+        </div>
+        <div>
+          <h3 class="fw-bold text-dark mb-1">Voir mes compétences techniques et académiques</h3>
+          <p class="text-muted mb-0 fs-5">Validation officielle par année : Concevoir / Vérifier / Maintenir.</p>
+        </div>
+        <i class="bi bi-arrow-right ms-auto text-primary" style="font-size: 2.5rem;"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+    <section id="resume" class="resume section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="resume_title">Parcou</h2>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title" data-i18n="resume_sum">Résumé</h3>
+            <div class="resume-item pb-0">
+              <h4>Yanis Bouzidi</h4>
+              <p><em data-i18n="resume_student">Étudiant en BUT GEII.</em></p>
+              <ul>
+                <li>Toulon, France</li>
+                <li>bouzidi.yanispro@gmail.com</li>
+              </ul>
+            </div>
+            
+            <h3 class="resume-title" data-i18n="resume_edu">Formation</h3>
+            <div class="resume-item">
+              <h4 data-i18n="resume_but_title">BUT Génie Électrique & Informatique Industrielle (GEII)</h4>
+              <h5 data-i18n="resume_present">2022 - Présent</h5>
+              <p><em>IUT de Toulon</em></p>
+              <p data-i18n="resume_but_desc">Électronique, microcontrôleurs, réseaux/bus industriels, automatisme, méthodes de test et maintenance.</p>
+                <a href="assets/notes_but.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2 resume-download-btn">
+                  <i class="bi bi-file-earmark-pdf me-2"></i> <span data-i18n="btn_dl_but">Télécharger Relevé BUT</span>
+              </a>
+            </div>
+            
+            <div class="resume-item">
+              <h4 data-i18n="resume_bac_title">Baccalauréat Général</h4>
+              <h5>2019 - 2022</h5>
+              <p><em>Lycée du Coudon, La Garde</em></p>
+              <p><span data-i18n="resume_bac_spec">Spécialités : Mathématiques et Sciences de l'Ingénieur.</span></p>
+              <p><span class="badge bg-success fs-6" data-i18n="resume_bac_honor">Mention Bien</span></p>
+                <a href="assets/notes_lycee.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2 resume-download-btn">
+                  <i class="bi bi-file-earmark-pdf me-2"></i> <span data-i18n="btn_dl_hs">Télécharger Relevé Lycée</span>
+              </a>
+              
+              <button type="button" class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="modal" data-bs-target="#notesModal">
+                <i class="bi bi-eye me-1"></i> <span data-i18n="btn_view_details">Voir le détail (Aperçu)</span>
+              </button>
+            </div>
+
+          </div>
+          
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title" data-i18n="resume_exp">Expériences</h3>
+            
+            <!-- NOUVEAU : Expérience ROBOTCUP -->
+            <div class="resume-item">
+              <h4>
+                <span class="d-flex align-items-center gap-2">
+                  <img src="assets/img/portfolio/RCT.png" alt="RoboCup Logo" style="width: 40px; height: 40px; object-fit: contain;" onerror="this.style.display='none'">
+                  <span data-i18n="exp_robotcup_title">Équipe ROBOTCUP — Coupe du Monde de Robotique</span>
+                </span>
+              </h4>
+              
+              <h5 data-i18n="resume_present">2024 - Présent</h5>
+              <p><em>Compétition Internationale</em></p>
+              <ul>
+                <li data-i18n="exp_robotcup_1">Membre actif de l'équipe ROBOTCUP participant à la Coupe du Monde de Robotique (RoboCup).</li>
+
+                <!-- AJOUT : Coupe de France de Robotique (lien vers Eurobot) -->
+                <li>
+                  <a href="#portfolio"
+                    class="text-link-hover"
+                    onclick="openProjectWidget('projet3'); return false;">
+                    Participation à la Coupe de France de Robotique (Eurobot) — voir le projet
+                    <i class="bi bi-box-arrow-up-right ms-2 text-primary" style="font-size: 0.9em;"></i>
+                  </a>
+                </li>
+
+                <li data-i18n="exp_robotcup_2">Développement de robots autonomes jouant au football : conception mécanique, électronique embarquée et algorithmes de décision en temps réel.</li>
+                <li data-i18n="exp_robotcup_3">Vision par ordinateur, localisation, stratégies de jeu coopératif et communication multi-agents.</li>
+                <li data-i18n="exp_robotcup_4">Travail en équipe internationale avec méthodologies agiles et respect des contraintes réglementaires strictes de la compétition.</li>
+              </ul>
+
+            </div>
+
+            <div class="resume-item">
+              <h4>
+                <a href="#" onclick="openProjectWidget('projet1'); return false;" class="text-link-hover">
+                  <span data-i18n="exp_stage_title">Stage Technicien Biomédical</span> 
+                  <i class="bi bi-box-arrow-up-right ms-2 text-primary" style="font-size: 0.8em;"></i>
+                </a>
+              </h4>
+              
+              <h5 data-i18n="exp_stage_date">2025 (8 semaines)</h5>
+              <p><em>Clinique Saint Jean, Toulon</em></p>
+              <ul>
+                <li data-i18n="exp_stage_1">Réalisation d'un scope médical intégrant plusieurs capteurs biomédicaux : capteur de SpO₂, ECG, température et accéléromètre.</li>
+                <li data-i18n="exp_stage_2">Développement d'un système d'acquisition et d'interprétation des signaux physiologiques, avec affichage des données en temps réel.</li>
+                <li data-i18n="exp_stage_3">Maintenance et vérification d'appareils médicaux.</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4 data-i18n="exp_proj_title">Projets Académiques & Techniques</h4>
+              <h5 data-i18n="resume_present">2022 - Présent</h5>
+              <p>
+                <a href="#portfolio" class="text-primary text-decoration-none fw-bold">
+                  <i class="bi bi-link-45deg"></i> <span data-i18n="exp_proj_sub">Voir mes Projets</span>
+                </a>
+              </p>
+              <ul>
+                <li data-i18n="exp_proj_1">Développement firmware (C/C++), capteurs, communication (CAN/LIN), mise au point.</li>
+                <li data-i18n="exp_proj_2">Mesures, diagnostic, procédures de validation et documentation.</li>
+                <li data-i18n="exp_proj_3">Itérations rapides : du prototype au résultat démontrable.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio section light-background">
+      
+      <div class="container mb-5" data-aos="fade-up">
+        <div class="card border-0 overflow-hidden bg-white p-5 rounded-5 shadow-sm">
+          <div class="row g-5 align-items-center">
+            <div class="col-xl-6">
+              <span class="badge bg-primary bg-gradient w-auto mb-4 px-4 py-3 rounded-pill fs-5" data-i18n="proj_flagship">PROJET PHARE</span>
+              <h3 class="fw-bold mb-4 display-4" style="font-size: 3.5rem;" data-i18n="proj_eurobot_title">Coupe de France de Robotique 2025</h3>
+              <p class="text-muted mb-5 fs-4" style="font-size: 2.4rem;" data-i18n="proj_eurobot_desc">Conception complète d'une flotte de robots autonomes coopératifs.</p>
+              
+              <div class="mb-5 fs-5" style="font-size: 1.6rem;">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-3 fs-3"></i>
+                    <span><strong>Architecture :</strong> <span data-i18n="proj_eurobot_f1">Système distribué complexe sur bus CAN.</span></span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-check-circle-fill text-primary me-3 fs-3"></i>
+                    <span><strong>Embarqué :</strong> <span data-i18n="proj_eurobot_f2">Firmware temps réel (RTOS) sur cibles STM32.</span></span>
+                </div>
+              </div>
+
+              <a href="#" onclick="openProjectWidget('projet3'); return false;" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fs-4 shadow-sm" style="font-size: 1.4rem;" data-i18n="btn_case_study">
+                Voir l'étude de cas
+              </a>
+            </div>
+            <div class="col-xl-6 text-center">
+               <a href="#" onclick="openProjectWidget('projet3'); return false;">
+                 <img src="assets/img/portfolio/Eurobot.png" class="img-fluid rounded-4 shadow" alt="Robot Eurobot">
+               </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="proj_other_title">Autres Projets</h2>
+        <p data-i18n="proj_other_desc">Une sélection de mes réalisations techniques.</p>
+      </div>
+
+      <div class="container">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active" data-i18n="filter_all">Tout</li>
+            <li data-filter=".filter-stm32" style="font-size: 1.4rem;">STM32</li>
+            <li data-filter=".filter-esp32" style="font-size: 1.4rem;">ESP32</li>
+            <li data-filter=".filter-robot" style="font-size: 1.4rem;" data-i18n="filter_robot">Robotique</li>
+            <li data-filter=".filter-python" style="font-size: 1.4rem;">Python</li>
+            <li data-filter=".filter-elec" style="font-size: 1.4rem;" data-i18n="filter_auto">Automatisme</li>
+            <li data-filter=".filter-dsp" style="font-size: 1.4rem;">Signal</li>
+          </ul>
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+             <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-elec filter-iot">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet10'); return false;">
+                  <img src="assets/img/portfolio/smartlight.png" class="img-fluid" alt="Carte Smartlight" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet10'); return false;">Carte Smartlight</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge-tech" data-i18n="tag_elec">Électronique</span>
+                    <span class="badge-tech">KiCad</span>
+                    <span class="badge-tech" data-i18n="tag_analog">Analogique</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_smartlight">
+                    Contrôle automatique et manuel d'éclairage LED (Intensité/RGB) avec télécommande IR.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet10'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-esp32 filter-signal">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet1'); return false;">
+                   <img src="assets/img/portfolio/moniteur.png" class="img-fluid" alt="Moniteur Biomédical" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet1'); return false;" data-i18n="title_bio">Moniteur Biomédical Connecté</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-primary badge-tech">ESP32</span>
+                    <span class="badge bg-soft-success badge-tech" data-i18n="tag_signal">Traitement Signal</span>
+                    <span class="badge bg-soft-warning badge-tech">IoT</span>
+                    <span class="badge bg-soft-dark badge-tech"><i class="bi bi-filetype-cpp me-1"></i>C/C++</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_bio">
+                    Développement d'un système d'acquisition ECG & SpO2. Filtrage numérique temps réel et transmission sécurisée vers un dashboard web.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet1'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-robot filter-cpp filter-esp32">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet2'); return false;">
+                   <img src="assets/img/portfolio/robot.png" class="img-fluid" alt="Robot éviteur d'obstacles" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet2'); return false;" data-i18n="title_robot">Robot Mobile Autonome</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-primary badge-tech">ESP32</span>
+                    <span class="badge bg-soft-danger badge-tech">PID</span>
+                    <span class="badge bg-soft-dark badge-tech"><i class="bi bi-filetype-cpp me-1"></i>C/C++</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_robot">
+                    Implémentation d'algorithmes de navigation et d'évitement d'obstacles par fusion de capteurs (US/IR). Asservissement moteur précis.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet2'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-iot filter-esp32 filter-cpp">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet4'); return false;">
+                   <img src="assets/img/portfolio/domotique.png" class="img-fluid" alt="Domotique ESP32-C6" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet4'); return false;" data-i18n="title_domo">Centrale Domotique Qualité d'Air</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-primary badge-tech">PCB Design</span>
+                    <span class="badge bg-soft-success badge-tech">Web Server</span>
+                    <span class="badge bg-soft-warning badge-tech">KiCad</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_domo">
+                    Conception complète : du schéma électronique sous KiCad jusqu'au serveur web embarqué sur ESP32-C6 pour le monitoring environnemental.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet4'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-python filter-signal">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet5'); return false;">
+                   <img src="assets/img/portfolio/hacking.png" class="img-fluid" alt="Reverse Engineering RF" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet5'); return false;">Reverse Engineering & Hack RF</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-dark badge-tech">Python</span>
+                    <span class="badge bg-soft-danger badge-tech">USB Protocol</span>
+                    <span class="badge bg-soft-warning badge-tech">Cyber</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_hack">
+                    Analyse protocolaire et développement d'un driver Python custom pour piloter un générateur RF propriétaire via USB.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet5'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-stm32 filter-cpp">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet6'); return false;">
+                   <img src="assets/img/portfolio/alim.png" class="img-fluid" alt="Alim Labo DIY" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet6'); return false;" data-i18n="title_alim">Alimentation de Laboratoire</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-danger badge-tech" data-i18n="tag_power">Élec. Puissance</span>
+                    <span class="badge bg-soft-dark badge-tech">3D Print</span>
+                    <span class="badge bg-soft-primary badge-tech" data-i18n="tag_reg">Régulation</span>
+                    <span class="badge bg-soft-primary badge-tech"><i class="bi bi-cpu me-1"></i>STM32</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_alim">
+                    Réalisation d'une alim stabilisée variable. Dimensionnement des composants de puissance, refroidissement et boîtier imprimé 3D.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet6'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-robot filter-stm32 filter-cpp">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet7'); return false;">
+                   <img src="assets/img/portfolio/telecommande.png" class="img-fluid" alt="Télécommande DSP" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet7'); return false;" data-i18n="title_remote">Télécommande Universelle DSP</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-primary badge-tech">ESP32</span>
+                    <span class="badge bg-soft-success badge-tech">OLED</span>
+                    <span class="badge bg-soft-warning badge-tech">I2C</span>
+                    <span class="badge bg-soft-primary badge-tech"><i class="bi bi-cpu me-1"></i>STM32</span>
+                    <span class="badge bg-soft-dark badge-tech"><i class="bi bi-filetype-cpp me-1"></i>C/C++</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_remote">
+                    Décodage et reproduction de signaux IR (NEC/RC5). Interface utilisateur fluide sur écran OLED avec menu de sélection.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet7'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-elec">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet8'); return false;">
+                   <img src="assets/img/portfolio/unilogic.png" class="img-fluid" alt="Armoire Automatisme" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet8'); return false;" data-i18n="title_auto">Mise en Service Automatisme</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-primary badge-tech" data-i18n="tag_auto">Automatisme</span>
+                    <span class="badge bg-soft-danger badge-tech" data-i18n="tag_power">Élec. Puissance</span>
+                    <span class="badge bg-soft-warning badge-tech">Diagnostic</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_auto">
+                    Validation et mise en service d'un système automatisé de gestion de bâtiment (éclairage/ventilation). Tests de conformité et dépannage.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet8'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 portfolio-item isotope-item filter-dsp filter-python filter-stm32">
+              <div class="portfolio-content">
+                <a href="#" onclick="openProjectWidget('projet9'); return false;">
+                   <img src="assets/img/portfolio/piano.png" class="img-fluid" alt="Audio" style="object-fit: contain; background-color: #f8f9fa; padding: 20px; box-sizing: border-box;">
+                </a>
+                <div class="portfolio-info">
+                  <h4><a href="#" onclick="openProjectWidget('projet9'); return false;" data-i18n="title_audio">Synthèse Numérique Audio</a></h4>
+                  <div class="portfolio-tags">
+                    <span class="badge bg-soft-success badge-tech" data-i18n="tag_dsp">DSP / Signal</span>
+                    <span class="badge bg-soft-dark badge-tech">Linux TR</span>
+                    <span class="badge bg-soft_primary badge-tech"><i class="bi bi-cpu me-1"></i>STM32</span>
+                    <span class="badge bg-soft-dark badge-tech"><i class="bi bi-filetype-cpp me-1"></i>C/C++</span>
+                  </div>
+                  <p class="portfolio-description" data-i18n="desc_audio">
+                    Synthétiseur audio temps réel sur Raspberry Pi (Xenomai). Implémentation de filtres FIR et modulations FM/AM en C.
+                  </p>
+                  <div class="portfolio-links">
+                    <a href="#" onclick="openProjectWidget('projet9'); return false;" title="Voir Détails"><i class="bi bi-arrow-right-circle fs-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="services_title">Domaines</h2>
+        <p data-i18n="services_subtitle">Ce que j’aime construire / explorer (et améliorer au fil des projets).</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet3'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-cpu"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_embed_title">Systèmes embarqués</h4>
+                  <p class="description" data-i18n="serv_embed_desc">Firmware, drivers, capteurs, timing, intégration (Lien vers Eurobot).</p>
+                </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet2'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-robot"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_robot_title">Robotique</h4>
+                  <p class="description" data-i18n="serv_robot_desc">Capteurs, moteurs, logique de commande, prototypage (Lien vers Robot Autonome).</p>
+                </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet3'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-diagram-3"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_bus_title">Bus & communication</h4>
+                  <p class="description" data-i18n="serv_bus_desc">CAN/LIN, échanges, trames, validation et debug.</p>
+                </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet6'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-lightning-charge"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_power_title">Énergie / puissance</h4>
+                  <p class="description" data-i18n="serv_power_desc">Mesures, contrôle, sécurité, conversion (Lien vers Alim).</p>
+                </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet1'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-activity"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_instru_title">Instrumentation</h4>
+                  <p class="description" data-i18n="serv_instru_desc">Acquisition, signal, affichage, interprétation (Lien vers Moniteur).</p>
+                </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
+            <a href="#" class="service-link d-flex w-100" onclick="openProjectWidget('projet8'); return false;">
+                <div class="icon flex-shrink-0"><i class="bi bi-check2-circle"></i></div>
+                <div>
+                  <h4 class="title" data-i18n="serv_test_title">Tests & validation</h4>
+                  <p class="description" data-i18n="serv_test_desc">Procédures d’essais, diagnostic, amélioration (Lien vers Automatisme).</p>
+                </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="contact_title">Contact</h2>
+        <p data-i18n="contact_desc">Tu peux me laisser un message ici (ou utiliser l’email ci-dessous).</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-5">
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3 data-i18n="contact_loc">Localisation</h3>
+                  <p>Toulon, France</p>
+                </div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>bouzidi.yanispro@gmail.com</p>
+                </div>
+              </div>
+              <iframe
+                src="https://maps.google.com/maps?q=Toulon&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                style="border:0; width: 100%; height: 270px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2" data-i18n="form_name">Nom</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                </div>
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2" data-i18n="form_subject">Sujet</label>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                </div>
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2" data-i18n="form_message">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="loading" data-i18n="form_loading">Envoi...</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message" data-i18n="form_sent">Message envoyé. Merci !</div>
+                  <button type="submit" data-i18n="form_btn">Envoyer</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALE WIDGET POUR LES PROJETS (GRANDE, BELLE ET RESPONSIVE) -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-fullscreen-lg-down" style="max-width: 92vw;">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);">
+        
+        <!-- HEADER PREMIUM -->
+        <div class="modal-header bg-gradient border-0 p-4" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
+          <div class="d-flex align-items-center gap-4 flex-grow-1">
+            <div id="projectIconHeader" style="font-size: 3.5rem; line-height: 1;"></div>
+            <div>
+              <h5 class="modal-title fw-bold fs-1 mb-2" id="projectTitleHeader" style="color: #0b1220; letter-spacing: -0.5px;">Titre</h5>
+              <p class="text-muted fs-5 mb-0" id="projectSubtitleHeader">Sous-titre</p>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+        </div>
+        
+        <!-- BODY SCROLLABLE GRANDE TAILLE -->
+        <div class="modal-body p-5" style="max-height: 70vh; overflow-y: auto; background: #ffffff;">
+          <div id="projectWidgetContent">
+            <!-- Spinner de chargement -->
+            <div class="text-center py-5">
+              <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Chargement...</span>
+              </div>
+              <p class="mt-4 text-muted fs-5">Chargement du projet...</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FOOTER AVEC ACTIONS -->
+        <div class="modal-footer bg-light border-top-0 p-4 gap-3" style="background: #f8f9fa;">
+          <a href="#" id="projectLinkBtn" class="btn btn-primary btn-lg rounded-pill px-5" style="display: none; font-weight: 600;">
+            <i class="bi bi-box-arrow-up-right me-2"></i> Ouvrir en plein écran
+          </a>
+          <button type="button" class="btn btn-secondary btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600;">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="notesModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-4 fw-bold" data-i18n="modal_title">Relevé de Notes (Baccalauréat)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body fs-5">
+          <p data-i18n="modal_desc">Voici le détail de mes résultats académiques en Terminale :</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span data-i18n="modal_math">Mathématiques (Spécialité)</span>
+              <span class="badge bg-primary rounded-pill">12 / 20</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span data-i18n="modal_si">Sciences de l'Ingénieur (Spécialité)</span>
+              <span class="badge bg-primary rounded-pill">14 / 20</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span data-i18n="modal_pc">Physique-Chimie (Option/Complément)</span>
+              <span class="badge bg-secondary rounded-pill">13 / 20</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span data-i18n="modal_oral">Grand Oral</span>
+              <span class="badge bg-success rounded-pill">17 / 20</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span data-i18n="modal_avg">Moyenne Générale au Bac</span>
+              <span class="badge bg-dark rounded-pill">14.07 / 20</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALE WIDGET POUR LES COMPÉTENCES -->
+  <div class="modal fade" id="competencesModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-fullscreen-lg-down" style="max-width: 95vw;">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #0f172a 0%, #1a2a3a 50%, #0f2c4a 100%);">
+        
+        <!-- HEADER -->
+        <div class="modal-header bg-gradient border-0 p-4" style="background: linear-gradient(135deg, rgba(20,157,221,0.15) 0%, rgba(20,157,221,0.08) 100%); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div class="d-flex align-items-center gap-3 flex-grow-1">
+            <i class="bi bi-ui-checks-grid text-primary" style="font-size: 3.5rem;"></i>
+            <div>
+              <h5 class="modal-title fw-bold mb-2" style="color: #fff; letter-spacing: -0.5px; font-size: 2.5rem;">Compétences GEII</h5>
+              <p class="text-light mb-0" style="opacity: 0.8; font-size: 1.3rem;">Validation par année (BUT 1 → BUT 3)</p>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-light" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+        </div>
+        
+        <!-- BODY -->
+        <div class="modal-body p-5" style="max-height: 70vh; overflow-y: auto; background: #0f172a; font-size: 1.2rem;">
+          <div id="competencesWidgetContent">
+            <div class="text-center py-5">
+              <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Chargement...</span>
+              </div>
+              <p class="mt-4 text-light" style="opacity: 0.7; font-size: 1.3rem;">Chargement des compétences...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="modal-footer bg-dark border-top p-4 gap-3" style="background: rgba(15, 23, 42, 0.8); border-top: 1px solid rgba(255,255,255,0.1);">
+          <button type="button" class="btn btn-outline-light btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600; border-color: rgba(255,255,255,0.3); font-size: 1.1rem;">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALE SECONDAIRE POUR PROJETS (depuis compétences) -->
+  <div class="modal fade" id="projectFromSkillModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-fullscreen-lg-down" style="max-width: 92vw;">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);">
+        
+        <!-- HEADER PREMIUM -->
+        <div class="modal-header bg-gradient border-0 p-4" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
+          <div class="d-flex align-items-center gap-4 flex-grow-1">
+            <div id="projectFromSkillIconHeader" style="font-size: 3.5rem; line-height: 1;"></div>
+            <div>
+              <h5 class="modal-title fw-bold fs-1 mb-2" id="projectFromSkillTitleHeader" style="color: #0b1220; letter-spacing: -0.5px;">Titre</h5>
+              <p class="text-muted fs-5 mb-0" id="projectFromSkillSubtitleHeader">Sous-titre</p>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+        </div>
+        
+        <!-- BODY SCROLLABLE GRANDE TAILLE -->
+        <div class="modal-body p-5" style="max-height: 70vh; overflow-y: auto; background: #ffffff;">
+          <div id="projectFromSkillWidgetContent">
+            <!-- Spinner de chargement -->
+            <div class="text-center py-5">
+              <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Chargement...</span>
+              </div>
+              <p class="mt-4 text-muted fs-5">Chargement du projet...</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FOOTER AVEC ACTIONS -->
+        <div class="modal-footer bg-light border-top-0 p-4 gap-3" style="background: #f8f9fa;">
+          <a href="#" id="projectFromSkillLinkBtn" class="btn btn-primary btn-lg rounded-pill px-5" style="display: none; font-weight: 600;">
+            <i class="bi bi-box-arrow-up-right me-2"></i> Ouvrir en plein écran
+          </a>
+          <button type="button" class="btn btn-secondary btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600;">Retour aux compétences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALE WIDGET POUR LES ACTIVITÉS (VERSION COMPACTE) -->
+  <div class="modal fade" id="activityModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-4 fw-bold" id="activityTitleHeader">Titre de l'activité</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body fs-5" id="activityContent">
+          <!-- Contenu de l'activité chargé dynamiquement -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Portfolio</strong> <span data-i18n="footer_rights">Tous droits réservés</span></p>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // ==========================================
+    // 1. DONNÉES (PROJETS & COMPÉTENCES)
+    // ==========================================
+
+    // A. Données des Projets (avec compétences associées)
+    const PROJECTS_DATA = {
+      projet1: { 
+        title: "Moniteur Biomédical Connecté", subtitle: "Santé • IoT • ESP32", icon: "📊", htmlFile: "projets/projet1.html",
+        skills: [{ key: "verifier", level: 2, label: "Vérifier (Niv 2)" }, { key: "concevoir", level: 2, label: "Concevoir (Niv 2)" }]
+      },
+      projet2: { 
+        title: "Robot Mobile Autonome", subtitle: "Robotique • PID • C++", icon: "🤖", htmlFile: "projets/projet2.html",
+        skills: [{ key: "implanter", level: 2, label: "Implanter (Niv 2)" }, { key: "concevoir", level: 2, label: "Concevoir (Niv 2)" },{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }]
+      },
+      projet3: { 
+        title: "Coupe de France de Robotique", subtitle: "Compétition • CAN • STM32", icon: "🏆", htmlFile: "projets/projet3.html",
+        skills: [{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }, { key: "implanter", level: 3, label: "Implanter (Niv 3)" }, { key: "verifier", level: 2, label: "Vérifier (Niv 2)" },{ key: "verifier", level: 3, label: "Vérifier (Niv 3)" }]
+      },
+      projet4: { 
+        title: "Centrale Domotique", subtitle: "Environnement • Web Server", icon: "🌍", htmlFile: "projets/projet4.html",
+        skills: [{ key: "concevoir", level: 2, label: "Concevoir (Niv 2)" }, { key: "verifier", level: 2, label: "Vérifier (Niv 2)" }]
+      },
+      projet5: { 
+        title: "Hacking RF", subtitle: "Sécurité • Python • USB", icon: "🔐", htmlFile: "projets/projet5.html",
+        skills: [{ key: "verifier", level: 2, label: "Vérifier (Niv 2)" }, { key: "maintenir", level: 2, label: "Maintenir (Niv 2)" }]
+      },
+      projet6: { 
+        title: "Alim Labo", subtitle: "Puissance • DIY", icon: "⚡", htmlFile: "projets/projet6.html",
+        skills: [{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }, { key: "implanter", level: 3, label: "Implanter (Niv 3)" },{ key: "verifier", level: 3, label: "Verifier (Niv 3)" }]
+      },
+      projet7: { title: "Télécommande DSP", subtitle: "Traitement Signal • IR", icon: "📡", htmlFile: "projets/projet7.html", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
+      projet8: { title: "Automatisme", subtitle: "Industrie • Validation", icon: "🏭", htmlFile: "projets/projet8.html", skills: [{key:"verifier", level:1, label:"Vérifier (Niv 1)"}, {key:"maintenir", level:2, label:"Maintenir (Niv 2)"}] },
+      projet9: { title: "Synthèse Audio", subtitle: "DSP • Temps Réel", icon: "🎵", htmlFile: "projets/projet9.html", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
+      projet10: { title: "Carte Smartlight", subtitle: "Électronique • KiCad", icon: "💡", htmlFile: "projets/projet10.html", skills: [{key:"concevoir", level:1, label:"Concevoir (Niv 1)"},{key:"verifier", level:1, label:"Verifier (Niv 1)"}] }
+    };
+
+    // NOUVEAU : Données des Activités (traces académiques)
+    const ACTIVITIES_DATA = {
+      activite1: {
+        title: "Tests électriques SmartLight",
+        subtitle: "Validation • Mesures • Conformité",
+        icon: "🔬",
+        competence: { key: "verifier", level: 1 },
+        description: "Tests complets de la carte électronique SmartLight incluant mesures de continuité, validation des LED et vérification de l'absence de courts-circuits.",
+        context: "Une entreprise souhaite concevoir une carte électronique pouvant piloter (automatiquement ou non) l'éclairage d'un luminaire qui peut être soit une lampe de bureau à led basse tension (7V) soit une bande de led RGB.",
+        objectives: [
+          "Vérifier l'absence de court-circuit entre DCIN et GND",
+          "Tester le fonctionnement des LED",
+          "Valider les composants électriques essentiels"
+        ],
+        technicalContent: `
+          <h3>Procédure de test appliquée</h3>
+          <p>Après avoir terminé la soudure de la carte électronique, une procédure de test rigoureuse a été mise en place :</p>
+          <ol>
+            <li><strong>Test de continuité :</strong> Mesure avec multimètre entre DCIN et GND pour vérifier l'absence de court-circuit</li>
+            <li><strong>Validation des LED :</strong> Test individuel de chaque LED avec alimentation contrôlée</li>
+            <li><strong>Tests électriques complets :</strong> Vérification de tous les composants critiques</li>
+          </ol>
+          
+          <div class="alert alert-info">
+            <strong>Matériel utilisé :</strong>
+            <ul>
+              <li>Multimètre numérique</li>
+              <li>Alimentation stabilisée 7V</li>
+              <li>Oscilloscope pour validation des signaux</li>
+            </ul>
+          </div>
+
+          <h3>Résultats des tests</h3>
+          <p>Les tests électriques ont confirmé :</p>
+          <ul>
+            <li>✅ Absence totale de court-circuit (résistance > 1MΩ)</li>
+            <li>✅ Fonctionnement nominal de toutes les LED</li>
+            <li>✅ Conformité aux spécifications du cahier des charges</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.02 :</strong> Identifier un dysfonctionnement</p>
+          
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="card border-success">
+                <div class="card-body">
+                  <h5 class="card-title text-success"><i class="bi bi-check-circle-fill me-2"></i>Compétences démontrées</h5>
+                  <ul class="mb-0">
+                    <li>Sélection des outils de mesure adaptés (multimètre, oscilloscope)</li>
+                    <li>Application d'une procédure de test méthodique</li>
+                    <li>Respect des consignes de sécurité électrique</li>
+                    <li>Documentation rigoureuse des résultats</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-primary">
+                <div class="card-body">
+                  <h5 class="card-title text-primary"><i class="bi bi-award-fill me-2"></i>Composantes essentielles validées</h5>
+                  <ul class="mb-0">
+                    <li><strong>CE2.01 :</strong> Prise en compte des spécificités matérielles</li>
+                    <li><strong>CE2.02 :</strong> Mise en œuvre d'un plan d'essais rigoureux</li>
+                    <li><strong>CE2.03 :</strong> Conformité aux normes réglementaires</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        `,
+        images: [
+          { src: "assets/img/activite/acti1.png", caption: "Carte SmartLight testée" }
+        ]
+      },
+      activite2: {
+        title: "Pilotage actionneurs TOR",
+        subtitle: "Automatisme • Diagnostic • Maintenance",
+        icon: "⚙️",
+        competence: { key: "verifier", level: 1 },
+        description: "Diagnostic et identification d'un dysfonctionnement sur un système d'automatisme incluant lampes et ventilateur.",
+        context: "Mise en service d'un système de gestion avancée intégrant des commandes Tout Ou Rien (TOR) pour la ventilation et l'éclairage avec fonctionnalités de vitesse variable et gradation.",
+        objectives: [
+          "Piloter des actionneurs TOR (lampes et ventilateur)",
+          "Identifier un dysfonctionnement matériel",
+          "Documenter l'anomalie détectée"
+        ],
+        technicalContent: `
+          <h3>Description du système</h3>
+          <p>Le système comprend :</p>
+          <ul>
+            <li>2 lampes pilotées en TOR</li>
+            <li>1 ventilateur V0 commandé par automate</li>
+            <li>Automate programmable pour la gestion centralisée</li>
+          </ul>
+
+          <h3>Anomalie détectée</h3>
+          <p>Lors du pilotage du ventilateur V0, celui-ci n'a pas fonctionné. L'investigation a révélé :</p>
+          <ul>
+            <li>❌ Absence de tension aux bornes du ventilateur</li>
+            <li>✅ Commande automate correcte</li>
+            <li>✅ Câblage conforme au schéma</li>
+          </ul>
+
+          <div class="alert alert-warning">
+            <strong>Diagnostic :</strong> Défaillance isolée du ventilateur V0. Le composant est défectueux et nécessite un remplacement.
+          </div>
+
+          <h3>Action corrective</h3>
+          <p>Signalement au professeur avec documentation complète de l'anomalie : absence de tension mesurée, diagnostic méthodique et identification du composant défaillant.</p>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.02 :</strong> Identifier un dysfonctionnement</p>
+          
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="card border-success">
+                <div class="card-body">
+                  <h5 class="card-title text-success"><i class="bi bi-check-circle-fill me-2"></i>Compétences démontrées</h5>
+                  <ul class="mb-0">
+                    <li>Observation méthodique du système</li>
+                    <li>Identification d'indicateurs anormaux</li>
+                    <li>Élaboration d'hypothèses diagnostiques</li>
+                    <li>Communication claire du dysfonctionnement</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-primary">
+                <div class="card-body">
+                  <h5 class="card-title text-primary"><i class="bi bi-award-fill me-2"></i>Composantes essentielles validées</h5>
+                  <ul class="mb-0">
+                    <li><strong>CE2.01 :</strong> Analyse qualitative du dysfonctionnement</li>
+                    <li><strong>CE2.02 :</strong> Approche corrective méthodique</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        `,
+        images: [
+          { src: "assets/img/activite/acti2.png", caption: "Système d'automatisme TOR" }
+        ]
+      },
+      activite3: {
+        title: "Dossier de mise en service",
+        subtitle: "Validation • Documentation • Conformité",
+        icon: "📋",
+        competence: { key: "verifier", level: 1 },
+        description: "Vérification complète du bon fonctionnement d'une maquette domotique incluant ventilation à vitesse variable et éclairage en gradation.",
+        context: "Système offrant une gestion avancée avec commandes TOR pour la ventilation et l'éclairage, avec fonctionnalités sophistiquées pour optimiser l'efficacité énergétique.",
+        objectives: [
+          "Vérifier le bon fonctionnement de tous les actionneurs",
+          "Mesurer les tensions et continuité",
+          "Documenter l'absence d'anomalies"
+        ],
+        technicalContent: `
+          <h3>Tests réalisés</h3>
+          <p>Une campagne complète de vérification a été menée sur tous les actionneurs :</p>
+          <ul>
+            <li>Mesure de tension sur chaque sortie</li>
+            <li>Tests de continuité des câblages</li>
+            <li>Validation fonctionnelle lampes et ventilateur</li>
+            <li>Vérification de la gradation et vitesse variable</li>
+          </ul>
+
+          <h3>Résultats</h3>
+          <div class="alert alert-success">
+            <strong>✅ Conclusion :</strong> Aucune anomalie détectée. Tous les actionneurs fonctionnent conformément aux spécifications.
+          </div>
+
+          <h3>Documentation</h3>
+          <p>Un rapport complet a été rédigé incluant :</p>
+          <ul>
+            <li>Relevés de mesures électriques</li>
+            <li>Photos de validation (exemple : lampe à gradation fonctionnelle)</li>
+            <li>Attestation de conformité pour le client</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.02 :</strong> Identifier un dysfonctionnement (par l'absence d'anomalie)</p>
+          
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="card border-success">
+                <div class="card-body">
+                  <h5 class="card-title text-success"><i class="bi bi-check-circle-fill me-2"></i>Compétences démontrées</h5>
+                  <ul class="mb-0">
+                    <li>Vérification systématique complète</li>
+                    <li>Utilisation appropriée des outils de mesure</li>
+                    <li>Documentation professionnelle</li>
+                    <li>Certification de bon fonctionnement</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-primary">
+                <div class="card-body">
+                  <h5 class="card-title text-primary"><i class="bi bi-award-fill me-2"></i>Composantes essentielles validées</h5>
+                  <ul class="mb-0">
+                    <li><strong>CE2.01 :</strong> Respect des spécificités matérielles</li>
+                    <li><strong>CE2.02 :</strong> Plan d'essais complet et rigoureux</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        `,
+        images: [
+          { src: "assets/img/activite/acti3.png", caption: "Validation du bon fonctionnement" }
+        ]
+      },
+      activite4: {
+        title: "Télémètre Ultrason",
+        subtitle: "Diagnostic • Analyse • Documentation",
+        icon: "📡",
+        competence: { key: "verifier", level: 1 },
+        description: "Analyse et description d'un dysfonctionnement de télémètre ultrason avec mesures inexactes et réponses erratiques.",
+        context: "Le robot autonome est équipé d'un télémètre ultrason fonctionnant par mesure du temps de retour d'une onde sonore (>20kHz). L'émetteur et le récepteur sont dans le même boîtier.",
+        objectives: [
+          "Identifier les dysfonctionnements du télémètre",
+          "Décrire précisément les symptômes",
+          "Proposer des pistes d'amélioration"
+        ],
+        technicalContent: `
+          <h3>Problèmes identifiés</h3>
+          <h4>1. Mesures inexactes</h4>
+          <p>Les distances mesurées par le télémètre sont souvent incorrectes :</p>
+          <ul>
+            <li>Variations erratiques même avec objet fixe</li>
+            <li>Incohérences entre mesures successives</li>
+          </ul>
+          <h4>2. Réponses négatives ou absence de mesure</h4>
+          <p>Dans certaines conditions :</p>
+          <ul>
+            <li>Le télémètre ne renvoie aucune mesure</li>
+            <li>Valeurs négatives ou non valides retournées</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.03 :</strong> Décrire un dysfonctionnement</p>
+        `,
+        images: [
+          { src: "assets/img/activite/acti4.png", caption: "Robot avec télémètre ultrason" }
+        ]
+      },
+      activite5: {
+        title: "Plaquette à essai",
+        subtitle: "Électronique • Diagnostic • Alimentation",
+        icon: "🔌",
+        competence: { key: "verifier", level: 1 },
+        description: "Développement et diagnostic d'une carte d'alimentation pour robot avec identification de dysfonctionnements sur amplificateurs non inverseurs.",
+        context: "Développement d'une carte électronique permettant de contrôler l'alimentation d'un robot de manière sécurisée avec indicateurs LED d'état (ON/OFF).",
+        objectives: [
+          "Concevoir une carte d'alimentation sécurisée",
+          "Tester le fonctionnement des circuits",
+          "Diagnostiquer les problèmes d'amplification"
+        ],
+        technicalContent: `
+          <h3>Fonctionnalités de la carte</h3>
+          <ul>
+            <li><strong>Allumage et Extinction :</strong> Contrôle sécurisé de l'alimentation</li>
+            <li><strong>Indicateurs LED :</strong> État ON/OFF visible</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.03 :</strong> Décrire un dysfonctionnement</p>
+        `,
+        images: [
+          { src: "assets/img/activite/acti5.png", caption: "Plaquette d'essai alimentation" }
+        ]
+      },
+      activite6: {
+        title: "Carte SmartLight - Prototype",
+        subtitle: "Conception • Prototypage • KiCad",
+        icon: "💡",
+        competence: { key: "concevoir", level: 1 },
+        description: "Réalisation d'un prototype fonctionnel pour piloter l'éclairage avec contrôle automatique (luminosité ambiante) et manuel (boutons/IR).",
+        context: "Conception d'une carte électronique permettant de contrôler automatiquement ou manuellement l'éclairage d'un luminaire (lampe LED 7V ou bande RGB).",
+        objectives: [
+          "Réaliser un prototype matériel et logiciel fonctionnel",
+          "Intégrer contrôle automatique par capteur de luminosité",
+          "Implémenter contrôle manuel (boutons + télécommande IR)"
+        ],
+        technicalContent: `
+          <h3>Fonctionnalités du prototype</h3>
+          <h4>Contrôle automatique</h4>
+          <ul>
+            <li>Ajustement de l'intensité selon la luminosité ambiante</li>
+            <li>Capteur de luminosité intégré</li>
+          </ul>
+          <h4>Contrôle manuel</h4>
+          <ul>
+            <li><strong>Boutons :</strong> 2 boutons intégrés à la carte</li>
+            <li><strong>Télécommande IR :</strong> Compatible télécommandes TV</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Concevoir - Niveau 1"</h3>
+          <p><strong>Critère AC11.02 :</strong> Réaliser un prototype</p>
+        `,
+        images: [
+          { src: "assets/img/portfolio/smartlight.png", caption: "Prototype carte SmartLight" }
+        ]
+      },
+      activite7: {
+        title: "Analyse fonctionnelle SmartLight",
+        subtitle: "Conception • Cahier des charges • Documentation",
+        icon: "📐",
+        competence: { key: "concevoir", level: 1 },
+        description: "Réalisation d'une analyse fonctionnelle détaillée du système SmartLight avec identification des fonctions principales et secondaires.",
+        context: "Le système SmartLight offre une gestion intelligente et efficace de l'éclairage avec contrôle automatique et adaptatif selon luminosité, présence et horaires.",
+        objectives: [
+          "Produire une analyse fonctionnelle complète",
+          "Identifier fonctions principales et secondaires",
+          "Établir un diagramme fonctionnel structuré"
+        ],
+        technicalContent: `
+          <h3>Analyse fonctionnelle réalisée</h3>
+          <h4>Fonctions principales</h4>
+          <ul>
+            <li><strong>FP1 :</strong> Piloter l'intensité lumineuse automatiquement</li>
+            <li><strong>FP2 :</strong> Permettre le contrôle manuel utilisateur</li>
+          </ul>
+          <h4>Fonctions secondaires</h4>
+          <ul>
+            <li><strong>FS1 :</strong> Détecter la luminosité ambiante</li>
+            <li><strong>FS2 :</strong> Recevoir commandes télécommande IR</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Concevoir - Niveau 1"</h3>
+          <p><strong>Critère AC11.01 :</strong> Produire une analyse fonctionnelle</p>
+        `,
+        images: [
+          { src: "assets/img/activite/acti7.png", caption: "Système SmartLight analysé" }
+        ]
+      },
+      activite8: {
+        title: "Mesure de température PT100",
+        subtitle: "Instrumentation • Mesures • Validation",
+        icon: "🌡️",
+        competence: { key: "verifier", level: 1 },
+        description: "Mesure précise de température avec sonde PT100 en appliquant une procédure d'essais rigoureuse selon normes de calibration.",
+        context: "La PT100 est une sonde de température basée sur la variation précise de la résistance du platine avec la température. Reconnue pour sa haute précision sur large plage.",
+        objectives: [
+          "Appliquer une procédure d'essais conforme",
+          "Utiliser correctement la PT100",
+          "Analyser les données avec précision"
+        ],
+        technicalContent: `
+          <h3>Caractéristiques de la PT100</h3>
+          <ul>
+            <li><strong>Principe :</strong> Variation de résistance du platine (Pt) avec température</li>
+            <li><strong>Précision :</strong> Très haute précision et réponse rapide</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Vérifier - Niveau 1"</h3>
+          <p><strong>Critère AC12.01 :</strong> Appliquer une procédure d'essais</p>
+        `,
+        images: [
+          { src: "assets/img/activite/acti8.png", caption: "Système de mesure de température" }
+        ]
+      },
+      activite9: {
+        title: "Télécommande - Compte rendu",
+        subtitle: "Documentation • Validation • Fabrication",
+        icon: "📝",
+        competence: { key: "concevoir", level: 1 },
+        description: "Rédaction complète d'un dossier de fabrication incluant conception du préamplificateur, filtre passe-bande et comparateur pour télécommande IR.",
+        context: "Conception d'un système de réception IR incluant préamplificateur (gain 20dB), filtre passe-bande (atténuation 45dB min) et comparateur avec seuils de commutation précis.",
+        objectives: [
+          "Rédiger un dossier de fabrication complet",
+          "Documenter la conception électronique",
+          "Valider le respect du cahier des charges"
+        ],
+        technicalContent: `
+          <h3>Éléments conçus</h3>
+          <h4>1. Préamplificateur (Gain 20dB)</h4>
+          <ul>
+            <li>Conception et simulation sous KiCad</li>
+            <li>Câblage et tests oscilloscope</li>
+          </ul>
+          <h4>2. Filtre passe-bande</h4>
+          <ul>
+            <li>Conception en série pour atténuation minimale 45dB</li>
+            <li>Simulation de la réponse fréquentielle</li>
+          </ul>
+        `,
+        skillValidation: `
+          <h3>Validation de la compétence "Concevoir - Niveau 1"</h3>
+          <p><strong>Critère AC11.03 :</strong> Rédiger un dossier de fabrication</p>
+        `,
+        images: [
+          { src: "assets/img/activite/acti9.png", caption: "Système télécommande IR conçu" }
+        ]
+      }
+    };
+
+    // B. Définitions des Compétences
+const COMPETENCES_DEF = {
+  concevoir: {
+    title: "Concevoir",
+    icon: "bi-pencil-square",
+    description:
+      "La compétence 'Concevoir' englobe toute la phase de création et de dimensionnement d'un système GEII. Elle implique l'analyse des besoins, le choix des technologies, la création de schémas électroniques, et la justification technique des solutions proposées.",
+    levels: {
+      1: {
+        label: "Niveau 1 — Conception élémentaire",
+        comment:
+          "À ce niveau, je suis capable d'intégrer des technologies de base pour répondre à un besoin simple. Je produis des schémas électroniques élémentaires et je choisis des composants standards du commerce en respectant les contraintes basiques (tension, courant, puissance).",
+        solutions: [
+          "Analyse fonctionnelle basique",
+          "Schéma électronique simple",
+          "Choix de composants standards",
+          "Calculs dimensionnement élémentaires",
+        ],
+        improvements: [
+          "Justifier davantage le choix des composants (alternatives, marges)",
+          "Soigner la lisibilité des schémas (nomenclature, annotations)",
+        ],
+      },
+      2: {
+        label: "Niveau 2 — Conception système",
+        comment:
+          "Je sais maintenant dimensionner et concevoir la partie GEII d'un système complexe multi-domaines. Je justifie mes choix techniques par des calculs, des simulations et une analyse approfondie. Je suis capable de concevoir des PCB et d'intégrer plusieurs sous-systèmes.",
+        solutions: [
+          "Conception PCB multi-couches",
+          "Architecture logicielle embarquée",
+          "Simulations avancées (SPICE, etc.)",
+          "Documentation technique complète",
+          "Validation par calculs",
+        ],
+        improvements: [
+          "Renforcer la prise en compte CEM dès la conception",
+          "Industrialiser davantage (BOM optimisée, contraintes d’assemblage)",
+          "Automatiser certaines vérifications (ERC/DRC + checklists)",
+        ],
+      },
+      3: {
+        label: "Niveau 3 — Innovation & Architecture",
+        comment:
+          "Au niveau expert, je définis l'architecture globale d'un système distribué complexe. J'anticipe l'industrialisation, j'optimise les performances et j'intègre des contraintes temps réel. Je suis capable d'innover et de proposer des solutions originales.",
+        solutions: [
+          "Architecture distribuée complexe",
+          "Gestion temps réel avancée",
+          "Optimisation performances/conso",
+          "Design For Manufacturing (DFM)",
+          "Innovation technique",
+        ],
+        improvements: [
+          "Formaliser encore plus les choix d’architecture (trade-offs, risques)",
+          "Améliorer la stratégie de tests dès la phase d’architecture",
+        ],
+      },
+    },
+  },
+
+  verifier: {
+    title: "Vérifier",
+    icon: "bi-check2-square",
+    description:
+      "La compétence 'Vérifier' concerne la validation et le test des systèmes. Elle inclut la réalisation de mesures précises, la mise en œuvre de protocoles de test rigoureux, et la qualification finale des systèmes en conditions réelles d'utilisation.",
+    levels: {
+      1: {
+        label: "Niveau 1 — Mesures de base",
+        comment:
+          "Je réalise des mesures unitaires simples avec des appareils de mesure standards (multimètre, oscilloscope). Je sais vérifier la conformité de valeurs électriques basiques et interpréter des signaux simples.",
+        solutions: [
+          "Relevés de tensions/courants",
+          "Tests de continuité",
+          "Validation unitaire de composants",
+          "Lecture oscilloscope basique",
+        ],
+        improvements: [
+          "Automatiser les séquences de mesures répétitives",
+          "Approfondir l'analyse des incertitudes de mesure",
+          "Mieux structurer les rapports de tests",
+        ],
+      },
+      2: {
+        label: "Niveau 2 — Protocoles de test",
+        comment:
+          "Je mets en œuvre des protocoles de validation complets incluant tests d'intégration, analyse de trames de communication, et validation fonctionnelle. Je documente rigoureusement mes tests et j'identifie les anomalies.",
+        solutions: [
+          "Tests d'intégration système",
+          "Analyse de trames (CAN, UART, etc.)",
+          "Validation fonctionnelle complète",
+          "Rédaction procédures de test",
+          "Diagnostic d'anomalies",
+        ],
+        improvements: [
+          "Améliorer la traçabilité (matrice exigences ↔ tests ↔ résultats)",
+          "Standardiser les critères d’acceptation (seuils, tolérances)",
+        ],
+      },
+      3: {
+        label: "Niveau 3 — Qualification",
+        comment:
+          "Je valide le système en environnement final avec des tests de robustesse, de compatibilité électromagnétique (CEM) et de performance. J'assure la recette finale et je garantis la conformité aux normes industrielles.",
+        solutions: [
+          "Tests de robustesse/stress",
+          "Validation CEM (compatibilité électromagnétique)",
+          "Tests environnementaux (température, vibrations)",
+          "Recette client finale",
+          "Conformité normative",
+        ],
+        improvements: [
+          "Planifier plus tôt les tests de pré-qualification (CEM/robustesse)",
+          "Renforcer l’analyse statistique des résultats (tendance, dérive)",
+        ],
+      },
+    },
+  },
+
+  maintenir: {
+    title: "Maintenir",
+    icon: "bi-wrench-adjustable",
+    description:
+      "La compétence 'Maintenir' couvre le diagnostic de pannes, la maintenance préventive et corrective, ainsi que la gestion du cycle de vie complet d'un système. Elle implique une approche méthodique de résolution de problèmes et une documentation rigoureuse.",
+    levels: {
+      2: {
+        label: "Niveau 2 — Diagnostic",
+        comment:
+          "Je diagnostique des pannes complexes sur des systèmes multi-domaines. Je mets en place une maintenance préventive planifiée et je propose des améliorations pour éviter les pannes récurrentes.",
+        solutions: [
+          "Diagnostic approfondi multi-niveaux",
+          "Maintenance préventive planifiée",
+          "Amélioration continue",
+          "Analyse de défaillances",
+          "Optimisation fiabilité",
+        ],
+        improvements: [
+          "Structurer davantage l’analyse causes racines (méthode 5 pourquoi, Ishikawa)",
+          "Formaliser des indicateurs (MTBF, taux de panne, temps moyen de réparation)",
+        ],
+      },
+      3: {
+        label: "Niveau 3 — Cycle de Vie",
+        comment:
+          "Je gère le cycle de vie complet d'un système incluant sûreté de fonctionnement, gestion de configuration et évolution. J'assure la disponibilité maximale et j'anticipe l'obsolescence des composants.",
+        solutions: [
+          "Sûreté de fonctionnement (AMDEC, etc.)",
+          "Gestion de configuration",
+          "Gestion obsolescence",
+          "Evolution et modernisation",
+          "Optimisation disponibilité",
+        ],
+        improvements: [
+          "Renforcer la stratégie d’obsolescence (plans de remplacement, équivalences)",
+          "Mieux formaliser la gestion de configuration (versions, changements, impacts)",
+        ],
+      },
+    },
+  },
+
+  implanter: {
+    title: "Intégrer",
+    icon: "bi-diagram-3",
+    description:
+      "La compétence 'Intégrer' concerne l'assemblage physique et logiciel d'un système. Elle inclut le câblage, la soudure, l'interfaçage de sous-systèmes hétérogènes et l'intégration de systèmes distribués complexes avec gestion temps réel.",
+    levels: {
+      2: {
+        label: "Niveau 2 — Intégration sous-systèmes",
+        comment:
+          "J'intègre des sous-systèmes hétérogènes (électronique, informatique, mécanique) en assurant l'interfaçage hardware/software. Je configure les bus de communication et je valide l'intégration complète.",
+        solutions: [
+          "Interfaçage Hardware/Software",
+          "Configuration bus (I2C, SPI, CAN)",
+          "Validation d'intégration",
+          "Gestion des interfaces",
+          "Tests de compatibilité",
+        ],
+        improvements: [
+          "Mieux formaliser les tests d’intégration (procédure + critères d’acceptation)",
+          "Renforcer la robustesse des interfaces (gestion erreurs, timeouts, logs)",
+        ],
+      },
+      3: {
+        label: "Niveau 3 — Intégration système",
+        comment:
+          "J'intègre un système complexe distribué avec gestion temps réel. J'assure la cohérence globale, j'optimise les performances et j valide le comportement système complet en conditions réelles.",
+        solutions: [
+          "Architecture distribuée complexe",
+          "Gestion temps réel strict",
+          "Synchronisation multi-domaines",
+          "Validation système complète",
+          "Optimisation performances globales",
+        ],
+        improvements: [
+          "Approfondir l’observabilité système (logs, métriques, traces temps réel)",
+          "Renforcer les tests de non-régression sur l’ensemble du système",
+        ],
+      },
+    },
+  },
+};
+
+// B. Liens Compétence -> Projets (Preuves avec descriptions enrichies)
+const PROJECTS_EVIDENCE = [
+  {
+    id: "3",
+    title: "Eurobot 2025",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 3,
+        justif:
+          "Conception d'une architecture système distribuée complexe sur bus CAN avec gestion multi-robots. Définition complète de l'architecture électronique et logicielle incluant routage PCB, choix composants et protocoles de communication.",
+      },
+      {
+        comp: "implanter",
+        level: 3,
+        justif:
+          "Intégration complète d'un système multi-cartes STM32 avec gestion temps réel (FreeRTOS). Câblage, assemblage mécanique, configuration des bus de communication et validation de l'interfaçage hardware/software.",
+      },
+      {
+        comp: "verifier",
+        level: 2,
+        justif:
+          "Mise en place de tests unitaires et d'intégration pour valider le comportement de chaque sous-système. Protocoles de validation fonctionnelle avec documentation des résultats et analyse des anomalies détectées.",
+      },
+    ],
+  },
+  {
+    id: "1",
+    title: "Moniteur Biomédical",
+    matches: [
+      {
+        comp: "verifier",
+        level: 2,
+        justif:
+          "Validation complète des signaux ECG et SpO2 par comparaison avec équipements certifiés. Tests de précision des mesures, analyse de la qualité du signal et vérification de la conformité aux standards médicaux.",
+      },
+      {
+        comp: "concevoir",
+        level: 2,
+        justif:
+          "Conception d'une chaîne d'acquisition numérique complète incluant amplification, filtrage analogique et numérique, et conversion ADC. Dimensionnement des filtres et choix des composants pour respecter les contraintes biomédicales.",
+      },
+    ],
+  },
+  {
+    id: "5",
+    title: "Hacking RF",
+    matches: [
+      {
+        comp: "verifier",
+        level: 3,
+        justif:
+          "Analyse protocolaire approfondie du protocole USB propriétaire par reverse engineering. Utilisation d'outils d'analyse de trames (Wireshark, analyseur logique) pour décoder la communication et valider le comportement du périphérique.",
+      },
+      {
+        comp: "maintenir",
+        level: 3,
+        justif:
+          "Développement d'un driver Python custom pour maintenir en service un générateur RF obsolète dont le logiciel n'est plus supporté. Documentation complète du protocole et création d'une interface utilisateur moderne.",
+      },
+    ],
+  },
+  {
+    id: "6",
+    title: "Alim Labo",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 1,
+        justif:
+          "Dimensionnement complet d'une alimentation stabilisée : calcul du transformateur, choix du régulateur linéaire (LM317), dimensionnement des condensateurs de filtrtrage et du système de refroidissement. Schéma électrique sous KiCad.",
+      },
+      {
+        comp: "implanter",
+        level: 1,
+        justif:
+          "Assemblage complet incluant soudure des composants de puissance, câblage sécurisé haute tension, montage du dissipateur thermique et intégration dans un boîtier imprimé en 3D avec respect des normes de sécurité.",
+      },
+    ],
+  },
+  {
+    id: "8",
+    title: "Automatisme",
+    matches: [
+      {
+        comp: "verifier",
+        level: 2,
+        justif:
+          "Mise en œuvre de tests de conformité sur système automatisé de gestion de bâtiment. Vérification du respect des spécifications fonctionnelles, tests de sécurité et validation du comportement en conditions nominales et dégradées.",
+      },
+      {
+        comp: "maintenir",
+        level: 2,
+        justif:
+          "Diagnostic méthodique d'une panne sur variateur de vitesse : mesures électriques, analyse des signaux de commande, identification du composant défaillant et remplacement. Documentation de l'intervention pour maintenance préventive.",
+      },
+    ],
+  },
+  {
+    id: "7",
+    title: "Télécommande DSP",
+    matches: [
+      {
+        comp: "implanter",
+        level: 2,
+        justif:
+          "Intégration complète d'un système de télécommande universelle : interfaçage du récepteur/émetteur IR, écran OLED I2C, et ESP32. Configuration des protocoles de communication (I2C), gestion de l'interface utilisateur et tests de compatibilité avec divers appareils.",
+      },
+    ],
+  },
+  {
+    id: "2",
+    title: "Robot Mobile",
+    matches: [
+      {
+        comp: "implanter",
+        level: 2,
+        justif:
+          "Fusion de données multi-capteurs (ultrasons, infrarouges, accéléromètre) pour navigation autonome. Intégration hardware et software avec calibration des capteurs et validation du système complet sur banc de test puis en conditions réelles.",
+      },
+      {
+        comp: "concevoir",
+        level: 2,
+        justif:
+          "Architecture de contrôle avec asservissement PID des moteurs, algorithmes d'évitement d'obstacles et gestion de trajectoire. Conception du système embarqué incluant alimentation, drivers moteurs et interface capteurs/actionneurs.",
+      },
+    ],
+  },
+  {
+    id: "4",
+    title: "Centrale Domotique",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 2,
+        justif:
+          "Conception complète d'un PCB custom pour ESP32-C6 : schéma électrique multi-pages, routage 4 couches avec gestion des alimentations, interfaces capteurs et antenne RF. Génération de la BOM et des fichiers de fabrication (Gerber).",
+      },
+      {
+        comp: "verifier",
+        level: 2,
+        justif:
+          "Tests hardware complets après fabrication du PCB : vérification des alimentations, tests de continuité, validation des interfaces I2C/SPI, tests fonctionnels des capteurs environnementaux et mesures de consommation. Documentation des résultats.",
+      },
+    ],
+  },
+];
+
+// NOUVEAU : Liens Compétence -> Activités
+const ACTIVITIES_EVIDENCE = [
+  {
+    id: "activite1",
+    title: "Tests électriques SmartLight",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Application d'une procédure complète de tests électriques incluant mesures de continuité, validation des LED et vérification de conformité.",
+      },
+    ],
+  },
+  {
+    id: "activite2",
+    title: "Pilotage actionneurs TOR",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Identification méthodique d'un dysfonctionnement sur ventilateur TOR : observation des symptômes, mesures électriques, diagnostic de la panne.",
+      },
+    ],
+  },
+  {
+    id: "activite3",
+    title: "Dossier de mise en service",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Vérification systématique complète d'une maquette domotique avec tests de tension, continuité et validation fonctionnelle.",
+      },
+    ],
+  },
+  {
+    id: "activite4",
+    title: "Télémètre Ultrason",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Description détaillée d'un dysfonctionnement de télémètre ultrason : analyse des symptômes, identification de l'impact sur le système.",
+      },
+    ],
+  },
+  {
+    id: "activite5",
+    title: "Plaquette à essai",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Diagnostic approfondi de carte d'alimentation avec identification d'un dysfonctionnement sur amplificateurs non inverseurs.",
+      },
+    ],
+  },
+  {
+    id: "activite6",
+    title: "Carte SmartLight - Prototype",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 1,
+        justif:
+          "Réalisation d'un prototype fonctionnel complet pour système d'éclairage intelligent : définition des objectifs, sélection des technologies.",
+      },
+    ],
+  },
+  {
+    id: "activite7",
+    title: "Analyse fonctionnelle SmartLight",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 1,
+        justif:
+          "Production d'une analyse fonctionnelle détaillée : identification des fonctions principales et secondaires, établissement d'un diagramme fonctionnel.",
+      },
+    ],
+  },
+  {
+    id: "activite8",
+    title: "Mesure de température PT100",
+    matches: [
+      {
+        comp: "verifier",
+        level: 1,
+        justif:
+          "Application rigoureuse d'une procédure d'essais pour mesures de température avec PT100 : respect des normes de calibration, manipulation conforme.",
+      },
+    ],
+  },
+  {
+    id: "activite9",
+    title: "Télécommande - Compte rendu",
+    matches: [
+      {
+        comp: "concevoir",
+        level: 1,
+        justif:
+          "Rédaction complète d'un dossier de fabrication pour système IR : documentation technique détaillée, traduction fidèle des spécifications.",
+      },
+    ],
+  },
+];
+
+
+    // ==========================================
+    // 2. FONCTIONS WIDGETS
+    // ==========================================
+
+    // --- A. OUVRIR LE WIDGET PROJET ---
+    function openProjectWidget(projectKey) {
+      const projectData = PROJECTS_DATA[projectKey];
+      if (!projectData) return;
+
+      const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+      const contentArea = document.getElementById('projectWidgetContent');
+      const linkBtn = document.getElementById('projectLinkBtn');
+
+      document.getElementById('projectTitleHeader').textContent = projectData.title;
+      document.getElementById('projectSubtitleHeader').textContent = projectData.subtitle;
+      document.getElementById('projectIconHeader').textContent = projectData.icon;
+      linkBtn.href = projectData.htmlFile;
+      linkBtn.style.display = 'inline-block';
+
+      contentArea.innerHTML = `<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+
+      fetch(projectData.htmlFile)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const wrapper = doc.querySelector('.wrapper');
+          
+          if (wrapper) {
+             const tempDiv = document.createElement('div');
+             tempDiv.innerHTML = wrapper.innerHTML;
+             const backBtn = tempDiv.querySelector('.btn-back');
+             if(backBtn) backBtn.parentElement.remove();
+             contentArea.innerHTML = tempDiv.innerHTML;
+             
+             // Injecter Styles
+             doc.querySelectorAll('style').forEach(s => contentArea.appendChild(s.cloneNode(true)));
+             
+             // Fix Images
+             const styleOverride = document.createElement('style');
+             styleOverride.textContent = `
+                #projectWidgetContent { font-size: 24px !important; }
+                #projectWidgetContent h1 { font-size: 3.8rem !important; }
+                #projectWidgetContent h2 { font-size: 3.2rem !important; }
+                #projectWidgetContent h3 { font-size: 2.8rem !important; }
+                #projectWidgetContent h4 { font-size: 2.4rem !important; }
+                #projectWidgetContent h5 { font-size: 2rem !important; }
+                #projectWidgetContent p { font-size: 1.8rem !important; line-height: 2 !important; }
+                #projectWidgetContent li { font-size: 1.7rem !important; margin-bottom: 20px !important; }
+                #projectWidgetContent .badge { font-size: 1.6rem !important; padding: 1.2rem 2rem !important; }
+                #projectWidgetContent .wrapper { max-width: 100%; margin: 0; padding: 0; }
+                #projectWidgetContent .project-hero { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+                #projectWidgetContent .main-image-container { height: auto; margin-bottom: 2rem; text-align: center; }
+                #projectWidgetContent img { 
+                    max-width: 100%; 
+                    max-height: 70vh; 
+                    width: auto; height: auto; 
+                    object-fit: contain; display: block; margin: 0 auto; border-radius: 8px; 
+                }
+             `;
+             contentArea.appendChild(styleOverride);
+
+             // Keep only the last "Compétences BUT" block and wire links to the modal
+             hideDuplicateCompetencesBlocks(contentArea);
+             wireCompetencesLinks(contentArea);
+             initProjectVideos(contentArea);
+
+            
+             // --- INJECTION BOUTONS COMPÉTENCES ---
+             if (projectData.skills && projectData.skills.length > 0) {
+                 const skillsContainer = document.createElement('div');
+                 skillsContainer.className = "mt-4 p-3 bg-light border rounded";
+                 let skillsHtml = `<h6 class="fw-bold mb-3"><i class="bi bi-mortarboard text-primary me-2"></i>Compétences liées :</h6><div class="d-flex flex-wrap gap-2">`;
+                 
+                 projectData.skills.forEach(skill => {
+                     skillsHtml += `
+                        <button onclick="goToCompetenceDetail('${skill.key}', ${skill.level})" 
+                                class="btn btn-white border shadow-sm d-flex align-items-center gap-2 px-3 py-2">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <span>${skill.label}</span>
+                            <i class="bi bi-arrow-right-short text-muted"></i>
+                        </button>`;
+                 });
+                 skillsHtml += `</div>`;
+                 contentArea.appendChild(skillsContainer);
+             }
+
+          } else {
+             contentArea.innerHTML = `<p>Contenu non trouvé.</p>`;
+          }
+          modal.show();
+        });
+    }
+
+    // Activer le bouton lecture des vidéos dans le contenu injecté
+    function initProjectVideos(container) {
+      container.querySelectorAll('.video-wrapper').forEach((wrapper) => {
+        const video = wrapper.querySelector('video');
+        const btn = wrapper.querySelector('.video-play-btn');
+        if (!video || !btn) return;
+
+        btn.addEventListener('click', () => {
+          video.controls = true;
+          video.play();
+          btn.style.display = 'none';
+        });
+      });
+    }
+
+    // --- B. OUVRIR LE WIDGET COMPÉTENCES ---
+    function openCompetencesWidget(e, targetSkill = null, targetLevel = null) {
+        if(e) e.preventDefault();
+        
+        const modalEl = document.getElementById('competencesModal');
+        const modal = new bootstrap.Modal(modalEl);
+        const content = document.getElementById('competencesWidgetContent');
+        
+        content.innerHTML = `<div class="text-center text-white py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+        modal.show();
+
+        fetch('competences.html').then(r=>r.text()).then(html=>{
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const main = doc.querySelector('.cards-wrap'); 
+            const hero = doc.querySelector('.page-hero');
+            
+            if(main && hero) {
+                content.innerHTML = ""; 
+                const container = document.createElement('div');
+                container.innerHTML = hero.outerHTML + main.outerHTML;
+                content.appendChild(container);
+
+                doc.querySelectorAll('style').forEach(s => content.appendChild(s.cloneNode(true)));
+                const style = document.createElement('style');
+                style.textContent = `#competencesWidgetContent { background: #0f172a; color: white; } #competencesWidgetContent .evidence-card-mini { color: white; }`;
+                content.appendChild(style);
+
+                setTimeout(() => {
+                  // Inject inline year buttons (hide/remove old select if present)
+                  const pageHero = content.querySelector('.page-hero');
+                  const grid = content.querySelector('#grid');
+                  // Create buttons only if not already present
+                  if (pageHero && !content.querySelector('.year-btn')) {
+                    const ctrls = document.createElement('div');
+                    ctrls.className = 'year-selector';
+                    ctrls.innerHTML = `
+                      <button class="year-btn active" data-year="1" aria-pressed="true"><i class="bi bi-mortarboard me-2"></i>BUT 1</button>
+                      <button class="year-btn" data-year="2" aria-pressed="false"><i class="bi bi-mortarboard me-2"></i>BUT 2</button>
+                      <button class="year-btn" data-year="3" aria-pressed="false"><i class="bi bi-mortarboard me-2"></i>BUT 3</button>
+                    `;
+                    pageHero.appendChild(ctrls);
+                  }
+                  // Hide old select if exists
+                  const yearSelect = content.querySelector('#yearSelect');
+                  if (yearSelect) yearSelect.style.display = 'none';
+
+                  const yearButtons = Array.from(content.querySelectorAll('.year-btn'));
+                  const SCORES = { 
+                    "1": { concevoir: 60, verifier: 75, maintenir: 50 }, 
+                    "2": { concevoir: 85, verifier: 80, maintenir: 75, implanter: 75 }, 
+                    "3": { concevoir: 95, verifier: 90, maintenir: 85, implanter: 85 }
+                  };
+
+                  if(!grid) return;
+
+                  function getCurrentYear() {
+                    const activeBtn = yearButtons.find(btn => btn.classList.contains('active')) || yearButtons[0];
+                    if(activeBtn) return Number(activeBtn.dataset.year);
+                    if(yearSelect && yearSelect.value) return Number(yearSelect.value);
+                    return 2;
+                  }
+
+                  function setYear(year) {
+                    yearButtons.forEach(btn => {
+                      const isActive = Number(btn.dataset.year) === year;
+                      btn.classList.toggle('active', isActive);
+                      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                    });
+                    if(yearSelect) yearSelect.value = String(year);
+                    renderList();
+                  }
+
+                  function renderList() {
+                    const year = getCurrentYear();
+                    const currentScores = SCORES[String(year)] || {};
+                    grid.innerHTML = "";
+                    Object.keys(COMPETENCES_DEF).forEach(key => {
+                      const def = COMPETENCES_DEF[key];
+                      if(!def.levels[year]) return; 
+                      const val = currentScores[key] || 0;
+                      const col = document.createElement("div");
+                      col.className = "col-xl-6 col-12 mb-4";
+                      col.innerHTML = `
+                        <div class="competence-card comp-${key} h-100 p-4 border rounded bg-opacity-10 bg-white" style="cursor:pointer; transition:0.3s;">
+                          <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="bi ${def.icon} fs-2 text-info"></i>
+                            <div>
+                              <h4 class="m-0">${def.title}</h4>
+                              <small class="text-white-50">${def.levels[year].label}</small>
+                            </div>
+                            <div class="ms-auto fw-bold fs-4">${val}%</div>
+                          </div>
+                          <div class="progress" style="height:6px;"><div class="progress-bar bg-info" style="width:${val}%"></div></div>
+                          <button class="btn btn-sm btn-outline-info w-100 mt-3 view-detail-btn" data-key="${key}">Voir détails & preuves</button>
+                        </div>
+                      `;
+                      col.querySelector('.competence-card').onclick = () => showCompetenceDetailInWidget(year, key, content);
+                      grid.appendChild(col);
+                    });
+                  }
+
+                  yearButtons.forEach(btn => {
+                    btn.addEventListener('click', () => setYear(Number(btn.dataset.year)));
+                  });
+
+                  // Initialise affichage
+                  setYear(targetLevel ? Number(targetLevel) : getCurrentYear());
+
+                  // Navigation directe
+                  if (targetSkill && targetLevel) {
+                    showCompetenceDetailInWidget(targetLevel, targetSkill, content);
+                  }
+                }, 100);
+            }
+        });
+    }
+
+    // --- C. NAVIGATION & TRANSITIONS ---
+    function goToCompetenceDetail(skillKey, level) {
+        const projectModal = bootstrap.Modal.getInstance(document.getElementById('projectModal'));
+        if(projectModal) projectModal.hide();
+        setTimeout(() => openCompetencesWidget(null, skillKey, level), 300);
+    }
+
+    // FONCTION POUR FERMER LA VUE DÉTAIL ET RETOURNER À LA LISTE
+    window.closeDetailView = function() {
+        const content = document.getElementById('competencesWidgetContent');
+        const detailView = content.querySelector('.detail-view');
+        if(detailView) {
+            detailView.style.display = 'none';
+        }
+        content.querySelector('.page-hero').style.display = 'block';
+        content.querySelector('.cards-wrap').style.display = 'block';
+    }
+
+    // NOUVEAU : Ouvrir le projet dans une modale secondaire
+    function openProjectFromSkillWidget(projectKey) {
+      const projectData = PROJECTS_DATA[projectKey];
+      if (!projectData) return;
+
+      const modal = new bootstrap.Modal(document.getElementById('projectFromSkillModal'));
+      const contentArea = document.getElementById('projectFromSkillWidgetContent');
+      const linkBtn = document.getElementById('projectFromSkillLinkBtn');
+
+      document.getElementById('projectFromSkillTitleHeader').textContent = projectData.title;
+      document.getElementById('projectFromSkillSubtitleHeader').textContent = projectData.subtitle;
+      document.getElementById('projectFromSkillIconHeader').textContent = projectData.icon;
+      linkBtn.href = projectData.htmlFile;
+      linkBtn.style.display = 'inline-block';
+
+      contentArea.innerHTML = `<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+
+      fetch(projectData.htmlFile)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const wrapper = doc.querySelector('.wrapper');
+          
+          if (wrapper) {
+             const tempDiv = document.createElement('div');
+             tempDiv.innerHTML = wrapper.innerHTML;
+             const backBtn = tempDiv.querySelector('.btn-back');
+             if(backBtn) backBtn.parentElement.remove();
+             contentArea.innerHTML = tempDiv.innerHTML;
+             
+             // Injecter Styles
+             doc.querySelectorAll('style').forEach(s => contentArea.appendChild(s.cloneNode(true)));
+             
+             // Fix Images
+             const styleOverride = document.createElement('style');
+             styleOverride.textContent = `
+                #projectFromSkillWidgetContent { font-size: 24px !important; }
+                #projectFromSkillWidgetContent h1 { font-size: 3.8rem !important; }
+                #projectFromSkillWidgetContent h2 { font-size: 3.2rem !important; }
+                #projectFromSkillWidgetContent h3 { font-size: 2.8rem !important; }
+                #projectFromSkillWidgetContent h4 { font-size: 2.4rem !important; }
+                #projectFromSkillWidgetContent h5 { font-size: 2rem !important; }
+                #projectFromSkillWidgetContent p { font-size: 1.8rem !important; line-height: 2 !important; }
+                #projectFromSkillWidgetContent li { font-size: 1.7rem !important; margin-bottom: 20px !important; }
+                #projectFromSkillWidgetContent .badge { font-size: 1.6rem !important; padding: 1.2rem 2rem !important; }
+                #projectFromSkillWidgetContent .wrapper { max-width: 100%; margin: 0; padding: 0; }
+                #projectFromSkillWidgetContent .project-hero { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+                #projectFromSkillWidgetContent .main-image-container { height: auto; margin-bottom: 2rem; text-align: center; }
+                #projectFromSkillWidgetContent img { 
+                    max-width: 100%; 
+                    max-height: 70vh; 
+                    width: auto; height: auto; 
+                    object-fit: contain; display: block; margin: 0 auto; border-radius: 8px; 
+                }
+             `;
+             contentArea.appendChild(styleOverride);
+
+             hideDuplicateCompetencesBlocks(contentArea);
+             wireCompetencesLinks(contentArea);
+
+          } else {
+             contentArea.innerHTML = `<p>Contenu non trouvé.</p>`;
+          }
+          modal.show();
+        });
+    }
+
+    // NOUVEAU : Ouvrir le widget d'activité (VERSION COMPACTE - POLICE AGRANDIE)
+    window.openActivityWidget = function(activityId) {
+      const actData = ACTIVITIES_DATA[activityId];
+      if (!actData) return;
+
+      const modal = new bootstrap.Modal(document.getElementById('projectFromSkillModal'));
+      const contentArea = document.getElementById('projectFromSkillWidgetContent');
+      const linkBtn = document.getElementById('projectFromSkillLinkBtn');
+
+      document.getElementById('projectFromSkillTitleHeader').textContent = actData.title;
+      document.getElementById('projectFromSkillSubtitleHeader').textContent = actData.subtitle;
+      document.getElementById('projectFromSkillIconHeader').textContent = actData.icon;
+      linkBtn.style.display = 'none';
+
+      const activityHTML = `
+        <div class="activity-wrapper">
+          <!-- IMAGE HERO -->
+          <div class="activity-hero-section">
+            <img src="${actData.images.length > 0 ? actData.images[0].src : 'assets/img/placeholder.png'}" 
+                 alt="${actData.title}" 
+                 class="img-fluid activity-hero-image"
+                 style="width: 100%; height: 750px; object-fit: contain; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 30px; border-radius: 16px; display: block;">
+            ${actData.images.length > 0 ? `<p class="activity-caption">${actData.images[0].caption}</p>` : ''}
+          </div>
+
+          <!-- BADGE IDENTIFICATION -->
+          <div class="activity-badge">
+            <div class="activity-badge-icon">
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+            <div class="activity-badge-text">
+              <strong>Activité académique BUT GEII</strong>
+              <p>Trace officielle de validation de compétence</p>
+            </div>
+          </div>
+
+          <!-- TITRE ET DESCRIPTION -->
+          <div class="activity-header">
+            <h2>${actData.title}</h2>
+            <p>${actData.description}</p>
+          </div>
+
+          <!-- CONTEXTE -->
+          <div class="activity-card contexte-card">
+            <div class="activity-card-header contexte-header">
+              <i class="bi bi-book-half"></i>Contexte & Enjeux
+            </div>
+            <div class="activity-card-body">
+              ${actData.context}
+            </div>
+          </div>
+
+          <!-- OBJECTIFS -->
+          <div class="activity-card objectifs-card">
+            <div class="activity-card-header objectifs-header">
+              <i class="bi bi-target"></i>Objectifs
+            </div>
+            <div class="activity-card-body">
+              <ul class="activity-list">
+                ${actData.objectives.map(obj => `<li><i class="bi bi-check-circle-fill"></i>${obj}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <!-- CONTENU TECHNIQUE -->
+          <div class="activity-technical">
+            ${actData.technicalContent}
+          </div>
+
+          <!-- POINTS FORTS & AMÉLIORATION -->
+          <div class="activity-grid-2">
+            <div class="activity-strengths">
+              <div class="strengths-header">
+                <i class="bi bi-star-fill"></i>Points Forts
+              </div>
+              <ul class="activity-list">
+                <li><i class="bi bi-check-lg"></i>Rigueur méthodologique</li>
+                <li><i class="bi bi-check-lg"></i>Capacité d'analyse</li>
+                <li><i class="bi bi-check-lg"></i>Documentation rigoureuse</li>
+                <li><i class="bi bi-check-lg"></i>Respect des procédures</li>
+              </ul>
+            </div>
+            <div class="activity-improvements">
+              <div class="improvements-header">
+                <i class="bi bi-graph-up"></i>Axes de Progression
+              </div>
+              <ul class="activity-list">
+                <li><i class="bi bi-arrow-up-right"></i>Approfondissement analytique</li>
+                <li><i class="bi bi-arrow-up-right"></i>Vision systémique globale</li>
+                <li><i class="bi bi-arrow-up-right"></i>Vitesse de diagnostic</li>
+                <li><i class="bi bi-arrow-up-right"></i>Documentation enrichie</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- VALIDATION -->
+          <div class="activity-validation">
+            ${actData.skillValidation}
+          </div>
+        </div>
+      `;
+
+      contentArea.innerHTML = activityHTML;
+
+      const styleOverride = document.createElement('style');
+      styleOverride.textContent = `
+        #projectFromSkillWidgetContent .activity-wrapper {
+          font-size: 1.6rem;
+          line-height: 1.8;
+        }
+
+        /* Image Hero */
+        #projectFromSkillWidgetContent .activity-hero-section {
+          margin-bottom: 2rem;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        #projectFromSkillWidgetContent .activity-hero-image {
+          border-radius: 16px;
+          display: block;
+        }
+
+        #projectFromSkillWidgetContent .activity-caption {
+          font-size: 2.1rem;
+          color: #333;
+          text-align: center;
+          margin: 1rem 0 0 0;
+          font-style: italic;
+          font-weight: 500;
+        }
+
+        /* Badge */
+        #projectFromSkillWidgetContent .activity-badge {
+          background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+          border: 2px solid rgba(255, 193, 7, 0.3);
+          border-radius: 14px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          display: flex;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+
+        #projectFromSkillWidgetContent .activity-badge-icon {
+          width: 70px;
+          height: 70px;
+          background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        #projectFromSkillWidgetContent .activity-badge-icon i {
+          font-size: 2.2rem;
+          color: white;
+        }
+
+        #projectFromSkillWidgetContent .activity-badge-text strong {
+          display: block;
+          font-size: 1.9rem;
+          color: #333;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        }
+
+        #projectFromSkillWidgetContent .activity-badge-text p {
+          margin: 0;
+          font-size: 1.5rem;
+          color: #666;
+          opacity: 1;
+        }
+
+        /* Header */
+        #projectFromSkillWidgetContent .activity-header {
+          border-bottom: 3px solid rgba(20,157,221,0.3);
+          padding-bottom: 1.5rem;
+          margin-bottom: 2.5rem;
+          text-align: center;
+        }
+
+        #projectFromSkillWidgetContent .activity-header h2 {
+          font-size: 3.2rem;
+          color: #0b1220;
+          margin: 0 0 1rem 0;
+          font-weight: 800;
+        }
+
+        #projectFromSkillWidgetContent .activity-header p {
+          font-size: 1.8rem;
+          color: #333;
+          line-height: 1.8;
+          margin: 0;
+          max-width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Cards */
+        #projectFromSkillWidgetContent .activity-card {
+          border-radius: 14px;
+          overflow: hidden;
+          margin-bottom: 2rem;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        #projectFromSkillWidgetContent .activity-card-header {
+          padding: 1.5rem;
+          font-weight: 700;
+          font-size: 2rem;
+          color: white;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+
+        #projectFromSkillWidgetContent .contexte-header {
+          background: linear-gradient(135deg, #0056cc 0%, #004085 100%);
+        }
+
+        #projectFromSkillWidgetContent .objectifs-header {
+          background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
+        }
+
+        #projectFromSkillWidgetContent .activity-card-body {
+          padding: 2rem;
+          background: #fafbfc;
+          font-size: 1.6rem;
+          line-height: 1.9;
+          color: #333;
+        }
+
+        /* List */
+        #projectFromSkillWidgetContent .activity-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        #projectFromSkillWidgetContent .activity-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          margin-bottom: 1.2rem;
+          font-size: 1.6rem;
+          color: #333;
+          line-height: 1.7;
+        }
+
+        #projectFromSkillWidgetContent .activity-list li:last-child {
+          margin-bottom: 0;
+        }
+
+        #projectFromSkillWidgetContent .activity-list i {
+          flex-shrink: 0;
+          font-size: 1.6rem;
+          margin-top: 0.3rem;
+        }
+
+        #projectFromSkillWidgetContent .contexte-card .activity-list i {
+          color: #28a745;
+        }
+
+        #projectFromSkillWidgetContent .objectifs-card .activity-list i {
+          color: #28a745;
+        }
+
+        #projectFromSkillWidgetContent .activity-strengths .activity-list i {
+          color: #28a745;
+        }
+
+        #projectFromSkillWidgetContent .activity-improvements .activity-list i {
+          color: #ffc107;
+        }
+
+        /* Technical */
+        #projectFromSkillWidgetContent .activity-technical {
+          background: linear-gradient(135deg, #f0f4ff 0%, #f9f7ff 100%);
+          border-left: 5px solid #6366f1;
+          border-radius: 14px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          font-size: 2.2rem;
+          line-height: 1.9;
+          color: #333;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical h3 {
+          font-size: 2.2rem;
+          color: #4f46e5;
+          margin: 0 0 1.2rem 0;
+          padding-bottom: 0.8rem;
+          border-bottom: 2px solid #6366f1;
+          font-weight: 700;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical h3:first-child {
+          margin-top: 0;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical h3:not(:first-child) {
+          margin-top: 2rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical h4 {
+          font-size: 1.8rem;
+          color: #4f46e5;
+          margin: 1.2rem 0 0.8rem 0;
+          font-weight: 700;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical p {
+          margin: 1rem 0;
+          font-size: 2.2rem;
+          color: #333;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical ul,
+        #projectFromSkillWidgetContent .activity-technical ol {
+          margin: 1rem 0;
+          padding-left: 1.8rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical li {
+          margin-bottom: 0.8rem;
+          font-size: 2.2rem;
+          color: #333;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical .alert {
+          font-size: 2.2rem;
+          padding: 1.5rem;
+          margin: 1.5rem 0;
+          color: #333;
+        }
+
+        #projectFromSkillWidgetContent .activity-technical strong {
+          color: #0b1220;
+          font-weight: 700;
+          font-size: 1.6rem;
+        }
+
+        /* Grid 2 */
+        #projectFromSkillWidgetContent .activity-grid-2 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+          #projectFromSkillWidgetContent .activity-grid-2 {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        #projectFromSkillWidgetContent .activity-strengths,
+        #projectFromSkillWidgetContent .activity-improvements {
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          background: white;
+        }
+
+        #projectFromSkillWidgetContent .strengths-header {
+          background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+          color: white;
+          padding: 1.5rem;
+          font-weight: 700;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+
+        #projectFromSkillWidgetContent .strengths-header i {
+          color: #ffd700;
+        }
+
+        #projectFromSkillWidgetContent .improvements-header {
+          background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+          color: white;
+          padding: 1.5rem;
+          font-weight: 700;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-strengths .activity-list {
+          padding: 2rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-improvements .activity-list {
+          padding: 2rem;
+        }
+
+        /* Validation - REDESIGN COMPLET */
+        #projectFromSkillWidgetContent .activity-validation {
+          background: #ffffff;
+          border: 2px solid rgba(20,157,221,0.3);
+          border-radius: 14px;
+          padding: 2.5rem;
+          font-size: 1.6rem;
+          line-height: 1.9;
+          color: #333;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        #projectFromSkillWidgetContent .activity-validation h3 {
+          font-size: 2.2rem;
+          color: #0b1220;
+          margin: 0 0 1.5rem 0;
+          padding-bottom: 1rem;
+          border-bottom: 3px solid #28a745;
+          font-weight: 700;
+          text-align: center;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation h5 {
+          font-size: 1.9rem;
+          color: #0056cc;
+          margin: 1.5rem 0 1rem 0;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation p {
+          font-size: 1.6rem;
+          margin: 0.8rem 0;
+          color: #333;
+          text-align: justify;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation .card {
+          background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+          border: 1px solid rgba(20,157,221,0.2);
+          color: #333;
+          border-radius: 10px;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        #projectFromSkillWidgetContent .activity-validation .card-body {
+          padding: 1.5rem;
+          font-size: 1.6rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation .card-title {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: #0b1220;
+          margin-bottom: 1rem;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation ul {
+          margin: 1rem 0;
+          padding-left: 2rem;
+          list-style: none;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation li {
+          margin-bottom: 0.8rem;
+          font-size: 1.6rem;
+          color: #333;
+          padding-left: 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          line-height: 1.6;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation li::before {
+          content: "✓";
+          color: #28a745;
+          font-weight: bold;
+          font-size: 1.8rem;
+          flex-shrink: 0;
+        }
+
+        #projectFromSkillWidgetContent .activity-validation strong {
+          color: #0b1220;
+          font-weight: 700;
+          font-size: 1.6rem;
+        }
+      `;
+      contentArea.appendChild(styleOverride);
+
+      modal.show();
+    }
+
+    // Intercept any link to competences to open the widget instead of navigating
+    document.addEventListener('click', function(e) {
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (/(^#competences\b)|competences/i.test(href)) {
+        e.preventDefault();
+        openCompetencesWidget(e);
+      }
+    });
+
+    // Helper: hide duplicate "Compétences BUT" blocks, keep the last one
+    function hideDuplicateCompetencesBlocks(root) {
+      const isCompTitle = (el) => /comp[eé]tence[s]?\s*but/i.test((el.textContent || '').trim());
+      const headings = Array.from(root.querySelectorAll('h1,h2,h3,h4,h5,h6')).filter(isCompTitle);
+      if (headings.length > 1) {
+        headings.slice(0, -1).forEach(h => {
+          h.style.display = 'none';
+          if (h.nextElementSibling) h.nextElementSibling.style.display = 'none';
+        });
+      }
+    }
+
+    // Helper: inside a container, intercept any "competences" link and open the widget
+    function wireCompetencesLinks(container) {
+      container.addEventListener('click', (ev) => {
+        const a = ev.target.closest('a[href]');
+        if (!a) return;
+        const href = a.getAttribute('href') || '';
+        if (/(^#competences\b)|competences/i.test(href)) {
+          ev.preventDefault();
+          // Try to parse skill + level from hash like "#integrer-2" or "#intégrer-2"
+          let skillKey = null, level = null;
+          const hash = (href.split('#')[1] || '').toLowerCase();
+          const map = { 'integrer': 'implanter', 'intégrer': 'implanter', 'concevoir': 'concevoir', 'verifier': 'verifier', 'vérifier': 'verifier', 'maintenir': 'maintenir' };
+          const m = hash.match(/(integrer|intégrer|concevoir|verifier|vérifier|maintenir)-?([123])/);
+          if (m) { skillKey = map[m[1]]; level = Number(m[2]); }
+          openCompetencesWidget(null, skillKey, level);
+        }
+      });
+    }
+
+    // NEW: Init skills swiper (auto-scroll + responsive)
+    window.addEventListener('load', function () {
+      try {
+        document.querySelectorAll('.skills-swiper').forEach(function (el) {
+          new Swiper(el, {
+            slidesPerView: 5,
+            spaceBetween: 22,
+            loop: true,
+            centeredSlides: false,
+            autoplay: { 
+              delay: 3500, 
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            },
+            speed: 800,
+            effect: 'slide',
+            breakpoints: {
+              0: { slidesPerView: 1, spaceBetween: 16 },
+              576: { slidesPerView: 2, spaceBetween: 18 },
+              992: { slidesPerView: 3, spaceBetween: 20 },
+              1200: { slidesPerView: 4, spaceBetween: 22 },
+              1400: { slidesPerView: 5, spaceBetween: 24 }
+            },
+            pagination: { 
+              el: el.querySelector('.swiper-pagination'), 
+              clickable: true,
+              dynamicBullets: true
+            },
+            navigation: {
+              nextEl: el.querySelector('.swiper-button-next'),
+              prevEl: el.querySelector('.swiper-button-prev')
+            },
+            grabCursor: true,
+            mousewheel: {
+              forceToAxis: true
+            }
+          });
+        });
+      } catch (e) { 
+        console.error('Skills Swipers init failed', e); 
+      }
+    });
+
+    // FONCTION POUR AFFICHER LES DÉTAILS D'UNE COMPÉTENCE - PARTIE 1
+    function showCompetenceDetailInWidget(year, compKey, widgetContent) {
+        const def = COMPETENCES_DEF[compKey];
+        const levelData = def.levels[year];
+        if(!def || !levelData) return;
+
+        const SCORES = { 
+            "1": { concevoir: 60, verifier: 75, maintenir: 50 }, 
+            "2": { concevoir: 85, verifier: 80, maintenir: 75, implanter: 75 }, 
+            "3": { concevoir: 95, verifier: 90, maintenir: 85, implanter: 85 }
+        };
+        const percentage = SCORES[String(year)][compKey] || 0;
+
+        // Masquer la liste, afficher le détail
+        const pageHero = widgetContent.querySelector('.page-hero');
+        const cardsWrap = widgetContent.querySelector('.cards-wrap');
+        if(pageHero) pageHero.style.display = 'none';
+        if(cardsWrap) cardsWrap.style.display = 'none';
+
+        let detailView = widgetContent.querySelector('.detail-view');
+        if(!detailView) {
+            detailView = document.createElement('div');
+            detailView.className = 'detail-view p-4';
+            widgetContent.appendChild(detailView);
+        }
+        detailView.style.display = 'block';
+
+        // Collecter les PROJETS
+        let projects = [];
+        PROJECTS_EVIDENCE.forEach(proj => {
+            const match = proj.matches.find(m => m.comp === compKey && m.level == year);
+            if(match) {
+                projects.push({ 
+                  id: proj.id, 
+                  title: proj.title, 
+                  justif: match.justif
+                });
+            }
+        });
+
+        // Collecter les ACTIVITÉS
+        let activities = [];
+        ACTIVITIES_EVIDENCE.forEach(act => {
+            const match = act.matches.find(m => m.comp === compKey && m.level == year);
+            if(match) {
+                activities.push({ 
+                  id: act.id, 
+                  title: act.title, 
+                  justif: match.justif
+                });
+            }
+        });
+
+        const totalEvidences = projects.length + activities.length;
+
+        // HTML pour les PROJETS
+        let projectsHtml = '';
+        if (projects.length > 0) {
+            projectsHtml = `
+                <div class="mb-5">
+                    <h5 class="text-info mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
+                        <i class="bi bi-kanban me-2"></i>
+                        Projets (${projects.length})
+                    </h5>
+                    <div class="row g-4">
+                        ${projects.map(proj => `
+                            <div class="col-md-6">
+                                <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-secondary bg-dark bg-opacity-50 h-100" 
+                                     onclick="openProjectFromSkillWidget('projet${proj.id}')" 
+                                     style="cursor:pointer; transition:0.2s;">
+                                    <div class="evidence-body">
+                                      <div class="fw-bold text-info fs-5"><i class="bi bi-link-45deg me-2"></i>${proj.title}</div>
+                                      <div class="small text-white-50 mt-2" style="font-size:1.1rem; line-height:1.5;">"${proj.justif}"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // HTML pour les ACTIVITÉS
+        let activitiesHtml = '';
+        if (activities.length > 0) {
+            activitiesHtml = `
+                <div class="mb-5">
+                    <h5 class="text-warning mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
+                        <i class="bi bi-mortarboard-fill me-2"></i>
+                        Activités académiques (${activities.length})
+                    </h5>
+                    <div class="row g-4">
+                        ${activities.map(act => `
+                            <div class="col-md-6">
+                                <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-warning bg-dark bg-opacity-50 h-100 position-relative" 
+                                     onclick="openActivityWidget('${act.id}')" 
+                                     style="cursor:pointer; transition:0.2s;">
+                                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size: 0.9rem;">📚 Trace SAÉ</span>
+                                    <div class="evidence-body">
+                                      <div class="fw-bold text-warning fs-5"><i class="bi bi-journal-check me-2"></i>${act.title}</div>
+                                      <div class="small text-white-50 mt-2" style="font-size:1.1rem; line-height:1.5;">"${act.justif}"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        detailView.innerHTML = `
+            <button class="btn btn-outline-light btn-sm mb-4" onclick="closeDetailView()" style="font-size: 1.3rem; padding: 1rem 2rem;"><i class="bi bi-arrow-left me-2"></i>Retour liste</button>
+            
+            <div class="text-center mb-5 pb-4 border-bottom border-secondary">
+                <i class="bi ${def.icon} display-1 text-primary mb-3" style="font-size: 6rem;"></i>
+                <h2 class="mt-3 mb-2" style="font-size: 3.5rem; color: white;">${def.title}</h2>
+                <div class="badge bg-primary mb-3 px-4 py-2" style="font-size: 1.8rem; padding: 1.2rem 2.5rem !important;">Niveau ${year} — ${percentage}%</div>
+                <p class="text-white" style="font-size: 1.6rem;">${levelData.label}</p>
+                
+                <div class="mt-4 p-4 bg-dark bg-opacity-50 rounded">
+                    <h5 class="text-info mb-3" style="font-size: 2rem;"><i class="bi bi-info-circle me-2"></i>Vue d'ensemble</h5>
+                    <p class="text-white mb-0" style="font-size: 1.5rem; line-height:1.9;">${def.description}</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="mb-5 p-4 bg-gradient rounded" style="background: linear-gradient(135deg, #1a4d7f 0%, #0f3a5e 100%); border: 2px solid rgba(0, 201, 167, 0.4); border-radius: 14px;">
+                        <h5 class="text-success mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
+                            <i class="bi bi-graph-up-arrow me-2"></i>Évaluation : <span style="color: #00c9a7; font-weight: 800;">${percentage}%</span>
+                        </h5>
+                        
+                        <p class="text-white mb-4" style="font-size: 1.5rem; line-height: 1.9;">
+                            Ce score reflète mon niveau de maîtrise actuel basé sur ${totalEvidences > 0 ? `<strong style="color: #00c9a7;">${totalEvidences} trace${totalEvidences > 1 ? 's' : ''}</strong>` : 'mon expérience'}. 
+                        </p>
+
+                        <div class="mb-4 p-3 rounded" style="background: rgba(0, 201, 167, 0.15); border-left: 5px solid #00c9a7; border-radius: 8px;">
+                            <h6 class="text-success mb-3 fw-bold" style="font-size: 1.8rem;">
+                                <i class="bi bi-star-fill me-2"></i>Compétences Maîtrisées
+                            </h6>
+                            <ul class="mb-0" style="list-style: none; padding: 0;">
+                                ${levelData.solutions.map(s => `
+                                    <li class="mb-2 d-flex align-items-start" style="font-size: 1.5rem; color: white;">
+                                        <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.4rem;"></i>
+                                        <span>${s}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="p-3 rounded" style="background: rgba(255, 107, 107, 0.15); border-left: 5px solid #ff6b6b; border-radius: 8px;">
+                            <h6 class="mb-3 fw-bold" style="font-size: 1.8rem; color: #ff9999;">
+                                <i class="bi bi-arrow-up-right me-2"></i>Points à Améliorer
+                            </h6>
+                            <ul class="mb-0" style="list-style: none; padding: 0;">
+                                ${levelData.improvements && levelData.improvements.length > 0 ? 
+                                  levelData.improvements.map(imp => `
+                                    <li class="mb-2 d-flex align-items-start" style="font-size: 1.5rem; color: white;">
+                                        <i class="bi bi-lightning-fill me-3 mt-1" style="font-size: 1.4rem; color: #ffa07a;"></i>
+                                        <span>${imp}</span>
+                                    </li>
+                                  `).join('')
+                                  : '<li class="text-white" style="font-size: 1.4rem;">✓ Aucun point à améliorer identifié</li>'
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-5 p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
+                        <h5 class="text-info mb-3" style="font-size: 2.2rem;"><i class="bi bi-journal-text me-2"></i>Description du Niveau</h5>
+                        <p class="mb-0" style="font-size: 1.6rem; line-height: 1.9; color: white;">${levelData.comment}</p>
+                    </div>
+
+                    <div class="mb-5 p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
+                        <h5 class="text-success mb-4" style="font-size: 2.2rem;"><i class="bi bi-check2-circle me-2"></i>Critères de Validation</h5>
+                        <ul class="list-unstyled row g-3">
+                            ${levelData.solutions.map(s => `
+                                <li class="col-md-6">
+                                    <div class="d-flex align-items-start gap-2 p-3 bg-dark bg-opacity-50 rounded" style="border-left: 4px solid #00c9a7;">
+                                        <i class="bi bi-check-lg text-success mt-1" style="font-size: 1.8rem;"></i>
+                                        <span style="font-size: 1.5rem; line-height: 1.7; color: white;">${s}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
+                        <h5 class="text-primary mb-4" style="font-size: 2.2rem;">
+                            <i class="bi bi-folder-symlink me-2"></i>
+                            Traces écrites (${totalEvidences} au total)
+                        </h5>
+                        <p class="text-white mb-4" style="font-size: 1.5rem;">
+                            Cliquez sur une carte pour voir les détails complets :
+                        </p>
+                        
+                        ${projectsHtml}
+                        ${activitiesHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    window.goToProjectFromSkill = function(projId) {
+        openProjectFromSkillWidget('projet' + projId);
+    }
+  </script>
+</body>
+</html>

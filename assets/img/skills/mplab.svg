@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="MPLAB X">
+  <rect x="8" y="8" width="240" height="240" rx="28" fill="#1f2937"/>
+  <rect x="20" y="20" width="216" height="216" rx="22" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+  <text x="50%" y="45%" text-anchor="middle" dominant-baseline="middle" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="48" font-weight="700" fill="#e2e8f0">MPLAB</text>
+  <text x="50%" y="62%" text-anchor="middle" dominant-baseline="middle" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="36" font-weight="700" fill="#38bdf8">X</text>
+</svg>

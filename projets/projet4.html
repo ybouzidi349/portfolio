@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centrale Domotique </title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête Moderne */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Images */
+    .main-image-container {
+      width: 100%;
+      height: 950px;
+      background-color: #e0e0e0;
+      border-radius: 40px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes sans mouvement */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    .feature-card p, .sensor-info p, .text-secondary { color: #555; font-size: 2rem; text-align: justify; }
+
+    /* --- STYLE COMPETENCES PROJET 1 --- */
+    .competences-section {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+    .competence-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    .competence-item:last-child { margin-bottom: 0; }
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .competence-desc { font-size: 1.9rem; color: #555; margin: 0; line-height: 1.6; }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.8rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+    .skill-badge:hover { background: #149ddd; color: #fff; transform: scale(1.05); }
+    .skill-badge.trans { background: #e8f5e9; color: #1b5e20; }
+    .skill-badge.trans:hover { background: #4caf50; color: #fff; }
+
+    /* Architecture / Composants */
+    /* --- SECTION RESSENTI --- */
+    .ressenti-section {
+      margin: 4rem 0;
+      padding: 4rem;
+      background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%);
+      border-radius: 20px;
+      border: 2px solid rgba(20, 157, 221, 0.15);
+    }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 2.8rem; }
+    .ressenti-card h4 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.9rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 3rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 4rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 2.2rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+
+    /* Architecture / Composants */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section Schéma */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* --- SECTION COMPÉTENCES (Moderne) --- */
+    .competences-section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+    .competence-card {
+      background: #fff;
+      border-radius: 30px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .competence-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .competence-card .icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #149ddd, #0b1220);
+      color: #fff;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+    .competence-card:hover .icon {
+      transform: scale(1.1);
+    }
+    .competence-card h4 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+    .competence-card p {
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .competence-card a {
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 25px;
+      background: #149ddd;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .competence-card a:hover {
+      background: #117db8;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Centrale Domotique & Qualité d'Air</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">IoT Complet : Du PCB à l'Interface Web</p>
+      <div class="project-tags">
+        <span>Conception KiCad</span>
+        <span>Développement Web</span>
+        <span>ESP32-C6</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/domotique.png" alt="Centrale Domotique">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary">
+          Réalisation complète d'une carte électronique dédiée à la domotique et à la surveillance environnementale. Le système a pour but de mesurer la qualité de l'air intérieur, de piloter des appareils électriques de puissance, et de rendre toutes ces données accessibles et contrôlables via une interface web moderne, hébergée directement sur le microcontrôleur.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-cpu"></i></div>
+          <h3>Conception Hardware</h3>
+          <p>
+            Création intégrale du circuit imprimé (PCB) sur le logiciel <strong>KiCad</strong>. Intégration des étages d'alimentation, des relais de puissance pour le contrôle des charges, et routage des bus de communication pour les capteurs, tout en respectant les contraintes d'isolation électrique.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-globe"></i></div>
+          <h3>Interface Web & Data</h3>
+          <p>
+            Développement d'un site internet complet (Dashboard) en <strong>HTML, CSS et JavaScript</strong> pour la visualisation des données. Cette interface permet de suivre l'évolution de la température et de la qualité de l'air sous forme de graphiques dynamiques et de piloter les relais à distance.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+          <h3>Programmation Système</h3>
+          <p>
+            Écriture du firmware en <strong>C++</strong> sur l'environnement PlatformIO. Gestion de la connexion Wi-Fi, implémentation d'un serveur web asynchrone pour servir l'interface utilisateur, et acquisition périodique des données capteurs via le bus I2C.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REPLACE Compétences section -->
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>La complétude du projet : du PCB à l'interface web en passant par l'embarqué</li>
+            <li>L'aspect IoT : avoir un système entièrement autonome et connecté</li>
+            <li>La possibilité de contrôler des appareils électriques réels depuis un navigateur</li>
+            <li>Le défi de la conception PCB avec des circuits de puissance</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Les subtilités du routage PCB avec séparation analogique/numérique</li>
+            <li>La réalisation d'un serveur web asynchrone sur un microcontrôleur</li>
+            <li>La communication I2C multi-capteurs et sa gestion des collisions</li>
+            <li>L'intégration de relais électriques et les enjeux de sécurité électrique</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma maîtrise complète de KiCad et du design PCB professionnel</li>
+            <li>Mes compétences en développement web embarqué et responsive design</li>
+            <li>Ma compréhension de l'IoT et de l'architecture système distribuée</li>
+            <li>Ma capacité à gérer la puissance électrique en respect des normes</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Ce projet m'a enseigné que la vraie IoT ne consiste pas juste à mesurer et transmettre, mais à créer une expérience utilisateur complète. Du PCB au dashboard web, chaque couche compte. Un projet qui relie réellement le monde physique et numérique ! 🌐</p>
+      </div>
+    </section>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+
+        <div class="competences-section">
+          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          </h2>
+
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 2)
+                </h3>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 2)">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 2)
+                  </div>
+                  <p class="competence-desc">PCB custom multi-pages, routage 4 couches</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 2)">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Vérifier (Niv 2)
+                  </div>
+                  <p class="competence-desc">Tests hardware complets post-fabrication</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">ESP32-C6</span>
+                    <span class="skill-badge">KiCad (PCB)</span>
+                    <span class="skill-badge">I2C / SPI</span>
+                    <span class="skill-badge">Web Server</span>
+                    <span class="skill-badge">IoT & Capteurs</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <div>
+                    <span class="skill-badge trans">Gestion de projet</span>
+                    <span class="skill-badge trans">Documentation</span>
+                    <span class="skill-badge trans">Validation fonctionnelle</span>
+                    <span class="skill-badge trans">Communication technique</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Cœur du Système</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-wifi"></i></div>
+              <div class="sensor-info">
+                <h4>ESP32-C6 (Microcontrôleur)</h4>
+                <p>Cerveau du système intégrant le Wi-Fi 6. Il gère à la fois la lecture des capteurs et l'hébergement du serveur web.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-wind"></i></div>
+              <div class="sensor-info">
+                <h4>Capteur Qualité d'Air (VOC/CO2)</h4>
+                <p>Analyse les composés organiques volatils et le CO2 pour évaluer la salubrité de l'air intérieur.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-thermometer-sun"></i></div>
+              <div class="sensor-info">
+                <h4>Sonde Environnementale</h4>
+                <p>Mesure précise de la température et de l'humidité relative pour la régulation du confort thermique.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-lightning-charge"></i></div>
+              <div class="sensor-info">
+                <h4>Relais de Puissance</h4>
+                <p>Interface de commutation permettant de piloter des équipements 230V (chauffage, ventilation) via l'interface web.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="schematic-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Conception & Routage (KiCad)</h3>
+      <p class="text-muted mb-4" style="font-size: 1.2rem;">
+        Vue du circuit imprimé conçu pour intégrer l'ensemble des composants de manière compacte et sécurisée.
+      </p>
+      
+      <div class="schematic-container">
+        <img src="../assets/img/portfolio/pcb_kicad.png" class="img-fluid rounded" alt="Routage PCB sous KiCad" style="width: 100%; opacity: 0.9;">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

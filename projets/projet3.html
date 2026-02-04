@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eurobot 2025 - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+    /* Tag Spécial SolidWorks */
+    .project-tags span.highlight {
+      background: #fff3e0;
+      color: #e65100;
+      border: 1px solid #ffe0b2;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    
+    /* Flexbox SEULEMENT pour les cartes du haut (Le Défi) */
+    .row.g-4 .feature-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .row.g-4 .feature-card h3 { 
+      font-size: 2.6rem; 
+      font-weight: 700; 
+      margin-bottom: 1.5rem; 
+      color: #111; 
+    }
+    
+    .row.g-4 .feature-card p {
+      flex: 1;
+      color: #555;
+      font-size: 2rem;
+      text-align: justify;
+    }
+    
+    .icon-box {
+      width: 100px; 
+      height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .icon-box.meca {
+      background: rgba(255, 152, 0, 0.1);
+      color: #f57c00;
+    }
+    
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify;
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+    .badge-custom.solid { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+
+    /* Architecture / Composants */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section Schéma */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* Section Compétences BUT */
+    .competence-card {
+      transition: transform 0.2s;
+    }
+    .competence-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .competence-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .competence-title i {
+      font-size: 2rem;
+    }
+    
+    .competence-desc {
+      font-size: 1.9rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- SECTION COMPÉTENCES STYLED COMME PROJET 1 --- */
+    .competences-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-top: 5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .competence-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .competence-card:hover {
+      border-color: #149ddd;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(20, 157, 221, 0.15);
+    }
+
+    .skill-badge {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      background: #149ddd;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .skill-badge.solid {
+      background: #fff3e0;
+      color: #e65100;
+      border: 1px solid #ffe0b2;
+    }
+
+    .skill-badge.solid:hover {
+      background: #f57c00;
+      color: #fff;
+    }
+
+    /* Cartes compétences : affichage normal bloc (côte à côte par la grille) */
+    .competences-section .feature-card {
+      display: block;
+      height: auto;
+    }
+
+    /* --- SECTION RESSENTI --- */
+    .ressenti-section {
+      margin: 4rem 0;
+      padding: 4rem;
+      background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%);
+      border-radius: 20px;
+      border: 2px solid rgba(20, 157, 221, 0.15);
+    }
+
+    .ressenti-section h2 {
+      font-size: 3.5rem;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .ressenti-section h2 i {
+      color: #e74c3c;
+    }
+
+    .ressenti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .ressenti-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ressenti-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .ressenti-card.liked {
+      border-top: 4px solid #e74c3c;
+    }
+
+    .ressenti-card.learned {
+      border-top: 4px solid #f39c12;
+    }
+
+    .ressenti-card.improved {
+      border-top: 4px solid #27ae60;
+    }
+
+    .ressenti-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .ressenti-card.liked .ressenti-icon {
+      background: rgba(231, 76, 60, 0.1);
+      color: #e74c3c;
+    }
+
+    .ressenti-card.learned .ressenti-icon {
+      background: rgba(243, 156, 18, 0.1);
+      color: #f39c12;
+    }
+
+    .ressenti-card.improved .ressenti-icon {
+      background: rgba(39, 174, 96, 0.1);
+      color: #27ae60;
+    }
+
+    .ressenti-icon i {
+      font-size: 2.8rem;
+    }
+
+    .ressenti-card h4 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .ressenti-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ressenti-card li {
+      padding: 0.6rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 1.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .ressenti-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #149ddd;
+      font-weight: bold;
+    }
+
+    .ressenti-conclusion {
+      background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%);
+      color: white;
+      padding: 3rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .ressenti-conclusion i {
+      font-size: 4rem;
+      opacity: 0.3;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+    }
+
+    .ressenti-conclusion p {
+      font-size: 2.2rem;
+      line-height: 1.8;
+      margin: 0;
+      padding-left: 3rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Coupe de France de Robotique</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Architecture Distribuée & Conception Mécanique</p>
+      <div class="project-tags">
+        <span>Bus CAN</span>
+        <span class="highlight"><i class="bi bi-gear-fill me-2"></i>Conception SolidWorks</span>
+        <span>Stratégie</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/Eurobot.png" alt="Photo des Robots Eurobot">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">Le Défi</h2>
+        <p class="text-secondary">
+          Conception et réalisation d'un système robotique complet pour la Coupe de France de Robotique 2025. L'objectif est de déployer deux robots autonomes coopératifs capables d'effectuer des tâches complexes (tri, préhension, déplacement). Ce projet a nécessité une double expertise : une architecture électronique distribuée pour l'intelligence, et une conception mécanique sur-mesure pour la robustesse et la précision des actions.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+          <h3>Architecture Distribuée</h3>
+          <p>
+            Mise en œuvre d'un réseau <strong>Bus CAN</strong> industriel pour connecter les différents organes du robot. Cette approche modulaire permet de séparer l'intelligence centrale des cartes d'actionneurs, garantissant une fiabilité accrue et une maintenance facilitée.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box meca"><i class="bi bi-box-seam"></i></div>
+          <h3>Conception Mécanique 3D</h3>
+          <p>
+            Modélisation intégrale du robot sous <strong>SolidWorks</strong>. Conception des châssis, des systèmes de préhension et des supports moteurs. L'utilisation de la CAO a permis de valider les assemblages virtuellement avant la fabrication (impression 3D et usinage) pour une intégration parfaite avec l'électronique.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-diagram-2"></i></div>
+          <h3>Stratégie Modulaire</h3>
+          <p>
+            Développement d'une machine à états finis (State Machine) pour gérer le match. Le système est résilient : il adapte sa stratégie en temps réel, optimise les déplacements et gère les priorités pour maximiser le score dans le temps imparti (90s).
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>La complexité de gérer deux robots coopératifs et autonomes simultanément</li>
+            <li>Le défi de l'intégration mécanique et électronique en temps réel</li>
+            <li>L'adrénaline de la compétition et de la mise au point sous pression</li>
+            <li>Le travail en équipe et l'entraide pour réussir une architecture distribuée</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>Les défis réels du Bus CAN : synchronisation, collisions, timeouts</li>
+            <li>L'importance de la CAO pour valider les concepts avant fabrication</li>
+            <li>La gestion des états en robotique (State Machine) appliquée aux contraintes réelles</li>
+            <li>Les enjeux de la résilience systémique en environnement compétitif</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma capacité à concevoir une architecture modulaire et scalable</li>
+            <li>Mon expertise en conception 3D et optimisation mécanique</li>
+            <li>Ma gestion du stress et de la prise de décision rapide sous pression</li>
+            <li>Mes compétences en débogage d'une architecture distribuée complexe</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>Ce projet m'a appris que la robotique, c'est 20% d'électronique, 20% de mécanique et 60% de prise de décision sous contrainte. La vraie victoire n'est pas seulement dans le score, mais dans le système robuste qu'on a construit ensemble ! 🤖</p>
+      </div>
+    </section>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+        
+        <div class="competences-section">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 3)
+                </h3>
+                
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('implanter', 3)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-diagram-3"></i>
+                    Implanter (Niv 3)
+                  </div>
+                  <p class="competence-desc">Gestion système complexe (Méca + Élec)</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 3)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-pencil-square"></i>
+                    Concevoir (Niv 3)
+                  </div>
+                  <p class="competence-desc">Architecture & Choix Technologiques</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 2)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Vérifier (Niv 2)
+                  </div>
+                  <p class="competence-desc">Validation intermédiaire des sous-systèmes</p>
+                </div>
+
+                <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 3)" style="cursor: pointer;">
+                  <div class="competence-title">
+                    <i class="bi bi-check2-square"></i>
+                    Vérifier (Niv 3)
+                  </div>
+                  <p class="competence-desc">Tests finaux & validation système</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="competence-card">
+                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
+                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                </h3>
+                
+                <div class="mb-4">
+                  <h4 class="h5 fw-bold text-dark mb-3">⚙️ Compétences Techniques</h4>
+                  <div>
+                    <span class="skill-badge">Architecture Distribuée</span>
+                    <span class="skill-badge">Bus CAN / Analyzer</span>
+                    <span class="skill-badge">C++ Embarqué</span>
+                    <span class="skill-badge">STM32 / Microcontrôleurs</span>
+                    <span class="skill-badge">Git / GitHub</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Conception Mécanique</h4>
+                  <div>
+                    <span class="skill-badge solid">SolidWorks (CAO Expert)</span>
+                    <span class="skill-badge solid">Prototypage Rapide (Impression 3D)</span>
+                    <span class="skill-badge solid">Assemblage Virtuel</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Architecture du Système</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-cpu"></i></div>
+              <div class="sensor-info">
+                <h4>Cerveau Principal (Master)</h4>
+                <p>Carte centrale haute performance chargée de la stratégie de haut niveau et de la coordination des mouvements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-hdd-network"></i></div>
+              <div class="sensor-info">
+                <h4>Bus CAN (Communication)</h4>
+                <p>Colonne vertébrale du robot. Assure une communication rapide et robuste entre le cerveau et les actionneurs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-gear-wide"></i></div>
+              <div class="sensor-info">
+                <h4>Actionneurs & Mécanique</h4>
+                <p>Bras, pinces et ascenseurs conçus sous SolidWorks et pilotés par des cartes esclaves dédiées.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="sensor-item">
+              <div class="sensor-icon"><i class="bi bi-robot"></i></div>
+              <div class="sensor-info">
+                <h4>PAMIs (Modules Indépendants)</h4>
+                <p>Petits robots autonomes secondaires déployés pour effectuer des tâches parallèles (ex: panneaux solaires).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="schematic-section">
+      <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Synoptique & Conception</h3>
+      <p class="text-muted mb-4" style="font-size: 1.2rem;">
+        Vue d'ensemble de l'architecture électronique distribuée et de l'intégration mécanique.
+      </p>
+      
+      <div class="schematic-container">
+        <img src="../assets/img/portfolio/architecture.png" class="img-fluid rounded" alt="Architecture système du robot" style="width: 100%; opacity: 0.9;">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

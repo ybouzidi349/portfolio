@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mise en Service Automatisme - Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* --- DESIGN GÉNÉRAL (Premium & Stable) --- */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .wrapper {
+      max-width: 98%;
+      margin: 4rem auto;
+      padding: 0 30px;
+    }
+
+    /* En-tête */
+    .project-hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .project-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #149ddd, #0b1220);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      letter-spacing: -1px;
+    }
+    .project-tags span {
+      background: #eef2f6;
+      color: #444;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 8px;
+      display: inline-block;
+    }
+
+    /* Image Principale */
+    .main-image-container {
+      width: 100%;
+      height: 750px;
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Cartes */
+    .feature-card {
+      background: #fff;
+      padding: 3rem;
+      border-radius: 30px;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .icon-box {
+      width: 100px; height: 100px;
+      background: rgba(20, 157, 221, 0.1);
+      border-radius: 25px;
+      display: flex; align-items: center; justify-content: center;
+      color: #149ddd;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    
+    /* Texte Justifié */
+    .feature-card p, .sensor-info p, .text-secondary { 
+      color: #555; 
+      font-size: 2rem; 
+      text-align: justify;
+    }
+
+    /* Compétences */
+    .skill-btn {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+      margin-bottom: 15px;
+    }
+    .skill-btn:hover {
+      background: #fff;
+      border-color: #149ddd;
+      box-shadow: 0 10px 20px rgba(20, 157, 221, 0.15);
+      transform: translateY(-3px);
+    }
+    .skill-btn strong { font-size: 1.4rem; color: #149ddd; }
+    .skill-btn span { font-size: 1rem; color: #666; }
+    
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #e3f2fd;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+    .badge-custom.trans { background: #e8f5e9; color: #1b5e20; }
+    .badge-custom.elec { background: #ffebee; color: #b71c1c; }
+
+    /* Composants / Méthodologie */
+    .sensor-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      margin-bottom: 2rem;
+    }
+    .sensor-icon {
+      font-size: 3.5rem;
+      color: #149ddd;
+      background: #f0f8ff;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
+
+    /* Section Mesures */
+    .schematic-section {
+      margin-top: 6rem;
+      text-align: center;
+    }
+    .schematic-container {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    .btn-back {
+      font-size: 2rem;
+      padding: 20px 50px;
+      border-width: 2px;
+      font-weight: 600;
+    }
+
+    /* Styles pour les items de compétences */
+    .competence-item {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
+      border-left: 4px solid #149ddd;
+      border-radius: 15px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    
+    .competence-item:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.2);
+    }
+    
+    .competence-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .competence-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .competence-title i {
+      font-size: 1.3rem;
+    }
+    
+    .competence-desc {
+      font-size: 1.15rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <div class="mb-5">
+      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+        <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
+      </a>
+    </div>
+
+    <header class="project-hero">
+      <h1 class="project-title">Mise en Service Automatisme</h1>
+      <p class="lead text-muted mb-4" style="font-size: 1.5rem;">Gestion Éclairage & Ventilation (TOR / Variable)</p>
+      <div class="project-tags">
+        <span>Électrotechnique</span>
+        <span>Diagnostic</span>
+        <span>Automatisme</span>
+      </div>
+    </header>
+
+    <div class="main-image-container">
+      <img src="../assets/img/portfolio/unilogic.png" alt="Armoire de commande">
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h2 class="fw-bold mb-4 text-center" style="font-size: 2.5rem;">L'Objectif</h2>
+        <p class="text-secondary">
+          Mise en service complète et validation d'un système automatisé de gestion de bâtiment. L'installation contrôle l'éclairage (halogène et LED) et la ventilation selon différents modes : Tout Ou Rien (TOR) pour une commande simple, et modulation (Gradation/Vitesse variable) pour une efficacité énergétique optimale. La mission consistait à vérifier la conformité du câblage, assurer la sécurité électrique et valider chaque fonctionnalité.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-lightning-fill"></i></div>
+          <h3>Électricité & Sécurité</h3>
+          <p>
+            Vérification rigoureuse de l'armoire électrique : contrôle des protections (disjoncteurs), continuité des masses et conformité du câblage par rapport au schéma électrique. Les niveaux de tension (12V DC, 24V, 230V AC) ont été validés à chaque point critique avant la mise sous tension des actionneurs.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-toggles"></i></div>
+          <h3>Commandes Avancées</h3>
+          <p>
+            Validation des différents types de pilotage. Le système intègre des commandes TOR classiques via relais électromagnétiques, mais aussi des commandes proportionnelles. La variation de lumière est gérée par des signaux 0-10V, et la vitesse des ventilateurs est modulée par un signal PWM issu de l'automate.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-box"><i class="bi bi-activity"></i></div>
+          <h3>Analyse de Signal</h3>
+          <p>
+            Utilisation d'outils de mesure avancés pour qualifier les signaux de commande. L'oscilloscope a permis de visualiser la forme des signaux PWM (rapport cyclique) pour la ventilation, confirmant la corrélation précise entre la consigne envoyée par l'automate et la vitesse de rotation réelle.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-lg-12">
+        <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
+        
+        <div class="row g-5">
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-mortarboard-fill text-primary me-2"></i> Compétences BUT (Niv. 2)</h3>
+              
+              <div class="competence-item" onclick="parent.goToCompetenceDetail('verifier', 2)">
+                <div class="competence-title">
+                  <i class="bi bi-check2-square"></i>
+                  Vérifier
+                </div>
+                <p class="competence-desc">Tests de continuité et conformité électrique</p>
+              </div>
+
+              <div class="competence-item" onclick="parent.goToCompetenceDetail('maintenir', 2)">
+                <div class="competence-title">
+                  <i class="bi bi-wrench-adjustable"></i>
+                  Maintenir
+                </div>
+                <p class="competence-desc">Diagnostic de pannes et validation fonctionnelle</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-card">
+              <h3 class="mb-4"><i class="bi bi-tools text-primary me-2"></i> Stack Technique</h3>
+              
+              <div class="mb-4">
+                <h4 class="h5 fw-bold text-dark mb-3">🛠️ Instruments & Matériel</h4>
+                <div>
+                  <span class="badge-custom elec">Multimètre (Continuité/Tension)</span>
+                  <span class="badge-custom elec">Oscilloscope (PWM)</span>
+                  <span class="badge-custom elec">Automate Programmable (API)</span>
+                  <span class="badge-custom elec">Variateurs & Relais</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="h5 fw-bold text-dark mb-3">🤝 Transversales</h4>
+                <div>
+                  <span class="badge-custom trans">Rigueur et sécurité</span>
+                  <span class="badge-custom trans">Lecture de schémas industriels</span>
+                  <span class="badge-custom trans">Méthodologie de test</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ressenti-section">
+      <h2><i class="bi bi-heart-pulse-fill"></i> Mon Ressenti</h2>
+      
+      <div class="ressenti-grid">
+        <div class="ressenti-card liked">
+          <div class="ressenti-icon"><i class="bi bi-emoji-heart-eyes"></i></div>
+          <h4>Ce que j'ai aimé</h4>
+          <ul>
+            <li>Travailler sur un système industriel réel avec des contraintes professionnelles</li>
+            <li>Le côté "détective" : diagnostiquer et résoudre des pannes complexes</li>
+            <li>Voir le système fonctionner après des heures de mise au point</li>
+            <li>L'aspect concret de l'automatisme appliqué à un bâtiment</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card learned">
+          <div class="ressenti-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4>Ce que j'ai découvert</h4>
+          <ul>
+            <li>La programmation d'automates et les langages normalisés (GRAFCET, Ladder)</li>
+            <li>Les variateurs de vitesse et la gradation d'éclairage</li>
+            <li>Les procédures de mise en service industrielle</li>
+            <li>L'importance de la documentation et des tests de conformité</li>
+          </ul>
+        </div>
+        
+        <div class="ressenti-card improved">
+          <div class="ressenti-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Ce que j'ai amélioré</h4>
+          <ul>
+            <li>Ma méthodologie de diagnostic de pannes</li>
+            <li>Ma rigueur dans les procédures de validation</li>
+            <li>Ma capacité à lire et interpréter des schémas électriques complexes</li>
+            <li>Mon sens de l'organisation et de la documentation technique</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ressenti-conclusion">
+        <i class="bi bi-quote"></i>
+        <p>L'automatisme m'a appris que chaque système, aussi complexe soit-il, peut être compris et maîtrisé avec méthode et persévérance. La satisfaction de voir une armoire fonctionner parfaitement après une mise en service réussie est incomparable ! 🏭</p>
+      </div>
+    </section>
+
+    <style>
+    .ressenti-section { margin: 4rem 0; padding: 4rem; background: linear-gradient(135deg, #fff5f5 0%, #f0f7ff 100%); border-radius: 20px; border: 2px solid rgba(20, 157, 221, 0.15); }
+    .ressenti-section h2 { font-size: 3.5rem; color: #2c3e50; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    .ressenti-section h2 i { color: #e74c3c; }
+    .ressenti-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .ressenti-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .ressenti-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .ressenti-card.liked { border-top: 4px solid #e74c3c; }
+    .ressenti-card.learned { border-top: 4px solid #f39c12; }
+    .ressenti-card.improved { border-top: 4px solid #27ae60; }
+    .ressenti-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ressenti-card.liked .ressenti-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+    .ressenti-card.learned .ressenti-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+    .ressenti-card.improved .ressenti-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+    .ressenti-icon i { font-size: 1.8rem; }
+    .ressenti-card h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #2c3e50; }
+    .ressenti-card ul { list-style: none; padding: 0; margin: 0; }
+    .ressenti-card li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; font-size: 1.1rem; color: #555; line-height: 1.6; }
+    .ressenti-card li::before { content: "→"; position: absolute; left: 0; color: #149ddd; font-weight: bold; }
+    .ressenti-conclusion { background: linear-gradient(135deg, #149ddd 0%, #0f7fb3 100%); color: white; padding: 2rem; border-radius: 12px; position: relative; }
+    .ressenti-conclusion i { font-size: 3rem; opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; }
+    .ressenti-conclusion p { font-size: 1.3rem; line-height: 1.8; margin: 0; padding-left: 3rem; font-style: italic; }
+    </style>
+
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
