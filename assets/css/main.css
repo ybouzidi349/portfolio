@@ -62,8 +62,8 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
-  font-size: 18px; /* Réduit la taille de la police pour éviter le zoom excessif */
-  line-height: 2;
+  font-size: 15px;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
@@ -140,8 +140,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   bottom: 0;
-  padding: 0 20px;
-  width: 400px; /* MODIF: Menu plus large (400px) */
+  padding: 0 12px;
+  width: 240px; /* Réduit à 240px */
   transition: all ease-in-out 0.3s;
   overflow-y: auto;
   z-index: 997;
@@ -149,15 +149,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header .profile-img img {
-  margin: 30px auto;
+  margin: 15px auto;
   display: block;
-  width: 200px; /* AUGMENTÉ */
-  border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  width: 110px; /* Réduit à 110px */
+  border: 5px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 .header .logo {
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .header .logo img {
@@ -166,28 +166,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header .logo h1 {
-  font-size: 48px; /* AUGMENTÉ : de 36px à 48px */
+  font-size: 22px;
   margin: 0;
   font-weight: 800;
   color: var(--heading-color);
 }
 
 .header .social-links {
-  margin: 0 0 30px 0;
+  margin: 0 0 14px 0;
 }
 
 .header .social-links a {
-  font-size: 32px; /* AUGMENTÉ : de 24px à 32px */
+  font-size: 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: color-mix(in srgb, var(--default-color), transparent 90%);
   color: var(--default-color);
-  margin: 0 5px;
+  margin: 0 4px;
   border-radius: 50%;
   text-align: center;
-  width: 60px; /* AUGMENTÉ */
-  height: 60px; /* AUGMENTÉ */
+  width: 35px;
+  height: 35px;
   transition: 0.3s;
 }
 
@@ -200,8 +200,8 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1200px) {
   .header~main,
   .header~#footer {
-    margin-left: 400px; /* MODIF: Ajusté à 400px */
-    width: calc(100% - 400px); /* Le reste de la page */
+    margin-left: 240px; /* Réduit à 240px */
+    width: calc(100% - 240px);
   }
 }
 
@@ -218,16 +218,16 @@ h1, h2, h3, h4, h5, h6 {
 .header .header-toggle {
   color: var(--contrast-color);
   background-color: var(--accent-color);
-  font-size: 28px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   cursor: pointer;
   position: fixed;
-  top: 20px;
+  top: 15px;
   right: 20px;
   z-index: 9999;
   transition: background-color 0.3s;
@@ -252,16 +252,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .navmenu ul {
   list-style: none;
-  padding: 0 0 20px 0;
+  padding: 0 0 14px 0;
   margin: 0;
 }
 
 .navmenu a,
 .navmenu a:focus {
   color: var(--nav-color);
-  padding: 28px 12px; /* AUGMENTÉ : padding vertical */
+  padding: 10px 8px;
   font-family: var(--nav-font);
-  font-size: 26px; /* AUGMENTÉ : de 20px à 26px */
+  font-size: 13px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -272,17 +272,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .navmenu a .navicon,
 .navmenu a:focus .navicon {
-  font-size: 36px; /* AUGMENTÉ : de 28px à 36px */
-  margin-right: 15px;
+  font-size: 16px;
+  margin-right: 8px;
 }
 
 .navmenu a .toggle-dropdown,
 .navmenu a:focus .toggle-dropdown {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 0;
   margin-left: auto;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
   color: var(--default-color);
   background-color: var(--background-color);
-  font-size: 32px; /* AUGMENTÉ : de 18px → 24px → 32px */
+  font-size: 14px;
   padding: 50px 0;
   position: relative;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
@@ -335,7 +335,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer .credits {
   margin-top: 6px;
-  font-size: 28px; /* AUGMENTÉ : de 16px → 20px → 28px */
+  font-size: 13px;
   text-align: center;
 }
 
@@ -353,18 +353,18 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 20px;
+  right: 15px;
   bottom: -20px;
   z-index: 99999;
   background-color: var(--accent-color);
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   border-radius: 50px;
   transition: all 0.4s;
 }
 
 .scroll-top i {
-  font-size: 42px; /* AUGMENTÉ : de 28px → 32px → 42px */
+  font-size: 18px;
   color: var(--contrast-color);
   line-height: 0;
 }
@@ -395,12 +395,12 @@ h1, h2, h3, h4, h5, h6 {
 .page-title {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 40px 0;
+  padding: 25px 0;
   position: relative;
 }
 
 .page-title h1 {
-  font-size: 68px; /* AUGMENTÉ : de 40px → 52px → 68px */
+  font-size: 28px;
   font-weight: 800;
 }
 
@@ -410,7 +410,7 @@ h1, h2, h3, h4, h5, h6 {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 30px; /* AUGMENTÉ : de 18px → 22px → 30px */
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -431,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
 section, .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 120px 0; /* AUGMENTÉ : de 100px à 120px */
+  padding: 80px 0; /* Réduit de 120px à 80px */
   overflow: clip;
 }
 
@@ -445,15 +445,15 @@ section, .section {
 # Global Section Titles
 --------------------------------------------------------------*/
 .section-title {
-  padding-bottom: 80px;
+  padding-bottom: 50px;
   position: relative;
 }
 
 .section-title h2 {
-  font-size: 64px; /* AUGMENTÉ : de 50px à 64px */
+  font-size: 26px;
   font-weight: 800;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
   position: relative;
 }
 
@@ -461,8 +461,8 @@ section, .section {
   content: "";
   position: absolute;
   display: block;
-  width: 80px;
-  height: 5px;
+  width: 60px;
+  height: 4px;
   background: var(--accent-color);
   left: 0;
   bottom: 0;
@@ -470,7 +470,7 @@ section, .section {
 
 .section-title p {
   margin-bottom: 0;
-  font-size: 1.8rem; /* AUGMENTÉ : de 1.4rem à 1.8rem */
+  font-size: 1.1rem;
   color: #666;
 }
 
@@ -512,13 +512,13 @@ section, .section {
 
 .hero h2 {
   margin: 0;
-  font-size: 110px; /* AUGMENTÉ : de 90px à 110px */
+  font-size: 64px;
   font-weight: 900;
 }
 
 .hero p {
   margin: 15px 0 0 0;
-  font-size: 48px; /* AUGMENTÉ : de 36px à 48px */
+  font-size: 26px;
 }
 
 .hero p span {
@@ -531,7 +531,7 @@ section, .section {
 }
 
 .hero .social-links a {
-  font-size: 40px; /* AUGMENTÉ : de 32px à 40px */
+  font-size: 24px;
   display: inline-block;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   line-height: 1;
@@ -581,15 +581,15 @@ section, .section {
 /* TYPOGRAPHIE HERO */
 .hero h2 {
   margin: 0;
-  font-size: 110px;
+  font-size: 48px;
   font-weight: 800;
   color: #fff;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Ombre pour lisibilité sur vidéo */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .hero p {
-  margin: 15px 0 0 0;
-  font-size: 48px;
+  margin: 10px 0 0 0;
+  font-size: 18px;
   color: #fff;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
@@ -601,8 +601,8 @@ section, .section {
 
 /* Adaptation Mobile */
 @media (max-width: 768px) {
-  .hero h2 { font-size: 50px; }
-  .hero p { font-size: 24px; }
+  .hero h2 { font-size: 32px; }
+  .hero p { font-size: 18px; }
 }
 
 .hero .social-links a:hover {
@@ -610,8 +610,8 @@ section, .section {
 }
 
 @media (max-width: 768px) {
-  .hero h2 { font-size: 50px; }
-  .hero p { font-size: 26px; }
+  .hero h2 { font-size: 32px; }
+  .hero p { font-size: 18px; }
 }
 
 /*--------------------------------------------------------------
@@ -619,7 +619,7 @@ section, .section {
 --------------------------------------------------------------*/
 .about .content h2 {
   font-weight: 800;
-  font-size: 60px; /* AUGMENTÉ : de 36px → 48px → 60px */
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
@@ -632,7 +632,7 @@ section, .section {
   margin-bottom: 25px;
   display: flex;
   align-items: center;
-  font-size: 2.2rem; /* AUGMENTÉ : de 1.3rem → 1.6rem → 2.2rem */
+  font-size: 1rem;
 }
 
 .about .content ul strong {
@@ -640,7 +640,7 @@ section, .section {
 }
 
 .about .content ul i {
-  font-size: 42px; /* AUGMENTÉ : de 24px → 32px → 42px */
+  font-size: 24px;
   margin-right: 10px;
   color: var(--accent-color);
   line-height: 0;
@@ -657,7 +657,7 @@ section, .section {
 .stats .stats-item i {
   color: var(--accent-color);
   display: block;
-  font-size: 80px;
+  font-size: 48px;
   float: left;
   line-height: 0;
   margin-right: 30px;
@@ -665,7 +665,7 @@ section, .section {
 
 .stats .stats-item .purecounter {
   color: var(--heading-color);
-  font-size: 80px;
+  font-size: 48px;
   line-height: 50px;
   display: block;
   font-weight: 700;
@@ -677,7 +677,7 @@ section, .section {
   padding: 15px 0 0 0;
   margin: 0;
   font-family: var(--heading-font);
-  font-size: 30px; /* AUGMENTÉ : de 22px → 30px */
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -687,7 +687,7 @@ section, .section {
 .skills-cta {
   display: block;
   border-radius: 20px;
-  padding: 60px; /* AUGMENTÉ : de 50px à 60px */
+  padding: 40px;
   border: 1px solid rgba(0,0,0,0.05);
   background: white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -705,14 +705,14 @@ section, .section {
 --------------------------------------------------------------*/
 .resume .resume-title {
   color: var(--heading-color);
-  font-size: 52px; /* AUGMENTÉ : de 32px → 40px → 52px */
+  font-size: 22px;
   font-weight: 800;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .resume .resume-item {
-  padding: 0 0 40px 40px;
+  padding: 0 0 30px 30px;
   margin-top: -2px;
   border-left: 3px solid var(--accent-color);
   position: relative;
@@ -720,19 +720,19 @@ section, .section {
 
 .resume .resume-item h4 {
   line-height: 1.2;
-  font-size: 42px; /* AUGMENTÉ : de 24px → 32px → 42px */
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .resume .resume-item h5 {
-  font-size: 34px; /* AUGMENTÉ : de 20px → 26px → 34px */
-  padding: 8px 20px;
+  font-size: 14px;
+  padding: 6px 14px;
   display: inline-block;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   background: #f0f4f8;
 }
 
@@ -742,7 +742,7 @@ section, .section {
 
 .resume .resume-item ul li {
   padding-bottom: 15px;
-  font-size: 2rem; /* AUGMENTÉ : de 1.2rem → 1.5rem → 2rem */
+  font-size: 0.95rem;
 }
 
 .resume .resume-item:last-child {
@@ -766,7 +766,7 @@ section, .section {
 --------------------------------------------------------------*/
 .portfolio .portfolio-filters {
   padding: 0;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 30px auto;
   list-style: none;
   text-align: center;
 }
@@ -775,12 +775,12 @@ section, .section {
   cursor: pointer;
   display: inline-block;
   padding: 0;
-  font-size: 30px; /* AUGMENTÉ : de 18px → 22px → 30px */
+  font-size: 14px;
   font-weight: 600;
-  margin: 0 15px;
+  margin: 0 12px;
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -815,12 +815,12 @@ section, .section {
 .portfolio-content img {
   transition: 0.3s;
   width: 100%; 
-  height: 500px; /* AUGMENTÉ : de 450px à 500px pour plus d'espace */
-  object-fit: contain; /* MAINTENU : affiche l'image complète sans couper */
+  height: 300px;
+  object-fit: contain;
   background-color: #f8f9fa;
   border-bottom: 1px solid #eee;
-  padding: 20px; /* AJOUTÉ : espace autour de l'image pour ne pas qu'elle colle */
-  box-sizing: border-box; /* IMPORTANT : le padding compte dans la hauteur totale */
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .portfolio-content:hover img {
@@ -828,7 +828,7 @@ section, .section {
 }
 
 .portfolio-info {
-  padding: 60px; /* AUGMENTÉ : de 40px → 50px → 60px */
+  padding: 30px;
   background: #fff;
   flex-grow: 1;
   display: flex;
@@ -836,14 +836,14 @@ section, .section {
 }
 
 .portfolio-info h4 {
-  font-size: 4.2rem; /* AUGMENTÉ : de 2.8rem → 3rem → 4.2rem */
+  font-size: 1.5rem;
   font-weight: 800;
   color: #2c3e50;
   margin-bottom: 20px;
 }
 
 .portfolio-description {
-  font-size: 2.6rem; /* AUGMENTÉ : de 1.6rem → 1.8rem → 2.6rem */
+  font-size: 0.95rem;
   color: #555;
   line-height: 1.8;
   margin-bottom: 30px;
@@ -858,9 +858,9 @@ section, .section {
 }
 
 .badge-tech {
-  font-size: 2rem; /* AUGMENTÉ : de 1.3rem → 1.5rem → 2rem */
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 16px 32px; /* AUGMENTÉ */
+  padding: 8px 16px;
   border-radius: 8px;
   letter-spacing: 0.5px;
 }
@@ -876,7 +876,7 @@ section, .section {
 
 .portfolio-links a {
   color: #6c757d;
-  font-size: 2rem; /* AUGMENTÉ : de 1.8rem à 2rem */
+  font-size: 1.2rem;
   transition: 0.3s;
   display: flex;
   align-items: center;
@@ -891,29 +891,29 @@ section, .section {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px; /* AUGMENTÉ : de 70px à 90px */
-  height: 90px; /* AUGMENTÉ : de 70px à 90px */
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   transition: 0.5s;
   border: 1px solid var(--accent-color);
-  margin-right: 25px;
+  margin-right: 18px;
 }
 
 .services .service-item .icon i {
   color: var(--contrast-color);
-  font-size: 58px; /* AUGMENTÉ : de 36px → 48px → 58px */
+  font-size: 24px;
   line-height: 0;
 }
 
 .services .service-item .title {
   font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 42px; /* AUGMENTÉ : de 24px → 32px → 42px */
+  margin-bottom: 12px;
+  font-size: 16px;
 }
 
 .services .service-item .description {
   line-height: 1.6;
-  font-size: 2rem; /* AUGMENTÉ : de 1.2rem → 1.5rem → 2rem */
+  font-size: 0.9rem;
 }
 
 /*--------------------------------------------------------------
@@ -922,31 +922,31 @@ section, .section {
 .contact .info-wrap {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
 }
 
 .contact .info-item {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 .contact .info-item i {
-  font-size: 52px; /* AUGMENTÉ : de 32px → 40px → 52px */
+  font-size: 26px;
   color: var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), transparent 92%);
-  width: 100px; /* AUGMENTÉ : de 60px → 80px → 100px */
-  height: 100px; /* AUGMENTÉ : de 60px → 80px → 100px */
+  width: 54px;
+  height: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .contact .info-item h3 {
   padding: 0;
-  font-size: 42px; /* AUGMENTÉ : de 24px → 32px → 42px */
+  font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
 }

@@ -15,7 +15,7 @@
     body {
       background-color: #f8f9fa;
       font-family: 'Poppins', sans-serif;
-      font-size: 26px;
+      font-size: 16px;
       color: #333;
       line-height: 1.8;
     }
@@ -37,7 +37,7 @@
       border: 1px solid rgba(0,0,0,0.02);
     }
     .project-title {
-      font-size: 5.5rem;
+      font-size: 3.5rem;
       font-weight: 800;
       background: linear-gradient(45deg, #149ddd, #0b1220);
       -webkit-background-clip: text;
@@ -48,9 +48,9 @@
     .project-tags span {
       background: #eef2f6;
       color: #444;
-      padding: 16px 40px;
+      padding: 12px 28px;
       border-radius: 50px;
-      font-size: 2rem;
+      font-size: 1.2rem;
       font-weight: 600;
       margin: 0 8px;
       display: inline-block;
@@ -59,7 +59,7 @@
     /* Images */
     .main-image-container {
       width: 100%;
-      height: 950px;
+      height: 450px;
       background-color: #e0e0e0;
       border-radius: 40px;
       overflow: hidden;
@@ -70,8 +70,10 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     }
     .main-image-container img {
-      width: 100%;
-      height: 100%;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
       object-fit: contain;
       background-color: #f8f9fa;
       padding: 12px;
@@ -88,16 +90,16 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
     .icon-box {
-      width: 100px; height: 100px;
+      width: 70px; height: 70px;
       background: rgba(20, 157, 221, 0.1);
       border-radius: 25px;
       display: flex; align-items: center; justify-content: center;
       color: #149ddd;
-      font-size: 3.5rem;
+      font-size: 2.2rem;
       margin-bottom: 2rem;
     }
-    .feature-card h3 { font-size: 2.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
-    .feature-card p, .sensor-info p, .text-secondary { color: #555; font-size: 2rem; text-align: justify; }
+    .feature-card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; }
+    .feature-card p, .sensor-info p, .text-secondary { color: #555; font-size: 1.15rem; text-align: justify; }
 
     /* --- STYLE COMPETENCES PROJET 1 --- */
     .competences-section {
@@ -125,8 +127,8 @@
       background: linear-gradient(135deg, #f0f8ff 0%, #e3f2fd 100%);
       border-left: 4px solid #149ddd;
       border-radius: 15px;
-      padding: 1.8rem 1.5rem;
-      margin-bottom: 1.5rem;
+      padding: 1rem 0.8rem;
+      margin-bottom: 1rem;
       transition: all 0.25s ease;
       cursor: pointer;
     }
@@ -137,25 +139,25 @@
     }
     .competence-item:last-child { margin-bottom: 0; }
     .competence-title {
-      font-size: 2.4rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: #0d47a1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
     }
-    .competence-desc { font-size: 1.9rem; color: #555; margin: 0; line-height: 1.6; }
+    .competence-desc { font-size: 0.75rem; color: #555; margin: 0; line-height: 1.6; }
 
     .skill-badge {
       display: inline-block;
-      padding: 14px 28px;
-      border-radius: 12px;
+      padding: 4px 8px;
+      border-radius: 8px;
       font-weight: 600;
-      font-size: 1.8rem;
+      font-size: 0.6rem;
       background: #e3f2fd;
       color: #0d47a1;
-      margin: 5px;
+      margin: 3px;
       transition: all 0.2s ease;
     }
     .skill-badge:hover { background: #149ddd; color: #fff; transform: scale(1.05); }
@@ -415,15 +417,15 @@
         <h2 class="fw-bold mb-5 text-center" style="font-size: 2.5rem;">Compétences Mobilisées</h2>
 
         <div class="competences-section">
-          <h2 class="fw-bold mb-5 text-center" style="font-size: 2.8rem; color: #0b1220;">
-            <i class="bi bi-mortarboard-fill text-primary me-3"></i>Compétences Mobilisées
+          <h2 class="fw-bold mb-3 text-center" style="font-size: 1.4rem; color: #0b1220;">
+            <i class="bi bi-mortarboard-fill text-primary me-2"></i>Compétences Mobilisées
           </h2>
 
           <div class="row g-4">
             <div class="col-lg-6">
               <div class="competence-card">
-                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
-                  <i class="bi bi-award-fill me-2"></i>Compétences BUT (Niv. 2)
+                <h3 class="mb-2" style="font-size: 1rem; color: #149ddd;">
+                  <i class="bi bi-award-fill me-1"></i>Compétences BUT (Niv. 2)
                 </h3>
 
                 <div class="competence-item" onclick="parent.goToCompetenceDetail('concevoir', 2)">
@@ -446,12 +448,12 @@
 
             <div class="col-lg-6">
               <div class="competence-card">
-                <h3 class="mb-4" style="font-size: 2rem; color: #149ddd;">
-                  <i class="bi bi-tools me-2"></i>Savoir-Faire Technique
+                <h3 class="mb-2" style="font-size: 1rem; color: #149ddd;">
+                  <i class="bi bi-tools me-1"></i>Savoir-Faire Technique
                 </h3>
 
-                <div class="mb-4">
-                  <h4 class="h5 fw-bold text-dark mb-3">🛠️ Compétences Techniques</h4>
+                <div class="mb-2">
+                  <h4 class="fw-bold text-dark mb-2" style="font-size: 0.8rem;">🛠️ Compétences Techniques</h4>
                   <div>
                     <span class="skill-badge">ESP32-C6</span>
                     <span class="skill-badge">KiCad (PCB)</span>
@@ -462,7 +464,7 @@
                 </div>
 
                 <div>
-                  <h4 class="h5 fw-bold text-dark mb-3">🤝 Compétences Transversales</h4>
+                  <h4 class="fw-bold text-dark mb-2" style="font-size: 0.8rem;">🤝 Compétences Transversales</h4>
                   <div>
                     <span class="skill-badge trans">Gestion de projet</span>
                     <span class="skill-badge trans">Documentation</span>
