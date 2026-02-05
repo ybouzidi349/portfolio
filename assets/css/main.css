@@ -1107,3 +1107,58 @@ section, .section {
       box-shadow: 0 0 4px rgba(20, 157, 221, 0.5);
     }
     @keyframes scan { 0% { top: 0%; opacity: 0;} 10% { opacity: 1;} 90% { opacity: 1;} 100% { top: 100%; opacity: 0;} }
+
+/* --------------------------------------------------------------
+# Mobile Responsive Adjustments
+-------------------------------------------------------------- */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .section-title h2 { font-size: 1.4rem; }
+  .section-title p { font-size: 0.9rem; }
+
+  #hero h2 { font-size: 2rem; }
+  #hero .typed { font-size: 0.95rem; }
+
+  .portfolio-content img { height: 200px; }
+  .portfolio-info h4 { font-size: 1rem; }
+  .portfolio-description { font-size: 0.85rem; }
+  .portfolio-tags span { font-size: 0.65rem; padding: 0.1rem 0.35rem; }
+
+  .skills-block-title h3 { font-size: 1.1rem; }
+  .skills-caption { font-size: 0.8rem; }
+
+  .skill-card-item { padding: 8px; gap: 8px; }
+  .skill-card-item h5 { font-size: 0.9rem; }
+  .skill-card-item p { font-size: 0.75rem; }
+  .skill-mini { font-size: 0.65rem; }
+
+  .project-title { font-size: 1.8rem; }
+  .project-tags span { font-size: 0.7rem; padding: 4px 10px; }
+
+  .modal-header h5 { font-size: 1.1rem; }
+  .modal-header p { font-size: 0.85rem; }
+  .modal-footer .btn { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+
+  .contact .info-item h3 { font-size: 0.9rem; }
+  .contact .info-item p { font-size: 0.85rem; }
+}
+
+@media (max-width: 576px) {
+  body { font-size: 13px; }
+  #hero h2 { font-size: 1.6rem; }
+  #hero .btn-primary { font-size: 0.85rem; padding: 0.45rem 1.2rem; }
+
+  .portfolio-content img { height: 180px; }
+  .portfolio-info { padding: 8px; }
+
+  .skills-swiper { padding: 4px 2px; }
+  .skill-card-item { padding: 6px; }
+  .skill-icon-wrapper { width: 34px; height: 34px; }
+
+  .modal-header { padding: 0.5rem !important; }
+  .modal-body { padding: 0.75rem !important; }
+  .modal-footer { padding: 0.5rem !important; }
+
+  .contact .php-email-form input,
+  .contact .php-email-form textarea { font-size: 0.85rem; }
+}
