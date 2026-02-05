@@ -42,6 +42,49 @@
       -ms-text-size-adjust: 100%;
     }
     
+    /* Réduction tailles textes principaux */
+    .section-title p {
+      font-size: 0.95rem !important;
+    }
+    
+    #hero .typed {
+      font-size: 1.1rem !important;
+    }
+    
+    #hero .btn-primary {
+      font-size: 0.95rem !important;
+      padding: 0.6rem 2rem !important;
+    }
+    
+    #hero .btn-primary i {
+      font-size: 0.9rem !important;
+    }
+    
+    .about .bg-light h3 {
+      font-size: 1rem !important;
+    }
+    
+    .about .bg-light p {
+      font-size: 0.85rem !important;
+    }
+
+    /* Boutons fermer visibles sur fonds sombres */
+    .modal-header .btn-close {
+      opacity: 1;
+      border-radius: 999px;
+      padding: 0.35rem;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+      background-color: rgba(255,255,255,0.7);
+    }
+    .modal-header .btn-close.btn-close-light {
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+      background-color: rgba(255,255,255,0.2);
+    }
+    .modal-header .btn-close.btn-close-dark {
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+      background-color: rgba(0,0,0,0.08);
+    }
+    
     /* Style pour rendre la stat cliquable */
     .stats-link {
       display: block;
@@ -112,12 +155,12 @@
         background: #fff;
         border: 1px solid rgba(0,0,0,0.05);
         border-radius: 12px;
-        padding: 14px;
-        margin-bottom: 12px;
+        padding: 10px;
+        margin-bottom: 8px;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
@@ -145,16 +188,16 @@
     /* Texte plus grand */
     .skill-card-item h5 {
         font-weight: 700;
-        font-size: 1.05rem; /* Réduit de 1.25rem */
+        font-size: 0.95rem;
         margin: 0;
         color: #2c3e50;
     }
     
     .skill-card-item p {
-        font-size: 0.9rem; /* Réduit de 1.05rem */
+        font-size: 0.8rem;
         color: #6c757d;
         margin: 0;
-        line-height: 1.4;
+        line-height: 1.3;
     }
 
     .skill-icon-wrapper {
@@ -237,12 +280,12 @@
       transform: translateY(0) scale(1);
     }
 
-    /* --- IMAGE ENTIÈREMENT VISIBLE --- */
+    /* --- IMAGE PLUS GRANDE & MIEUX REMPLIE --- */
     .portfolio-content img {
       width: 100%;
-      height: 180px; /* Hauteur réduite */
-      object-fit: contain; /* Affiche toute l'image sans couper */
-      background-color: #f8f9fa; /* Fond gris clair pour les espaces vides */
+      height: 240px; /* Plus grande */
+      object-fit: cover; /* Remplit le rectangle */
+      background-color: #f8f9fa;
       border-bottom: 1px solid #eee;
     }
 
@@ -779,18 +822,18 @@
 
     /* Téléchargements relevés (BUT/Lycée) */
     .resume-download-btn {
-      font-size: 1rem;
-      padding: 0.7rem 1.4rem;
-      border-width: 2px;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      border-width: 1px;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
     .resume-download-btn i {
-      font-size: 1.1rem;
+      font-size: 0.8rem;
     }
     .resume-download-btn span {
-      font-size: 1rem;
+      font-size: 0.75rem;
     }
 
     /* NEW: Skills Swiper styles */
@@ -845,14 +888,11 @@
 
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLanguage('fr')">FR</button>
-      <button class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
 
     <div class="social-links text-center">
-      <a href="https://twitter.com" class="twitter" aria-label="X" target="_blank"><i class="bi bi-twitter-x"></i></a>
-      <a href="https://instagram.com" class="instagram" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-      <a href="https://linkedin.com" class="linkedin" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com" class="github" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/yanis-boutekka/" class="linkedin" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/ybouzidi349" class="github" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -902,10 +942,10 @@
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100" style="position: relative; z-index: 3;">
           <h2>Yanis Bouzidi</h2>
-          <p><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Orienté Robotique & Systèmes" role="text" aria-live="polite"></span></p>
-          <div class="mt-5">
-            <a href="assets/CV_Yanis_Bouzidi.pdf" target="_blank" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fs-3 fw-bold">
-              <i class="bi bi-download me-3"></i> <span data-i18n="download_cv">Télécharger mon CV</span>
+          <p style="font-size: 1.1rem;"><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Orienté Robotique & Systèmes" role="text" aria-live="polite"></span></p>
+          <div class="mt-4">
+            <a href="assets/CV_Yanis_Bouzidi.pdf" target="_blank" class="btn btn-primary rounded-pill px-3 py-2" style="font-size: 0.95rem; font-weight: 600;">
+              <i class="bi bi-download me-2"></i> <span data-i18n="download_cv">Télécharger mon CV</span>
             </a>
           </div>
         </div>
@@ -1033,17 +1073,17 @@
 }
 
     .skill-card-content p {
-      font-size: 1.15rem;   /* descriptions + grandes */
-      margin-bottom: 6px;
-      line-height: 1.35;
+      font-size: 0.8rem;   /* descriptions réduites */
+      margin-bottom: 3px;
+      line-height: 1.3;
     }
     .skill-mini {
-      font-size: 1.3rem;   /* mini descriptions + grandes */
+      font-size: 0.7rem;   /* mini descriptions réduites */
       color: #6c757d;
-      margin-top: 6px;
-      line-height: 1.45;
+      margin-top: 3px;
+      line-height: 1.3;
     }
-    .skill-card-content h5 { margin-bottom: 6px; }
+    .skill-card-content h5 { margin-bottom: 3px; font-size: 0.95rem; }
   </style>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1430,7 +1470,7 @@
               <h5 data-i18n="resume_present">2022 - Présent</h5>
               <p><em>IUT de Toulon</em></p>
               <p data-i18n="resume_but_desc">Électronique, microcontrôleurs, réseaux/bus industriels, automatisme, méthodes de test et maintenance.</p>
-                <a href="assets/notes_but.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2 resume-download-btn">
+                <a href="assets/docs/notes.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2 resume-download-btn">
                   <i class="bi bi-file-earmark-pdf me-2"></i> <span data-i18n="btn_dl_but">Télécharger Relevé BUT</span>
               </a>
             </div>
@@ -1440,14 +1480,33 @@
               <h5>2019 - 2022</h5>
               <p><em>Lycée du Coudon, La Garde</em></p>
               <p><span data-i18n="resume_bac_spec">Spécialités : Mathématiques et Sciences de l'Ingénieur.</span></p>
-              <p><span class="badge bg-success fs-6" data-i18n="resume_bac_honor">Mention Bien</span></p>
-                <a href="assets/notes_lycee.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2 resume-download-btn">
-                  <i class="bi bi-file-earmark-pdf me-2"></i> <span data-i18n="btn_dl_hs">Télécharger Relevé Lycée</span>
-              </a>
-              
-              <button type="button" class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="modal" data-bs-target="#notesModal">
+              <p><span class="badge bg-success" style="font-size: 0.65rem; padding: 0.25rem 0.5rem;" data-i18n="resume_bac_honor">Mention Bien</span></p>
+              <button type="button" class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" data-bs-target="#bacNotesCollapse" aria-expanded="false" aria-controls="bacNotesCollapse" style="font-size: 0.45rem; padding: 0.15rem 0.35rem;">
                 <i class="bi bi-eye me-1"></i> <span data-i18n="btn_view_details">Voir le détail (Aperçu)</span>
               </button>
+              <div id="bacNotesCollapse" class="collapse mt-2">
+                <div class="p-2 border rounded bg-light" style="font-size: 0.45rem;">
+                  <p class="mb-1" data-i18n="modal_desc">Voici le détail de mes résultats académiques en Terminale :</p>
+                  <ul class="list-group list-group-flush" style="font-size: 0.45rem;">
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-1" style="padding-left: 0.3rem; padding-right: 0.3rem;">
+                      <span data-i18n="modal_math">Mathématiques (Spécialité)</span>
+                      <span class="badge bg-primary rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">17 / 20</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-1" style="padding-left: 0.3rem; padding-right: 0.3rem;">
+                      <span data-i18n="modal_si">Sciences de l'Ingénieur (Spécialité)</span>
+                      <span class="badge bg-success rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">16 / 20</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-1" style="padding-left: 0.3rem; padding-right: 0.3rem;">
+                      <span data-i18n="modal_nsi">NSI (Spécialité)</span>
+                      <span class="badge bg-info rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">18 / 20</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-1" style="padding-left: 0.3rem; padding-right: 0.3rem;">
+                      <span data-i18n="modal_avg">Moyenne Générale au Bac</span>
+                      <span class="badge bg-dark rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">15.6 / 20</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -1543,7 +1602,7 @@
                 </div>
               </div>
 
-              <a href="#" onclick="openProjectWidget('projet3'); return false;" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fs-4 shadow-sm" style="font-size: 1.4rem;" data-i18n="btn_case_study">
+              <a href="#" onclick="openProjectWidget('projet3'); return false;" class="btn btn-primary rounded-pill px-3 py-2 shadow-sm" style="font-size: 1rem;" data-i18n="btn_case_study">
                 Voir l'étude de cas
               </a>
             </div>
@@ -1565,7 +1624,7 @@
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active" data-i18n="filter_all">Tout</li>
+            <li data-filter="*" class="filter-active" data-i18n="filter_all" style="font-size: 1.4rem;">Tout</li>
             <li data-filter=".filter-stm32" style="font-size: 1.4rem;">STM32</li>
             <li data-filter=".filter-esp32" style="font-size: 1.4rem;">ESP32</li>
             <li data-filter=".filter-robot" style="font-size: 1.4rem;" data-i18n="filter_robot">Robotique</li>
@@ -1871,7 +1930,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3 style="font-size: 15px;">Email</h3>
-                  <p style="font-size: 0.9rem;">bouzidi.yanispro@gmail.com</p>
+                  <p style="font-size: 0.9rem;"><a href="mailto:bouzidi.yanispro@gmail.com">bouzidi.yanispro@gmail.com</a></p>
                 </div>
               </div>
               <iframe
@@ -1924,15 +1983,15 @@
       <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); height: 100vh;">
         
         <!-- HEADER PREMIUM -->
-        <div class="modal-header bg-gradient border-0 p-3" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
-          <div class="d-flex align-items-center gap-4 flex-grow-1">
-            <div id="projectIconHeader" style="font-size: 3.5rem; line-height: 1;"></div>
+        <div class="modal-header bg-gradient border-0 p-2" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
+          <div class="d-flex align-items-center gap-2 flex-grow-1">
+            <div id="projectIconHeader" style="font-size: 2.2rem; line-height: 1;"></div>
             <div>
-              <h5 class="modal-title fw-bold fs-1 mb-2" id="projectTitleHeader" style="color: #0b1220; letter-spacing: -0.5px;">Titre</h5>
-              <p class="text-muted fs-5 mb-0" id="projectSubtitleHeader">Sous-titre</p>
+              <h5 class="modal-title fw-bold mb-1" id="projectTitleHeader" style="color: #0b1220; letter-spacing: -0.5px; font-size: 1.4rem;">Titre</h5>
+              <p class="text-muted mb-0" id="projectSubtitleHeader" style="font-size: 0.9rem;">Sous-titre</p>
             </div>
           </div>
-          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 2rem; height: 2rem;"></button>
         </div>
         
         <!-- BODY SCROLLABLE GRANDE TAILLE -->
@@ -1950,51 +2009,16 @@
         </div>
 
         <!-- FOOTER AVEC ACTIONS -->
-        <div class="modal-footer bg-light border-top-0 p-3 gap-3" style="background: #f8f9fa;">
-          <a href="#" id="projectLinkBtn" class="btn btn-primary btn-lg rounded-pill px-5" style="display: none; font-weight: 600;">
+        <div class="modal-footer bg-light border-top-0 p-2 gap-2" style="background: #f8f9fa;">
+          <a href="#" id="projectLinkBtn" class="btn btn-primary rounded-pill px-3 py-2" style="display: none; font-weight: 600; font-size: 0.95rem;">
             <i class="bi bi-box-arrow-up-right me-2"></i> Ouvrir en plein écran
           </a>
-          <button type="button" class="btn btn-secondary btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600;">Fermer</button>
+          <button type="button" class="btn btn-secondary rounded-pill px-3 py-2" data-bs-dismiss="modal" style="font-weight: 600; font-size: 0.95rem;">Fermer</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="notesModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fs-4 fw-bold" data-i18n="modal_title">Relevé de Notes (Baccalauréat)</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body fs-5">
-          <p data-i18n="modal_desc">Voici le détail de mes résultats académiques en Terminale :</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span data-i18n="modal_math">Mathématiques (Spécialité)</span>
-              <span class="badge bg-primary rounded-pill">12 / 20</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span data-i18n="modal_si">Sciences de l'Ingénieur (Spécialité)</span>
-              <span class="badge bg-primary rounded-pill">14 / 20</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span data-i18n="modal_pc">Physique-Chimie (Option/Complément)</span>
-              <span class="badge bg-secondary rounded-pill">13 / 20</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span data-i18n="modal_oral">Grand Oral</span>
-              <span class="badge bg-success rounded-pill">17 / 20</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span data-i18n="modal_avg">Moyenne Générale au Bac</span>
-              <span class="badge bg-dark rounded-pill">14.07 / 20</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- MODALE WIDGET POUR LES COMPÉTENCES -->
   <div class="modal fade" id="competencesModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
@@ -2010,7 +2034,7 @@
               <p class="text-light mb-0" style="opacity: 0.8; font-size: 1.3rem;">Validation par année (BUT 1 → BUT 3)</p>
             </div>
           </div>
-          <button type="button" class="btn-close btn-close-light" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+          <button type="button" class="btn-close btn-close-light" data-bs-dismiss="modal" aria-label="Close" style="width: 2.2rem; height: 2.2rem;"></button>
         </div>
         
         <!-- BODY -->
@@ -2027,7 +2051,7 @@
 
         <!-- FOOTER -->
         <div class="modal-footer bg-dark border-top p-3 gap-3" style="background: rgba(15, 23, 42, 0.8); border-top: 1px solid rgba(255,255,255,0.1);">
-          <button type="button" class="btn btn-outline-light btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600; border-color: rgba(255,255,255,0.3); font-size: 1.1rem;">Fermer</button>
+          <button type="button" class="btn btn-outline-light rounded-pill px-3 py-2" data-bs-dismiss="modal" style="font-weight: 600; border-color: rgba(255,255,255,0.3); font-size: 0.95rem;">Fermer</button>
         </div>
       </div>
     </div>
@@ -2039,15 +2063,15 @@
       <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); height: 100vh;">
         
         <!-- HEADER PREMIUM -->
-        <div class="modal-header bg-gradient border-0 p-3" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
-          <div class="d-flex align-items-center gap-4 flex-grow-1">
-            <div id="projectFromSkillIconHeader" style="font-size: 3.5rem; line-height: 1;"></div>
+        <div class="modal-header bg-gradient border-0 p-2" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
+          <div class="d-flex align-items-center gap-2 flex-grow-1">
+            <div id="projectFromSkillIconHeader" style="font-size: 2.2rem; line-height: 1;"></div>
             <div>
-              <h5 class="modal-title fw-bold fs-1 mb-2" id="projectFromSkillTitleHeader" style="color: #0b1220; letter-spacing: -0.5px;">Titre</h5>
-              <p class="text-muted fs-5 mb-0" id="projectFromSkillSubtitleHeader">Sous-titre</p>
+              <h5 class="modal-title fw-bold mb-1" id="projectFromSkillTitleHeader" style="color: #0b1220; letter-spacing: -0.5px; font-size: 1.4rem;">Titre</h5>
+              <p class="text-muted mb-0" id="projectFromSkillSubtitleHeader" style="font-size: 0.9rem;">Sous-titre</p>
             </div>
           </div>
-          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 3rem; height: 3rem;"></button>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close" style="width: 2rem; height: 2rem;"></button>
         </div>
         
         <!-- BODY SCROLLABLE GRANDE TAILLE -->
@@ -2065,11 +2089,11 @@
         </div>
 
         <!-- FOOTER AVEC ACTIONS -->
-        <div class="modal-footer bg-light border-top-0 p-4 gap-3" style="background: #f8f9fa;">
-          <a href="#" id="projectFromSkillLinkBtn" class="btn btn-primary btn-lg rounded-pill px-5" style="display: none; font-weight: 600;">
+        <div class="modal-footer bg-light border-top-0 p-2 gap-2" style="background: #f8f9fa;">
+          <a href="#" id="projectFromSkillLinkBtn" class="btn btn-primary rounded-pill px-3 py-2" style="display: none; font-weight: 600; font-size: 0.95rem;">
             <i class="bi bi-box-arrow-up-right me-2"></i> Ouvrir en plein écran
           </a>
-          <button type="button" class="btn btn-secondary btn-lg rounded-pill px-5" data-bs-dismiss="modal" style="font-weight: 600;">Retour aux compétences</button>
+          <button type="button" class="btn btn-secondary rounded-pill px-3 py-2" data-bs-dismiss="modal" style="font-weight: 600; font-size: 0.95rem;">Retour aux compétences</button>
         </div>
       </div>
     </div>
@@ -3085,64 +3109,67 @@ const ACTIVITIES_EVIDENCE = [
             // Ajouter des overrides pour adapter au modal
             const styleOverride = document.createElement('style');
             styleOverride.textContent = `
-              #projectWidgetContent { font-size: 13px !important; }
+              #projectWidgetContent { font-size: 14px !important; }
               #projectWidgetContent .wrapper { max-width: 100%; margin: 0; padding: 0; }
-              #projectWidgetContent .project-hero { padding: 1.5rem 1rem; margin-bottom: 1.5rem; }
-              #projectWidgetContent .project-title { font-size: 1.9rem !important; }
+              #projectWidgetContent .project-hero { padding: 1.8rem 1.2rem; margin-bottom: 1.8rem; }
+              #projectWidgetContent .project-title { font-size: 2.1rem !important; }
               #projectWidgetContent .main-image-container { 
                 height: auto; 
-                max-height: 400px; 
-                margin-bottom: 1.5rem;
+                max-height: 480px; 
+                margin-bottom: 1.8rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
               }
               #projectWidgetContent img { 
-                max-width: 90%; 
-                max-height: 400px; 
+                max-width: 95%; 
+                max-height: 480px; 
                 width: auto; 
                 height: auto; 
                 object-fit: contain;
                 display: block;
                 margin: 0 auto;
               }
-              #projectWidgetContent h2 { font-size: 1.5rem !important; }
-              #projectWidgetContent h3 { font-size: 0.85rem !important; margin-bottom: 0.5rem !important; }
-              #projectWidgetContent h4 { font-size: 0.75rem !important; margin-bottom: 0.3rem !important; }
-              #projectWidgetContent p { font-size: 0.9rem !important; }
-              #projectWidgetContent li { font-size: 0.9rem !important; }
-              #projectWidgetContent .ressenti-section { padding: 1.2rem !important; }
+              #projectWidgetContent h2 { font-size: 1.7rem !important; }
+              #projectWidgetContent h3 { font-size: 1rem !important; margin-bottom: 0.6rem !important; }
+              #projectWidgetContent h4 { font-size: 0.9rem !important; margin-bottom: 0.4rem !important; }
+              #projectWidgetContent p { font-size: 1rem !important; }
+              #projectWidgetContent li { font-size: 1rem !important; }
+              #projectWidgetContent .ressenti-section { padding: 1.4rem !important; }
               #projectWidgetContent .competence-item { 
-                padding: 0.4rem 0.5rem !important; 
-                margin-bottom: 0.4rem !important; 
+                padding: 0.6rem 0.7rem !important; 
+                margin-bottom: 0.6rem !important; 
                 border-left-width: 2px !important;
               }
               #projectWidgetContent .competence-title { 
-                font-size: 0.75rem !important; 
-                gap: 3px !important;
-                margin-bottom: 0.2rem !important;
+                font-size: 0.85rem !important; 
+                gap: 4px !important;
+                margin-bottom: 0.25rem !important;
               }
-              #projectWidgetContent .competence-title i { font-size: 0.7rem !important; }
-              #projectWidgetContent .competence-desc { font-size: 0.65rem !important; }
+              #projectWidgetContent .competence-title i { font-size: 0.8rem !important; }
+              #projectWidgetContent .competence-desc { font-size: 0.75rem !important; }
               #projectWidgetContent .badge-custom { 
-                font-size: 0.55rem !important; 
-                padding: 0.1rem 0.3rem !important;
-                margin: 0.05rem !important;
+                font-size: 0.65rem !important; 
+                padding: 0.15rem 0.4rem !important;
+                margin: 0.08rem !important;
                 border-radius: 4px !important;
               }
               #projectWidgetContent .skill-badge { 
-                font-size: 0.55rem !important; 
-                padding: 0.1rem 0.3rem !important;
-                margin: 0.05rem !important;
+                font-size: 0.65rem !important; 
+                padding: 0.15rem 0.4rem !important;
+                margin: 0.08rem !important;
                 border-radius: 4px !important;
               }
               #projectWidgetContent .row.g-5 { 
-                gap: 0.8rem !important; 
-                row-gap: 0.8rem !important;
+                gap: 1rem !important; 
+                row-gap: 1rem !important;
               }
-              #projectWidgetContent .feature-card { padding: 0.8rem !important; }
+              #projectWidgetContent .feature-card { padding: 1.1rem !important; }
             `;
             contentArea.appendChild(styleOverride);
+
+            // Activer les vidéos si présentes dans le contenu injecté
+            initProjectVideos(contentArea);
             
             // Injecter les compétences si disponibles
             if (projectData.skills && projectData.skills.length > 0) {
@@ -3196,12 +3223,21 @@ const ACTIVITIES_EVIDENCE = [
       container.querySelectorAll('.video-wrapper').forEach((wrapper) => {
         const video = wrapper.querySelector('video');
         const btn = wrapper.querySelector('.video-play-btn');
-        if (!video || !btn) return;
+        if (!video) return;
 
-        btn.addEventListener('click', () => {
+        const playVideo = () => {
           video.controls = true;
-          video.play();
-          btn.style.display = 'none';
+          video.style.pointerEvents = 'auto';
+          video.play().catch(err => console.log('Erreur lecture vidéo:', err));
+          if (btn) btn.style.display = 'none';
+        };
+
+        if (btn) {
+          btn.addEventListener('click', playVideo);
+        }
+
+        video.addEventListener('click', () => {
+          if (video.paused) playVideo();
         });
       });
     }
@@ -3411,6 +3447,9 @@ const ACTIVITIES_EVIDENCE = [
                 }
              `;
              contentArea.appendChild(styleOverride);
+
+             // Activer les vidéos si présentes dans le contenu injecté
+             initProjectVideos(contentArea);
 
              hideDuplicateCompetencesBlocks(contentArea);
              wireCompetencesLinks(contentArea);
@@ -4130,7 +4169,7 @@ const ACTIVITIES_EVIDENCE = [
         }
 
         detailView.innerHTML = `
-            <button class="btn btn-outline-light btn-sm mb-4" onclick="closeDetailView()" style="font-size: 1.3rem; padding: 1rem 2rem;"><i class="bi bi-arrow-left me-2"></i>Retour liste</button>
+          <button class="btn btn-outline-light btn-sm mb-4" onclick="closeDetailView()" style="font-size: 0.95rem; padding: 0.5rem 1rem;"><i class="bi bi-arrow-left me-2"></i>Retour liste</button>
             
             <div class="text-center mb-5 pb-4 border-bottom border-secondary">
                 <i class="bi ${def.icon} display-1 text-primary mb-3" style="font-size: 6rem;"></i>

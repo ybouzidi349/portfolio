@@ -177,9 +177,9 @@
     .sensor-info h4 { font-weight: 700; margin: 0 0 8px 0; font-size: 2.2rem; }
     
     .btn-back {
-      font-size: 2rem;
-      padding: 20px 50px;
-      border-width: 2px;
+      font-size: 0.9rem;
+      padding: 8px 18px;
+      border-width: 1px;
       font-weight: 600;
     }
 
@@ -414,6 +414,38 @@
       font-style: italic;
     }
 
+    /* --- COMPACT FULLSCREEN OVERRIDES --- */
+    body { font-size: 15px; line-height: 1.7; }
+    .project-hero { padding: 3.2rem 1.6rem; }
+    .project-title { font-size: 2.4rem; }
+    .project-tags span { font-size: 0.9rem; padding: 7px 16px; }
+    .feature-card { padding: 1.8rem; border-radius: 20px; }
+    .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.9rem; }
+    .feature-card p { font-size: 0.95rem; }
+    .competences-section { padding: 2rem; }
+    .competence-card { padding: 1.5rem; }
+    .competence-item { padding: 0.8rem 0.7rem; margin-bottom: 0.8rem; }
+    .competence-title { font-size: 1rem; }
+    .competence-desc { font-size: 0.9rem; }
+    .skill-badge, .badge-custom { font-size: 0.65rem; padding: 4px 8px; }
+    .ressenti-section { margin: 2rem 0; padding: 1.2rem; }
+    .ressenti-section h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+    .ressenti-section h4 { font-size: 1rem; margin-bottom: 0.6rem; }
+    .ressenti-card { padding: 1.2rem; }
+    .ressenti-card li { font-size: 0.85rem; line-height: 1.5; }
+    .ressenti-icon { width: 45px; height: 45px; }
+    .ressenti-icon i { font-size: 1.4rem; }
+    .ressenti-conclusion { padding: 1.2rem; }
+    .ressenti-conclusion i { font-size: 2rem; }
+    .ressenti-conclusion p { font-size: 0.9rem; line-height: 1.6; padding-left: 2rem; }
+    .sensor-item { padding: 1.2rem; gap: 16px; }
+    .sensor-icon { width: 50px; height: 50px; font-size: 1.5rem; }
+    .sensor-info h4 { font-size: 1rem; }
+    .sensor-info p { font-size: 0.85rem; }
+    .vs-section h3 { font-size: 1.2rem; }
+    .vs-section p { font-size: 0.9rem; }
+    .schematic-section { margin-top: 3rem; }
+    .schematic-container { padding: 1.2rem; }
   </style>
 </head>
 <body>
@@ -421,7 +453,7 @@
   <div class="wrapper">
     
     <div class="mb-5">
-      <a href="../index.html" class="btn btn-outline-dark rounded-pill btn-back">
+      <a href="../index.html#portfolio" class="btn btn-outline-dark rounded-pill btn-back" onclick="if (history.length > 1) { history.back(); return false; }">
         <i class="bi bi-arrow-left me-2"></i> Retour au Portfolio
       </a>
     </div>
@@ -670,12 +702,12 @@
       </p>
 
       <div class="vs-container">
-        <div class="video-wrapper" style="position: relative; width: 100%; max-width: 1100px; margin: 0 auto;">
-          <video class="img-fluid rounded" style="width: 100%; background: #000;" preload="auto">
+        <div class="video-wrapper" style="position: relative; width: 100%; max-width: 800px; margin: 0 auto;">
+          <video class="img-fluid rounded" style="width: 100%; max-height: 420px; background: #000;" preload="auto">
             <source src="../assets/img/portfolio/video_robot.mp4" type="video/mp4">
             Votre navigateur ne supporte pas la lecture vidéo.
           </video>
-          <button type="button" class="video-play-btn" aria-label="Lancer la vidéo" style="position: absolute; inset: 0; margin: auto; width: 120px; height: 120px; border-radius: 50%; border: none; background: rgba(0,0,0,0.65); color: #fff; font-size: 3.2rem; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.35); z-index: 2;">
+          <button type="button" class="video-play-btn" aria-label="Lancer la vidéo" style="position: absolute; inset: 0; margin: auto; width: 90px; height: 90px; border-radius: 50%; border: none; background: rgba(0,0,0,0.65); color: #fff; font-size: 2.4rem; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.35); z-index: 2;">
             <span style="display: inline-block; transform: translateX(3px);">▶</span>
           </button>
         </div>
