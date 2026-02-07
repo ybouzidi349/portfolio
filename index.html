@@ -865,8 +865,9 @@
 
     @media (max-width: 576px) {
       .skills-swiper { padding: 8px 0; overflow: hidden; }
+      .skills-swiper .swiper-wrapper { justify-content: center; }
       .skills-swiper .swiper-slide { width: 100% !important; display: flex; justify-content: center; }
-      #skills .skill-card-item { max-width: 320px; width: 100%; margin: 0 auto; }
+      #skills .skill-card-item { max-width: 300px; width: 100%; margin: 0 auto; }
     }
 
     /* NEW: group headings for rotating skill blocks */
@@ -4029,7 +4030,8 @@ const ACTIVITIES_EVIDENCE = [
             slidesPerView: 5,
             spaceBetween: 22,
             loop: true,
-            centeredSlides: false,
+            centeredSlides: true,
+            centeredSlidesBounds: true,
             autoplay: { 
               delay: 3500, 
               disableOnInteraction: false,
@@ -4038,8 +4040,8 @@ const ACTIVITIES_EVIDENCE = [
             speed: 800,
             effect: 'slide',
             breakpoints: {
-              0: { slidesPerView: 1, spaceBetween: 16, centeredSlides: true },
-              576: { slidesPerView: 2, spaceBetween: 18, centeredSlides: true },
+              0: { slidesPerView: 1, spaceBetween: 12, centeredSlides: true },
+              576: { slidesPerView: 2, spaceBetween: 16, centeredSlides: true },
               992: { slidesPerView: 3, spaceBetween: 20, centeredSlides: false },
               1200: { slidesPerView: 4, spaceBetween: 22, centeredSlides: false },
               1400: { slidesPerView: 5, spaceBetween: 24, centeredSlides: false }
