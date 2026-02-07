@@ -1152,6 +1152,8 @@ section, .section {
   .portfolio-info { padding: 8px; }
 
   .skills-swiper { padding: 4px 2px; }
+  .skills-swiper .swiper-wrapper { justify-content: center; }
+  .skills-swiper .swiper-slide { display: flex; justify-content: center; width: auto; }
   .skill-card-item { padding: 6px; }
   .skill-icon-wrapper { width: 34px; height: 34px; }
 
