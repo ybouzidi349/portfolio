@@ -1164,6 +1164,35 @@ section, .section {
 
   .contact .info-item h3 { font-size: 0.9rem; }
   .contact .info-item p { font-size: 0.85rem; }
+
+  /* Disable fullscreen modals on mobile */
+  #projectModal .modal-dialog,
+  #projectFromSkillModal .modal-dialog,
+  #competencesModal .modal-dialog,
+  #activityModal .modal-dialog {
+    width: auto !important;
+    max-width: 95vw !important;
+    height: auto !important;
+    margin: 0.5rem auto !important;
+  }
+  #projectModal .modal-content,
+  #projectFromSkillModal .modal-content,
+  #competencesModal .modal-content,
+  #activityModal .modal-content {
+    height: auto !important;
+    max-height: 92vh !important;
+    border-radius: 18px !important;
+  }
+  #projectModal .modal-body,
+  #projectFromSkillModal .modal-body,
+  #competencesModal .modal-body,
+  #activityModal .modal-body {
+    max-height: 70vh !important;
+  }
+  #projectLinkBtn,
+  #projectFromSkillLinkBtn {
+    display: none !important;
+  }
 }
 
 @media (max-width: 576px) {
