@@ -863,6 +863,12 @@
     .skills-swiper .swiper-button-next { color: #149ddd; }
     .skills-swiper .swiper-pagination-bullet-active { background: #149ddd; }
 
+    @media (max-width: 576px) {
+      .skills-swiper { padding: 8px 0; overflow: hidden; }
+      .skills-swiper .swiper-slide { width: 100% !important; display: flex; justify-content: center; }
+      #skills .skill-card-item { max-width: 320px; width: 100%; margin: 0 auto; }
+    }
+
     /* NEW: group headings for rotating skill blocks */
     #skills .skills-block-title {
       display: flex; align-items: center; gap: 10px;
@@ -4032,11 +4038,11 @@ const ACTIVITIES_EVIDENCE = [
             speed: 800,
             effect: 'slide',
             breakpoints: {
-              0: { slidesPerView: 1, spaceBetween: 16 },
-              576: { slidesPerView: 2, spaceBetween: 18 },
-              992: { slidesPerView: 3, spaceBetween: 20 },
-              1200: { slidesPerView: 4, spaceBetween: 22 },
-              1400: { slidesPerView: 5, spaceBetween: 24 }
+              0: { slidesPerView: 1, spaceBetween: 16, centeredSlides: true },
+              576: { slidesPerView: 2, spaceBetween: 18, centeredSlides: true },
+              992: { slidesPerView: 3, spaceBetween: 20, centeredSlides: false },
+              1200: { slidesPerView: 4, spaceBetween: 22, centeredSlides: false },
+              1400: { slidesPerView: 5, spaceBetween: 24, centeredSlides: false }
             },
             pagination: { 
               el: el.querySelector('.swiper-pagination'), 

@@ -1141,6 +1141,26 @@ section, .section {
 
   .contact .info-item h3 { font-size: 0.9rem; }
   .contact .info-item p { font-size: 0.85rem; }
+
+  /* Project fullscreen pages (mobile) */
+  .wrapper { margin: 2rem auto; padding: 0 16px; }
+  .project-hero { padding: 2rem 1rem; border-radius: 24px; margin-bottom: 2rem; }
+  .project-title { font-size: 2rem; }
+  .project-tags span { font-size: 0.85rem; padding: 6px 14px; margin: 4px 6px; }
+  .main-image-container { height: 240px; border-radius: 18px; margin-bottom: 2.5rem; }
+  .feature-card { padding: 1.5rem; border-radius: 20px; }
+  .icon-box { width: 48px; height: 48px; font-size: 1.4rem; margin-bottom: 1rem; border-radius: 16px; }
+  .feature-card h3 { font-size: 1.2rem; }
+  .feature-card p { font-size: 0.95rem; }
+  .competences-section { padding: 1.5rem; border-radius: 22px; margin-top: 2.5rem; }
+  .competence-card { padding: 1.5rem; border-radius: 18px; }
+  .skill-btn { padding: 12px; border-radius: 14px; }
+  .skill-btn strong { font-size: 1.05rem; }
+  .skill-btn span { font-size: 0.85rem; }
+  .badge-custom { font-size: 0.8rem; padding: 6px 10px; }
+  .sensor-item { padding: 1.2rem; border-radius: 18px; gap: 16px; }
+  .sensor-icon { width: 64px; height: 64px; font-size: 2rem; }
+  .sensor-info h4 { font-size: 1.4rem; }
 }
 
 @media (max-width: 576px) {
@@ -1156,6 +1176,11 @@ section, .section {
   .skills-swiper .swiper-slide { display: flex; justify-content: center; width: auto; }
   .skill-card-item { padding: 6px; }
   .skill-icon-wrapper { width: 34px; height: 34px; }
+
+  .project-title { font-size: 1.7rem; }
+  .project-tags span { font-size: 0.75rem; padding: 5px 10px; }
+  .main-image-container { height: 200px; }
+  .feature-card p { font-size: 0.9rem; }
 
   .modal-header { padding: 0.5rem !important; }
   .modal-body { padding: 0.75rem !important; }
