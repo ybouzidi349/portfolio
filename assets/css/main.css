@@ -1135,6 +1135,29 @@ section, .section {
   .project-title { font-size: 1.8rem; }
   .project-tags span { font-size: 0.7rem; padding: 4px 10px; }
 
+  /* Project pages fullscreen text (mobile) */
+  .wrapper { margin: 2rem auto !important; padding: 0 16px !important; }
+  .project-hero { padding: 2rem 1.25rem !important; border-radius: 20px !important; margin-bottom: 2rem !important; }
+  .project-title { font-size: 1.8rem !important; margin-bottom: 12px !important; }
+  .project-tags span { font-size: 0.85rem !important; padding: 6px 14px !important; margin: 4px 6px !important; }
+  .main-image-container { height: 260px !important; margin-bottom: 2.5rem !important; border-radius: 18px !important; }
+  .feature-card { padding: 1.25rem !important; border-radius: 18px !important; }
+  .feature-card h3 { font-size: 1.1rem !important; margin-bottom: 0.75rem !important; }
+  .feature-card p, .sensor-info p, .text-secondary { font-size: 0.95rem !important; }
+  .icon-box { width: 44px !important; height: 44px !important; font-size: 1.4rem !important; margin-bottom: 1rem !important; border-radius: 14px !important; }
+  .sensor-item { padding: 1.25rem !important; gap: 14px !important; border-radius: 18px !important; }
+  .sensor-icon { width: 64px !important; height: 64px !important; font-size: 2rem !important; }
+  .sensor-info h4 { font-size: 1.3rem !important; }
+  .skill-btn { padding: 12px !important; border-radius: 14px !important; }
+  .skill-btn strong { font-size: 1rem !important; }
+  .skill-btn span { font-size: 0.85rem !important; }
+  .badge-custom { font-size: 0.8rem !important; padding: 4px 10px !important; }
+  .competences-section { padding: 1.25rem !important; border-radius: 18px !important; }
+  .competence-card { padding: 1.25rem !important; border-radius: 16px !important; }
+  .competence-title { font-size: 0.75rem !important; }
+  .competence-desc { font-size: 0.7rem !important; }
+  .skill-badge { font-size: 0.55rem !important; padding: 3px 6px !important; }
+
   .modal-header h5 { font-size: 1.1rem; }
   .modal-header p { font-size: 0.85rem; }
   .modal-footer .btn { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
@@ -1151,11 +1174,30 @@ section, .section {
   .portfolio-content img { height: 180px; }
   .portfolio-info { padding: 8px; }
 
-  .skills-swiper { padding: 4px 2px; }
-  .skills-swiper .swiper-wrapper { justify-content: center; }
-  .skills-swiper .swiper-slide { display: flex; justify-content: center; width: auto; }
+  .skills-swiper { padding: 4px 2px; overflow: hidden; }
+  .skills-swiper .swiper-wrapper { justify-content: flex-start; }
+  .skills-swiper .swiper-slide { display: flex; justify-content: center; width: 100% !important; }
   .skill-card-item { padding: 6px; }
   .skill-icon-wrapper { width: 34px; height: 34px; }
+
+  /* Project pages fullscreen text (small mobile) */
+  .wrapper { margin: 1.5rem auto !important; padding: 0 12px !important; }
+  .project-hero { padding: 1.5rem 1rem !important; border-radius: 16px !important; margin-bottom: 1.5rem !important; }
+  .project-title { font-size: 1.5rem !important; }
+  .project-tags span { font-size: 0.75rem !important; padding: 5px 12px !important; }
+  .main-image-container { height: 210px !important; margin-bottom: 2rem !important; border-radius: 14px !important; }
+  .feature-card { padding: 1rem !important; border-radius: 16px !important; }
+  .feature-card h3 { font-size: 1rem !important; }
+  .feature-card p, .sensor-info p, .text-secondary { font-size: 0.9rem !important; }
+  .icon-box { width: 40px !important; height: 40px !important; font-size: 1.2rem !important; }
+  .sensor-item { padding: 1rem !important; gap: 12px !important; }
+  .sensor-icon { width: 56px !important; height: 56px !important; font-size: 1.7rem !important; }
+  .sensor-info h4 { font-size: 1.1rem !important; }
+  .skill-btn strong { font-size: 0.95rem !important; }
+  .skill-btn span { font-size: 0.8rem !important; }
+  .badge-custom { font-size: 0.75rem !important; }
+  .competences-section { padding: 1rem !important; }
+  .competence-card { padding: 1rem !important; }
 
   .modal-header { padding: 0.5rem !important; }
   .modal-body { padding: 0.75rem !important; }
