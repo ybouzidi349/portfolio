@@ -820,6 +820,41 @@
     .year-btn.active { background: linear-gradient(135deg, #149ddd 0%, #17d4f2 100%); border-color: #149ddd; color: #fff; }
     @media (max-width: 576px) { .year-btn { min-width: 80px; padding: 0.5rem 0.8rem; font-size: 0.8rem; } }
 
+    /* Mobile: réduire la taille du texte en plein écran (modales) */
+    @media (max-width: 768px) {
+      #projectModal .modal-body,
+      #projectFromSkillModal .modal-body,
+      #competencesModal .modal-body,
+      #activityModal .modal-body {
+        font-size: 0.95rem !important;
+      }
+
+      #projectModal .modal-title,
+      #projectFromSkillModal .modal-title,
+      #competencesModal .modal-title,
+      #activityTitleHeader {
+        font-size: 1.05rem !important;
+      }
+
+      #projectWidgetContent h1,
+      #projectFromSkillWidgetContent h1 {
+        font-size: 1.4rem !important;
+      }
+      #projectWidgetContent h2,
+      #projectFromSkillWidgetContent h2 {
+        font-size: 1.2rem !important;
+      }
+      #projectWidgetContent h3,
+      #projectFromSkillWidgetContent h3 {
+        font-size: 1.05rem !important;
+      }
+      #projectWidgetContent p,
+      #projectFromSkillWidgetContent p,
+      #activityContent {
+        font-size: 0.95rem !important;
+      }
+    }
+
     /* Téléchargements relevés (BUT/Lycée) */
     .resume-download-btn {
       font-size: 0.75rem;
@@ -862,13 +897,6 @@
     .skills-swiper .swiper-button-prev,
     .skills-swiper .swiper-button-next { color: #149ddd; }
     .skills-swiper .swiper-pagination-bullet-active { background: #149ddd; }
-
-    @media (max-width: 576px) {
-      .skills-swiper { padding: 8px 0; overflow: hidden; }
-      .skills-swiper .swiper-wrapper { justify-content: center; }
-      .skills-swiper .swiper-slide { width: 100% !important; display: flex; justify-content: center; }
-      #skills .skill-card-item { max-width: 300px; width: 100%; margin: 0 auto; }
-    }
 
     /* NEW: group headings for rotating skill blocks */
     #skills .skills-block-title {
@@ -1106,7 +1134,7 @@
         </div>
         <div class="skills-caption">Python • C • C++ • HTML/CSS/JS</div>
 
-        <div class="skills-swiper swiper centered" aria-label="Langages de programmation">
+        <div class="skills-swiper swiper" aria-label="Langages de programmation">
           <div class="swiper-wrapper">
 
             <div class="swiper-slide">
@@ -1169,6 +1197,23 @@
                   <h5>HTML • CSS • JavaScript</h5>
                   <p>Interfaces web, dashboards, expérience utilisateur</p>
                   <div class="skill-mini">Affichage temps réel • UI responsive • Intégration IoT</div>
+                </div>
+                <div class="skill-card-badge">
+                  <i class="bi bi-arrow-right-short"></i>
+                  Voir projet
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="PHP">
+                <div class="skill-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Logo PHP">
+                </div>
+                <div class="skill-card-content">
+                  <h5>PHP</h5>
+                  <p>Backend léger, formulaires et traitement serveur</p>
+                  <div class="skill-mini">Formulaires • API simples • Intégration web</div>
                 </div>
                 <div class="skill-card-badge">
                   <i class="bi bi-arrow-right-short"></i>
@@ -4030,8 +4075,7 @@ const ACTIVITIES_EVIDENCE = [
             slidesPerView: 5,
             spaceBetween: 22,
             loop: true,
-            centeredSlides: true,
-            centeredSlidesBounds: true,
+            centeredSlides: false,
             autoplay: { 
               delay: 3500, 
               disableOnInteraction: false,
@@ -4040,11 +4084,11 @@ const ACTIVITIES_EVIDENCE = [
             speed: 800,
             effect: 'slide',
             breakpoints: {
-              0: { slidesPerView: 1, spaceBetween: 12, centeredSlides: true },
-              576: { slidesPerView: 2, spaceBetween: 16, centeredSlides: true },
-              992: { slidesPerView: 3, spaceBetween: 20, centeredSlides: false },
-              1200: { slidesPerView: 4, spaceBetween: 22, centeredSlides: false },
-              1400: { slidesPerView: 5, spaceBetween: 24, centeredSlides: false }
+              0: { slidesPerView: 1, spaceBetween: 16 },
+              576: { slidesPerView: 2, spaceBetween: 18 },
+              992: { slidesPerView: 3, spaceBetween: 20 },
+              1200: { slidesPerView: 4, spaceBetween: 22 },
+              1400: { slidesPerView: 5, spaceBetween: 24 }
             },
             pagination: { 
               el: el.querySelector('.swiper-pagination'), 

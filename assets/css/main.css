@@ -1141,26 +1141,6 @@ section, .section {
 
   .contact .info-item h3 { font-size: 0.9rem; }
   .contact .info-item p { font-size: 0.85rem; }
-
-  /* Project fullscreen pages (mobile) */
-  .wrapper { margin: 2rem auto !important; padding: 0 16px !important; }
-  .project-hero { padding: 2rem 1rem !important; border-radius: 24px !important; margin-bottom: 2rem !important; }
-  .project-title { font-size: 2rem !important; }
-  .project-tags span { font-size: 0.85rem !important; padding: 6px 14px !important; margin: 4px 6px !important; }
-  .main-image-container { height: 240px !important; border-radius: 18px !important; margin-bottom: 2.5rem !important; }
-  .feature-card { padding: 1.5rem !important; border-radius: 20px !important; }
-  .icon-box { width: 48px !important; height: 48px !important; font-size: 1.4rem !important; margin-bottom: 1rem !important; border-radius: 16px !important; }
-  .feature-card h3 { font-size: 1.2rem !important; }
-  .feature-card p { font-size: 0.95rem !important; }
-  .competences-section { padding: 1.5rem !important; border-radius: 22px !important; margin-top: 2.5rem !important; }
-  .competence-card { padding: 1.5rem !important; border-radius: 18px !important; }
-  .skill-btn { padding: 12px !important; border-radius: 14px !important; }
-  .skill-btn strong { font-size: 1.05rem !important; }
-  .skill-btn span { font-size: 0.85rem !important; }
-  .badge-custom { font-size: 0.8rem !important; padding: 6px 10px !important; }
-  .sensor-item { padding: 1.2rem !important; border-radius: 18px !important; gap: 16px !important; }
-  .sensor-icon { width: 64px !important; height: 64px !important; font-size: 2rem !important; }
-  .sensor-info h4 { font-size: 1.4rem !important; }
 }
 
 @media (max-width: 576px) {
@@ -1176,11 +1156,6 @@ section, .section {
   .skills-swiper .swiper-slide { display: flex; justify-content: center; width: auto; }
   .skill-card-item { padding: 6px; }
   .skill-icon-wrapper { width: 34px; height: 34px; }
-
-  .project-title { font-size: 1.7rem !important; }
-  .project-tags span { font-size: 0.75rem !important; padding: 5px 10px !important; }
-  .main-image-container { height: 200px !important; }
-  .feature-card p { font-size: 0.9rem !important; }
 
   .modal-header { padding: 0.5rem !important; }
   .modal-body { padding: 0.75rem !important; }
