@@ -1119,6 +1119,34 @@
       line-height: 1.3;
     }
     .skill-card-content h5 { margin-bottom: 3px; font-size: 0.95rem; }
+    .skill-type-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.55rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      z-index: 2;
+      max-width: 55%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      pointer-events: none;
+    }
+    .skill-type-tech {
+      background: #e7f5ff;
+      color: #0b5ed7;
+      border: 1px solid #b6e0fe;
+    }
+    .skill-type-pro {
+      background: #fff4e6;
+      color: #a64b00;
+      border: 1px solid #ffd8a8;
+    }
   </style>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1139,6 +1167,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="C embarqué">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="Logo C">
                 </div>
@@ -1156,6 +1185,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="C++">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Logo C++">
                 </div>
@@ -1173,6 +1203,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Python">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Logo Python">
                 </div>
@@ -1190,6 +1221,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="HTML CSS JavaScript">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Logo JavaScript">
                 </div>
@@ -1207,6 +1239,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="PHP">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Logo PHP">
                 </div>
@@ -1245,6 +1278,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="CAN LIN">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg" alt="Logo Bus CAN/LIN" onerror="this.style.display='none'">
                 </div>
@@ -1262,6 +1296,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet4');" role="button" aria-label="I2C SPI UART">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Logo Interfaces">
                 </div>
@@ -1279,6 +1314,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
                 </div>
@@ -1296,6 +1332,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="ESP32">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/espressif.svg" alt="Logo ESP32 (Espressif)">
                 </div>
@@ -1313,6 +1350,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Linux temps réel">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Logo Linux">
                 </div>
@@ -1351,6 +1389,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet10');" role="button" aria-label="KiCad">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kicad.svg" alt="Logo KiCad">
                 </div>
@@ -1368,6 +1407,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="MATLAB">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="Logo MATLAB">
                 </div>
@@ -1386,6 +1426,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="MPLAB X">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="assets/img/skills/mplab.svg" alt="Logo MPLAB X">
                 </div>
@@ -1403,6 +1444,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Quartus">
+                <span class="skill-type-badge skill-type-tech">Technique</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/intel.svg" alt="Logo Intel (Quartus)">
                 </div>
@@ -1420,6 +1462,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32CubeIDE">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
                 </div>
@@ -1437,6 +1480,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Git">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Logo Git">
                 </div>
@@ -1454,6 +1498,7 @@
 
             <div class="swiper-slide">
               <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="VS Code">
+                <span class="skill-type-badge skill-type-pro">Professionel</span>
                 <div class="skill-icon-wrapper">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Logo VS Code">
                 </div>
@@ -1554,7 +1599,7 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center py-1" style="padding-left: 0.3rem; padding-right: 0.3rem;">
                       <span data-i18n="modal_avg">Moyenne Générale au Bac</span>
-                      <span class="badge bg-dark rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">15.6 / 20</span>
+                      <span class="badge bg-dark rounded-pill" style="font-size: 0.55rem; padding: 0.22rem 0.5rem;">14.85/ 20</span>
                     </li>
                   </ul>
                 </div>
@@ -2171,9 +2216,7 @@
       <div class="copyright text-center ">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">Portfolio</strong> <span data-i18n="footer_rights">Tous droits réservés</span></p>
       </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <div class="credits"></div>
     </div>
   </footer>
 
@@ -2202,33 +2245,33 @@
     // A. Données des Projets (avec compétences associées)
     const PROJECTS_DATA = {
       projet1: { 
-        title: "Moniteur Biomédical Connecté", subtitle: "Santé • IoT • ESP32", icon: "📊", htmlFile: "projets/projet1.html",
+        title: "Moniteur Biomédical Connecté", subtitle: "Santé • IoT • ESP32", icon: "📊", htmlFile: "projets/projet1.html", image: "assets/img/portfolio/moniteur.png",
         skills: [{ key: "verifier", level: 2, label: "Vérifier (Niv 2)" }, { key: "concevoir", level: 2, label: "Concevoir (Niv 2)" }]
       },
       projet2: { 
-        title: "Robot Mobile Autonome", subtitle: "Robotique • PID • C++", icon: "🤖", htmlFile: "projets/projet2.html",
+        title: "Robot Mobile Autonome", subtitle: "Robotique • PID • C++", icon: "🤖", htmlFile: "projets/projet2.html", image: "assets/img/portfolio/robot.png",
         skills: [{ key: "implanter", level: 2, label: "Implanter (Niv 2)" }, { key: "concevoir", level: 2, label: "Concevoir (Niv 2)" },{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }]
       },
       projet3: { 
-        title: "Coupe de France de Robotique", subtitle: "Compétition • CAN • STM32", icon: "🏆", htmlFile: "projets/projet3.html",
+        title: "Coupe de France de Robotique", subtitle: "Compétition • CAN • STM32", icon: "🏆", htmlFile: "projets/projet3.html", image: "assets/img/portfolio/Eurobot.png",
         skills: [{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }, { key: "implanter", level: 3, label: "Implanter (Niv 3)" }, { key: "verifier", level: 2, label: "Vérifier (Niv 2)" },{ key: "verifier", level: 3, label: "Vérifier (Niv 3)" }]
       },
       projet4: { 
-        title: "Centrale Domotique", subtitle: "Environnement • Web Server", icon: "🌍", htmlFile: "projets/projet4.html",
+        title: "Centrale Domotique", subtitle: "Environnement • Web Server", icon: "🌍", htmlFile: "projets/projet4.html", image: "assets/img/portfolio/domotique.png",
         skills: [{ key: "concevoir", level: 2, label: "Concevoir (Niv 2)" }, { key: "verifier", level: 2, label: "Vérifier (Niv 2)" }]
       },
       projet5: { 
-        title: "Hacking RF", subtitle: "Sécurité • Python • USB", icon: "🔐", htmlFile: "projets/projet5.html",
+        title: "Hacking RF", subtitle: "Sécurité • Python • USB", icon: "🔐", htmlFile: "projets/projet5.html", image: "assets/img/portfolio/hacking.png",
         skills: [{ key: "verifier", level: 2, label: "Vérifier (Niv 2)" }, { key: "maintenir", level: 2, label: "Maintenir (Niv 2)" }]
       },
       projet6: { 
-        title: "Alim Labo", subtitle: "Puissance • DIY", icon: "⚡", htmlFile: "projets/projet6.html",
+        title: "Alim Labo", subtitle: "Puissance • DIY", icon: "⚡", htmlFile: "projets/projet6.html", image: "assets/img/portfolio/alim.png",
         skills: [{ key: "concevoir", level: 3, label: "Concevoir (Niv 3)" }, { key: "implanter", level: 3, label: "Implanter (Niv 3)" },{ key: "verifier", level: 3, label: "Verifier (Niv 3)" }]
       },
-      projet7: { title: "Télécommande DSP", subtitle: "Traitement Signal • IR", icon: "📡", htmlFile: "projets/projet7.html", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
-      projet8: { title: "Automatisme", subtitle: "Industrie • Validation", icon: "🏭", htmlFile: "projets/projet8.html", skills: [{key:"verifier", level:1, label:"Vérifier (Niv 1)"}, {key:"maintenir", level:2, label:"Maintenir (Niv 2)"}] },
-      projet9: { title: "Synthèse Audio", subtitle: "DSP • Temps Réel", icon: "🎵", htmlFile: "projets/projet9.html", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
-      projet10: { title: "Carte Smartlight", subtitle: "Électronique • KiCad", icon: "💡", htmlFile: "projets/projet10.html", skills: [{key:"concevoir", level:1, label:"Concevoir (Niv 1)"},{key:"verifier", level:1, label:"Verifier (Niv 1)"}] }
+      projet7: { title: "Télécommande DSP", subtitle: "Traitement Signal • IR", icon: "📡", htmlFile: "projets/projet7.html", image: "assets/img/portfolio/telecommande.png", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
+      projet8: { title: "Automatisme", subtitle: "Industrie • Validation", icon: "🏭", htmlFile: "projets/projet8.html", image: "assets/img/portfolio/unilogic.png", skills: [{key:"verifier", level:1, label:"Vérifier (Niv 1)"}, {key:"maintenir", level:2, label:"Maintenir (Niv 2)"}] },
+      projet9: { title: "Synthèse Audio", subtitle: "DSP • Temps Réel", icon: "🎵", htmlFile: "projets/projet9.html", image: "assets/img/portfolio/piano.png", skills: [{key:"implanter", level:2, label:"Implanter (Niv 2)"}] },
+      projet10: { title: "Carte Smartlight", subtitle: "Électronique • KiCad", icon: "💡", htmlFile: "projets/projet10.html", image: "assets/img/portfolio/smartlight.png", skills: [{key:"concevoir", level:1, label:"Concevoir (Niv 1)"},{key:"verifier", level:1, label:"Verifier (Niv 1)"}] }
     };
 
     // NOUVEAU : Données des Activités (traces académiques)
@@ -3107,7 +3150,7 @@ const ACTIVITIES_EVIDENCE = [
       const projectData = PROJECTS_DATA[projectKey];
       if (!projectData) return;
 
-      const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+      const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('projectModal'));
       const contentArea = document.getElementById('projectWidgetContent');
       const linkBtn = document.getElementById('projectLinkBtn');
 
@@ -3217,6 +3260,13 @@ const ACTIVITIES_EVIDENCE = [
                 row-gap: 1rem !important;
               }
               #projectWidgetContent .feature-card { padding: 1.1rem !important; }
+              @media (max-width: 768px) {
+                #projectWidgetContent .ressenti-section { padding: 1rem !important; }
+                #projectWidgetContent .ressenti-section h3,
+                #projectWidgetContent .ressenti-section h4 { font-size: 1rem !important; }
+                #projectWidgetContent .ressenti-section p,
+                #projectWidgetContent .ressenti-section li { font-size: 0.85rem !important; line-height: 1.5 !important; }
+              }
             `;
             contentArea.appendChild(styleOverride);
 
@@ -3299,7 +3349,7 @@ const ACTIVITIES_EVIDENCE = [
         if(e) e.preventDefault();
         
         const modalEl = document.getElementById('competencesModal');
-        const modal = new bootstrap.Modal(modalEl);
+      const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         const content = document.getElementById('competencesWidgetContent');
         
         content.innerHTML = `<div class="text-center text-white py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
@@ -3414,9 +3464,17 @@ const ACTIVITIES_EVIDENCE = [
 
     // --- C. NAVIGATION & TRANSITIONS ---
     function goToCompetenceDetail(skillKey, level) {
-        const projectModal = bootstrap.Modal.getInstance(document.getElementById('projectModal'));
-        if(projectModal) projectModal.hide();
-        setTimeout(() => openCompetencesWidget(null, skillKey, level), 300);
+      const projectModalEl = document.getElementById('projectModal');
+      const projectModal = bootstrap.Modal.getInstance(projectModalEl);
+      const openCompetences = () => openCompetencesWidget(null, skillKey, level);
+
+      if (projectModal) {
+        projectModalEl.addEventListener('hidden.bs.modal', openCompetences, { once: true });
+        projectModal.hide();
+        return;
+      }
+
+      openCompetences();
     }
 
     // FONCTION POUR FERMER LA VUE DÉTAIL ET RETOURNER À LA LISTE
@@ -3440,21 +3498,27 @@ const ACTIVITIES_EVIDENCE = [
         return;
       }
 
-      const modal = new bootstrap.Modal(document.getElementById('projectFromSkillModal'));
+      const competencesModalEl = document.getElementById('competencesModal');
+      const competencesModal = bootstrap.Modal.getInstance(competencesModalEl);
+      const wasCompetencesOpen = competencesModalEl.classList.contains('show');
+
+      const projectModalEl = document.getElementById('projectFromSkillModal');
+      const modal = bootstrap.Modal.getOrCreateInstance(projectModalEl);
       const contentArea = document.getElementById('projectFromSkillWidgetContent');
       const linkBtn = document.getElementById('projectFromSkillLinkBtn');
 
-      document.getElementById('projectFromSkillTitleHeader').textContent = projectData.title;
-      document.getElementById('projectFromSkillSubtitleHeader').textContent = projectData.subtitle;
-      document.getElementById('projectFromSkillIconHeader').textContent = projectData.icon;
-      linkBtn.href = projectData.htmlFile;
-      linkBtn.style.display = 'inline-block';
+      const openProjectModal = () => {
+        document.getElementById('projectFromSkillTitleHeader').textContent = projectData.title;
+        document.getElementById('projectFromSkillSubtitleHeader').textContent = projectData.subtitle;
+        document.getElementById('projectFromSkillIconHeader').textContent = projectData.icon;
+        linkBtn.href = projectData.htmlFile;
+        linkBtn.style.display = 'inline-block';
 
-      contentArea.innerHTML = `<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+        contentArea.innerHTML = `<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
 
-      modal.show();
+        modal.show();
 
-      fetch(projectData.htmlFile)
+        fetch(projectData.htmlFile)
         .then(res => res.text())
         .then(html => {
           // Remplacer les chemins relatifs pour les assets
@@ -3511,6 +3575,20 @@ const ACTIVITIES_EVIDENCE = [
           }
           modal.show();
         });
+      };
+
+
+      if (wasCompetencesOpen && competencesModal) {
+        projectModalEl.addEventListener('hidden.bs.modal', () => {
+          const compModal = bootstrap.Modal.getOrCreateInstance(competencesModalEl);
+          compModal.show();
+        }, { once: true });
+        competencesModalEl.addEventListener('hidden.bs.modal', openProjectModal, { once: true });
+        competencesModal.hide();
+        return;
+      }
+
+      openProjectModal();
     }
 
     // NOUVEAU : Ouvrir le widget d'activité (VERSION COMPACTE - POLICE AGRANDIE)
@@ -3518,7 +3596,12 @@ const ACTIVITIES_EVIDENCE = [
       const actData = ACTIVITIES_DATA[activityId];
       if (!actData) return;
 
-      const modal = new bootstrap.Modal(document.getElementById('projectFromSkillModal'));
+      const competencesModalEl = document.getElementById('competencesModal');
+      const competencesModal = bootstrap.Modal.getInstance(competencesModalEl);
+      const wasCompetencesOpen = competencesModalEl.classList.contains('show');
+
+      const projectModalEl = document.getElementById('projectFromSkillModal');
+      const modal = bootstrap.Modal.getOrCreateInstance(projectModalEl);
       const contentArea = document.getElementById('projectFromSkillWidgetContent');
       const linkBtn = document.getElementById('projectFromSkillLinkBtn');
 
@@ -3623,7 +3706,8 @@ const ACTIVITIES_EVIDENCE = [
         </div>
       `;
 
-      contentArea.innerHTML = activityHTML;
+      const openActivityModal = () => {
+        contentArea.innerHTML = activityHTML;
 
       // Debug: Log des images pour vérification
       console.log(`Activity: ${activityId}`, {
@@ -4020,9 +4104,22 @@ const ACTIVITIES_EVIDENCE = [
           font-size: 0.85rem;
         }
       `;
-      contentArea.appendChild(styleOverride);
+        contentArea.appendChild(styleOverride);
 
-      modal.show();
+        modal.show();
+      };
+
+      if (wasCompetencesOpen && competencesModal) {
+        projectModalEl.addEventListener('hidden.bs.modal', () => {
+          const compModal = bootstrap.Modal.getOrCreateInstance(competencesModalEl);
+          compModal.show();
+        }, { once: true });
+        competencesModalEl.addEventListener('hidden.bs.modal', openActivityModal, { once: true });
+        competencesModal.hide();
+        return;
+      }
+
+      openActivityModal();
     }
 
     // Intercept any link to competences to open the widget instead of navigating
@@ -4175,18 +4272,25 @@ const ACTIVITIES_EVIDENCE = [
                         Projets (${projects.length})
                     </h5>
                     <div class="row g-4">
-                        ${projects.map(proj => `
+                ${projects.map(proj => {
+                  const projectKey = `projet${proj.id}`;
+                  const projectImage = PROJECTS_DATA[projectKey] && PROJECTS_DATA[projectKey].image ? PROJECTS_DATA[projectKey].image : null;
+                  const projectBg = projectImage
+                  ? `background-image: linear-gradient(135deg, rgba(3,7,18,0.85) 0%, rgba(15,23,42,0.7) 60%, rgba(15,23,42,0.45) 100%), url('${projectImage}'); background-size: contain; background-position: center; background-repeat: no-repeat;`
+                  : '';
+                  return `
                             <div class="col-md-6">
                                 <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-secondary bg-dark bg-opacity-50 h-100" 
                                      onclick="openProjectFromSkillWidget('projet${proj.id}')" 
-                                     style="cursor:pointer; transition:0.2s;">
+                       style="cursor:pointer; transition:0.2s; ${projectBg}">
                                     <div class="evidence-body">
                                       <div class="fw-bold text-info fs-5"><i class="bi bi-link-45deg me-2"></i>${proj.title}</div>
                                       <div class="small text-white-50 mt-2" style="font-size:1.1rem; line-height:1.5;">"${proj.justif}"</div>
                                     </div>
                                 </div>
                             </div>
-                        `).join('')}
+                `;
+                }).join('')}
                     </div>
                 </div>
             `;
@@ -4202,11 +4306,18 @@ const ACTIVITIES_EVIDENCE = [
                         Activités académiques (${activities.length})
                     </h5>
                     <div class="row g-4">
-                        ${activities.map(act => `
+                ${activities.map(act => {
+                  const activityImage = ACTIVITIES_DATA[act.id] && ACTIVITIES_DATA[act.id].images && ACTIVITIES_DATA[act.id].images[0]
+                  ? ACTIVITIES_DATA[act.id].images[0].src
+                  : null;
+                  const activityBg = activityImage
+                  ? `background-image: linear-gradient(135deg, rgba(3,7,18,0.85) 0%, rgba(15,23,42,0.7) 60%, rgba(15,23,42,0.45) 100%), url('${activityImage}'); background-size: contain; background-position: center; background-repeat: no-repeat;`
+                  : '';
+                  return `
                             <div class="col-md-6">
                                 <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-warning bg-dark bg-opacity-50 h-100 position-relative" 
                                      onclick="openActivityWidget('${act.id}')" 
-                                     style="cursor:pointer; transition:0.2s;">
+                       style="cursor:pointer; transition:0.2s; ${activityBg}">
                                     <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size: 0.9rem;">📚 Trace SAÉ</span>
                                     <div class="evidence-body">
                                       <div class="fw-bold text-warning fs-5"><i class="bi bi-journal-check me-2"></i>${act.title}</div>
@@ -4214,7 +4325,8 @@ const ACTIVITIES_EVIDENCE = [
                                     </div>
                                 </div>
                             </div>
-                        `).join('')}
+                `;
+                }).join('')}
                     </div>
                 </div>
             `;
