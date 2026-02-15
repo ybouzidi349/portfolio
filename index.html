@@ -68,6 +68,111 @@
       font-size: 0.85rem !important;
     }
 
+    /* Passions section (sobriete, clair) */
+    .passions {
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    }
+
+    .passions .section-title h2 {
+      color: #0f172a;
+    }
+
+    .passions .section-title p {
+      color: #334155;
+    }
+
+    .passions-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #dbe2ea;
+      color: #0f172a;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .passions-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .passions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .passion-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .passion-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+    }
+
+    .passion-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .passion-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
+      color: #0f172a;
+      background: #e2e8f0;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .passion-robotique { border-left: 4px solid #38bdf8; }
+    .passion-robotique .passion-tag { background: rgba(56, 189, 248, 0.2); color: #0b2136; }
+
+    .passion-cours { border-left: 4px solid #22c55e; }
+    .passion-cours .passion-tag { background: rgba(34, 197, 94, 0.2); color: #0b2014; }
+
+    .passion-sport { border-left: 4px solid #f59e0b; }
+    .passion-sport .passion-tag { background: rgba(245, 158, 11, 0.2); color: #2a1906; }
+
+    .passion-body {
+      margin-top: 0.7rem;
+      color: #334155;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .passion-body a {
+      color: #0f7fb3;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .passion-body strong {
+      color: #0f172a;
+    }
+
+    @media (max-width: 992px) {
+      .passions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Boutons fermer visibles sur fonds sombres */
     .modal-header .btn-close{
       opacity: 0.7;
@@ -275,6 +380,27 @@
       pointer-events: none;
     }
 
+    .portfolio-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(20, 157, 221, 0.0) 0%, rgba(20, 157, 221, 0.12) 50%, rgba(20, 157, 221, 0.0) 100%);
+      transform: translateX(-120%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .portfolio-content:hover::before {
+      opacity: 1;
+      animation: portfolio-scan 1.6s linear infinite;
+    }
+
+    @keyframes portfolio-scan {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(120%); }
+    }
+
     .portfolio-content:hover::after {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -359,6 +485,58 @@
       color: #007bff;
     }
 
+    .portfolio-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 999px;
+      padding: 8px 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .portfolio-search i {
+      color: #149ddd;
+      font-size: 1rem;
+    }
+
+    .portfolio-search input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 0.95rem;
+      background: transparent;
+    }
+
+    .portfolio-search button {
+      border: none;
+      background: #f1f5f9;
+      color: #334155;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .portfolio-count {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
     /* Hero Fix */
     #hero {
       width: 100%;
@@ -388,12 +566,84 @@
         display: block;
         height: 100%;
         transition: transform 0.3s ease;
+        position: relative;
     }
     .service-link:hover {
         transform: translateY(-5px);
     }
     .service-item {
         height: 100%;
+    }
+
+    .domain-meta {
+      margin-top: 12px;
+    }
+
+    .domain-kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: #475569;
+    }
+
+    .domain-kpi {
+      background: rgba(20, 157, 221, 0.08);
+      border: 1px solid rgba(20, 157, 221, 0.2);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-weight: 700;
+    }
+
+    .domain-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .domain-tags span {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+    }
+
+    .domain-cta {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #149ddd;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .domain-pulse {
+      position: relative;
+      height: 2px;
+      margin-top: 10px;
+      background: linear-gradient(90deg, rgba(20,157,221,0.2), rgba(20,157,221,0.6), rgba(20,157,221,0.2));
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    .domain-pulse::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(20,157,221,0), rgba(20,157,221,0.9), rgba(20,157,221,0));
+      animation: domain-scan 2.6s linear infinite;
+    }
+
+    @keyframes domain-scan {
+      0% { left: -40%; }
+      100% { left: 100%; }
     }
 
     /* =========================================
@@ -478,103 +728,170 @@
        ========================================= */
     
     #competencesWidgetContent {
-      background: linear-gradient(135deg, #0f172a 0%, #1a2a3a 50%, #0f2c4a 100%);
-      color: white;
+      background: #0b1422;
+      color: #e7f3ff;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    #competencesWidgetContent::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(56, 189, 248, 0.08) 0 1px, transparent 1px 22px),
+        repeating-linear-gradient(90deg, rgba(56, 189, 248, 0.06) 0 1px, transparent 1px 22px),
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.12), transparent 38%),
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.1), transparent 40%);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #competencesWidgetContent::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+      opacity: 0.65;
+      animation: comp-scan 6s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes comp-scan {
+      0% { top: -5%; }
+      100% { top: 105%; }
     }
 
     #competencesWidgetContent .page-hero {
-      background: linear-gradient(135deg, rgba(20, 157, 221, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
-      padding: 0.8rem 0.8rem;
-      border-bottom: 1px solid rgba(20, 157, 221, 0.25);
-      border-radius: 6px;
-      margin-bottom: 0.6rem;
+      background: linear-gradient(135deg, rgba(9, 25, 40, 0.9) 0%, rgba(10, 34, 56, 0.8) 100%);
+      padding: 0.55rem 0.65rem;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      margin-bottom: 0.35rem;
       text-align: center;
-      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 30px rgba(3, 10, 18, 0.45);
+    }
+
+    #competencesWidgetContent .page-hero::before {
+      content: "Carnet technique";
+      position: absolute;
+      top: 6px;
+      left: 14px;
+      font-size: 0.55rem;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bfe9ff;
+      padding: 2px 6px;
+      border-radius: 999px;
     }
 
     #competencesWidgetContent .page-hero h1 {
       font-size: 0.95rem;
       font-weight: 800;
-      color: #fff;
+      color: #dff4ff;
       margin-bottom: 0.2rem;
-      background: linear-gradient(135deg, #149ddd 0%, #9333ea 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -1px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     #competencesWidgetContent .page-hero p {
-      font-size: 0.6rem;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.62rem;
+      color: rgba(223, 244, 255, 0.8);
       margin: 0;
       font-weight: 500;
     }
 
     #competencesWidgetContent #yearSelect {
-      background: #000000;
-      border: 2px solid rgba(20, 157, 221, 0.4);
-      color: white;
+      background: rgba(9, 20, 34, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #dff4ff;
       padding: 0.6rem 0.9rem;
       border-radius: 12px;
       font-size: 0.9rem;
       font-weight: 600;
       margin-bottom: 2rem;
       transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-      box-shadow: 0 4px 15px rgba(20, 157, 221, 0.15);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
     }
 
     #competencesWidgetContent #yearSelect:hover,
     #competencesWidgetContent #yearSelect:focus {
-      background: #1a1a1a;
-      border-color: #149ddd;
-      box-shadow: 0 8px 25px rgba(20, 157, 221, 0.4);
+      background: rgba(9, 20, 34, 1);
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
       outline: none;
       transform: translateY(-2px);
     }
 
     #competencesWidgetContent #yearSelect option {
-      background: #000000;
-      color: white;
+      background: #091422;
+      color: #dff4ff;
     }
 
     #competencesWidgetContent .competence-card {
-      background: linear-gradient(135deg, rgba(20, 157, 221, 0.12) 0%, rgba(147, 51, 234, 0.08) 100%);
-      border: 2px solid rgba(20, 157, 221, 0.25);
+      background: linear-gradient(135deg, rgba(10, 24, 38, 0.95) 0%, rgba(11, 30, 48, 0.9) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 12px;
-      padding: 0.4rem;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      padding: 0.5rem 0.6rem;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
       min-height: 80px;
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
       cursor: pointer;
+      z-index: 1;
+      box-shadow: 0 10px 22px rgba(3, 10, 18, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    #competencesWidgetContent .competence-card h4 {
+      color: #ffffff;
+    }
+
+    #competencesWidgetContent .competence-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.2));
+      opacity: 0.7;
     }
 
     #competencesWidgetContent .competence-card::after {
-      content: "Cliquer";
+      content: "Ouvrir";
       position: absolute;
-      top: 14px;
-      right: 16px;
-      font-size: 0.8rem;
+      top: 12px;
+      right: 12px;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.9);
-      background: rgba(20, 157, 221, 0.25);
-      padding: 6px 10px;
+      color: rgba(223, 244, 255, 0.9);
+      background: rgba(56, 189, 248, 0.2);
+      padding: 4px 9px;
       border-radius: 999px;
       opacity: 0;
       transform: translateY(-4px);
       transition: all 0.3s ease;
       pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
     }
 
     #competencesWidgetContent .competence-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      border-color: rgba(20, 157, 221, 0.7);
+      box-shadow: 0 18px 40px rgba(3, 10, 18, 0.55);
+      border-color: rgba(56, 189, 248, 0.9);
     }
 
     #competencesWidgetContent .competence-card:hover::after {
@@ -583,24 +900,24 @@
     }
 
     #competencesWidgetContent .competence-card.comp-concevoir {
-      background: linear-gradient(135deg, rgba(20,157,221,0.18), rgba(147,51,234,0.14));
-      border-color: rgba(20,157,221,0.4);
+      background: linear-gradient(135deg, rgba(12, 32, 50, 0.95), rgba(11, 24, 40, 0.9));
+      border-color: rgba(56, 189, 248, 0.45);
     }
     #competencesWidgetContent .competence-card.comp-verifier {
-      background: linear-gradient(135deg, rgba(0,201,167,0.18), rgba(20,157,221,0.12));
-      border-color: rgba(0,201,167,0.35);
+      background: linear-gradient(135deg, rgba(9, 34, 44, 0.95), rgba(9, 24, 36, 0.9));
+      border-color: rgba(34, 211, 238, 0.45);
     }
     #competencesWidgetContent .competence-card.comp-maintenir {
-      background: linear-gradient(135deg, rgba(255,193,7,0.18), rgba(147,51,234,0.12));
-      border-color: rgba(255,193,7,0.35);
+      background: linear-gradient(135deg, rgba(14, 30, 45, 0.95), rgba(10, 22, 35, 0.9));
+      border-color: rgba(148, 163, 184, 0.45);
     }
     #competencesWidgetContent .competence-card.comp-implanter {
-      background: linear-gradient(135deg, rgba(255,107,107,0.18), rgba(20,157,221,0.12));
-      border-color: rgba(255,107,107,0.35);
+      background: linear-gradient(135deg, rgba(12, 28, 44, 0.95), rgba(9, 22, 34, 0.9));
+      border-color: rgba(56, 189, 248, 0.6);
     }
-    #competencesWidgetContent .competence-card:hover.comp-verifier { border-color: #00c9a7; }
-    #competencesWidgetContent .competence-card:hover.comp-maintenir { border-color: #ffc107; }
-    #competencesWidgetContent .competence-card:hover.comp-implanter { border-color: #ff6b6b; }
+    #competencesWidgetContent .competence-card:hover.comp-verifier { border-color: #22d3ee; }
+    #competencesWidgetContent .competence-card:hover.comp-maintenir { border-color: #94a3b8; }
+    #competencesWidgetContent .competence-card:hover.comp-implanter { border-color: #38bdf8; }
 
     /* Cartes de traces avec image */
     #competencesWidgetContent .evidence-card-mini {
@@ -653,21 +970,20 @@
     }
 
     #competencesWidgetContent .progress {
-      background: linear-gradient(90deg, rgba(20, 157, 221, 0.1) 0%, rgba(147, 51, 234, 0.08) 100%);
+      background: rgba(9, 20, 34, 0.8);
       border-radius: 12px;
       overflow: hidden;
       height: 10px;
       margin: 1.2rem 0;
-      border: 1px solid rgba(20, 157, 221, 0.2);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: inset 0 2px 6px rgba(3, 10, 18, 0.4);
     }
 
     #competencesWidgetContent .progress-bar {
-      background: linear-gradient(90deg, #149ddd 0%, #17d4f2 50%, #9333ea 100%);
+      background: linear-gradient(90deg, #38bdf8 0%, #22d3ee 55%, #60a5fa 100%);
       height: 100%;
       transition: width 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-      box-shadow: 0 0 15px rgba(20, 157, 221, 0.6), 
-                  0 0 25px rgba(147, 51, 234, 0.3),
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5),
                   inset 0 1px 0 rgba(255, 255, 255, 0.3);
       border-radius: 12px;
       position: relative;
@@ -691,35 +1007,301 @@
     }
 
     #competencesWidgetContent .view-detail-btn {
-      color: #149ddd;
-      border-color: rgba(20, 157, 221, 0.5);
+      color: #bfe9ff;
+      border-color: rgba(56, 189, 248, 0.55);
       font-weight: 600;
-      font-size: 0.85rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      padding: 0.45rem 0.9rem;
       transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
       position: relative;
       z-index: 1;
       margin-top: 0.8rem;
-      background: rgba(20, 157, 221, 0.05);
+      background: rgba(56, 189, 248, 0.08);
       border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
     }
 
     #competencesWidgetContent .view-detail-btn:hover {
-      background: linear-gradient(135deg, rgba(20, 157, 221, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
-      border-color: #149ddd;
-      color: #17d4f2;
-      box-shadow: 0 8px 20px rgba(20, 157, 221, 0.3);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(34, 211, 238, 0.2) 100%);
+      border-color: rgba(56, 189, 248, 0.9);
+      color: #e6f6ff;
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
       transform: translateY(-3px);
     }
 
     #competencesWidgetContent .detail-view {
-      background: linear-gradient(135deg, rgba(20, 157, 221, 0.1) 0%, rgba(147, 51, 234, 0.08) 100%);
-      border: 2px solid rgba(20, 157, 221, 0.25);
-      border-radius: 20px;
-      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(9, 25, 40, 0.95) 0%, rgba(12, 32, 52, 0.92) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 18px;
+      padding: 1.1rem;
       animation: slideInUp 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 40px rgba(20, 157, 221, 0.15);
+      box-shadow: 0 12px 35px rgba(3, 10, 18, 0.45);
+      position: relative;
+      z-index: 1;
+    }
+
+    #competencesWidgetContent .comp-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    #competencesWidgetContent .comp-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    #competencesWidgetContent .comp-back {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+    }
+
+    #competencesWidgetContent .comp-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    #competencesWidgetContent .comp-chip {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
+      color: #e7f3ff;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    #competencesWidgetContent .comp-chip-score {
+      border-color: rgba(34, 211, 238, 0.6);
+      background: rgba(34, 211, 238, 0.2);
+    }
+
+    #competencesWidgetContent .comp-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: start;
+    }
+
+    #competencesWidgetContent .comp-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    #competencesWidgetContent .comp-icon i {
+      font-size: 1.6rem;
+      color: #7dd3fc;
+    }
+
+    #competencesWidgetContent .comp-header h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    #competencesWidgetContent .comp-subtitle {
+      font-size: 0.85rem;
+      color: #cfe9ff;
+      margin-top: 0.1rem;
+    }
+
+    #competencesWidgetContent .comp-desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: rgba(223, 244, 255, 0.9);
+      margin-top: 0.35rem;
+    }
+
+    #competencesWidgetContent .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    #competencesWidgetContent .comp-section {
+      background: rgba(9, 20, 34, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 0.9rem;
+    }
+
+    #competencesWidgetContent .comp-section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      margin: 0 0 0.5rem 0;
+      color: #bfe9ff;
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-warn h3 {
+      color: #ffd2c2;
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-success {
+      border-color: rgba(34, 197, 94, 0.45);
+      background: linear-gradient(135deg, rgba(10, 24, 22, 0.9), rgba(8, 18, 26, 0.9));
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-success h3 {
+      color: #9ae6b4;
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-warn {
+      border-color: rgba(248, 113, 113, 0.45);
+      background: linear-gradient(135deg, rgba(26, 12, 14, 0.92), rgba(12, 18, 26, 0.9));
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-info {
+      border-color: rgba(59, 130, 246, 0.45);
+      background: linear-gradient(135deg, rgba(10, 18, 32, 0.9), rgba(9, 18, 26, 0.9));
+    }
+
+    #competencesWidgetContent .comp-section.comp-section-info h3 {
+      color: #93c5fd;
+    }
+
+    #competencesWidgetContent .comp-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(9, 18, 30, 0.8);
+    }
+
+    #competencesWidgetContent .comp-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #cfe9ff;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
+    }
+
+    #competencesWidgetContent .comp-progress-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(9, 20, 34, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(3, 10, 18, 0.4);
+    }
+
+    #competencesWidgetContent .comp-progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8 0%, #22d3ee 60%, #60a5fa 100%);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+      transition: width 0.6s ease;
+    }
+
+    #competencesWidgetContent .comp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    #competencesWidgetContent .comp-list li {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #e7f3ff;
+    }
+
+    #competencesWidgetContent .comp-list i {
+      color: #7dd3fc;
+      font-size: 0.9rem;
+      margin-top: 0.1rem;
+    }
+
+    #competencesWidgetContent .comp-section-warn .comp-list i {
+      color: #fca5a5;
+    }
+
+    #competencesWidgetContent .comp-section-success .comp-list i {
+      color: #22c55e;
+    }
+
+    #competencesWidgetContent .comp-evidence-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #competencesWidgetContent .comp-evidence-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      color: #bfe9ff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    #competencesWidgetContent .comp-count {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.15);
+    }
+
+    #competencesWidgetContent .comp-evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    #competencesWidgetContent .comp-evidence-card {
+      padding: 0.7rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(7, 15, 25, 0.75);
+      min-height: 150px;
+    }
+
+    #competencesWidgetContent .comp-evidence-card .comp-evidence-title-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #e7f3ff;
+    }
+
+    #competencesWidgetContent .comp-evidence-card .comp-evidence-justif {
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: rgba(223, 244, 255, 0.8);
+      margin-top: 0.35rem;
+    }
+
+    @media (max-width: 992px) {
+      #competencesWidgetContent .comp-grid,
+      #competencesWidgetContent .comp-evidence-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @keyframes slideInUp {
@@ -801,24 +1383,35 @@
     }
 
     /* Year buttons for competences widget */
-    .year-selector { display: flex; justify-content: center; gap: 3px; flex-wrap: wrap; margin-bottom: 0.4rem; }
+    .year-selector { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 0.15rem; }
     .year-btn {
-      background: transparent;
-      border: 1px solid rgba(20, 157, 221, 0.35);
-      color: #fff;
-      padding: 0.35rem 0.6rem;
-      border-radius: 6px;
+      background: rgba(9, 20, 34, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #dff4ff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
       cursor: pointer;
-      font-size: 0.65rem;
-      font-weight: 600;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08rem;
       transition: all 0.25s ease;
-      box-shadow: 0 2px 6px rgba(20, 157, 221, 0.12);
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.15);
       display: inline-flex; align-items: center; justify-content: center;
-      min-width: 60px;
+      min-width: 62px;
     }
-    .year-btn:hover { background: rgba(20, 157, 221, 0.12); border-color: #149ddd; transform: translateY(-1px); }
-    .year-btn.active { background: linear-gradient(135deg, #149ddd 0%, #17d4f2 100%); border-color: #149ddd; color: #fff; }
-    @media (max-width: 576px) { .year-btn { min-width: 80px; padding: 0.5rem 0.8rem; font-size: 0.8rem; } }
+    .year-btn:hover {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: rgba(56, 189, 248, 0.9);
+      transform: translateY(-1px);
+    }
+    .year-btn.active {
+      background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 100%);
+      border-color: #38bdf8;
+      color: #06101d;
+      box-shadow: 0 8px 18px rgba(56, 189, 248, 0.35);
+    }
+    @media (max-width: 576px) { .year-btn { min-width: 70px; padding: 0.35rem 0.7rem; font-size: 0.7rem; } }
 
     /* Mobile: réduire la taille du texte en plein écran (modales) */
     @media (max-width: 768px) {
@@ -979,7 +1572,7 @@
           <h2>Yanis Bouzidi</h2>
           <p style="font-size: 1.1rem;"><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Orienté Robotique & Systèmes" role="text" aria-live="polite"></span></p>
           <div class="mt-4">
-            <a href="assets/CV_Yanis_Bouzidi.pdf" target="_blank" class="btn btn-primary rounded-pill px-3 py-2" style="font-size: 0.95rem; font-weight: 600;">
+            <a href="assets/img/portfolio/cv_bouzidi_site.pdf" target="_blank" class="btn btn-primary rounded-pill px-3 py-2" style="font-size: 0.95rem; font-weight: 600;">
               <i class="bi bi-download me-2"></i> <span data-i18n="download_cv">Télécharger mon CV</span>
             </a>
           </div>
@@ -1032,6 +1625,62 @@
       </div>
     </section>
 
+    <section id="passions" class="passions section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Passions & Transmission</h2>
+        <p>Un bouton pour derouler mes passions, et des cartes cliquables pour voir ce que je fais et ce que j'aime.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="d-flex justify-content-center mb-4">
+          <button class="passions-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#passionsCollapse" aria-expanded="false" aria-controls="passionsCollapse">
+            <i class="bi bi-caret-down-fill"></i>
+            Decouvrir mes passions
+          </button>
+        </div>
+
+        <div class="collapse" id="passionsCollapse">
+          <div class="passions-grid">
+            <div class="passion-card passion-robotique">
+              <div class="passion-title">
+                <span>Robotique</span>
+                <span class="passion-tag">RCT Toulon</span>
+              </div>
+              <div class="passion-body">
+                <p><strong>Contexte :</strong> Participant de l'equipe RCT (Robot Club Toulon). Je participe a <a href="https://www.eurobot.org/" target="_blank" rel="noopener">Eurobot</a>, la competition de France de robotique, et a la <a href="https://www.robocup.org/" target="_blank" rel="noopener">RoboCup</a> (competition internationale en Coree du Sud).</p>
+                <p><strong>Ce que je fais :</strong> Conception de sous-systemes, integration hardware/software, strategie de match, tests et validation sur le terrain.</p>
+                <p><strong>Ce que j'aime :</strong> Le travail d'equipe, la pression du temps reel, et transformer une idee en robot qui fonctionne vraiment.</p>
+              </div>
+            </div>
+
+            <div class="passion-card passion-cours">
+              <div class="passion-title">
+                <span>Donner des cours</span>
+                <span class="passion-tag">Transmission</span>
+              </div>
+              <div class="passion-body">
+                <p><strong>Contexte :</strong> J'aime donner des cours et aider a comprendre. Je donne surtout des cours a des lyceens et collegiens.</p>
+                <p><strong>Ce que je fais :</strong> Explications claires, methodes simples, exercices progressifs et suivi de la progression.</p>
+                <p><strong>Ce que j'aime :</strong> Voir le declic, redonner confiance, et rendre les notions techniques accessibles.</p>
+              </div>
+            </div>
+
+            <div class="passion-card passion-sport">
+              <div class="passion-title">
+                <span>Sport & Coaching</span>
+                <span class="passion-tag">Discipline</span>
+              </div>
+              <div class="passion-body">
+                <p><strong>Contexte :</strong> J'aime le sport. J'ai ete coach d'une equipe de foot et j'ai pratique longtemps plusieurs sports.</p>
+                <p><strong>Ce que je fais :</strong> Entrainement, objectif clair, rigueur, esprit d'equipe et gestion d'effort.</p>
+                <p><strong>Ce que j'aime :</strong> La discipline, la progression, et l'energie collective.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="stats" class="stats section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
@@ -1071,477 +1720,6 @@
         </div>
       </div>
     </section>
-
-<section id="skills" class="skills section light-background">
-  <div class="container section-title" data-aos="fade-up">
-    <h2 data-i18n="skills_title">Outils Techniques</h2>
-    <p data-i18n="skills_subtitle" class="fs-5">Un aperçu concret des technologies que je maîtrise.</p>
-  </div>
-
-  <!-- Ajustements demandés : icônes + descriptions plus grandes -->
-  <style>
-    .skill-icon-wrapper img {
-      width: 52px;   /* + grand */
-      height: 52px;  /* + grand */
-      object-fit: contain;
-      display: block;
-    }
-    /* Liens cliquables visibles (bleu) */
-.text-link-hover {
-  color: #149ddd !important;         /* bleu par défaut */
-  text-decoration: underline;         /* montre clairement que c'est cliquable */
-  font-weight: 700;                   /* plus visible */
-  display: inline-flex;               /* garde l'icône bien alignée */
-  align-items: center;
-  gap: 6px;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-
-.text-link-hover:hover {
-  color: #0f7fb3 !important;          /* bleu plus foncé au hover */
-  text-decoration: underline;
-  transform: translateX(3px);         /* petit mouvement */
-  background: rgba(20, 157, 221, 0.08);
-  border-radius: 6px;
-  padding: 2px 6px;
-}
-
-    .skill-card-content p {
-      font-size: 0.8rem;   /* descriptions réduites */
-      margin-bottom: 3px;
-      line-height: 1.3;
-    }
-    .skill-mini {
-      font-size: 0.7rem;   /* mini descriptions réduites */
-      color: #6c757d;
-      margin-top: 3px;
-      line-height: 1.3;
-    }
-    .skill-card-content h5 { margin-bottom: 3px; font-size: 0.95rem; }
-    .skill-type-badge {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      font-size: 0.55rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      z-index: 2;
-      max-width: 55%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-      pointer-events: none;
-    }
-    .skill-type-tech {
-      background: #e7f5ff;
-      color: #0b5ed7;
-      border: 1px solid #b6e0fe;
-    }
-    .skill-type-pro {
-      background: #fff4e6;
-      color: #a64b00;
-      border: 1px solid #ffd8a8;
-    }
-  </style>
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row g-4">
-
-      <!-- ======================= -->
-      <!-- BLOCK 1: Langages -->
-      <!-- ======================= -->
-      <div class="col-12">
-        <div class="skills-block-title">
-          <i class="bi bi-code-slash fs-3"></i>
-          <h3 class="fw-bold mb-0">Langages de programmation</h3>
-        </div>
-        <div class="skills-caption">Python • C • C++ • HTML/CSS/JS</div>
-
-        <div class="skills-swiper swiper" aria-label="Langages de programmation">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="C embarqué">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="Logo C">
-                </div>
-                <div class="skill-card-content">
-                  <h5>C (Embarqué)</h5>
-                  <p>Firmware embarqué : drivers, interruptions, timing</p>
-                  <div class="skill-mini">Optimisation mémoire/perf • Debug sur cible • Structuration firmware</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="C++">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Logo C++">
-                </div>
-                <div class="skill-card-content">
-                  <h5>C++</h5>
-                  <p>Architecture propre, modules et programmation orientée objet</p>
-                  <div class="skill-mini">Systèmes distribués • Maintenabilité • Organisation projet</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Python">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Logo Python">
-                </div>
-                <div class="skill-card-content">
-                  <h5>Python</h5>
-                  <p>Scripting, automatisation, analyse et outils techniques</p>
-                  <div class="skill-mini">USB/Protocoles • Reverse engineering • Scripts rapides</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="HTML CSS JavaScript">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Logo JavaScript">
-                </div>
-                <div class="skill-card-content">
-                  <h5>HTML • CSS • JavaScript</h5>
-                  <p>Interfaces web, dashboards, expérience utilisateur</p>
-                  <div class="skill-mini">Affichage temps réel • UI responsive • Intégration IoT</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="PHP">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Logo PHP">
-                </div>
-                <div class="skill-card-content">
-                  <h5>PHP</h5>
-                  <p>Backend léger, formulaires et traitement serveur</p>
-                  <div class="skill-mini">Formulaires • API simples • Intégration web</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev" aria-label="Précédent"></div>
-          <div class="swiper-button-next" aria-label="Suivant"></div>
-        </div>
-      </div>
-
-      <!-- ======================= -->
-      <!-- BLOCK 2: Bus, Protocoles & Systèmes -->
-      <!-- (LIENS REMIS + LOGOS AJOUTÉS) -->
-      <!-- ======================= -->
-      <div class="col-12">
-        <div class="skills-block-title">
-          <i class="bi bi-diagram-3 fs-3"></i>
-          <h3 class="fw-bold mb-0">Bus, Protocoles & Systèmes</h3>
-        </div>
-        <div class="skills-caption">CAN • LIN • I2C • SPI • UART • STM32 • ESP32 • Linux TR</div>
-
-        <div class="skills-swiper swiper" aria-label="Bus et systèmes">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="CAN LIN">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg" alt="Logo Bus CAN/LIN" onerror="this.style.display='none'">
-                </div>
-                <div class="skill-card-content">
-                  <h5>CAN / LIN</h5>
-                  <p>Trames, IDs, validation et debug bus</p>
-                  <div class="skill-mini">Analyse erreurs • Diagnostic communication • Intégration multi-cartes</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet4');" role="button" aria-label="I2C SPI UART">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Logo Interfaces">
-                </div>
-                <div class="skill-card-content">
-                  <h5>I2C • SPI • UART</h5>
-                  <p>Drivers, capteurs, tests, gestion de timing</p>
-                  <div class="skill-mini">Init périphériques • Debug • Robustesse (timeouts/erreurs)</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
-                </div>
-                <div class="skill-card-content">
-                  <h5>STM32 (HAL/LL)</h5>
-                  <p>Timers, PWM, ADC, DMA, interruptions</p>
-                  <div class="skill-mini">Mise au point • Debug • Architecture multi-cartes</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="ESP32">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/espressif.svg" alt="Logo ESP32 (Espressif)">
-                </div>
-                <div class="skill-card-content">
-                  <h5>ESP32 & IoT</h5>
-                  <p>WiFi/BLE, capteurs, web, monitoring</p>
-                  <div class="skill-mini">Acquisition • Télémetrie • Intégration systèmes</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Linux temps réel">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Logo Linux">
-                </div>
-                <div class="skill-card-content">
-                  <h5>Linux Temps Réel</h5>
-                  <p>Xenomai, performances, latence, debug</p>
-                  <div class="skill-mini">Outils système • Logs • Mesure latence • Optimisation</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev" aria-label="Précédent"></div>
-          <div class="swiper-button-next" aria-label="Suivant"></div>
-        </div>
-      </div>
-
-      <!-- ======================= -->
-      <!-- BLOCK 3: Logiciels / IDE & Simulation -->
-      <!-- (LIENS + IMAGES + KICAD AJOUTÉ) -->
-      <!-- ======================= -->
-      <div class="col-12">
-        <div class="skills-block-title">
-          <i class="bi bi-window fs-3"></i>
-          <h3 class="fw-bold mb-0">Logiciels / IDE & Simulation</h3>
-        </div>
-        <div class="skills-caption">KiCad • MATLAB • MPLAB X • Quartus • STM32CubeIDE • Git • VS Code</div>
-
-        <div class="skills-swiper swiper" aria-label="Logiciels et IDE">
-           <div class="swiper-wrapper" style="display: flex; flex-wrap: nowrap;">
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet10');" role="button" aria-label="KiCad">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kicad.svg" alt="Logo KiCad">
-                </div>
-                <div class="skill-card-content">
-                  <h5>KiCad</h5>
-                  <p>Schémas, routage PCB, BOM</p>
-                  <div class="skill-mini">DRC • Export Gerber • Projet multi-pages</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="MATLAB">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="Logo MATLAB">
-                </div>
-                <div class="skill-card-content">
-                  <h5>MATLAB</h5>
-                  <p>Calcul, scripts, analyse de signaux</p>
-                  <div class="skill-mini">Traitement signal • Prototypage algo • Visualisation</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-              
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="MPLAB X">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="assets/img/skills/mplab.svg" alt="Logo MPLAB X">
-                </div>
-                <div class="skill-card-content">
-                  <h5>MPLAB X</h5>
-                  <p>IDE Microchip : compilation & debug</p>
-                  <div class="skill-mini">Configuration projet • Programmation • Mise au point</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Quartus">
-                <span class="skill-type-badge skill-type-tech">Technique</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/intel.svg" alt="Logo Intel (Quartus)">
-                </div>
-                <div class="skill-card-content">
-                  <h5>Quartus</h5>
-                  <p>FPGA : synthèse, compilation, pinout</p>
-                  <div class="skill-mini">Constraints • Build • Vérification logique</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32CubeIDE">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
-                </div>
-                <div class="skill-card-content">
-                  <h5>STM32CubeIDE</h5>
-                  <p>Configuration périphériques & build</p>
-                  <div class="skill-mini">CubeMX • HAL • Debug ST-Link</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Git">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Logo Git">
-                </div>
-                <div class="skill-card-content">
-                  <h5>Git</h5>
-                  <p>Versioning, branches, collaboration</p>
-                  <div class="skill-mini">Historique propre • Merge • Travail en équipe</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="VS Code">
-                <span class="skill-type-badge skill-type-pro">Professionel</span>
-                <div class="skill-icon-wrapper">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Logo VS Code">
-                </div>
-                <div class="skill-card-content">
-                  <h5>VS Code</h5>
-                  <p>Développement embarqué & web</p>
-                  <div class="skill-mini">Extensions • Debug • Organisation projet</div>
-                </div>
-                <div class="skill-card-badge">
-                  <i class="bi bi-arrow-right-short"></i>
-                  Voir projet
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev" aria-label="Précédent"></div>
-          <div class="swiper-button-next" aria-label="Suivant"></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CTA “Voir mes compétences académiques” -->
-    <div class="col-12 mt-3">
-      <a class="skills-cta d-flex align-items-center gap-4 p-4" href="#" onclick="openCompetencesWidget(event)">
-        <div class="icon-box text-primary">
-          <i class="bi bi-mortarboard-fill" style="font-size: 3.5rem;"></i>
-        </div>
-        <div>
-          <h3 class="fw-bold text-dark mb-1">Voir mes compétences techniques et académiques</h3>
-          <p class="text-muted mb-0 fs-5">Validation officielle par année : Concevoir / Vérifier / Maintenir.</p>
-        </div>
-        <i class="bi bi-arrow-right ms-auto text-primary" style="font-size: 2.5rem;"></i>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-
 
     <section id="resume" class="resume section">
       <div class="container section-title" data-aos="fade-up">
@@ -1678,23 +1856,505 @@
       </div>
     </section>
 
+    <section id="skills" class="skills section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2 data-i18n="skills_title">Outils Techniques</h2>
+        <p data-i18n="skills_subtitle" class="fs-5">Clique un outil pour ouvrir un projet associe.</p>
+      </div>
+
+      <!-- Ajustements demandés : icônes + descriptions plus grandes -->
+      <style>
+        .skill-icon-wrapper img {
+          width: 52px;   /* + grand */
+          height: 52px;  /* + grand */
+          object-fit: contain;
+          display: block;
+        }
+        /* Liens cliquables visibles (bleu) */
+      .text-link-hover {
+        color: #149ddd !important;         /* bleu par défaut */
+        text-decoration: underline;         /* montre clairement que c'est cliquable */
+        font-weight: 700;                   /* plus visible */
+        display: inline-flex;               /* garde l'icône bien alignée */
+        align-items: center;
+        gap: 6px;
+        transition: all 0.25s ease;
+        cursor: pointer;
+      }
+
+      .text-link-hover:hover {
+        color: #0f7fb3 !important;          /* bleu plus foncé au hover */
+        text-decoration: underline;
+        transform: translateX(3px);         /* petit mouvement */
+        background: rgba(20, 157, 221, 0.08);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+
+        .skill-card-content p {
+          display: none;
+        }
+        .skill-mini {
+          display: none;
+        }
+        .skill-card-content h5 { margin-bottom: 2px; font-size: 1.05rem; font-weight: 800; color: #0f172a; }
+        .skill-card-content { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+        #skills .skill-card-item { min-height: 150px; gap: 10px; }
+
+        .skill-card-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08rem;
+          color: #0f5e8c;
+          background: rgba(20, 157, 221, 0.12);
+          border: 1px solid rgba(20, 157, 221, 0.3);
+          border-radius: 999px;
+          padding: 4px 10px;
+        }
+
+        .skill-type-badge {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          font-size: 0.55rem;
+          padding: 2px 8px;
+          border-radius: 999px;
+          font-weight: 700;
+          letter-spacing: 0.3px;
+          text-transform: uppercase;
+          z-index: 2;
+          max-width: 55%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+          pointer-events: none;
+        }
+        .skill-type-tech {
+          background: #e7f5ff;
+          color: #0b5ed7;
+          border: 1px solid #b6e0fe;
+        }
+        .skill-type-pro {
+          background: #fff4e6;
+          color: #a64b00;
+          border: 1px solid #ffd8a8;
+        }
+      </style>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+
+          <!-- ======================= -->
+          <!-- BLOCK 1: Langages -->
+          <!-- ======================= -->
+          <div class="col-12">
+            <div class="skills-block-title">
+              <i class="bi bi-code-slash fs-3"></i>
+              <h3 class="fw-bold mb-0">Langages de programmation</h3>
+            </div>
+            <div class="skills-caption">Python • C • C++ • HTML/CSS/JS</div>
+
+            <div class="skills-swiper swiper" aria-label="Langages de programmation">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="C embarqué">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="Logo C">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>C (Embarqué)</h5>
+                      <p>Firmware embarqué : drivers, interruptions, timing</p>
+                      <div class="skill-mini">Optimisation mémoire/perf • Debug sur cible • Structuration firmware</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="C++">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Logo C++">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>C++</h5>
+                      <p>Architecture propre, modules et programmation orientée objet</p>
+                      <div class="skill-mini">Systèmes distribués • Maintenabilité • Organisation projet</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Python">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Logo Python">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>Python</h5>
+                      <p>Scripting, automatisation, analyse et outils techniques</p>
+                      <div class="skill-mini">USB/Protocoles • Reverse engineering • Scripts rapides</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="HTML CSS JavaScript">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Logo JavaScript">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>HTML • CSS • JavaScript</h5>
+                      <p>Interfaces web, dashboards, expérience utilisateur</p>
+                      <div class="skill-mini">Affichage temps réel • UI responsive • Intégration IoT</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="PHP">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Logo PHP">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>PHP</h5>
+                      <p>Backend léger, formulaires et traitement serveur</p>
+                      <div class="skill-mini">Formulaires • API simples • Intégration web</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev" aria-label="Précédent"></div>
+              <div class="swiper-button-next" aria-label="Suivant"></div>
+            </div>
+          </div>
+
+          <!-- ======================= -->
+          <!-- BLOCK 2: Bus, Protocoles & Systèmes -->
+          <!-- (LIENS REMIS + LOGOS AJOUTÉS) -->
+          <!-- ======================= -->
+          <div class="col-12">
+            <div class="skills-block-title">
+              <i class="bi bi-diagram-3 fs-3"></i>
+              <h3 class="fw-bold mb-0">Bus, Protocoles & Systèmes</h3>
+            </div>
+            <div class="skills-caption">CAN • LIN • I2C • SPI • UART • STM32 • ESP32 • Linux TR</div>
+
+            <div class="skills-swiper swiper" aria-label="Bus et systèmes">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="CAN LIN">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg" alt="Logo Bus CAN/LIN" onerror="this.style.display='none'">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>CAN / LIN</h5>
+                      <p>Trames, IDs, validation et debug bus</p>
+                      <div class="skill-mini">Analyse erreurs • Diagnostic communication • Intégration multi-cartes</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet4');" role="button" aria-label="I2C SPI UART">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Logo Interfaces">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>I2C • SPI • UART</h5>
+                      <p>Drivers, capteurs, tests, gestion de timing</p>
+                      <div class="skill-mini">Init périphériques • Debug • Robustesse (timeouts/erreurs)</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>STM32 (HAL/LL)</h5>
+                      <p>Timers, PWM, ADC, DMA, interruptions</p>
+                      <div class="skill-mini">Mise au point • Debug • Architecture multi-cartes</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="ESP32">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/espressif.svg" alt="Logo ESP32 (Espressif)">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>ESP32 & IoT</h5>
+                      <p>WiFi/BLE, capteurs, web, monitoring</p>
+                      <div class="skill-mini">Acquisition • Télémetrie • Intégration systèmes</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Linux temps réel">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Logo Linux">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>Linux Temps Réel</h5>
+                      <p>Xenomai, performances, latence, debug</p>
+                      <div class="skill-mini">Outils système • Logs • Mesure latence • Optimisation</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev" aria-label="Précédent"></div>
+              <div class="swiper-button-next" aria-label="Suivant"></div>
+            </div>
+          </div>
+
+          <!-- ======================= -->
+          <!-- BLOCK 3: Logiciels / IDE & Simulation -->
+          <!-- (LIENS + IMAGES + KICAD AJOUTÉ) -->
+          <!-- ======================= -->
+          <div class="col-12">
+            <div class="skills-block-title">
+              <i class="bi bi-window fs-3"></i>
+              <h3 class="fw-bold mb-0">Logiciels / IDE & Simulation</h3>
+            </div>
+            <div class="skills-caption">KiCad • MATLAB • MPLAB X • Quartus • STM32CubeIDE • Git • VS Code</div>
+
+            <div class="skills-swiper swiper" aria-label="Logiciels et IDE">
+               <div class="swiper-wrapper" style="display: flex; flex-wrap: nowrap;">
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet10');" role="button" aria-label="KiCad">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kicad.svg" alt="Logo KiCad">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>KiCad</h5>
+                      <p>Schémas, routage PCB, BOM</p>
+                      <div class="skill-mini">DRC • Export Gerber • Projet multi-pages</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="MATLAB">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="Logo MATLAB">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>MATLAB</h5>
+                      <p>Calcul, scripts, analyse de signaux</p>
+                      <div class="skill-mini">Traitement signal • Prototypage algo • Visualisation</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet2');" role="button" aria-label="MPLAB X">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="assets/img/skills/mplab.svg" alt="Logo MPLAB X">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>MPLAB X</h5>
+                      <p>IDE Microchip : compilation & debug</p>
+                      <div class="skill-mini">Configuration projet • Programmation • Mise au point</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet9');" role="button" aria-label="Quartus">
+                    <span class="skill-type-badge skill-type-tech">Technique</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/intel.svg" alt="Logo Intel (Quartus)">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>Quartus</h5>
+                      <p>FPGA : synthèse, compilation, pinout</p>
+                      <div class="skill-mini">Constraints • Build • Vérification logique</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet3');" role="button" aria-label="STM32CubeIDE">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stmicroelectronics.svg" alt="Logo STM32 (STMicroelectronics)">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>STM32CubeIDE</h5>
+                      <p>Configuration périphériques & build</p>
+                      <div class="skill-mini">CubeMX • HAL • Debug ST-Link</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet5');" role="button" aria-label="Git">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Logo Git">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>Git</h5>
+                      <p>Versioning, branches, collaboration</p>
+                      <div class="skill-mini">Historique propre • Merge • Travail en équipe</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="skill-card-item" onclick="openProjectWidget('projet1');" role="button" aria-label="VS Code">
+                    <span class="skill-type-badge skill-type-pro">Professionel</span>
+                    <div class="skill-icon-wrapper">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Logo VS Code">
+                    </div>
+                    <div class="skill-card-content">
+                      <h5>VS Code</h5>
+                      <p>Développement embarqué & web</p>
+                      <div class="skill-mini">Extensions • Debug • Organisation projet</div>
+                    </div>
+                    <div class="skill-card-badge">
+                      <i class="bi bi-arrow-right-short"></i>
+                      Voir projet
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev" aria-label="Précédent"></div>
+              <div class="swiper-button-next" aria-label="Suivant"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA “Voir mes compétences académiques” -->
+        <div class="col-12 mt-3">
+          <a class="skills-cta d-flex align-items-center gap-3 p-3" href="#" onclick="openCompetencesWidget(event)">
+            <div class="icon-box text-primary">
+              <i class="bi bi-mortarboard-fill" style="font-size: 2.6rem;"></i>
+            </div>
+            <div>
+              <h3 class="fw-bold text-dark mb-1" style="font-size: 1.05rem;">Voir mes competences techniques et academiques</h3>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">Validation officielle par annee : Concevoir / Verifier / Maintenir.</p>
+            </div>
+            <i class="bi bi-arrow-right ms-auto text-primary" style="font-size: 1.8rem;"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
     <section id="portfolio" class="portfolio section light-background">
       
       <div class="container mb-5" data-aos="fade-up">
-        <div class="card border-0 overflow-hidden bg-white p-5 rounded-5 shadow-sm">
-          <div class="row g-5 align-items-center">
+        <div class="card border-0 overflow-hidden bg-white p-3 rounded-4 shadow-sm">
+          <div class="row g-3 align-items-center">
             <div class="col-xl-6">
-              <span class="badge bg-primary bg-gradient w-auto mb-4 px-4 py-3 rounded-pill fs-5" data-i18n="proj_flagship">PROJET PHARE</span>
+              <span class="badge bg-primary bg-gradient w-auto mb-3 px-3 py-2 rounded-pill" style="font-size: 0.75rem;" data-i18n="proj_flagship">PROJET PHARE</span>
               <h3 class="fw-bold mb-2 display-4" style="font-size: 1.3rem;" data-i18n="proj_eurobot_title">Coupe de France de Robotique 2025</h3>
               <p class="text-muted mb-1 fs-4" style="font-size: 0.8rem;" data-i18n="proj_eurobot_desc">Conception complète d'une flotte de robots autonomes coopératifs.</p>
               
-              <div class="mb-5 fs-5" style="font-size: 1.2rem;">
+              <div class="mb-3 fs-5" style="font-size: 0.95rem;">
                 <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-check-circle-fill text-primary me-3 fs-3"></i>
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
                     <span><strong>Architecture :</strong> <span data-i18n="proj_eurobot_f1">Système distribué complexe sur bus CAN.</span></span>
                 </div>
                 <div class="d-flex align-items-center mb-3">
-                    <i class="bi bi-check-circle-fill text-primary me-3 fs-3"></i>
+                    <i class="bi bi-check-circle-fill text-primary me-2"></i>
                     <span><strong>Embarqué :</strong> <span data-i18n="proj_eurobot_f2">Firmware temps réel (RTOS) sur cibles STM32.</span></span>
                 </div>
               </div>
@@ -1705,7 +2365,7 @@
             </div>
             <div class="col-xl-6 text-center">
                <a href="#" onclick="openProjectWidget('projet3'); return false;">
-                 <img src="assets/img/portfolio/Eurobot.png" class="img-fluid rounded-4 shadow" alt="Robot Eurobot">
+                 <img src="assets/img/portfolio/Eurobot.png" class="img-fluid rounded-4 shadow" alt="Robot Eurobot" style="max-width: 420px;">
                </a>
             </div>
           </div>
@@ -1719,6 +2379,15 @@
 
       <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <div class="portfolio-controls" data-aos="fade-up" data-aos-delay="80">
+            <div class="portfolio-search">
+              <i class="bi bi-search"></i>
+              <input id="portfolioSearchInput" type="text" placeholder="Rechercher un projet..." aria-label="Rechercher un projet">
+              <button type="button" id="portfolioSearchClear">Reset</button>
+            </div>
+            <div class="portfolio-count"><span id="portfolioCount">0</span> projets</div>
+          </div>
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active" data-i18n="filter_all" style="font-size: 1.4rem;">Tout</li>
@@ -1954,6 +2623,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_embed_title">Systèmes embarqués</h4>
                   <p class="description" data-i18n="serv_embed_desc">Firmware, drivers, capteurs, timing, intégration (Lien vers Eurobot).</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">6 projets</span>
+                      <span class="domain-kpi">12 outils</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>STM32</span>
+                      <span>RTOS</span>
+                      <span>DMA</span>
+                      <span>Drivers</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -1963,6 +2646,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_robot_title">Robotique</h4>
                   <p class="description" data-i18n="serv_robot_desc">Capteurs, moteurs, logique de commande, prototypage (Lien vers Robot Autonome).</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">4 projets</span>
+                      <span class="domain-kpi">8 modules</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>PID</span>
+                      <span>Capteurs</span>
+                      <span>Navigation</span>
+                      <span>IA</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -1972,6 +2669,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_bus_title">Bus & communication</h4>
                   <p class="description" data-i18n="serv_bus_desc">CAN/LIN, échanges, trames, validation et debug.</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">3 bus</span>
+                      <span class="domain-kpi">20+ trames</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>CAN</span>
+                      <span>LIN</span>
+                      <span>UART</span>
+                      <span>I2C</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -1981,6 +2692,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_power_title">Énergie / puissance</h4>
                   <p class="description" data-i18n="serv_power_desc">Mesures, contrôle, sécurité, conversion (Lien vers Alim).</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">5 prototypes</span>
+                      <span class="domain-kpi">3 normes</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>Alim</span>
+                      <span>Régulation</span>
+                      <span>Sécurité</span>
+                      <span>Mesures</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -1990,6 +2715,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_instru_title">Instrumentation</h4>
                   <p class="description" data-i18n="serv_instru_desc">Acquisition, signal, affichage, interprétation (Lien vers Moniteur).</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">4 capteurs</span>
+                      <span class="domain-kpi">2 dashboards</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>ECG</span>
+                      <span>SpO2</span>
+                      <span>Filtrage</span>
+                      <span>IoT</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -1999,6 +2738,20 @@
                 <div>
                   <h4 class="title" data-i18n="serv_test_title">Tests & validation</h4>
                   <p class="description" data-i18n="serv_test_desc">Procédures d’essais, diagnostic, amélioration (Lien vers Automatisme).</p>
+                  <div class="domain-meta">
+                    <div class="domain-kpis">
+                      <span class="domain-kpi">12 tests</span>
+                      <span class="domain-kpi">100% suivi</span>
+                    </div>
+                    <div class="domain-tags">
+                      <span>Procédures</span>
+                      <span>QA</span>
+                      <span>Rapports</span>
+                      <span>Debug</span>
+                    </div>
+                    <div class="domain-cta">Voir projets <i class="bi bi-arrow-right"></i></div>
+                    <div class="domain-pulse"></div>
+                  </div>
                 </div>
             </a>
           </div>
@@ -3369,7 +4122,7 @@ const ACTIVITIES_EVIDENCE = [
 
                 doc.querySelectorAll('style').forEach(s => content.appendChild(s.cloneNode(true)));
                 const style = document.createElement('style');
-                style.textContent = `#competencesWidgetContent { background: #0f172a; color: white; } #competencesWidgetContent .evidence-card-mini { color: white; }`;
+                style.textContent = `#competencesWidgetContent { color: #e7f3ff; } #competencesWidgetContent .evidence-card-mini { color: #e7f3ff; }`;
                 content.appendChild(style);
 
                 setTimeout(() => {
@@ -3463,18 +4216,52 @@ const ACTIVITIES_EVIDENCE = [
     }
 
     // --- C. NAVIGATION & TRANSITIONS ---
+    function showCompetencesFromPending(competencesModalEl) {
+      if (!competencesModalEl) return;
+      const pendingSkill = competencesModalEl.dataset.pendingSkill;
+      const pendingLevel = competencesModalEl.dataset.pendingLevel;
+      if (pendingSkill && pendingLevel) {
+        delete competencesModalEl.dataset.pendingSkill;
+        delete competencesModalEl.dataset.pendingLevel;
+        openCompetencesWidget(null, pendingSkill, Number(pendingLevel));
+        return;
+      }
+      const compModal = bootstrap.Modal.getOrCreateInstance(competencesModalEl);
+      compModal.show();
+    }
+
     function goToCompetenceDetail(skillKey, level) {
+      const competencesModalEl = document.getElementById('competencesModal');
+      if (competencesModalEl) {
+        competencesModalEl.dataset.pendingSkill = skillKey;
+        competencesModalEl.dataset.pendingLevel = String(level);
+      }
+
+      const projectFromSkillModalEl = document.getElementById('projectFromSkillModal');
+      const projectFromSkillModal = bootstrap.Modal.getInstance(projectFromSkillModalEl);
+      if (projectFromSkillModal) {
+        projectFromSkillModalEl.addEventListener(
+          'hidden.bs.modal',
+          () => showCompetencesFromPending(competencesModalEl),
+          { once: true }
+        );
+        projectFromSkillModal.hide();
+        return;
+      }
+
       const projectModalEl = document.getElementById('projectModal');
       const projectModal = bootstrap.Modal.getInstance(projectModalEl);
-      const openCompetences = () => openCompetencesWidget(null, skillKey, level);
-
       if (projectModal) {
-        projectModalEl.addEventListener('hidden.bs.modal', openCompetences, { once: true });
+        projectModalEl.addEventListener(
+          'hidden.bs.modal',
+          () => showCompetencesFromPending(competencesModalEl),
+          { once: true }
+        );
         projectModal.hide();
         return;
       }
 
-      openCompetences();
+      showCompetencesFromPending(competencesModalEl);
     }
 
     // FONCTION POUR FERMER LA VUE DÉTAIL ET RETOURNER À LA LISTE
@@ -3579,10 +4366,11 @@ const ACTIVITIES_EVIDENCE = [
 
 
       if (wasCompetencesOpen && competencesModal) {
-        projectModalEl.addEventListener('hidden.bs.modal', () => {
-          const compModal = bootstrap.Modal.getOrCreateInstance(competencesModalEl);
-          compModal.show();
-        }, { once: true });
+        projectModalEl.addEventListener(
+          'hidden.bs.modal',
+          () => showCompetencesFromPending(competencesModalEl),
+          { once: true }
+        );
         competencesModalEl.addEventListener('hidden.bs.modal', openProjectModal, { once: true });
         competencesModal.hide();
         return;
@@ -4110,10 +4898,11 @@ const ACTIVITIES_EVIDENCE = [
       };
 
       if (wasCompetencesOpen && competencesModal) {
-        projectModalEl.addEventListener('hidden.bs.modal', () => {
-          const compModal = bootstrap.Modal.getOrCreateInstance(competencesModalEl);
-          compModal.show();
-        }, { once: true });
+        projectModalEl.addEventListener(
+          'hidden.bs.modal',
+          () => showCompetencesFromPending(competencesModalEl),
+          { once: true }
+        );
         competencesModalEl.addEventListener('hidden.bs.modal', openActivityModal, { once: true });
         competencesModal.hide();
         return;
@@ -4207,6 +4996,70 @@ const ACTIVITIES_EVIDENCE = [
       }
     });
 
+    function initPortfolioSearch() {
+      const layout = document.querySelector('.isotope-layout');
+      const input = document.getElementById('portfolioSearchInput');
+      const clearBtn = document.getElementById('portfolioSearchClear');
+      const countEl = document.getElementById('portfolioCount');
+      if (!layout || !input || !clearBtn || !countEl) return;
+
+      const items = Array.from(layout.querySelectorAll('.isotope-item'));
+      items.forEach((item) => {
+        if (!item.dataset.search) {
+          const text = item.textContent.replace(/\s+/g, ' ').trim();
+          item.dataset.search = text.toLowerCase();
+        }
+      });
+
+      let activeFilter = '*';
+
+      function updateCount(value) {
+        countEl.textContent = String(value);
+      }
+
+      function applySearchFilter() {
+        const iso = layout.isotopeInstance;
+        if (!iso) return;
+        const query = input.value.trim().toLowerCase();
+        iso.arrange({
+          filter: function (itemElem) {
+            const matchesFilter = activeFilter === '*' || itemElem.matches(activeFilter);
+            if (!matchesFilter) return false;
+            if (!query) return true;
+            const hay = itemElem.dataset.search || '';
+            return hay.includes(query);
+          }
+        });
+        updateCount(iso.filteredItems.length);
+      }
+
+      layout.querySelectorAll('.isotope-filters li').forEach((li) => {
+        li.addEventListener('click', () => {
+          activeFilter = li.getAttribute('data-filter') || '*';
+          applySearchFilter();
+        });
+      });
+
+      input.addEventListener('input', applySearchFilter);
+      clearBtn.addEventListener('click', () => {
+        input.value = '';
+        input.focus();
+        applySearchFilter();
+      });
+
+      const waitForIsotope = () => {
+        if (layout.isotopeInstance) {
+          applySearchFilter();
+          return;
+        }
+        requestAnimationFrame(waitForIsotope);
+      };
+
+      waitForIsotope();
+    }
+
+    window.addEventListener('load', initPortfolioSearch);
+
     // FONCTION POUR AFFICHER LES DÉTAILS D'UNE COMPÉTENCE - PARTIE 1
     function showCompetenceDetailInWidget(year, compKey, widgetContent) {
         const def = COMPETENCES_DEF[compKey];
@@ -4266,12 +5119,9 @@ const ACTIVITIES_EVIDENCE = [
         let projectsHtml = '';
         if (projects.length > 0) {
             projectsHtml = `
-                <div class="mb-5">
-                    <h5 class="text-info mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
-                        <i class="bi bi-kanban me-2"></i>
-                        Projets (${projects.length})
-                    </h5>
-                    <div class="row g-4">
+            <div class="comp-evidence-block">
+              <div class="comp-evidence-title"><i class="bi bi-kanban"></i>Projets <span class="comp-count">${projects.length}</span></div>
+              <div class="comp-evidence-grid">
                 ${projects.map(proj => {
                   const projectKey = `projet${proj.id}`;
                   const projectImage = PROJECTS_DATA[projectKey] && PROJECTS_DATA[projectKey].image ? PROJECTS_DATA[projectKey].image : null;
@@ -4279,19 +5129,17 @@ const ACTIVITIES_EVIDENCE = [
                   ? `background-image: linear-gradient(135deg, rgba(3,7,18,0.85) 0%, rgba(15,23,42,0.7) 60%, rgba(15,23,42,0.45) 100%), url('${projectImage}'); background-size: contain; background-position: center; background-repeat: no-repeat;`
                   : '';
                   return `
-                            <div class="col-md-6">
-                                <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-secondary bg-dark bg-opacity-50 h-100" 
-                                     onclick="openProjectFromSkillWidget('projet${proj.id}')" 
-                       style="cursor:pointer; transition:0.2s; ${projectBg}">
-                                    <div class="evidence-body">
-                                      <div class="fw-bold text-info fs-5"><i class="bi bi-link-45deg me-2"></i>${proj.title}</div>
-                                      <div class="small text-white-50 mt-2" style="font-size:1.1rem; line-height:1.5;">"${proj.justif}"</div>
-                                    </div>
-                                </div>
-                            </div>
+                  <div class="evidence-card-mini comp-evidence-card d-flex flex-column gap-2 h-100"
+                     onclick="openProjectFromSkillWidget('projet${proj.id}')"
+                     style="cursor:pointer; transition:0.2s; ${projectBg}">
+                    <div class="evidence-body">
+                      <div class="comp-evidence-title-text"><i class="bi bi-link-45deg me-2"></i>${proj.title}</div>
+                      <div class="comp-evidence-justif">${proj.justif}</div>
+                    </div>
+                  </div>
                 `;
                 }).join('')}
-                    </div>
+              </div>
                 </div>
             `;
         }
@@ -4300,12 +5148,9 @@ const ACTIVITIES_EVIDENCE = [
         let activitiesHtml = '';
         if (activities.length > 0) {
             activitiesHtml = `
-                <div class="mb-5">
-                    <h5 class="text-warning mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
-                        <i class="bi bi-mortarboard-fill me-2"></i>
-                        Activités académiques (${activities.length})
-                    </h5>
-                    <div class="row g-4">
+            <div class="comp-evidence-block">
+              <div class="comp-evidence-title"><i class="bi bi-mortarboard-fill"></i>Activites academiques <span class="comp-count">${activities.length}</span></div>
+              <div class="comp-evidence-grid">
                 ${activities.map(act => {
                   const activityImage = ACTIVITIES_DATA[act.id] && ACTIVITIES_DATA[act.id].images && ACTIVITIES_DATA[act.id].images[0]
                   ? ACTIVITIES_DATA[act.id].images[0].src
@@ -4314,115 +5159,94 @@ const ACTIVITIES_EVIDENCE = [
                   ? `background-image: linear-gradient(135deg, rgba(3,7,18,0.85) 0%, rgba(15,23,42,0.7) 60%, rgba(15,23,42,0.45) 100%), url('${activityImage}'); background-size: contain; background-position: center; background-repeat: no-repeat;`
                   : '';
                   return `
-                            <div class="col-md-6">
-                                <div class="evidence-card-mini d-flex flex-column gap-3 p-4 mb-0 rounded border border-warning bg-dark bg-opacity-50 h-100 position-relative" 
-                                     onclick="openActivityWidget('${act.id}')" 
-                       style="cursor:pointer; transition:0.2s; ${activityBg}">
-                                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size: 0.9rem;">📚 Trace SAÉ</span>
-                                    <div class="evidence-body">
-                                      <div class="fw-bold text-warning fs-5"><i class="bi bi-journal-check me-2"></i>${act.title}</div>
-                                      <div class="small text-white-50 mt-2" style="font-size:1.1rem; line-height:1.5;">"${act.justif}"</div>
-                                    </div>
-                                </div>
-                            </div>
+                  <div class="evidence-card-mini comp-evidence-card d-flex flex-column gap-2 h-100 position-relative"
+                     onclick="openActivityWidget('${act.id}')"
+                     style="cursor:pointer; transition:0.2s; ${activityBg}">
+                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2" style="font-size: 0.65rem;">Trace SAE</span>
+                    <div class="evidence-body">
+                      <div class="comp-evidence-title-text"><i class="bi bi-journal-check me-2"></i>${act.title}</div>
+                      <div class="comp-evidence-justif">${act.justif}</div>
+                    </div>
+                  </div>
                 `;
                 }).join('')}
-                    </div>
+              </div>
                 </div>
             `;
         }
 
         detailView.innerHTML = `
-          <button class="btn btn-outline-light btn-sm mb-4" onclick="closeDetailView()" style="font-size: 0.95rem; padding: 0.5rem 1rem;"><i class="bi bi-arrow-left me-2"></i>Retour liste</button>
-            
-            <div class="text-center mb-5 pb-4 border-bottom border-secondary">
-                <i class="bi ${def.icon} display-1 text-primary mb-3" style="font-size: 6rem;"></i>
-                <h2 class="mt-3 mb-2" style="font-size: 3.5rem; color: white;">${def.title}</h2>
-                <div class="badge bg-primary mb-3 px-4 py-2" style="font-size: 1.8rem; padding: 1.2rem 2.5rem !important;">Niveau ${year} — ${percentage}%</div>
-                <p class="text-white" style="font-size: 1.6rem;">${levelData.label}</p>
-                
-                <div class="mt-4 p-4 bg-dark bg-opacity-50 rounded">
-                    <h5 class="text-info mb-3" style="font-size: 2rem;"><i class="bi bi-info-circle me-2"></i>Vue d'ensemble</h5>
-                    <p class="text-white mb-0" style="font-size: 1.5rem; line-height:1.9;">${def.description}</p>
-                </div>
+          <div class="comp-detail">
+            <div class="comp-topbar">
+              <button class="btn btn-outline-light btn-sm comp-back" onclick="closeDetailView()"><i class="bi bi-arrow-left me-2"></i>Retour liste</button>
+              <div class="comp-meta">
+                <span class="comp-chip">Niveau ${year}</span>
+                <span class="comp-chip comp-chip-score">Score ${percentage}%</span>
+                <span class="comp-chip">Traces ${totalEvidences}</span>
+              </div>
             </div>
 
-            <div class="row g-4">
-                <div class="col-12">
-                    <div class="mb-5 p-4 bg-gradient rounded" style="background: linear-gradient(135deg, #1a4d7f 0%, #0f3a5e 100%); border: 2px solid rgba(0, 201, 167, 0.4); border-radius: 14px;">
-                        <h5 class="text-success mb-4 d-flex align-items-center" style="font-size: 2.2rem;">
-                            <i class="bi bi-graph-up-arrow me-2"></i>Évaluation : <span style="color: #00c9a7; font-weight: 800;">${percentage}%</span>
-                        </h5>
-                        
-                        <p class="text-white mb-4" style="font-size: 1.5rem; line-height: 1.9;">
-                            Ce score reflète mon niveau de maîtrise actuel basé sur ${totalEvidences > 0 ? `<strong style="color: #00c9a7;">${totalEvidences} trace${totalEvidences > 1 ? 's' : ''}</strong>` : 'mon expérience'}. 
-                        </p>
-
-                        <div class="mb-4 p-3 rounded" style="background: rgba(0, 201, 167, 0.15); border-left: 5px solid #00c9a7; border-radius: 8px;">
-                            <h6 class="text-success mb-3 fw-bold" style="font-size: 1.8rem;">
-                                <i class="bi bi-star-fill me-2"></i>Compétences Maîtrisées
-                            </h6>
-                            <ul class="mb-0" style="list-style: none; padding: 0;">
-                                ${levelData.solutions.map(s => `
-                                    <li class="mb-2 d-flex align-items-start" style="font-size: 1.5rem; color: white;">
-                                        <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.4rem;"></i>
-                                        <span>${s}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-
-                        <div class="p-3 rounded" style="background: rgba(255, 107, 107, 0.15); border-left: 5px solid #ff6b6b; border-radius: 8px;">
-                            <h6 class="mb-3 fw-bold" style="font-size: 1.8rem; color: #ff9999;">
-                                <i class="bi bi-arrow-up-right me-2"></i>Points à Améliorer
-                            </h6>
-                            <ul class="mb-0" style="list-style: none; padding: 0;">
-                                ${levelData.improvements && levelData.improvements.length > 0 ? 
-                                  levelData.improvements.map(imp => `
-                                    <li class="mb-2 d-flex align-items-start" style="font-size: 1.5rem; color: white;">
-                                        <i class="bi bi-lightning-fill me-3 mt-1" style="font-size: 1.4rem; color: #ffa07a;"></i>
-                                        <span>${imp}</span>
-                                    </li>
-                                  `).join('')
-                                  : '<li class="text-white" style="font-size: 1.4rem;">✓ Aucun point à améliorer identifié</li>'
-                                }
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mb-5 p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
-                        <h5 class="text-info mb-3" style="font-size: 2.2rem;"><i class="bi bi-journal-text me-2"></i>Description du Niveau</h5>
-                        <p class="mb-0" style="font-size: 1.6rem; line-height: 1.9; color: white;">${levelData.comment}</p>
-                    </div>
-
-                    <div class="mb-5 p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
-                        <h5 class="text-success mb-4" style="font-size: 2.2rem;"><i class="bi bi-check2-circle me-2"></i>Critères de Validation</h5>
-                        <ul class="list-unstyled row g-3">
-                            ${levelData.solutions.map(s => `
-                                <li class="col-md-6">
-                                    <div class="d-flex align-items-start gap-2 p-3 bg-dark bg-opacity-50 rounded" style="border-left: 4px solid #00c9a7;">
-                                        <i class="bi bi-check-lg text-success mt-1" style="font-size: 1.8rem;"></i>
-                                        <span style="font-size: 1.5rem; line-height: 1.7; color: white;">${s}</span>
-                                    </div>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-
-                    <div class="p-4 bg-dark bg-opacity-40 rounded" style="border: 1px solid rgba(20, 157, 221, 0.3); border-radius: 14px;">
-                        <h5 class="text-primary mb-4" style="font-size: 2.2rem;">
-                            <i class="bi bi-folder-symlink me-2"></i>
-                            Traces écrites (${totalEvidences} au total)
-                        </h5>
-                        <p class="text-white mb-4" style="font-size: 1.5rem;">
-                            Cliquez sur une carte pour voir les détails complets :
-                        </p>
-                        
-                        ${projectsHtml}
-                        ${activitiesHtml}
-                    </div>
-                </div>
+            <div class="comp-header">
+              <div class="comp-icon"><i class="bi ${def.icon}"></i></div>
+              <div>
+                <h2>${def.title}</h2>
+                <div class="comp-subtitle">${levelData.label}</div>
+                <div class="comp-desc">${def.description}</div>
+              </div>
             </div>
+
+            <div class="comp-progress">
+              <div class="comp-progress-header">
+                <span>Evaluation</span>
+                <span>${percentage}%</span>
+              </div>
+              <div class="comp-progress-bar">
+                <div class="comp-progress-fill" style="width: ${percentage}%;"></div>
+              </div>
+            </div>
+
+            <div class="comp-grid">
+              <div class="comp-section comp-section-success">
+                <h3>Points acquis</h3>
+                <ul class="comp-list">
+                  ${levelData.solutions.map(s => `
+                    <li><i class="bi bi-check-circle-fill"></i><span>${s}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+              <div class="comp-section comp-section-warn">
+                <h3>Points a ameliorer</h3>
+                <ul class="comp-list">
+                  ${levelData.improvements && levelData.improvements.length > 0 ?
+                    levelData.improvements.map(imp => `
+                      <li><i class="bi bi-lightning-fill"></i><span>${imp}</span></li>
+                    `).join('')
+                    : '<li><i class="bi bi-check-circle-fill"></i><span>Aucun point a ameliorer identifie</span></li>'
+                  }
+                </ul>
+              </div>
+            </div>
+
+            <div class="comp-section comp-section-info">
+              <h3>Description du niveau</h3>
+              <div class="comp-desc">${levelData.comment}</div>
+            </div>
+
+            <div class="comp-section">
+              <h3>Criteres d'evaluation</h3>
+              <ul class="comp-list">
+                ${levelData.solutions.map(s => `
+                  <li><i class="bi bi-check2-circle"></i><span>${s}</span></li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <div class="comp-section">
+              <h3>Traces</h3>
+              ${projectsHtml}
+              ${activitiesHtml}
+            </div>
+          </div>
         `;
     }
 

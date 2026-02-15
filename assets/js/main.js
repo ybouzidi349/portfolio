@@ -144,6 +144,7 @@
         filter: filter,
         sortBy: sort
       });
+      isotopeItem.isotopeInstance = initIsotope;
     });
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
