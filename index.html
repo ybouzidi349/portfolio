@@ -278,6 +278,9 @@
       overflow: hidden;
       transform-origin: center center;
       transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1), opacity 1.7s ease;
+      will-change: transform, opacity;
+      contain: strict;
+      backface-visibility: hidden;
     }
 
     .entry-video {
@@ -285,9 +288,13 @@
       height: 100%;
       object-fit: cover;
       filter: saturate(1.07) contrast(1.08);
-      transform: scale(1.03);
+      transform: scale(1.03) translateZ(0);
       transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1);
-      animation: entryVideoDrift 8s ease-in-out infinite alternate;
+      animation: entryVideoDrift 9s ease-in-out infinite alternate;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000;
     }
 
     .entry-overlay {
@@ -297,13 +304,16 @@
         radial-gradient(circle at 70% 20%, rgba(20, 157, 221, 0.28), transparent 46%),
         linear-gradient(140deg, rgba(5, 9, 20, 0.72) 0%, rgba(6, 13, 28, 0.58) 42%, rgba(4, 8, 18, 0.82) 100%);
       animation: entryOverlayPulse 6s ease-in-out infinite;
+      will-change: opacity;
+      backface-visibility: hidden;
+      contain: layout;
     }
 
     .entry-topbar {
       position: absolute;
       top: 18px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateZ(0);
       width: min(95%, 1180px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 16px;
@@ -316,6 +326,8 @@
       gap: 16px;
       transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1), opacity 1.7s ease;
       animation: entryTopbarFloat 4.2s ease-in-out infinite;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
     }
 
     .entry-brand {
@@ -373,9 +385,11 @@
       background:
         radial-gradient(circle at 50% 52%, rgba(86, 210, 255, 0.42), rgba(86, 210, 255, 0.08) 30%, transparent 56%),
         radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.26), transparent 45%);
-      transform: scale(0.75);
+      transform: scale(0.75) translateZ(0);
       transition: opacity 0.9s ease, transform 1.6s cubic-bezier(0.16, 0.85, 0.24, 1);
       z-index: 3;
+      will-change: opacity, transform;
+      backface-visibility: hidden;
     }
 
     .entry-nav-preview {
@@ -411,6 +425,8 @@
       text-align: center;
       padding: 6rem 1rem 3rem;
       animation: entryContentFloat 5.2s ease-in-out infinite;
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     .entry-kicker {
@@ -479,10 +495,12 @@
       gap: 0.55rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
       animation: entryCtaPulse 2.9s ease-in-out infinite;
+      will-change: transform, box-shadow;
+      backface-visibility: hidden;
     }
 
     .entry-cta:hover {
-      transform: translateY(-2px) scale(1.01);
+      transform: translateY(-2px) scale(1.01) translateZ(0);
       box-shadow: 0 18px 38px rgba(20, 157, 221, 0.45);
       filter: brightness(1.03);
     }
@@ -496,17 +514,17 @@
     }
 
     body.entry-opening .entry-topbar {
-      transform: translate(calc(-50% + var(--entry-target-x)), var(--entry-target-y)) scale(var(--entry-target-scale));
+      transform: translate3d(calc(-50% + var(--entry-target-x)), var(--entry-target-y), 0) scale(var(--entry-target-scale));
       opacity: 0.14;
     }
 
     body.entry-opening .entry-video-wrap {
-      transform: translate(var(--entry-video-x), var(--entry-video-y)) scale(var(--entry-video-scale));
+      transform: translate3d(var(--entry-video-x), var(--entry-video-y), 0) scale(var(--entry-video-scale));
       opacity: 0.18;
     }
 
     body.entry-opening .entry-video {
-      transform: scale(1.24);
+      transform: scale(1.24) translateZ(0);
     }
 
     body.entry-opening .entry-content {
@@ -530,7 +548,8 @@
     }
 
     @keyframes entryVideoDrift {
-      0% { transform: scale(1.03) translate3d(0, 0, 0); }
+      0% { transform: scale(1.03) translate3d(0, 0, 0); will-change: transform; }
+      50% { transform: scale(1.055) translate3d(-0.8%, -0.55%, 0); }
       100% { transform: scale(1.08) translate3d(-1.6%, -1.1%, 0); }
     }
 
@@ -540,18 +559,18 @@
     }
 
     @keyframes entryTopbarFloat {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+      0%, 100% { transform: translateX(-50%) translateY(0) translateZ(0); }
+      50% { transform: translateX(-50%) translateY(6px) translateZ(0); }
     }
 
     @keyframes entryContentFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+      0%, 100% { transform: translateY(0) translateZ(0); }
+      50% { transform: translateY(-7px) translateZ(0); }
     }
 
     @keyframes entryChipShimmer {
       0%, 100% { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.22); }
-      50% { background: rgba(99, 215, 255, 0.2); border-color: rgba(147, 230, 255, 0.55); }
+      50% { background: rgba(99, 215, 255, 0.15); border-color: rgba(147, 230, 255, 0.4); }
     }
 
     @keyframes entryCtaPulse {
@@ -2194,7 +2213,7 @@
 
   <div id="entryGate" aria-label="Page d'entrée du portfolio" tabindex="0">
     <div class="entry-video-wrap">
-      <video autoplay muted loop playsinline class="entry-video" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="auto" class="entry-video" aria-hidden="true" disablePictureInPicture>
         <source src="assets/img/portfolio/satellite.mp4" type="video/mp4">
       </video>
       <div class="entry-overlay"></div>
@@ -6219,6 +6238,10 @@ const ACTIVITIES_EVIDENCE = [
           }, ENTRY_NAME_MERGE_MS);
         }
 
+        // Détecter la capacité de GPU acceleration
+        gate.style.willChange = 'transform, opacity';
+        gate.style.pointerEvents = 'none';
+        
         body.classList.add('entry-opening');
 
         window.setTimeout(() => {
@@ -6231,6 +6254,8 @@ const ACTIVITIES_EVIDENCE = [
           body.classList.remove('entry-locked');
           body.classList.remove('entry-opening');
           body.classList.remove('entry-name-merged');
+          gate.style.willChange = 'auto';
+          gate.style.pointerEvents = 'auto';
           if (nameGhost && nameGhost.parentNode) {
             nameGhost.parentNode.removeChild(nameGhost);
           }
