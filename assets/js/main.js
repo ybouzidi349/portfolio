@@ -59,16 +59,17 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
 
   /**
    * Animation on scroll function and init
@@ -203,22 +204,63 @@
    * Navmenu Scrollspy
    */
   let navmenulinks = document.querySelectorAll('.navmenu a');
+  let navmenuSections = [];
+  let activeNavLink = null;
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
+  function refreshNavmenuSections() {
+    navmenuSections = [];
+    navmenulinks.forEach((navmenulink) => {
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
+      navmenuSections.push({ navmenulink, section });
+    });
   }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+
+  function navmenuScrollspy() {
+    let position = window.scrollY + 200;
+    let nextActiveLink = null;
+
+    for (let i = 0; i < navmenuSections.length; i++) {
+      let item = navmenuSections[i];
+      let sectionTop = item.section.offsetTop;
+      let sectionBottom = sectionTop + item.section.offsetHeight;
+      if (position >= sectionTop && position <= sectionBottom) {
+        nextActiveLink = item.navmenulink;
+        break;
+      }
+    }
+
+    if (activeNavLink !== nextActiveLink) {
+      if (activeNavLink) activeNavLink.classList.remove('active');
+      if (nextActiveLink) nextActiveLink.classList.add('active');
+      activeNavLink = nextActiveLink;
+    }
+  }
+
+  function updateScrollUI() {
+    toggleScrollTop();
+    navmenuScrollspy();
+  }
+
+  let scrollTicking = false;
+  function onDocumentScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    window.requestAnimationFrame(() => {
+      updateScrollUI();
+      scrollTicking = false;
+    });
+  }
+
+  window.addEventListener('load', () => {
+    refreshNavmenuSections();
+    updateScrollUI();
+  });
+  window.addEventListener('resize', () => {
+    refreshNavmenuSections();
+    onDocumentScroll();
+  }, { passive: true });
+  document.addEventListener('scroll', onDocumentScroll, { passive: true });
 
 })();

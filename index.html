@@ -218,6 +218,379 @@
       background: rgba(20, 157, 221, 0.05);
       border-radius: 4px;
     }
+
+    /* === PAGE D'ENTRÉE IMMERSIVE === */
+    body.entry-locked {
+      overflow: hidden;
+    }
+
+    body.entry-locked #header,
+    body.entry-locked main.main,
+    body.entry-locked #footer,
+    body.entry-locked #scroll-top,
+    body.entry-locked #preloader {
+      opacity: 0;
+      transform: translateY(24px);
+      pointer-events: none;
+    }
+
+    body.entry-opening #header,
+    body.entry-opening main.main,
+    body.entry-opening #footer,
+    body.entry-opening #scroll-top,
+    body.entry-opening #preloader {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      transition-delay: 0.85s;
+    }
+
+    #entryGate {
+      position: fixed;
+      inset: 0;
+      z-index: 4000;
+      overflow: hidden;
+      background: #040611;
+      color: #f8fbff;
+      --entry-target-x: -44vw;
+      --entry-target-y: 16vh;
+      --entry-target-scale: 0.34;
+      --entry-video-x: -8vw;
+      --entry-video-y: -12vh;
+      --entry-video-scale: 0.66;
+      opacity: 1;
+      transition: opacity 0.45s ease;
+    }
+
+    #entryGate.entry-gate-fade {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #entryGate.hidden {
+      display: none;
+    }
+
+    .entry-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      transform-origin: center center;
+      transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1), opacity 1.7s ease;
+    }
+
+    .entry-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.07) contrast(1.08);
+      transform: scale(1.03);
+      transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1);
+      animation: entryVideoDrift 8s ease-in-out infinite alternate;
+    }
+
+    .entry-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(20, 157, 221, 0.28), transparent 46%),
+        linear-gradient(140deg, rgba(5, 9, 20, 0.72) 0%, rgba(6, 13, 28, 0.58) 42%, rgba(4, 8, 18, 0.82) 100%);
+      animation: entryOverlayPulse 6s ease-in-out infinite;
+    }
+
+    .entry-topbar {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(95%, 1180px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      background: rgba(8, 16, 32, 0.42);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: transform 2s cubic-bezier(0.16, 0.85, 0.24, 1), opacity 1.7s ease;
+      animation: entryTopbarFloat 4.2s ease-in-out infinite;
+    }
+
+    .entry-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 1.06rem;
+      letter-spacing: 0.02rem;
+    }
+
+    .entry-brand-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(147, 230, 255, 0.8);
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .entry-brand i {
+      color: #63d7ff;
+      font-size: 1.05rem;
+    }
+
+    .entry-name-ghost {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 4200;
+      color: #f8fbff;
+      font-weight: 800;
+      white-space: nowrap;
+      pointer-events: none;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.42);
+      transition: transform 1.55s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1.55s ease, letter-spacing 1.55s ease, color 1.55s ease;
+    }
+
+    body.entry-opening #headerSiteName {
+      opacity: 0.05;
+      transform: translateY(7px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    body.entry-opening.entry-name-merged #headerSiteName {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .entry-impact {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(86, 210, 255, 0.42), rgba(86, 210, 255, 0.08) 30%, transparent 56%),
+        radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.26), transparent 45%);
+      transform: scale(0.75);
+      transition: opacity 0.9s ease, transform 1.6s cubic-bezier(0.16, 0.85, 0.24, 1);
+      z-index: 3;
+    }
+
+    .entry-nav-preview {
+      display: inline-flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .entry-nav-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07rem;
+      background: rgba(255, 255, 255, 0.09);
+      color: #e9f7ff;
+      font-weight: 600;
+      animation: entryChipShimmer 4.8s ease-in-out infinite;
+    }
+
+    .entry-content {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 980px);
+      margin: 0 auto;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1rem 3rem;
+      animation: entryContentFloat 5.2s ease-in-out infinite;
+    }
+
+    .entry-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.98rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .entry-title {
+      font-size: clamp(2.7rem, 8vw, 6rem);
+      color: #ffffff;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .entry-subtitle {
+      font-size: clamp(1.16rem, 2.6vw, 1.55rem);
+      color: #d9effa;
+      margin-bottom: 1.4rem;
+      max-width: 840px;
+    }
+
+    .entry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .entry-tag {
+      background: rgba(7, 16, 36, 0.55);
+      border: 1px solid rgba(147, 230, 255, 0.32);
+      color: #d9f6ff;
+      border-radius: 999px;
+      padding: 0.38rem 0.86rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.02rem;
+    }
+
+    .entry-cta {
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #149ddd 0%, #3ec9ff 100%);
+      color: #06101d;
+      font-weight: 800;
+      font-size: 1.08rem;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      padding: 1rem 1.75rem;
+      box-shadow: 0 14px 34px rgba(20, 157, 221, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      animation: entryCtaPulse 2.9s ease-in-out infinite;
+    }
+
+    .entry-cta:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 18px 38px rgba(20, 157, 221, 0.45);
+      filter: brightness(1.03);
+    }
+
+    .entry-cta:active {
+      transform: scale(0.98);
+    }
+
+    .entry-cta i {
+      font-size: 1rem;
+    }
+
+    body.entry-opening .entry-topbar {
+      transform: translate(calc(-50% + var(--entry-target-x)), var(--entry-target-y)) scale(var(--entry-target-scale));
+      opacity: 0.14;
+    }
+
+    body.entry-opening .entry-video-wrap {
+      transform: translate(var(--entry-video-x), var(--entry-video-y)) scale(var(--entry-video-scale));
+      opacity: 0.18;
+    }
+
+    body.entry-opening .entry-video {
+      transform: scale(1.24);
+    }
+
+    body.entry-opening .entry-content {
+      opacity: 0;
+      transform: translateY(-36px) scale(0.95);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    body.entry-opening .entry-impact {
+      opacity: 1;
+      transform: scale(1.3);
+    }
+
+    body.entry-opening .entry-video,
+    body.entry-opening .entry-overlay,
+    body.entry-opening .entry-topbar,
+    body.entry-opening .entry-content,
+    body.entry-opening .entry-nav-chip,
+    body.entry-opening .entry-cta {
+      animation: none !important;
+    }
+
+    @keyframes entryVideoDrift {
+      0% { transform: scale(1.03) translate3d(0, 0, 0); }
+      100% { transform: scale(1.08) translate3d(-1.6%, -1.1%, 0); }
+    }
+
+    @keyframes entryOverlayPulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes entryTopbarFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    @keyframes entryContentFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes entryChipShimmer {
+      0%, 100% { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.22); }
+      50% { background: rgba(99, 215, 255, 0.2); border-color: rgba(147, 230, 255, 0.55); }
+    }
+
+    @keyframes entryCtaPulse {
+      0%, 100% { box-shadow: 0 14px 34px rgba(20, 157, 221, 0.35); }
+      50% { box-shadow: 0 20px 46px rgba(62, 201, 255, 0.55); }
+    }
+
+    @media (max-width: 991.98px) {
+      .entry-topbar {
+        width: min(95%, 760px);
+      }
+
+      .entry-nav-preview {
+        display: none;
+      }
+
+      body.entry-opening .entry-topbar {
+        transform: translate(calc(-50% + var(--entry-target-x)), var(--entry-target-y)) scale(var(--entry-target-scale));
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .entry-content {
+        padding-top: 5.2rem;
+      }
+
+      .entry-title {
+        font-size: clamp(2.25rem, 12vw, 3.2rem);
+      }
+
+      .entry-subtitle {
+        font-size: 1.08rem;
+      }
+
+      .entry-cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
     /* --- STYLE POUR LES LIENS DE COMPÉTENCES --- */
     .skill-link {
       text-decoration: none;
@@ -254,6 +627,37 @@
       background: #149ddd;
       border-color: #149ddd;
       font-weight: bold;
+    }
+
+    #mode2ToggleBtn {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #mode2ToggleBtn i {
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    #mode2ToggleBtn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 7px 18px rgba(20, 157, 221, 0.25);
+    }
+
+    #mode2ToggleBtn.active {
+      background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+      border-color: #7c3aed;
+      color: #f5f3ff;
+      box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
     }
     /* --- NOUVEAU STYLE COMPÉTENCES (Plus grand & Moderne) --- */
     .skill-card-item {
@@ -336,6 +740,129 @@
       border-color: var(--accent-color);
     }
     
+    /* === SECTION STATS - DESIGN COMPACT & ANIMÉ === */
+    .stats {
+      padding: 1.5rem 0 !important;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .stats .container {
+      max-width: 900px;
+    }
+
+    .stats .col {
+      flex: 0 0 calc(20% - 4px);
+      max-width: calc(20% - 4px);
+    }
+
+    .stats-item {
+      background: white;
+      border-radius: 14px;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      animation: slideInUp 0.6s ease-out backwards;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stats-item:nth-child(1) { animation-delay: 0.1s; }
+    .stats-item:nth-child(2) { animation-delay: 0.2s; }
+    .stats-item:nth-child(3) { animation-delay: 0.3s; }
+    .stats-item:nth-child(4) { animation-delay: 0.4s; }
+    .stats-item:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stats-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .stats-item:hover::before {
+      left: 100%;
+    }
+
+    .stats-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      border-color: rgba(20, 157, 221, 0.3);
+    }
+
+    .stats-item i {
+      font-size: 1.3rem !important;
+      margin-bottom: 0.3rem !important;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .stats-item:hover i {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .stats-item .purecounter {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #0f172a;
+      display: block;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.05em;
+    }
+
+    .stats-item p {
+      font-size: 0.7rem;
+      color: #475569;
+      font-weight: 600;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 768px) {
+      .stats .col {
+        flex: 0 0 calc(50% - 4px);
+        max-width: calc(50% - 4px);
+      }
+
+      .stats-item {
+        padding: 0.7rem 0.4rem;
+      }
+
+      .stats-item .purecounter {
+        font-size: 1.2rem;
+      }
+
+      .stats-item i {
+        font-size: 1rem !important;
+      }
+
+      .stats-item p {
+        font-size: 0.65rem;
+      }
+    }
+
     .portfolio-item {
       margin-bottom: 15px;
     }
@@ -1498,10 +2025,213 @@
     }
     #skills .skills-block-title i { color: #149ddd; }
     #skills .skills-caption { margin-bottom: 12px; color: #6c757d; font-size: 0.95rem;font-weight: 500; }
+
+    /* === SIDEBAR PROJETS DANS LA MODALE === */
+    .project-modal-container {
+      display: block;
+      position: relative;
+      height: 100%;
+    }
+
+    .project-modal-sidebar {
+      position: fixed;
+      right: -350px;
+      top: 0;
+      width: 320px;
+      height: 100vh;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      box-shadow: -8px 0 25px rgba(0, 0, 0, 0.12);
+      transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 1040;
+      overflow-y: auto;
+      border-left: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .project-modal-sidebar.open {
+      right: 0;
+    }
+
+    .project-modal-sidebar .sidebar-header {
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #149ddd 0%, #0b7fbb 100%);
+      color: white;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(20, 157, 221, 0.2);
+    }
+
+    .project-modal-sidebar .sidebar-header h3 {
+      color: white;
+      font-weight: 800;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.3rem;
+    }
+
+    .project-modal-sidebar .sidebar-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .modal-projects-list {
+      padding: 1rem 0;
+      list-style: none;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .modal-projects-list .project-item {
+      padding: 0 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-project-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal-project-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #149ddd;
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+      transform-origin: center;
+    }
+
+    .modal-project-link:hover::before {
+      transform: scaleY(1);
+    }
+
+    .modal-project-link:hover {
+      background: rgba(20, 157, 221, 0.08);
+      color: #149ddd;
+      padding-left: 1.5rem;
+    }
+
+    .modal-project-link.active {
+      background: rgba(20, 157, 221, 0.15);
+      color: #149ddd;
+      box-shadow: inset 4px 0 0 #149ddd;
+    }
+
+    .modal-project-link i {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .modal-project-count {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    #projectModalSidebarToggle {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #149ddd 0%, #0b7fbb 100%);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(20, 157, 221, 0.3);
+      transition: all 0.3s ease;
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #projectModalSidebarToggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(20, 157, 221, 0.4);
+    }
+
+    #projectModalSidebarToggle:active {
+      transform: scale(0.95);
+    }
+
+    @media (max-width: 1024px) {
+      .project-modal-container {
+        grid-template-columns: 1fr;
+      }
+
+      .project-modal-sidebar {
+        display: none;
+      }
+    }
   </style>
 </head>
 
-<body class="index-page">
+<body class="index-page entry-locked">
+
+  <div id="entryGate" aria-label="Page d'entrée du portfolio" tabindex="0">
+    <div class="entry-video-wrap">
+      <video autoplay muted loop playsinline class="entry-video" aria-hidden="true">
+        <source src="assets/img/portfolio/satellite.mp4" type="video/mp4">
+      </video>
+      <div class="entry-overlay"></div>
+    </div>
+
+    <div class="entry-topbar" aria-hidden="true">
+      <div class="entry-brand">
+        <img src="assets/img/portfolio/photo_yanis.jpeg" alt="Yanis Bouzidi" class="entry-brand-avatar">
+        <i class="bi bi-stars"></i>
+        <span id="entryNameSource">Yanis Bouzidi</span>
+      </div>
+      <div class="entry-nav-preview">
+        <span class="entry-nav-chip">Accueil</span>
+        <span class="entry-nav-chip">Compétences</span>
+        <span class="entry-nav-chip">Projets</span>
+        <span class="entry-nav-chip">Contact</span>
+      </div>
+    </div>
+
+    <div class="entry-impact" aria-hidden="true"></div>
+
+    <div class="entry-content">
+      <span class="entry-kicker"><i class="bi bi-lightning-charge-fill"></i> Systèmes embarqués & robotique</span>
+      <h1 class="entry-title">Mon Portfolio</h1>
+      <p class="entry-subtitle">Conception électronique, développement embarqué et projets techniques documentés de manière claire, visuelle et professionnelle.</p>
+      <div class="entry-tags" aria-hidden="true">
+        <span class="entry-tag">BUT GEII</span>
+        <span class="entry-tag">IoT</span>
+        <span class="entry-tag">Robotique</span>
+        <span class="entry-tag">STM32 • ESP32</span>
+      </div>
+      <button id="enterPortfolioBtn" type="button" class="entry-cta" aria-label="Voir le portfolio">
+        <i class="bi bi-box-arrow-in-right"></i>
+        Voir le portfolio
+      </button>
+    </div>
+  </div>
 
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
@@ -1511,11 +2241,14 @@
     </div>
 
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">Yanis Bouzidi</h1>
+      <h1 class="sitename" id="headerSiteName">Yanis Bouzidi</h1>
     </a>
 
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLanguage('fr')">FR</button>
+      <button class="lang-btn" id="mode2ToggleBtn" type="button" onclick="toggleMode2()" aria-label="Activer le mode nuit" title="Mode éveillé">
+        <i class="bi bi-sun-fill" aria-hidden="true"></i>
+      </button>
     </div>
 
     <div class="social-links text-center">
@@ -1570,7 +2303,7 @@
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100" style="position: relative; z-index: 3;">
           <h2>Yanis Bouzidi</h2>
-          <p style="font-size: 1.1rem;"><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Orienté Robotique & Systèmes" role="text" aria-live="polite"></span></p>
+          <p style="font-size: 1.1rem;"><span data-i18n="hero_intro">Je suis </span><span class="typed" data-typed-items="Étudiant BUT GEII, Développeur Embarqué, Passionné d'Électronique, Futur Ingénieur Aérospatial" role="text" aria-live="polite"></span></p>
           <div class="mt-4">
             <a href="assets/img/portfolio/cv_bouzidi_site.pdf" target="_blank" class="btn btn-primary rounded-pill px-3 py-2" style="font-size: 0.95rem; font-weight: 600;">
               <i class="bi bi-download me-2"></i> <span data-i18n="download_cv">Télécharger mon CV</span>
@@ -1683,37 +2416,45 @@
 
     <section id="stats" class="stats section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
+        <div class="row gy-2 gx-1">
           
-          <div class="col-lg-3 col-md-6">
+          <div class="col">
             <a href="#portfolio" class="stats-item stats-link">
-              <i class="bi bi-kanban text-primary d-block mb-3"></i>
-              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projets Réalisés</strong></p>
+              <i class="bi bi-kanban text-primary"></i>
+              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="2" class="purecounter"></span>
+              <p>Projets</p>
             </a>
           </div>
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col">
             <a href="#skills" class="stats-item stats-link">
-              <i class="bi bi-code-slash text-success d-block mb-3"></i> 
-              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Langages (C/C++/Py)</strong></p>
+              <i class="bi bi-code-slash text-success"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="2" class="purecounter"></span>
+              <p>Langages</p>
             </a>
           </div>
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col">
             <a href="#skills" class="stats-item stats-link">
-              <i class="bi bi-cpu text-danger d-block mb-3"></i> 
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Architectures (µC)</strong></p>
+              <i class="bi bi-cpu text-danger"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="2" class="purecounter"></span>
+              <p>Architectures</p>
             </a>
           </div>
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col">
             <a href="#skills" class="stats-item stats-link">
-              <i class="bi bi-hourglass-split text-warning d-block mb-3"></i> 
-              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Années de Pratique</strong></p>
+              <i class="bi bi-hourglass-split text-warning"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="2" class="purecounter"></span>
+              <p>Années</p>
+            </a>
+          </div>
+
+          <div class="col">
+            <a href="#resume" class="stats-item stats-link">
+              <i class="bi bi-clock-history text-info"></i> 
+              <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="2" class="purecounter"></span>
+              <p>Heures</p>
             </a>
           </div>
 
@@ -1782,6 +2523,22 @@
                   </ul>
                 </div>
               </div>
+            </div>
+
+            <h3 class="resume-title" data-i18n="resume_cert">Certifications</h3>
+            <div class="resume-item">
+              <h4>TOEIC</h4>
+              <p>
+                <span class="badge bg-primary" style="font-size: 1.1rem; padding: 0.5rem 0.8rem;">630</span>
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>Permis B</h4>
+              <p>Permis de conduire (Catégorie B)</p>
+            </div>
+            <div class="resume-item">
+              <h4>Chargé d'interventions BR</h4>
+              <p>Habilitation électrique - Interventions sur installations électriques</p>
             </div>
 
           </div>
@@ -2829,8 +3586,8 @@
 
   <!-- MODALE WIDGET POUR LES PROJETS (GRANDE, BELLE ET RESPONSIVE) -->
   <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-fullscreen" style="max-width: 100vw;">
-      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); height: 100vh;">
+    <div class="modal-dialog modal-lg" style="max-width: 90vw; max-height: 90vh; margin: auto;">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); height: 90vh;">
         
         <!-- HEADER PREMIUM -->
         <div class="modal-header bg-gradient border-0 p-2" style="background: linear-gradient(135deg, rgba(20,157,221,0.08) 0%, rgba(20,157,221,0.04) 100%); backdrop-filter: blur(10px);">
@@ -2845,24 +3602,39 @@
         </div>
         
         <!-- BODY SCROLLABLE GRANDE TAILLE -->
-        <div class="modal-body p-3" style="max-height: none; overflow-y: auto; background: #ffffff;">
-          <div id="projectWidgetContent">
-            <!-- Spinner de chargement -->
-            <div class="text-center py-5">
-              <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
-                <span class="visually-hidden">Chargement...</span>
+        <div class="modal-body p-3" style="max-height: none; overflow-y: auto; background: #ffffff; position: relative;">
+          <!-- FAB Button et Sidebar -->
+          <button id="projectModalSidebarToggle" title="Autres projets">
+            <i class="bi bi-collection"></i>
+          </button>
+
+          <nav class="project-modal-sidebar" id="projectModalSidebar">
+            <div class="sidebar-header">
+              <h3>Mes Projets</h3>
+              <p>Naviguer entre mes réalisations</p>
+            </div>
+            <ul class="modal-projects-list" id="project-modal-list">
+              <!-- Projets générés par JavaScript -->
+            </ul>
+            <div class="modal-project-count">10 projets</div>
+          </nav>
+
+          <!-- Contenu du projet -->
+          <div class="project-modal-container">
+            <div id="projectWidgetContent">
+              <!-- Spinner de chargement -->
+              <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+                <p class="mt-4 text-muted fs-5">Chargement du projet...</p>
               </div>
-              <p class="mt-4 text-muted fs-5">Chargement du projet...</p>
             </div>
           </div>
-
         </div>
 
         <!-- FOOTER AVEC ACTIONS -->
         <div class="modal-footer bg-light border-top-0 p-2 gap-2" style="background: #f8f9fa;">
-          <a href="#" id="projectLinkBtn" class="btn btn-primary rounded-pill px-3 py-2" style="display: none; font-weight: 600; font-size: 0.95rem;">
-            <i class="bi bi-box-arrow-up-right me-2"></i> Ouvrir en plein écran
-          </a>
           <button type="button" class="btn btn-secondary rounded-pill px-3 py-2" data-bs-dismiss="modal" style="font-weight: 600; font-size: 0.95rem;">Fermer</button>
         </div>
       </div>
@@ -2872,8 +3644,8 @@
 
   <!-- MODALE WIDGET POUR LES COMPÉTENCES -->
   <div class="modal fade" id="competencesModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-fullscreen" style="max-width: 100vw;">
-      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #0f172a 0%, #1a2a3a 50%, #0f2c4a 100%); height: 100vh;">
+    <div class="modal-dialog modal-lg" style="max-width: 90vw; max-height: 90vh; margin: auto;">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden; background: linear-gradient(135deg, #0f172a 0%, #1a2a3a 50%, #0f2c4a 100%); height: 90vh;">
         
         <!-- HEADER -->
         <div class="modal-header bg-gradient border-0 p-3" style="background: linear-gradient(135deg, rgba(20,157,221,0.15) 0%, rgba(20,157,221,0.08) 100%); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1);">
@@ -2988,6 +3760,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+  <script src="assets/js/theme-mode2.js"></script>
   <script src="assets/js/main.js"></script>
 
   <script>
@@ -3899,22 +4672,116 @@ const ACTIVITIES_EVIDENCE = [
     // ==========================================
 
     // --- A. OUVRIR LE WIDGET PROJET ---
+    // === INITIALISER LE SIDEBAR DES PROJETS DANS LA MODALE ===
+    function initializeProjectModalSidebar(currentProjectKey) {
+      const sidebarList = document.getElementById('project-modal-list');
+      if (!sidebarList) return;
+
+      sidebarList.innerHTML = ''; // Vider la liste précédente
+
+      const projectIconMap = {
+        projet1: { icon: 'bi-heart-pulse', label: 'Moniteur Biomédical Connecté' },
+        projet2: { icon: 'bi-robot', label: 'Robot Mobile Autonome' },
+        projet3: { icon: 'bi-bricks', label: 'Coupe de France de Robotique' },
+        projet4: { icon: 'bi-controller', label: 'Centrale Domotique' },
+        projet5: { icon: 'bi-lightning-fill', label: 'Hacking RF' },
+        projet6: { icon: 'bi-graph-up', label: 'Alim Labo' },
+        projet7: { icon: 'bi-box-seam', label: 'Télécommande DSP' },
+        projet8: { icon: 'bi-cpu', label: 'Automatisme' },
+        projet9: { icon: 'bi-gear', label: 'Synthèse Audio' },
+        projet10: { icon: 'bi-camera', label: 'Carte Smartlight' }
+      };
+
+      // Créer les éléments de liste pour chaque projet (dans l'ordre)
+      const projectKeys = Object.keys(PROJECTS_DATA).sort((a, b) => {
+        const numA = parseInt(a.replace('projet', ''));
+        const numB = parseInt(b.replace('projet', ''));
+        return numA - numB;
+      });
+
+      projectKeys.forEach(key => {
+        const projectData = PROJECTS_DATA[key];
+        const iconInfo = projectIconMap[key] || { icon: 'bi-collection', label: projectData.title };
+        
+        const li = document.createElement('li');
+        li.className = 'project-item';
+        const link = document.createElement('a');
+        link.className = 'modal-project-link';
+        if (key === currentProjectKey) {
+          link.classList.add('active');
+        }
+        link.href = '#';
+        link.innerHTML = `<i class="bi ${iconInfo.icon}"></i><span>${iconInfo.label}</span>`;
+        
+        // Ajouter l'event listener pour charger le projet au clic
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          openProjectWidget(key);
+        });
+
+        li.appendChild(link);
+        sidebarList.appendChild(li);
+      });
+
+      // Initialiser les event listeners du sidebar
+      initializeProjectModalSidebarEvents();
+    }
+
+    function initializeProjectModalSidebarEvents() {
+      const sidebar = document.getElementById('projectModalSidebar');
+      const projectLinks = document.querySelectorAll('.modal-project-link');
+
+      if (!sidebar) return;
+
+      // Close sidebar when project link is clicked
+      projectLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          sidebar.classList.remove('open');
+        });
+      });
+    }
+
+    // Use event delegation for toggle button - attach once to modal
+    function setupProjectModalToggleListener() {
+      const modal = document.getElementById('projectModal');
+      
+      // Remove previous listener if exists by cloning element
+      const toggle = document.getElementById('projectModalSidebarToggle');
+      if (toggle) {
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+      }
+
+      // Attach listener to new element
+      const freshToggle = document.getElementById('projectModalSidebarToggle');
+      if (freshToggle) {
+        freshToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const sidebar = document.getElementById('projectModalSidebar');
+          if (sidebar) {
+            sidebar.classList.toggle('open');
+          }
+        });
+      }
+    }
+
     function openProjectWidget(projectKey) {
       const projectData = PROJECTS_DATA[projectKey];
       if (!projectData) return;
 
       const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('projectModal'));
       const contentArea = document.getElementById('projectWidgetContent');
-      const linkBtn = document.getElementById('projectLinkBtn');
 
       document.getElementById('projectTitleHeader').textContent = projectData.title;
       document.getElementById('projectSubtitleHeader').textContent = projectData.subtitle;
       document.getElementById('projectIconHeader').textContent = projectData.icon;
-      linkBtn.href = projectData.htmlFile;
-      linkBtn.style.display = 'inline-block';
 
       contentArea.innerHTML = `<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div></div>`;
       modal.show();
+
+      // Initialiser le sidebar des projets dans la modale
+      initializeProjectModalSidebar(projectKey);
+      setupProjectModalToggleListener();
 
       fetch(projectData.htmlFile)
         .then(res => {
@@ -4239,7 +5106,8 @@ const ACTIVITIES_EVIDENCE = [
 
       const projectFromSkillModalEl = document.getElementById('projectFromSkillModal');
       const projectFromSkillModal = bootstrap.Modal.getInstance(projectFromSkillModalEl);
-      if (projectFromSkillModal) {
+      const isProjectFromSkillOpen = projectFromSkillModalEl && projectFromSkillModalEl.classList.contains('show');
+      if (projectFromSkillModal && isProjectFromSkillOpen) {
         projectFromSkillModalEl.addEventListener(
           'hidden.bs.modal',
           () => showCompetencesFromPending(competencesModalEl),
@@ -4251,7 +5119,8 @@ const ACTIVITIES_EVIDENCE = [
 
       const projectModalEl = document.getElementById('projectModal');
       const projectModal = bootstrap.Modal.getInstance(projectModalEl);
-      if (projectModal) {
+      const isProjectModalOpen = projectModalEl && projectModalEl.classList.contains('show');
+      if (projectModal && isProjectModalOpen) {
         projectModalEl.addEventListener(
           'hidden.bs.modal',
           () => showCompetencesFromPending(competencesModalEl),
@@ -5253,6 +6122,163 @@ const ACTIVITIES_EVIDENCE = [
     window.goToProjectFromSkill = function(projId) {
         openProjectFromSkillWidget('projet' + projId);
     }
+
+    function initEntryGate() {
+      const body = document.body;
+      const gate = document.getElementById('entryGate');
+      const enterBtn = document.getElementById('enterPortfolioBtn');
+      const topbar = gate ? gate.querySelector('.entry-topbar') : null;
+      const videoWrap = gate ? gate.querySelector('.entry-video-wrap') : null;
+      const nameSource = document.getElementById('entryNameSource');
+      const nameTarget = document.getElementById('headerSiteName');
+      const header = document.getElementById('header');
+      const hero = document.getElementById('hero');
+
+      if (!body || !gate || !enterBtn) return;
+
+      const ENTRY_TOTAL_MS = 2000;
+      const ENTRY_FADE_START_MS = 1520;
+      const ENTRY_NAME_MERGE_MS = 1380;
+
+      let alreadyOpened = false;
+
+      const openPortfolio = () => {
+        if (alreadyOpened) return;
+        alreadyOpened = true;
+
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+        if (topbar && header) {
+          const topbarRect = topbar.getBoundingClientRect();
+          const headerRect = header.getBoundingClientRect();
+          const topbarCenterX = topbarRect.left + (topbarRect.width / 2);
+          const headerTargetX = headerRect.left + (headerRect.width * 0.55);
+          const targetX = headerTargetX - topbarCenterX;
+          const targetY = (headerRect.top + 24) - topbarRect.top;
+          const targetScale = Math.max(0.25, Math.min(0.6, headerRect.width / topbarRect.width));
+
+          gate.style.setProperty('--entry-target-x', `${targetX}px`);
+          gate.style.setProperty('--entry-target-y', `${targetY}px`);
+          gate.style.setProperty('--entry-target-scale', `${targetScale}`);
+        }
+
+        if (videoWrap && hero) {
+          const videoRect = videoWrap.getBoundingClientRect();
+          const heroRect = hero.getBoundingClientRect();
+          const videoCenterX = videoRect.left + (videoRect.width / 2);
+          const videoCenterY = videoRect.top + (videoRect.height / 2);
+          const heroCenterX = heroRect.left + (heroRect.width / 2);
+          const heroCenterY = heroRect.top + (heroRect.height / 2);
+          const targetVideoX = heroCenterX - videoCenterX;
+          const targetVideoY = heroCenterY - videoCenterY;
+          const targetVideoScale = Math.max(0.45, Math.min(0.9, heroRect.width / videoRect.width));
+
+          gate.style.setProperty('--entry-video-x', `${targetVideoX}px`);
+          gate.style.setProperty('--entry-video-y', `${targetVideoY}px`);
+          gate.style.setProperty('--entry-video-scale', `${targetVideoScale}`);
+        }
+
+        if (window.matchMedia('(max-width: 1199.98px)').matches) {
+          gate.style.setProperty('--entry-target-x', '-12vw');
+          gate.style.setProperty('--entry-target-y', '-6vh');
+          gate.style.setProperty('--entry-target-scale', '0.74');
+        }
+
+        let nameGhost = null;
+        if (nameSource && nameTarget) {
+          const sourceRect = nameSource.getBoundingClientRect();
+          const targetRect = nameTarget.getBoundingClientRect();
+          const sourceStyle = window.getComputedStyle(nameSource);
+
+          nameGhost = document.createElement('div');
+          nameGhost.className = 'entry-name-ghost';
+          nameGhost.textContent = nameSource.textContent || 'Yanis Bouzidi';
+          nameGhost.style.left = `${sourceRect.left}px`;
+          nameGhost.style.top = `${sourceRect.top}px`;
+          nameGhost.style.fontSize = sourceStyle.fontSize;
+          nameGhost.style.fontFamily = sourceStyle.fontFamily;
+          nameGhost.style.letterSpacing = sourceStyle.letterSpacing;
+          nameGhost.style.color = sourceStyle.color;
+          document.body.appendChild(nameGhost);
+
+          const sourceHeight = Math.max(sourceRect.height, 1);
+          const targetHeight = Math.max(targetRect.height, 1);
+          const nameScale = targetHeight / sourceHeight;
+          const translateX = targetRect.left - sourceRect.left;
+          const translateY = (targetRect.top - sourceRect.top) - 24;
+
+          window.requestAnimationFrame(() => {
+            nameGhost.style.transform = `translate(${translateX}px, ${translateY}px) scale(${nameScale})`;
+            nameGhost.style.opacity = '0.12';
+            nameGhost.style.letterSpacing = '0.01rem';
+            nameGhost.style.color = '#ffffff';
+          });
+
+          window.setTimeout(() => {
+            body.classList.add('entry-name-merged');
+          }, ENTRY_NAME_MERGE_MS);
+        }
+
+        body.classList.add('entry-opening');
+
+        window.setTimeout(() => {
+          gate.classList.add('entry-gate-fade');
+        }, ENTRY_FADE_START_MS);
+
+        window.setTimeout(() => {
+          gate.classList.add('hidden');
+          gate.classList.remove('entry-gate-fade');
+          body.classList.remove('entry-locked');
+          body.classList.remove('entry-opening');
+          body.classList.remove('entry-name-merged');
+          if (nameGhost && nameGhost.parentNode) {
+            nameGhost.parentNode.removeChild(nameGhost);
+          }
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }, ENTRY_TOTAL_MS);
+      };
+
+      enterBtn.addEventListener('click', openPortfolio);
+      gate.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPortfolio();
+        }
+      });
+    }
+
+    function applyMode2State(isEnabled) {
+      const body = document.body;
+      const mode2Btn = document.getElementById('mode2ToggleBtn');
+      const mode2Icon = mode2Btn ? mode2Btn.querySelector('i') : null;
+
+      if (!body || !mode2Btn) return;
+
+      body.classList.toggle('mode-2', isEnabled);
+      mode2Btn.classList.toggle('active', isEnabled);
+      mode2Btn.setAttribute('aria-pressed', isEnabled ? 'true' : 'false');
+      mode2Btn.setAttribute('aria-label', isEnabled ? 'Activer le mode éveillé' : 'Activer le mode nuit');
+      mode2Btn.setAttribute('title', isEnabled ? 'Mode nuit' : 'Mode éveillé');
+      if (mode2Icon) {
+        mode2Icon.className = isEnabled ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+      }
+    }
+
+    function toggleMode2() {
+      const shouldEnable = !document.body.classList.contains('mode-2');
+      applyMode2State(shouldEnable);
+      localStorage.setItem('portfolio-mode-2', shouldEnable ? '1' : '0');
+    }
+
+    window.toggleMode2 = toggleMode2;
+
+    // Initialize modal toggle button listener when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      initEntryGate();
+      setupProjectModalToggleListener();
+      const savedMode2 = localStorage.getItem('portfolio-mode-2') === '1';
+      applyMode2State(savedMode2);
+    });
   </script>
 </body>
 </html>
